@@ -1,0 +1,4622 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>09 Machine_Learning_1000_Interview_Questions.md</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+<link rel="stylesheet" href="_enhance.css">
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="machine-learning-interview-questions"><strong>Machine Learning Interview Questions</strong></h1>
+<h2>Jump to Batch</h2>
+<ul>
+  <li><a href="#%F0%9F%A7%A0-batch-1-q1%E2%80%93q100-ml-fundamentals--basics">🧠 Batch 1 (Q1-Q100): ML Fundamentals & Basics</a></li>
+  <li><a href="#%E2%9A%99%EF%B8%8F-batch-2-q101%E2%80%93q200-supervised-learning-algorithms">⚙️ Batch 2 (Q101-Q200): Supervised Learning Algorithms</a></li>
+  <li><a href="#%F0%9F%A7%A9-batch-3-q201%E2%80%93q300-unsupervised-learning--clustering">🧩 Batch 3 (Q201-Q300): Unsupervised Learning & Clustering</a></li>
+  <li><a href="#%F0%9F%93%90-batch-4-q301%E2%80%93q400-mathematics--statistics-for-mlai">📐 Batch 4 (Q301-Q400): Mathematics & Statistics for ML/AI</a></li>
+  <li><a href="#%F0%9F%A7%A0-batch-5-q401%E2%80%93q500-deep-learning-basics--neural-networks">🧠 Batch 5 (Q401-Q500): Deep Learning Basics & Neural Networks</a></li>
+  <li><a href="#%E2%9A%99%EF%B8%8F-batch-6-q501%E2%80%93q600-advanced-deep-learning-architectures">⚙️ Batch 6 (Q501-Q600): Advanced Deep Learning Architectures</a></li>
+  <li><a href="#%F0%9F%97%A3%EF%B8%8F-batch-7-q601%E2%80%93q700-natural-language-processing-nlp">🗣️ Batch 7 (Q601-Q700): Natural Language Processing (NLP)</a></li>
+  <li><a href="#%F0%9F%96%BC%EF%B8%8F-batch-8-q701%E2%80%93q800-computer-vision--image-processing">🖼️ Batch 8 (Q701-Q800): Computer Vision & Image Processing</a></li>
+  <li><a href="#%F0%9F%A4%96-batch-9-q801%E2%80%93q900-reinforcement-learning--advanced-ai-topics">🤖 Batch 9 (Q801-Q900): Reinforcement Learning & Advanced AI Topics</a></li>
+  <li><a href="#%E2%9A%99%EF%B8%8F-batch-10-q901%E2%80%93q1000-mlops-deployment--emerging-trends">⚙️ Batch 10 (Q901-Q1000): MLOps, Deployment, & Emerging Trends</a></li>
+</ul>
+<hr>
+<h2 id="%F0%9F%A7%A0-batch-1-q1%E2%80%93q100-ml-fundamentals--basics">🧠 <strong>Batch 1 (Q1–Q100): ML Fundamentals &amp; Basics</strong></h2>
+<h3 id="section-a-core-ml-concepts-q1%E2%80%93q25"><strong>Section A: Core ML Concepts (Q1–Q25)</strong></h3>
+<ol>
+<li>
+<p>What is Machine Learning, and how does it differ from traditional programming?
+→ Machine Learning enables systems to learn patterns from data and improve automatically, unlike traditional programming where explicit rules are coded.</p>
+</li>
+<li>
+<p>Define supervised learning. Give an example.
+→ Supervised learning uses labeled data to train models. Example: predicting house prices from features like size and location.</p>
+</li>
+<li>
+<p>Define unsupervised learning. Provide an example use case.
+→ Unsupervised learning finds hidden patterns in unlabeled data. Example: customer segmentation in marketing.</p>
+</li>
+<li>
+<p>What is reinforcement learning? Explain its core components.
+→ Reinforcement learning trains agents via rewards/punishments. Core components: agent, environment, actions, rewards, policy.</p>
+</li>
+<li>
+<p>Compare supervised, unsupervised, and reinforcement learning.
+→ Supervised: labeled data; Unsupervised: unlabeled patterns; Reinforcement: learns from trial-and-error rewards.</p>
+</li>
+<li>
+<p>What are the key steps in a machine learning pipeline?
+→ Steps: data collection, preprocessing, feature engineering, model selection, training, evaluation, deployment.</p>
+</li>
+<li>
+<p>Explain the concept of a model in ML.
+→ A model is a mathematical representation that maps inputs to outputs, capturing patterns in data.</p>
+</li>
+<li>
+<p>What is the difference between training data and test data?
+→ Training data is used to teach the model; test data evaluates its performance on unseen examples.</p>
+</li>
+<li>
+<p>What is a validation set, and why is it needed?
+→ A validation set tunes model parameters and prevents overfitting before final testing.</p>
+</li>
+<li>
+<p>Define feature and label in ML.
+→ Feature: input variable; Label: output or target variable the model predicts.</p>
+</li>
+<li>
+<p>What is feature engineering?
+→ Feature engineering transforms raw data into meaningful inputs to improve model performance.</p>
+</li>
+<li>
+<p>What is data leakage, and how can it be prevented?
+→ Data leakage occurs when information from the test set leaks into training; prevent by strict data separation.</p>
+</li>
+<li>
+<p>What is the curse of dimensionality?
+→ High-dimensional data makes patterns sparse, increasing model complexity and reducing performance.</p>
+</li>
+<li>
+<p>What is the difference between classification and regression?
+→ Classification predicts categories; regression predicts continuous numeric values.</p>
+</li>
+<li>
+<p>What is overfitting? Give an example.
+→ Overfitting happens when a model memorizes training data and fails on new data. Example: a model predicting every training point perfectly but failing on test data.</p>
+</li>
+<li>
+<p>What is underfitting?
+→ Underfitting occurs when a model is too simple to capture patterns, giving poor performance on both training and test data.</p>
+</li>
+<li>
+<p>What is the bias-variance tradeoff?
+→ Bias-variance tradeoff balances model simplicity (bias) and complexity (variance) to minimize overall error.</p>
+</li>
+<li>
+<p>What are hyperparameters in ML?
+→ Hyperparameters are settings configured before training, like learning rate, number of trees, or epochs.</p>
+</li>
+<li>
+<p>What is cross-validation, and why is it important?
+→ Cross-validation splits data into folds to reliably evaluate model performance and avoid overfitting.</p>
+</li>
+<li>
+<p>Explain K-fold cross-validation.
+→ K-fold CV splits data into K parts; each part is used once as validation while the rest train the model, repeated K times.</p>
+</li>
+<li>
+<p>What is stratified sampling in cross-validation?
+→ Stratified sampling ensures each fold preserves the target class distribution, improving evaluation for imbalanced datasets.</p>
+</li>
+<li>
+<p>What is a confusion matrix, and how is it used?
+→ A confusion matrix summarizes predictions vs actuals, showing true/false positives and negatives for classification analysis.</p>
+</li>
+<li>
+<p>What are true positives, false positives, true negatives, and false negatives?
+→ TP: correctly predicted positive, FP: wrongly predicted positive, TN: correctly predicted negative, FN: wrongly predicted negative.</p>
+</li>
+<li>
+<p>How does cross-validation differ from train-test split?
+→ Train-test split evaluates once; cross-validation repeats evaluation on multiple splits for more reliable performance estimates.</p>
+</li>
+<li>
+<p>What is the difference between model accuracy and model generalization?
+→ Accuracy measures performance on a dataset; generalization indicates how well the model performs on unseen, real-world data.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-b-data-preprocessing-q26%E2%80%93q50"><strong>Section B: Data Preprocessing (Q26–Q50)</strong></h3>
+<ol start="26">
+<li>
+<p>Why is data preprocessing necessary in ML?
+→ Preprocessing cleans and formats raw data, ensuring models learn accurate patterns without being misled by noise or inconsistencies.</p>
+</li>
+<li>
+<p>How do you handle missing data in a dataset?
+→ Options include removing rows/columns, imputing values, or using models that handle missing data natively.</p>
+</li>
+<li>
+<p>What are some common imputation techniques?
+→ Mean, median, mode, forward/backward fill, and predictive imputation using models.</p>
+</li>
+<li>
+<p>What is normalization, and when should it be used?
+→ Normalization scales data to a specific range (e.g., 0–1); useful when features have different units or scales.</p>
+</li>
+<li>
+<p>What is standardization, and how is it different from normalization?
+→ Standardization rescales data to have mean 0 and standard deviation 1; normalization scales to a fixed range.</p>
+</li>
+<li>
+<p>Explain min-max scaling with an example.
+→ Min-max scaling: (x' = (x - x_{min}) / (x_{max}-x_{min})). Example: 40 in range 0–100 → 0.4.</p>
+</li>
+<li>
+<p>Explain z-score normalization.
+→ Z-score: (z = (x - \mu)/\sigma), centers data around 0 with unit variance.</p>
+</li>
+<li>
+<p>What is one-hot encoding?
+→ Converts categorical variables into binary vectors with a 1 in the category’s position.</p>
+</li>
+<li>
+<p>What is label encoding, and when is it used?
+→ Assigns integer values to categories; used when categories are ordinal or algorithms can handle numeric labels.</p>
+</li>
+<li>
+<p>What is ordinal encoding?
+→ Converts ordered categorical features into integers reflecting their rank or hierarchy.</p>
+</li>
+<li>
+<p>What are dummy variable traps, and how do you avoid them?
+→ Occurs when one-hot encoding causes multicollinearity; avoid by dropping one dummy variable.</p>
+</li>
+<li>
+<p>How do you deal with outliers in a dataset?
+→ Detect using boxplots/Z-scores; handle by removal, transformation, or capping.</p>
+</li>
+<li>
+<p>What are categorical and numerical features?
+→ Categorical: discrete values (e.g., color); Numerical: continuous or countable numbers (e.g., age).</p>
+</li>
+<li>
+<p>How do you handle categorical features with many unique values?
+→ Use techniques like target encoding, embeddings, or grouping rare categories.</p>
+</li>
+<li>
+<p>What is feature selection?
+→ Choosing the most relevant features to improve model efficiency and reduce overfitting.</p>
+</li>
+<li>
+<p>What are filter, wrapper, and embedded methods in feature selection?
+→ Filter: selects based on statistical measures; Wrapper: evaluates subsets via model performance; Embedded: selection integrated in model training.</p>
+</li>
+<li>
+<p>What is dimensionality reduction?
+→ Reduces number of features while retaining key information; e.g., PCA, t-SNE.</p>
+</li>
+<li>
+<p>What is multicollinearity, and how can it be detected?
+→ High correlation between features; detected using correlation matrix or VIF (Variance Inflation Factor).</p>
+</li>
+<li>
+<p>How do you balance an imbalanced dataset?
+→ Oversampling minority, undersampling majority, or using class-weighted algorithms.</p>
+</li>
+<li>
+<p>Explain the concept of data augmentation.
+→ Generates new data from existing samples to increase dataset size and diversity, often used in images or text.</p>
+</li>
+<li>
+<p>What is feature scaling, and why is it important?
+→ Rescales features to similar ranges to ensure fair contribution to model training and faster convergence.</p>
+</li>
+<li>
+<p>What are missing value indicators?
+→ Flags added to mark missing data, helping the model learn patterns related to missingness.</p>
+</li>
+<li>
+<p>What is the difference between feature transformation and feature extraction?
+→ Transformation modifies existing features (e.g., log, scaling); extraction creates new features from raw data.</p>
+</li>
+<li>
+<p>What are skewed distributions, and how can they be handled?
+→ Distributions with long tails; handled via log, square root, or Box-Cox transformations.</p>
+</li>
+<li>
+<p>How do you preprocess text data before using it in ML?
+→ Steps: lowercasing, removing punctuation/stopwords, tokenization, stemming/lemmatization, and vectorization.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-c-evaluation-metrics-q51%E2%80%93q75"><strong>Section C: Evaluation Metrics (Q51–Q75)</strong></h3>
+<ol start="51">
+<li>
+<p>What is accuracy, and when is it misleading?
+→ Accuracy measures the proportion of correct predictions; misleading for imbalanced datasets where majority class dominates.</p>
+</li>
+<li>
+<p>Define precision and recall.
+→ Precision: fraction of correct positive predictions; Recall: fraction of actual positives correctly identified.</p>
+</li>
+<li>
+<p>What is the F1-score, and how is it calculated?
+→ F1-score = 2 × (Precision × Recall) / (Precision + Recall), balancing precision and recall.</p>
+</li>
+<li>
+<p>Explain the difference between precision and recall.
+→ Precision focuses on correctness of positive predictions; recall focuses on capturing all actual positives.</p>
+</li>
+<li>
+<p>What is the ROC curve?
+→ ROC plots True Positive Rate vs False Positive Rate at various thresholds for binary classifiers.</p>
+</li>
+<li>
+<p>What is AUC (Area Under the Curve)?
+→ AUC quantifies ROC curve area; higher AUC indicates better model discrimination.</p>
+</li>
+<li>
+<p>What does a precision-recall curve show?
+→ Shows tradeoff between precision and recall across thresholds, especially useful for imbalanced data.</p>
+</li>
+<li>
+<p>What is specificity?
+→ Specificity = True Negative Rate; measures ability to correctly identify negatives.</p>
+</li>
+<li>
+<p>What is sensitivity in ML evaluation?
+→ Sensitivity = Recall = True Positive Rate; measures ability to correctly identify positives.</p>
+</li>
+<li>
+<p>How do you calculate confusion matrix metrics manually?
+→ Use TP, TN, FP, FN: Accuracy=(TP+TN)/(TP+TN+FP+FN), Precision=TP/(TP+FP), Recall=TP/(TP+FN).</p>
+</li>
+<li>
+<p>What is log loss (logarithmic loss)?
+→ Log loss penalizes wrong probability predictions; lower values indicate better calibrated predictions.</p>
+</li>
+<li>
+<p>What is Mean Absolute Error (MAE)?
+→ MAE = average of absolute differences between predicted and actual values.</p>
+</li>
+<li>
+<p>What is Mean Squared Error (MSE)?
+→ MSE = average of squared differences; penalizes larger errors more than MAE.</p>
+</li>
+<li>
+<p>What is Root Mean Squared Error (RMSE)?
+→ RMSE = square root of MSE; interpretable in the same units as target variable.</p>
+</li>
+<li>
+<p>When should you prefer RMSE over MAE?
+→ Prefer RMSE when large errors are more harmful and should be penalized more heavily.</p>
+</li>
+<li>
+<p>What is R² (R-squared) score?
+→ R² measures proportion of variance in target explained by the model; 1 means perfect fit.</p>
+</li>
+<li>
+<p>What is adjusted R², and why is it useful?
+→ Adjusted R² adjusts for number of predictors, preventing inflation when adding irrelevant features.</p>
+</li>
+<li>
+<p>How do you evaluate a clustering algorithm’s performance?
+→ Use metrics like silhouette score, Davies-Bouldin index, or compare with ground truth if available.</p>
+</li>
+<li>
+<p>What is silhouette score?
+→ Measures how similar a point is to its own cluster vs other clusters; ranges -1 to 1, higher is better.</p>
+</li>
+<li>
+<p>What is the difference between training accuracy and validation accuracy?
+→ Training accuracy: performance on data model was trained on; Validation accuracy: performance on unseen data.</p>
+</li>
+<li>
+<p>What is model calibration?
+→ Adjusting predicted probabilities to reflect true likelihoods of outcomes.</p>
+</li>
+<li>
+<p>Explain precision-recall tradeoff.
+→ Increasing threshold raises precision but may lower recall; lowering threshold increases recall but may lower precision.</p>
+</li>
+<li>
+<p>What is cost-sensitive learning?
+→ Learning approach that accounts for unequal misclassification costs, penalizing expensive errors more.</p>
+</li>
+<li>
+<p>What are balanced accuracy and weighted metrics?
+→ Balanced accuracy averages recall across classes; weighted metrics account for class imbalance in evaluation.</p>
+</li>
+<li>
+<p>What are top-k accuracy metrics used for?
+→ Measures if the correct label is within the top k predictions, useful for multi-class problems.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-d-overfitting-bias--regularization-q76%E2%80%93q90"><strong>Section D: Overfitting, Bias &amp; Regularization (Q76–Q90)</strong></h3>
+<ol start="76">
+<li>
+<p>What causes overfitting in ML models?
+→ Overfitting occurs when a model is too complex and memorizes training data, capturing noise instead of underlying patterns.</p>
+</li>
+<li>
+<p>What are the techniques to prevent overfitting?
+→ Techniques: cross-validation, regularization (L1/L2), pruning, dropout, early stopping, feature selection, and increasing training data.</p>
+</li>
+<li>
+<p>Explain early stopping.
+→ Training is halted when validation performance stops improving, preventing the model from overfitting.</p>
+</li>
+<li>
+<p>What is dropout regularization?
+→ Randomly disables neurons during training to prevent co-adaptation and reduce overfitting in neural networks.</p>
+</li>
+<li>
+<p>What is L1 regularization?
+→ Adds sum of absolute weights to loss; encourages sparsity by driving some weights to zero.</p>
+</li>
+<li>
+<p>What is L2 regularization?
+→ Adds sum of squared weights to loss; discourages large weights without forcing exact zeros.</p>
+</li>
+<li>
+<p>Compare L1 and L2 regularization.
+→ L1: sparse models, feature selection; L2: smooth weight decay, prevents large coefficients, less sparse.</p>
+</li>
+<li>
+<p>What is elastic net regularization?
+→ Combines L1 and L2 penalties to balance sparsity and smooth weight decay.</p>
+</li>
+<li>
+<p>How does model complexity relate to bias and variance?
+→ Higher complexity → low bias, high variance; lower complexity → high bias, low variance.</p>
+</li>
+<li>
+<p>What is model capacity?
+→ Capacity is a model’s ability to fit a wide variety of functions; higher capacity can model more complex patterns.</p>
+</li>
+<li>
+<p>What are high-bias and high-variance models?
+→ High-bias: too simple, underfits; High-variance: too complex, overfits.</p>
+</li>
+<li>
+<p>How do you detect overfitting?
+→ Large gap between high training accuracy and low validation/test accuracy indicates overfitting.</p>
+</li>
+<li>
+<p>How do you handle high variance in models?
+→ Reduce variance via regularization, more data, simpler models, or ensemble methods.</p>
+</li>
+<li>
+<p>What is model pruning?
+→ Removing unnecessary parameters or neurons from a trained model to reduce complexity and overfitting.</p>
+</li>
+<li>
+<p>How do ensemble methods help reduce overfitting?
+→ Combining multiple models (bagging, boosting) reduces variance and improves generalization.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-e-basic-ml-algorithms-q91%E2%80%93q100"><strong>Section E: Basic ML Algorithms (Q91–Q100)</strong></h3>
+<ol start="91">
+<li>
+<p>Explain the working principle of linear regression.
+→ Linear regression models the relationship between input(s) and output by fitting a straight line minimizing the sum of squared errors.</p>
+</li>
+<li>
+<p>What are the assumptions of linear regression?
+→ Linearity, independence of errors, homoscedasticity (constant variance), normality of errors, and no multicollinearity.</p>
+</li>
+<li>
+<p>What is logistic regression, and how does it differ from linear regression?
+→ Logistic regression predicts probabilities for binary outcomes using the sigmoid function; unlike linear regression, it’s not for continuous outputs.</p>
+</li>
+<li>
+<p>What is the sigmoid function?
+→ Sigmoid maps any real number to a 0–1 range: (σ(x) = 1 / (1 + e^{-x})), useful for probability prediction.</p>
+</li>
+<li>
+<p>What is k-Nearest Neighbors (k-NN)?
+→ k-NN predicts a point’s label based on majority vote (classification) or average (regression) of its k closest neighbors.</p>
+</li>
+<li>
+<p>How do you choose the value of <em>k</em> in k-NN?
+→ Use cross-validation; small k can overfit, large k can oversmooth.</p>
+</li>
+<li>
+<p>What distance metrics are commonly used in k-NN?
+→ Euclidean, Manhattan, Minkowski, Hamming (for categorical data).</p>
+</li>
+<li>
+<p>What are the pros and cons of k-NN?
+→ Pros: simple, non-parametric, flexible; Cons: slow on large datasets, sensitive to noisy features and scaling.</p>
+</li>
+<li>
+<p>What is the decision boundary in classification models?
+→ The boundary separating regions of different predicted classes in feature space.</p>
+</li>
+<li>
+<p>How do you interpret coefficients in linear regression?
+→ Each coefficient represents the expected change in the target variable per unit change in the feature, assuming other features are constant.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%E2%9A%99%EF%B8%8F-batch-2-q101%E2%80%93q200-supervised-learning-algorithms">⚙️ <strong>Batch 2 (Q101–Q200): Supervised Learning Algorithms</strong></h2>
+<h3 id="section-a-decision-trees--random-forests-q101%E2%80%93q125"><strong>Section A: Decision Trees &amp; Random Forests (Q101–Q125)</strong></h3>
+<ol start="101">
+<li>
+<p>What is a decision tree, and how does it work?
+→ A decision tree splits data recursively based on features to predict outcomes, forming a tree-like structure of decisions.</p>
+</li>
+<li>
+<p>What are the key components of a decision tree?
+→ Root node, internal nodes, branches, and leaf (terminal) nodes representing final predictions.</p>
+</li>
+<li>
+<p>What is the concept of entropy in decision trees?
+→ Entropy measures impurity or disorder; higher entropy means more mixed classes in a node.</p>
+</li>
+<li>
+<p>How is information gain calculated?
+→ Information Gain = Entropy(parent) − Weighted average Entropy(children); it measures reduction in uncertainty.</p>
+</li>
+<li>
+<p>What is Gini impurity, and how does it differ from entropy?
+→ Gini measures probability of misclassification; simpler to compute than entropy but both indicate node purity.</p>
+</li>
+<li>
+<p>What is the stopping criterion for building a decision tree?
+→ Stop if max depth reached, min samples per leaf reached, or node is pure.</p>
+</li>
+<li>
+<p>What is pruning in decision trees, and why is it needed?
+→ Pruning removes branches to reduce complexity and prevent overfitting.</p>
+</li>
+<li>
+<p>What is the difference between pre-pruning and post-pruning?
+→ Pre-pruning stops tree growth early; post-pruning trims fully grown tree after training.</p>
+</li>
+<li>
+<p>What is a regression tree, and how does it differ from a classification tree?
+→ Regression tree predicts continuous values; classification tree predicts discrete classes.</p>
+</li>
+<li>
+<p>What are the advantages of decision trees?
+→ Easy to interpret, handles both numerical/categorical data, non-parametric, requires little data preprocessing.</p>
+</li>
+<li>
+<p>What are the disadvantages of decision trees?
+→ Prone to overfitting, sensitive to data noise, can create biased trees with imbalanced classes.</p>
+</li>
+<li>
+<p>How can decision trees lead to overfitting?
+→ By growing deep trees that memorize training data including noise, reducing generalization.</p>
+</li>
+<li>
+<p>How do you control tree depth in models like CART?
+→ Set max_depth, min_samples_split, or min_samples_leaf hyperparameters.</p>
+</li>
+<li>
+<p>What is a random forest?
+→ An ensemble of decision trees using bagging and feature randomness to improve accuracy and reduce overfitting.</p>
+</li>
+<li>
+<p>How does bagging work in a random forest?
+→ Trains each tree on a random bootstrap sample of data; predictions are aggregated (majority vote or average).</p>
+</li>
+<li>
+<p>What is the role of randomness in random forests?
+→ Randomness in data sampling and feature selection reduces correlation between trees, improving generalization.</p>
+</li>
+<li>
+<p>What is feature sampling in random forests?
+→ Each tree considers a random subset of features when splitting nodes to introduce diversity.</p>
+</li>
+<li>
+<p>How does random forest reduce variance compared to a single decision tree?
+→ Averaging multiple uncorrelated trees smooths predictions and reduces overfitting.</p>
+</li>
+<li>
+<p>How do you determine feature importance using a random forest?
+→ Measure how much each feature reduces impurity or decreases model error when used in splits.</p>
+</li>
+<li>
+<p>What are out-of-bag (OOB) samples in random forests?
+→ Data points not included in a tree’s bootstrap sample; used for validation.</p>
+</li>
+<li>
+<p>How is OOB error used for model validation?
+→ OOB predictions for each sample are aggregated to estimate model performance without separate test set.</p>
+</li>
+<li>
+<p>What are the hyperparameters of a random forest model?
+→ Number of trees, max depth, min samples per leaf, max features, bootstrap, and criterion (Gini/entropy).</p>
+</li>
+<li>
+<p>What are some common applications of decision trees?
+→ Classification (spam detection, disease diagnosis), regression (price prediction), and feature selection.</p>
+</li>
+<li>
+<p>How can you visualize a decision tree?
+→ Use libraries like scikit-learn <code>plot_tree</code>, Graphviz, or export textual rules for interpretation.</p>
+</li>
+<li>
+<p>How do you interpret feature importance scores?
+→ Higher score indicates a feature contributes more to reducing impurity and influences model predictions more.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-b-ensemble-methods--bagging-boosting-and-stacking-q126%E2%80%93q150"><strong>Section B: Ensemble Methods — Bagging, Boosting, and Stacking (Q126–Q150)</strong></h3>
+<ol start="126">
+<li>
+<p>What is an ensemble method in ML?
+→ Ensemble methods combine multiple models to improve prediction accuracy and robustness compared to a single model.</p>
+</li>
+<li>
+<p>What is bagging (bootstrap aggregating)?
+→ Bagging trains multiple models on different bootstrap samples of data and averages their predictions (regression) or votes (classification).</p>
+</li>
+<li>
+<p>How does bagging reduce variance?
+→ By averaging uncorrelated models, random errors cancel out, lowering overall variance without increasing bias.</p>
+</li>
+<li>
+<p>What is boosting?
+→ Boosting sequentially trains models, each correcting errors of the previous, to create a strong combined predictor.</p>
+</li>
+<li>
+<p>How does boosting differ from bagging?
+→ Bagging trains models independently; boosting trains sequentially, giving higher weight to misclassified instances.</p>
+</li>
+<li>
+<p>Explain the concept of weighted errors in boosting.
+→ Misclassified samples are assigned higher weights in the next model to focus learning on difficult cases.</p>
+</li>
+<li>
+<p>What is AdaBoost, and how does it work?
+→ AdaBoost combines weak learners sequentially, updating weights for misclassified samples and combining models with weighted voting.</p>
+</li>
+<li>
+<p>What are weak learners in the context of boosting?
+→ Simple models slightly better than random guessing, e.g., shallow decision trees or stumps.</p>
+</li>
+<li>
+<p>How are weights updated in AdaBoost?
+→ Increase weights of misclassified samples, decrease weights of correctly classified ones, so next learner focuses on hard cases.</p>
+</li>
+<li>
+<p>What are the advantages of AdaBoost?
+→ Simple, improves accuracy, resistant to overfitting on small datasets, adaptable to various weak learners.</p>
+</li>
+<li>
+<p>What are the disadvantages of AdaBoost?
+→ Sensitive to noisy data and outliers; sequential training can be slow.</p>
+</li>
+<li>
+<p>What is Gradient Boosting?
+→ Gradient Boosting builds models sequentially by fitting new models to the residual errors of previous models using gradient descent.</p>
+</li>
+<li>
+<p>How does Gradient Boosting correct the errors of previous models?
+→ Each new model predicts residuals (errors) from previous model; combined predictions reduce overall error.</p>
+</li>
+<li>
+<p>What is the difference between AdaBoost and Gradient Boosting?
+→ AdaBoost reweights samples; Gradient Boosting fits models to residuals using gradient descent.</p>
+</li>
+<li>
+<p>What are residuals in Gradient Boosting?
+→ Residuals = differences between actual values and model predictions; used to guide next model.</p>
+</li>
+<li>
+<p>What is XGBoost, and how is it different from traditional Gradient Boosting?
+→ XGBoost is optimized Gradient Boosting with regularization, parallel processing, and handling missing values efficiently.</p>
+</li>
+<li>
+<p>What are the main hyperparameters of XGBoost?
+→ n_estimators, learning_rate, max_depth, subsample, colsample_bytree, gamma, lambda, alpha.</p>
+</li>
+<li>
+<p>What are the benefits of regularization in XGBoost?
+→ Reduces overfitting, improves generalization, penalizes complex trees with large weights.</p>
+</li>
+<li>
+<p>How does XGBoost handle missing values?
+→ Automatically learns optimal direction for missing values during tree construction.</p>
+</li>
+<li>
+<p>What is LightGBM, and what makes it faster than XGBoost?
+→ LightGBM uses histogram-based splitting and leaf-wise growth for faster training and lower memory usage.</p>
+</li>
+<li>
+<p>What is CatBoost, and how does it handle categorical data efficiently?
+→ CatBoost handles categorical features natively via ordered target statistics, avoiding manual encoding.</p>
+</li>
+<li>
+<p>What is stacking (or stacked generalization)?
+→ Stacking combines multiple base models using a meta-model to improve predictive performance.</p>
+</li>
+<li>
+<p>How does stacking differ from bagging and boosting?
+→ Stacking combines different model types via a meta-model; bagging/boosting combine similar models either independently or sequentially.</p>
+</li>
+<li>
+<p>What is blending, and how is it related to stacking?
+→ Blending is a simpler variant of stacking using a holdout set to train the meta-model instead of cross-validation.</p>
+</li>
+<li>
+<p>What are meta-models in ensemble learning?
+→ Meta-models take predictions from base models as input to produce final predictions in stacking/blending.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-c-support-vector-machines-svms-q151%E2%80%93q175"><strong>Section C: Support Vector Machines (SVMs) (Q151–Q175)</strong></h3>
+<ol start="151">
+<li>
+<p>What is a Support Vector Machine (SVM)?
+→ SVM is a supervised learning algorithm used for classification and regression that finds the optimal boundary separating classes.</p>
+</li>
+<li>
+<p>What is the main idea behind SVMs?
+→ To find a hyperplane that maximizes the margin between different classes while minimizing classification errors.</p>
+</li>
+<li>
+<p>What is a hyperplane in SVM?
+→ A hyperplane is a decision boundary that separates different classes in feature space.</p>
+</li>
+<li>
+<p>What are support vectors?
+→ Data points closest to the hyperplane that determine its position and margin.</p>
+</li>
+<li>
+<p>What is the margin in SVM?
+→ The distance between the hyperplane and the nearest support vectors; SVM maximizes this margin.</p>
+</li>
+<li>
+<p>What is the optimization objective in SVM?
+→ Maximize margin while minimizing classification errors, often via a convex optimization problem.</p>
+</li>
+<li>
+<p>What is the difference between hard-margin and soft-margin SVM?
+→ Hard-margin: no misclassifications allowed; Soft-margin: allows some misclassifications for better generalization.</p>
+</li>
+<li>
+<p>What is the role of the regularization parameter <em>C</em> in SVM?
+→ <em>C</em> controls tradeoff between margin size and misclassification penalty; higher <em>C</em> = less tolerance for errors.</p>
+</li>
+<li>
+<p>What are kernels in SVM?
+→ Functions that transform data into higher-dimensional space to make it linearly separable.</p>
+</li>
+<li>
+<p>Why are kernels used in SVM?
+→ To handle non-linear relationships without explicitly computing high-dimensional features.</p>
+</li>
+<li>
+<p>What is the kernel trick?
+→ A method to compute inner products in high-dimensional space efficiently via kernels without explicit transformation.</p>
+</li>
+<li>
+<p>List some commonly used kernels.
+→ Linear, polynomial, radial basis function (RBF), sigmoid.</p>
+</li>
+<li>
+<p>What is the linear kernel, and when is it used?
+→ Linear kernel computes dot product; used when data is linearly separable or in high-dimensional sparse spaces.</p>
+</li>
+<li>
+<p>What is the polynomial kernel?
+→ Computes similarity as ((x \cdot y + c)^d), capturing polynomial relationships of degree <em>d</em>.</p>
+</li>
+<li>
+<p>What is the radial basis function (RBF) kernel?
+→ RBF measures similarity with (\exp(-\gamma ||x - y||^2)), capturing localized non-linear patterns.</p>
+</li>
+<li>
+<p>How does the gamma parameter affect SVM performance?
+→ High gamma = narrow influence, risk of overfitting; low gamma = wide influence, risk of underfitting.</p>
+</li>
+<li>
+<p>What happens if <em>C</em> is set too high or too low?
+→ High <em>C</em>: low bias, high variance (overfitting); Low <em>C</em>: high bias, low variance (underfitting).</p>
+</li>
+<li>
+<p>How do you handle non-linearly separable data in SVM?
+→ Use soft-margin SVM and/or apply kernel functions to map data to higher dimensions.</p>
+</li>
+<li>
+<p>How does SVM perform in high-dimensional spaces?
+→ SVM performs well due to its reliance on support vectors, even when feature dimensions exceed samples.</p>
+</li>
+<li>
+<p>What are the advantages of SVM?
+→ Effective in high-dimensional spaces, robust to overfitting, works well with clear margins and sparse data.</p>
+</li>
+<li>
+<p>What are the disadvantages of SVM?
+→ Computationally expensive for large datasets, sensitive to choice of kernel and parameters, less interpretable.</p>
+</li>
+<li>
+<p>How can SVMs be used for regression problems?
+→ Through Support Vector Regression (SVR), predicting continuous outcomes by fitting a tube around data points.</p>
+</li>
+<li>
+<p>What is Support Vector Regression (SVR)?
+→ SVR predicts continuous values while maintaining a margin of tolerance (epsilon) around predicted values.</p>
+</li>
+<li>
+<p>What are some techniques to speed up SVM training on large datasets?
+→ Use linear kernels, stochastic gradient descent, approximate solvers, or subsample data.</p>
+</li>
+<li>
+<p>How can SVMs be combined with other models in practice?
+→ Use as base models in ensembles (bagging, boosting, stacking) or combine with neural networks for hybrid approaches.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-d-naive-bayes--probabilistic-models-q176%E2%80%93q185"><strong>Section D: Naive Bayes &amp; Probabilistic Models (Q176–Q185)</strong></h3>
+<ol start="176">
+<li>
+<p>What is the Naive Bayes algorithm?
+→ A probabilistic classifier based on Bayes’ theorem, assuming feature independence, used for classification tasks.</p>
+</li>
+<li>
+<p>What is the Bayes theorem?
+→ (P(A|B) = \frac{P(B|A)P(A)}{P(B)}); it calculates the probability of event A given evidence B.</p>
+</li>
+<li>
+<p>What is the &quot;naive&quot; assumption in Naive Bayes?
+→ Assumes all features are conditionally independent given the class label, simplifying computation.</p>
+</li>
+<li>
+<p>What are the main types of Naive Bayes classifiers?
+→ Gaussian, Multinomial, and Bernoulli Naive Bayes.</p>
+</li>
+<li>
+<p>Explain the Gaussian Naive Bayes model.
+→ Assumes continuous features follow a normal (Gaussian) distribution; calculates likelihoods using mean and variance.</p>
+</li>
+<li>
+<p>When is Multinomial Naive Bayes used?
+→ For discrete count data, e.g., word frequencies in text classification.</p>
+</li>
+<li>
+<p>What is Bernoulli Naive Bayes?
+→ Uses binary features (0/1) to model presence or absence of an attribute, common in text with word occurrence.</p>
+</li>
+<li>
+<p>How does Laplace smoothing work in Naive Bayes?
+→ Adds 1 to feature counts to avoid zero probabilities for unseen events.</p>
+</li>
+<li>
+<p>What are the advantages and disadvantages of Naive Bayes?
+→ Advantages: fast, simple, works well with high-dimensional data; Disadvantages: independence assumption often unrealistic, poor probability estimates.</p>
+</li>
+<li>
+<p>How can Naive Bayes be used for text classification?
+→ Represent text as feature vectors (word counts or presence), then predict class probabilities using Naive Bayes.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-e-gradient-boosting--hyperparameter-tuning-q186%E2%80%93q195"><strong>Section E: Gradient Boosting &amp; Hyperparameter Tuning (Q186–Q195)</strong></h3>
+<ol start="186">
+<li>
+<p>What is the learning rate in Gradient Boosting, and how does it affect performance?
+→ The learning rate scales each tree’s contribution; lower rates improve generalization but require more trees, higher rates risk overfitting.</p>
+</li>
+<li>
+<p>What is the role of the number of estimators in boosting algorithms?
+→ It determines how many sequential weak learners are added; more estimators can improve accuracy but increase training time and risk of overfitting.</p>
+</li>
+<li>
+<p>What is subsampling, and why is it used in boosting?
+→ Subsampling trains each tree on a random subset of data to reduce variance and improve generalization.</p>
+</li>
+<li>
+<p>What is shrinkage in boosting?
+→ Shrinkage scales tree predictions by the learning rate, slowing learning to prevent overfitting.</p>
+</li>
+<li>
+<p>How can boosting algorithms overfit, and how can this be mitigated?
+→ Overfitting occurs with too many trees or high learning rate; mitigated via learning rate tuning, early stopping, and regularization.</p>
+</li>
+<li>
+<p>What is the difference between LightGBM’s leaf-wise and level-wise growth?
+→ Leaf-wise splits the leaf with max loss reduction (more aggressive, faster convergence); level-wise grows uniformly by depth (more stable, less overfitting).</p>
+</li>
+<li>
+<p>How do you perform hyperparameter tuning in boosting models?
+→ Adjust parameters like learning rate, n_estimators, max_depth, min_child_samples, subsample, and evaluate via cross-validation.</p>
+</li>
+<li>
+<p>What is grid search?
+→ Systematically tests all combinations of predefined hyperparameter values to find the best set.</p>
+</li>
+<li>
+<p>What is random search?
+→ Randomly samples hyperparameter combinations for evaluation; often faster than grid search.</p>
+</li>
+<li>
+<p>What is Bayesian optimization for hyperparameter tuning?
+→ Uses probabilistic models to predict performance and choose promising hyperparameters iteratively, efficiently exploring the search space.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-f-model-selection--interpretability-q196%E2%80%93q200"><strong>Section F: Model Selection &amp; Interpretability (Q196–Q200)</strong></h3>
+<ol start="196">
+<li>
+<p>What are some common model selection techniques?
+→ Cross-validation, hold-out validation, grid search, random search, and Bayesian optimization are commonly used to select the best model.</p>
+</li>
+<li>
+<p>What is feature importance, and how is it calculated in tree-based models?
+→ Feature importance measures each feature’s contribution to predictions; in trees, often calculated by total reduction in impurity (Gini/entropy) or permutation importance.</p>
+</li>
+<li>
+<p>What are SHAP values, and how do they explain model predictions?
+→ SHAP values quantify each feature’s contribution to a single prediction, based on cooperative game theory, providing consistent and local explanations.</p>
+</li>
+<li>
+<p>What is partial dependence analysis (PDP)?
+→ PDP shows how the predicted outcome changes as a feature varies, averaging over other features to reveal feature effect.</p>
+</li>
+<li>
+<p>How can model interpretability help in responsible AI development?
+→ It ensures transparency, fairness, and trust, enabling stakeholders to understand, debug, and mitigate biases in AI decisions.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%A7%A9-batch-3-q201%E2%80%93q300-unsupervised-learning--clustering">🧩 <strong>Batch 3 (Q201–Q300): Unsupervised Learning &amp; Clustering</strong></h2>
+<hr>
+<h3 id="section-a-fundamentals-of-unsupervised-learning-q201%E2%80%93q215"><strong>Section A: Fundamentals of Unsupervised Learning (Q201–Q215)</strong></h3>
+<ol start="201">
+<li>
+<p>What is unsupervised learning?
+→ A type of ML where the model learns patterns from unlabeled data without explicit target outputs.</p>
+</li>
+<li>
+<p>How does it differ from supervised learning?
+→ Supervised learning uses labeled data to predict outcomes; unsupervised learning finds hidden structures in unlabeled data.</p>
+</li>
+<li>
+<p>What are some real-world applications of unsupervised learning?
+→ Customer segmentation, anomaly detection, topic modeling, and market basket analysis.</p>
+</li>
+<li>
+<p>What is clustering in ML?
+→ Grouping similar data points together based on feature similarity without prior labels.</p>
+</li>
+<li>
+<p>What are the main goals of clustering algorithms?
+→ Discover inherent groupings, simplify data, and reveal hidden patterns.</p>
+</li>
+<li>
+<p>What are some challenges in unsupervised learning?
+→ No ground truth, evaluating results is tricky, sensitive to scaling and noise, and choosing number of clusters.</p>
+</li>
+<li>
+<p>What is dimensionality reduction?
+→ Reducing the number of features while retaining essential information, e.g., PCA, t-SNE.</p>
+</li>
+<li>
+<p>What is feature extraction in the context of unsupervised learning?
+→ Transforming raw data into informative features that capture underlying structure.</p>
+</li>
+<li>
+<p>What is latent variable modeling?
+→ Modeling unobserved (latent) variables that explain observed data patterns, e.g., factor analysis.</p>
+</li>
+<li>
+<p>What is the difference between clustering and classification?
+→ Clustering: groups data without labels; Classification: predicts predefined class labels.</p>
+</li>
+<li>
+<p>What is density-based clustering?
+→ Clusters are formed as dense regions of data points separated by sparse regions, e.g., DBSCAN.</p>
+</li>
+<li>
+<p>What are some assumptions made by clustering algorithms?
+→ Examples: K-means assumes spherical clusters of similar size; DBSCAN assumes density-based separation.</p>
+</li>
+<li>
+<p>How do you evaluate an unsupervised learning model without labels?
+→ Use metrics like silhouette score, Davies-Bouldin index, or internal cluster cohesion and separation.</p>
+</li>
+<li>
+<p>What is the concept of &quot;distance&quot; in clustering?
+→ Distance quantifies how similar or dissimilar data points are, guiding cluster formation.</p>
+</li>
+<li>
+<p>What are similarity and dissimilarity measures?
+→ Similarity measures closeness (e.g., cosine similarity); dissimilarity measures difference (e.g., Euclidean distance).</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-b-clustering-algorithms-q216%E2%80%93q245"><strong>Section B: Clustering Algorithms (Q216–Q245)</strong></h3>
+<ol start="216">
+<li>
+<p>What is the k-means clustering algorithm?
+→ K-means partitions data into <em>k</em> clusters by minimizing within-cluster variance, assigning points to the nearest centroid.</p>
+</li>
+<li>
+<p>How does k-means clustering work step by step?
+→ Initialize <em>k</em> centroids → assign points to nearest centroid → update centroids → repeat until convergence.</p>
+</li>
+<li>
+<p>What is the objective function in k-means?
+→ Minimize the sum of squared distances between points and their cluster centroids.</p>
+</li>
+<li>
+<p>What is the role of centroids in k-means?
+→ Centroids represent the center of each cluster and guide point assignments.</p>
+</li>
+<li>
+<p>How is the number of clusters (<em>k</em>) chosen?
+→ Methods include the elbow method, silhouette score, domain knowledge, or cross-validation.</p>
+</li>
+<li>
+<p>What is the elbow method?
+→ Plot WCSS (within-cluster sum of squares) vs <em>k</em>; the “elbow” point indicates optimal <em>k</em>.</p>
+</li>
+<li>
+<p>What is the silhouette score, and how is it used to evaluate clustering?
+→ Measures cohesion and separation; ranges -1 to 1, higher values indicate better cluster structure.</p>
+</li>
+<li>
+<p>What are the advantages of k-means clustering?
+→ Simple, fast, scalable, works well for spherical, evenly sized clusters.</p>
+</li>
+<li>
+<p>What are the disadvantages of k-means clustering?
+→ Sensitive to outliers, requires pre-defined <em>k</em>, struggles with non-spherical or imbalanced clusters.</p>
+</li>
+<li>
+<p>What is the difference between k-means and k-medoids?
+→ K-medoids uses actual data points as cluster centers, more robust to outliers than k-means.</p>
+</li>
+<li>
+<p>What is hierarchical clustering?
+→ Builds nested clusters either by merging (agglomerative) or splitting (divisive), forming a hierarchy.</p>
+</li>
+<li>
+<p>What is the difference between agglomerative and divisive clustering?
+→ Agglomerative: starts with individual points and merges; Divisive: starts with all points and splits.</p>
+</li>
+<li>
+<p>What is a dendrogram?
+→ A tree-like diagram showing cluster merging/splitting in hierarchical clustering.</p>
+</li>
+<li>
+<p>What are linkage methods (single, complete, average, Ward’s)?
+→ Determine cluster distance: Single = min distance, Complete = max distance, Average = mean distance, Ward = minimize variance.</p>
+</li>
+<li>
+<p>How is hierarchical clustering visualized?
+→ Using dendrograms or heatmaps to show cluster formation and distances.</p>
+</li>
+<li>
+<p>What is DBSCAN?
+→ Density-Based Spatial Clustering of Applications with Noise; clusters dense regions and identifies noise.</p>
+</li>
+<li>
+<p>What are the key parameters in DBSCAN (eps and minPts)?
+→ <em>eps</em>: radius for neighborhood; <em>minPts</em>: minimum points to form a dense region.</p>
+</li>
+<li>
+<p>How does DBSCAN identify noise points?
+→ Points not belonging to any dense region (less than <em>minPts</em> within <em>eps</em>) are labeled as noise.</p>
+</li>
+<li>
+<p>What are the strengths of DBSCAN over k-means?
+→ Can detect arbitrary-shaped clusters, handles noise, does not require specifying number of clusters.</p>
+</li>
+<li>
+<p>What are the weaknesses of DBSCAN?
+→ Sensitive to <em>eps</em> and <em>minPts</em>, struggles with varying density clusters, less effective in high dimensions.</p>
+</li>
+<li>
+<p>What is OPTICS clustering?
+→ Ordering Points To Identify the Clustering Structure; handles varying density clusters better than DBSCAN.</p>
+</li>
+<li>
+<p>What is a Gaussian Mixture Model (GMM)?
+→ Probabilistic model assuming data is a mixture of multiple Gaussian distributions.</p>
+</li>
+<li>
+<p>How does the Expectation-Maximization (EM) algorithm work in GMMs?
+→ E-step: assign soft probabilities to components; M-step: update parameters to maximize likelihood; iterate until convergence.</p>
+</li>
+<li>
+<p>What are the advantages of GMMs over k-means?
+→ Can model elliptical clusters, soft assignments, probabilistic interpretation.</p>
+</li>
+<li>
+<p>What are mixture components in GMMs?
+→ Individual Gaussian distributions that combine to model overall data distribution.</p>
+</li>
+<li>
+<p>What are soft cluster assignments?
+→ Each point has probabilities of belonging to all clusters rather than a single hard label.</p>
+</li>
+<li>
+<p>What are model-based clustering techniques?
+→ Techniques assuming a probabilistic model for data, e.g., GMM, where clustering is based on estimated model parameters.</p>
+</li>
+<li>
+<p>How do you decide the optimal number of clusters for GMMs?
+→ Use information criteria like AIC (Akaike Information Criterion) or BIC (Bayesian Information Criterion).</p>
+</li>
+<li>
+<p>What is the difference between hard and soft clustering?
+→ Hard: each point belongs to one cluster; Soft: points have probabilities for multiple clusters.</p>
+</li>
+<li>
+<p>What is spectral clustering, and when is it used?
+→ Uses graph Laplacian eigenvectors to cluster data; effective for non-convex or complex-shaped clusters.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-c-dimensionality-reduction-techniques-q246%E2%80%93q270"><strong>Section C: Dimensionality Reduction Techniques (Q246–Q270)</strong></h3>
+<ol start="246">
+<li>
+<p>What is the purpose of dimensionality reduction?
+→ Reduce the number of features while preserving essential information, simplifying models and improving efficiency.</p>
+</li>
+<li>
+<p>What is Principal Component Analysis (PCA)?
+→ PCA is a linear technique that transforms data into orthogonal components capturing maximum variance.</p>
+</li>
+<li>
+<p>How does PCA work mathematically?
+→ Compute covariance matrix → find eigenvectors/eigenvalues → project data onto top eigenvectors (principal components).</p>
+</li>
+<li>
+<p>What is an eigenvector and eigenvalue in PCA?
+→ Eigenvector: direction of variance; Eigenvalue: amount of variance along that direction.</p>
+</li>
+<li>
+<p>What is the covariance matrix in PCA?
+→ A square matrix showing covariances between features, representing relationships and spread in data.</p>
+</li>
+<li>
+<p>How do you decide the number of principal components to retain?
+→ Use explained variance ratio; retain enough components to capture a desired cumulative variance (e.g., 95%).</p>
+</li>
+<li>
+<p>What are the advantages of PCA?
+→ Reduces dimensionality, removes multicollinearity, speeds up computation, helps visualization.</p>
+</li>
+<li>
+<p>What are the limitations of PCA?
+→ Linear assumption, may lose interpretability, sensitive to scaling and outliers.</p>
+</li>
+<li>
+<p>What is Linear Discriminant Analysis (LDA)?
+→ LDA is a supervised dimensionality reduction technique maximizing class separability.</p>
+</li>
+<li>
+<p>How does LDA differ from PCA?
+→ PCA is unsupervised, focuses on variance; LDA is supervised, focuses on class separation.</p>
+</li>
+<li>
+<p>What is t-SNE (t-distributed Stochastic Neighbor Embedding)?
+→ Non-linear technique for visualizing high-dimensional data in 2D/3D while preserving local structure.</p>
+</li>
+<li>
+<p>What are the advantages and drawbacks of t-SNE?
+→ Advantages: captures local structure well, good for visualization; Drawbacks: slow, non-deterministic, poor for large datasets.</p>
+</li>
+<li>
+<p>What is UMAP (Uniform Manifold Approximation and Projection)?
+→ Non-linear dimensionality reduction method preserving local and global structure, faster than t-SNE.</p>
+</li>
+<li>
+<p>How does UMAP differ from t-SNE?
+→ UMAP is faster, scales better, and preserves more global structure; t-SNE emphasizes local neighborhoods.</p>
+</li>
+<li>
+<p>What are autoencoders, and how do they perform dimensionality reduction?
+→ Neural networks that encode data into lower-dimensional representations and reconstruct the input from them.</p>
+</li>
+<li>
+<p>What is a bottleneck layer in autoencoders?
+→ The central layer with reduced dimensions representing compressed features of the input.</p>
+</li>
+<li>
+<p>What is the difference between a variational autoencoder and a simple autoencoder?
+→ VAE learns probabilistic latent representations; simple autoencoder learns deterministic compressed codes.</p>
+</li>
+<li>
+<p>What is manifold learning?
+→ Non-linear dimensionality reduction assuming data lies on a lower-dimensional manifold embedded in high-dimensional space.</p>
+</li>
+<li>
+<p>What is Isomap?
+→ Manifold learning technique preserving geodesic distances between points to reduce dimensions.</p>
+</li>
+<li>
+<p>What is MDS (Multidimensional Scaling)?
+→ Projects data into lower dimensions preserving pairwise distances as faithfully as possible.</p>
+</li>
+<li>
+<p>How is explained variance used in PCA interpretation?
+→ Indicates how much information/variance each principal component captures, guiding component selection.</p>
+</li>
+<li>
+<p>What is whitening in PCA?
+→ Transforming principal components to have unit variance, decorrelating features.</p>
+</li>
+<li>
+<p>What is feature decorrelation?
+→ Removing linear correlations between features so they become independent along new axes (as in PCA).</p>
+</li>
+<li>
+<p>What are the computational challenges in dimensionality reduction?
+→ Large datasets, high dimensionality, computing eigenvectors, and memory/time constraints.</p>
+</li>
+<li>
+<p>How can dimensionality reduction improve model performance?
+→ Reduces overfitting, speeds up training, simplifies models, improves visualization, and mitigates multicollinearity.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-d-anomaly--outlier-detection-q271%E2%80%93q285"><strong>Section D: Anomaly &amp; Outlier Detection (Q271–Q285)</strong></h3>
+<ol start="271">
+<li>
+<p>What is anomaly detection?
+→ Identifying data points that deviate significantly from normal patterns or expected behavior.</p>
+</li>
+<li>
+<p>What is the difference between anomalies and outliers?
+→ Anomalies are contextually unusual points indicating rare events; outliers are statistically distant points, not always meaningful.</p>
+</li>
+<li>
+<p>What are the types of anomalies (point, contextual, collective)?
+→ Point: single unusual instance; Contextual: unusual given context; Collective: group of points anomalous together.</p>
+</li>
+<li>
+<p>What are some common applications of anomaly detection?
+→ Fraud detection, network intrusion, industrial fault detection, healthcare monitoring.</p>
+</li>
+<li>
+<p>What is the z-score method for anomaly detection?
+→ Points with standardized scores beyond a threshold (e.g., ±3) are flagged as anomalies.</p>
+</li>
+<li>
+<p>What is the IQR (Interquartile Range) method?
+→ Points outside (Q1 - 1.5<em>IQR) or (Q3 + 1.5</em>IQR) are considered outliers.</p>
+</li>
+<li>
+<p>What is the Mahalanobis distance?
+→ Distance metric considering correlations between features to detect multivariate anomalies.</p>
+</li>
+<li>
+<p>What is isolation forest?
+→ Ensemble method isolating anomalies using random partitioning of features.</p>
+</li>
+<li>
+<p>How does isolation forest detect anomalies?
+→ Anomalies require fewer splits to isolate, resulting in shorter path lengths in trees.</p>
+</li>
+<li>
+<p>What is one-class SVM?
+→ SVM variant trained on normal data to distinguish inliers from anomalies.</p>
+</li>
+<li>
+<p>How does one-class SVM differ from traditional SVM?
+→ Traditional SVM separates two classes; one-class SVM separates normal data from the origin (anomalies).</p>
+</li>
+<li>
+<p>What is Local Outlier Factor (LOF)?
+→ Density-based method comparing local density of a point with its neighbors to detect outliers.</p>
+</li>
+<li>
+<p>How does LOF measure anomaly?
+→ Points with significantly lower density than neighbors receive higher LOF scores, indicating anomalies.</p>
+</li>
+<li>
+<p>What is robust covariance estimation for anomaly detection?
+→ Estimates data covariance while being insensitive to outliers, useful for multivariate anomaly detection.</p>
+</li>
+<li>
+<p>What are ensemble methods for anomaly detection?
+→ Combine multiple detectors (e.g., isolation forests, LOF) to improve robustness and accuracy of anomaly detection.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-e-association-rule-mining-q286%E2%80%93q295"><strong>Section E: Association Rule Mining (Q286–Q295)</strong></h3>
+<ol start="286">
+<li>
+<p>What is association rule learning?
+→ A method to discover interesting relationships (rules) between items in large datasets, often used in market basket analysis.</p>
+</li>
+<li>
+<p>What is support in association rules?
+→ Proportion of transactions containing a particular itemset; measures how frequently an itemset appears.</p>
+</li>
+<li>
+<p>What is confidence in association rules?
+→ Probability that the consequent occurs given the antecedent; measures rule reliability.</p>
+</li>
+<li>
+<p>What is lift, and how is it interpreted?
+→ Lift = Confidence / Expected Confidence; &gt;1 indicates positive correlation, &lt;1 indicates negative correlation.</p>
+</li>
+<li>
+<p>What is conviction?
+→ Measures how often the rule makes incorrect predictions; higher values indicate stronger implication.</p>
+</li>
+<li>
+<p>What is the Apriori algorithm?
+→ Algorithm to find frequent itemsets and generate association rules using a bottom-up, iterative approach.</p>
+</li>
+<li>
+<p>How does Apriori algorithm generate frequent itemsets?
+→ Starts with single items, iteratively joins them, pruning those below minimum support threshold.</p>
+</li>
+<li>
+<p>What are the limitations of Apriori?
+→ High computational cost, multiple database scans, inefficient with large datasets or low support thresholds.</p>
+</li>
+<li>
+<p>What is the FP-growth algorithm?
+→ Finds frequent itemsets without candidate generation, using a compact FP-tree structure.</p>
+</li>
+<li>
+<p>How does FP-growth differ from Apriori?
+→ FP-growth avoids repeated dataset scans and candidate generation, making it faster and more memory-efficient.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-f-semi-supervised-learning--hybrid-methods-q296%E2%80%93q300"><strong>Section F: Semi-Supervised Learning &amp; Hybrid Methods (Q296–Q300)</strong></h3>
+<ol start="296">
+<li>
+<p>What is semi-supervised learning?
+→ A learning approach using both labeled and unlabeled data to improve model performance when labels are scarce.</p>
+</li>
+<li>
+<p>How does semi-supervised learning differ from supervised and unsupervised learning?
+→ Supervised uses only labeled data, unsupervised uses only unlabeled data; semi-supervised leverages both to guide learning.</p>
+</li>
+<li>
+<p>What is self-training in semi-supervised learning?
+→ Model trained on labeled data predicts labels for unlabeled data, which are then added iteratively to retrain the model.</p>
+</li>
+<li>
+<p>What is co-training?
+→ Two or more models trained on different feature subsets teach each other by labeling unlabeled data iteratively.</p>
+</li>
+<li>
+<p>What are some use cases for semi-supervised learning?
+→ Text classification, speech recognition, medical imaging, and fraud detection where labeling is expensive or limited.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%93%90-batch-4-q301%E2%80%93q400-mathematics--statistics-for-mlai">📐 <strong>Batch 4 (Q301–Q400): Mathematics &amp; Statistics for ML/AI</strong></h2>
+<hr>
+<h3 id="section-a-linear-algebra-q301%E2%80%93q325"><strong>Section A: Linear Algebra (Q301–Q325)</strong></h3>
+<ol start="301">
+<li>
+<p>What is a scalar, vector, and matrix?
+→ Scalar: single number; Vector: ordered array of numbers; Matrix: 2D array of numbers arranged in rows and columns.</p>
+</li>
+<li>
+<p>What is a tensor, and how does it generalize matrices?
+→ A tensor is a multi-dimensional array; matrices are 2D tensors, vectors are 1D, scalars are 0D.</p>
+</li>
+<li>
+<p>What is matrix addition and multiplication?
+→ Addition: element-wise sum of matrices of same size; Multiplication: sum of products of rows and columns.</p>
+</li>
+<li>
+<p>What are the conditions for two matrices to be multiplied?
+→ Number of columns in the first matrix must equal the number of rows in the second matrix.</p>
+</li>
+<li>
+<p>What is a dot product between two vectors?
+→ Sum of element-wise products of two vectors of same length.</p>
+</li>
+<li>
+<p>What is the geometric interpretation of the dot product?
+→ Measures projection of one vector onto another; equals (||a||,||b||\cosθ), indicating angle similarity.</p>
+</li>
+<li>
+<p>What is the cross product?
+→ Produces a vector perpendicular to two 3D vectors, with magnitude equal to the area of the parallelogram they form.</p>
+</li>
+<li>
+<p>What is the identity matrix?
+→ Square matrix with 1s on the diagonal and 0s elsewhere; acts as multiplicative identity.</p>
+</li>
+<li>
+<p>What is the inverse of a matrix?
+→ Matrix that, when multiplied with the original, yields the identity matrix.</p>
+</li>
+<li>
+<p>When is a matrix invertible?
+→ If it is square and has a non-zero determinant.</p>
+</li>
+<li>
+<p>What is the determinant of a matrix?
+→ Scalar value representing scaling factor of linear transformation and matrix invertibility.</p>
+</li>
+<li>
+<p>What does a zero determinant indicate?
+→ Matrix is singular, not invertible, and collapses space to lower dimension.</p>
+</li>
+<li>
+<p>What is a transpose of a matrix?
+→ Flip of matrix over its diagonal; rows become columns and vice versa.</p>
+</li>
+<li>
+<p>What is a symmetric matrix?
+→ Square matrix equal to its transpose.</p>
+</li>
+<li>
+<p>What is an orthogonal matrix?
+→ Square matrix whose transpose equals its inverse; preserves vector lengths and angles.</p>
+</li>
+<li>
+<p>What are eigenvalues and eigenvectors?
+→ Eigenvectors: directions unchanged by a transformation; Eigenvalues: scaling factors along those directions.</p>
+</li>
+<li>
+<p>How do eigenvalues relate to matrix transformations?
+→ They indicate how much the matrix stretches or compresses along its eigenvectors.</p>
+</li>
+<li>
+<p>What is the significance of eigen decomposition?
+→ Breaks a matrix into eigenvectors and eigenvalues, useful in PCA, solving differential equations, and understanding linear transformations.</p>
+</li>
+<li>
+<p>What is Singular Value Decomposition (SVD)?
+→ Factorizes a matrix into (U Σ V^T), capturing orthogonal directions and singular values for dimensionality analysis.</p>
+</li>
+<li>
+<p>How is SVD used in dimensionality reduction?
+→ Retain top singular values/vectors to approximate original data with fewer dimensions while preserving variance.</p>
+</li>
+<li>
+<p>What is the difference between eigen decomposition and SVD?
+→ Eigen decomposition requires square matrices; SVD works for any rectangular matrix, decomposing into singular vectors and values.</p>
+</li>
+<li>
+<p>What is the rank of a matrix?
+→ Number of linearly independent rows or columns.</p>
+</li>
+<li>
+<p>What does it mean if a matrix is rank-deficient?
+→ It has linearly dependent rows/columns; cannot fully span space; determinant is zero.</p>
+</li>
+<li>
+<p>What is the trace of a matrix?
+→ Sum of diagonal elements; equals sum of eigenvalues.</p>
+</li>
+<li>
+<p>What is the Frobenius norm, and where is it used?
+→ Square root of sum of squares of all matrix elements; used to measure matrix size or error in approximations.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-b-probability--statistics-q326%E2%80%93q355"><strong>Section B: Probability &amp; Statistics (Q326–Q355)</strong></h3>
+<ol start="326">
+<li>
+<p>What is probability theory?
+→ Mathematical framework for quantifying uncertainty and modeling random events.</p>
+</li>
+<li>
+<p>What is a random variable?
+→ A variable whose value depends on the outcome of a random process.</p>
+</li>
+<li>
+<p>What is the difference between discrete and continuous random variables?
+→ Discrete: finite or countable outcomes; Continuous: infinite outcomes over a range.</p>
+</li>
+<li>
+<p>What is a probability distribution?
+→ Function that assigns probabilities to all possible outcomes of a random variable.</p>
+</li>
+<li>
+<p>What are the properties of a valid probability distribution?
+→ Probabilities between 0 and 1; total probability sums (or integrates) to 1.</p>
+</li>
+<li>
+<p>What is the probability density function (PDF)?
+→ Function describing likelihood of continuous random variable taking specific values.</p>
+</li>
+<li>
+<p>What is the cumulative distribution function (CDF)?
+→ Probability that a random variable is less than or equal to a given value.</p>
+</li>
+<li>
+<p>What is the difference between PDF and PMF?
+→ PMF: discrete variables; PDF: continuous variables; both describe probability distributions.</p>
+</li>
+<li>
+<p>What is joint probability?
+→ Probability of two or more events occurring simultaneously.</p>
+</li>
+<li>
+<p>What is conditional probability?
+→ Probability of an event given that another event has occurred.</p>
+</li>
+<li>
+<p>State Bayes’ theorem and its significance.
+→ (P(A|B) = \frac{P(B|A) P(A)}{P(B)}); updates beliefs based on new evidence.</p>
+</li>
+<li>
+<p>What is independence in probability?
+→ Two events are independent if occurrence of one does not affect the probability of the other.</p>
+</li>
+<li>
+<p>What is covariance?
+→ Measure of how two variables change together; positive means they increase together, negative means inverse relation.</p>
+</li>
+<li>
+<p>What is correlation, and how does it differ from covariance?
+→ Standardized measure of linear relationship between -1 and 1; covariance is unstandardized.</p>
+</li>
+<li>
+<p>What is the range of the correlation coefficient?
+→ -1 to +1.</p>
+</li>
+<li>
+<p>What is variance, and how is it calculated?
+→ Average squared deviation from mean: (Var(X) = E[(X - \mu)^2]).</p>
+</li>
+<li>
+<p>What is standard deviation?
+→ Square root of variance; measures spread in original units.</p>
+</li>
+<li>
+<p>What is expected value (mean) of a random variable?
+<input type="checkbox" id="checkbox0" checked="true"><label for="checkbox0">= \sum x P(x)) for discrete, (\int x f(x) dx) for continuous.</label></p>
+</li>
+<li>
+<p>What is the law of large numbers?
+→ Sample averages converge to expected value as sample size increases.</p>
+</li>
+<li>
+<p>What is the central limit theorem (CLT)?
+→ Distribution of sample means approaches normal distribution regardless of original population, given large sample size.</p>
+</li>
+<li>
+<p>What is a normal distribution?
+→ Symmetric bell-shaped distribution described by mean and standard deviation.</p>
+</li>
+<li>
+<p>What are the parameters of a normal distribution?
+→ Mean ((\mu)) and standard deviation ((\sigma)).</p>
+</li>
+<li>
+<p>What is a uniform distribution?
+→ All outcomes equally likely over a defined range.</p>
+</li>
+<li>
+<p>What is a binomial distribution?
+→ Discrete distribution of number of successes in fixed independent Bernoulli trials.</p>
+</li>
+<li>
+<p>What is a Bernoulli distribution?
+→ Distribution for single trial with success/failure outcomes.</p>
+</li>
+<li>
+<p>What is a Poisson distribution, and when is it used?
+→ Models number of events in fixed interval; used for rare events in time/space.</p>
+</li>
+<li>
+<p>What is an exponential distribution?
+→ Continuous distribution modeling time between events in a Poisson process.</p>
+</li>
+<li>
+<p>What is a log-normal distribution?
+→ Distribution of a variable whose logarithm is normally distributed; skewed right.</p>
+</li>
+<li>
+<p>What is the difference between parametric and non-parametric statistics?
+→ Parametric assumes specific distribution form; non-parametric makes no assumptions.</p>
+</li>
+<li>
+<p>What is a probability mass function (PMF)?
+→ Function giving probability that a discrete random variable takes each possible value.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-c-hypothesis-testing--statistical-inference-q356%E2%80%93q370"><strong>Section C: Hypothesis Testing &amp; Statistical Inference (Q356–Q370)</strong></h3>
+<ol start="356">
+<li>
+<p>What is hypothesis testing?
+→ A statistical method to assess whether data provides enough evidence to reject a proposed hypothesis.</p>
+</li>
+<li>
+<p>What is a null hypothesis (<em>H₀</em>) and an alternative hypothesis (<em>H₁</em>)?
+→ <em>H₀</em>: default assumption (no effect or difference); <em>H₁</em>: contradicts <em>H₀</em>, represents the effect or difference being tested.</p>
+</li>
+<li>
+<p>What is a p-value?
+→ Probability of observing data as extreme as the sample, assuming <em>H₀</em> is true.</p>
+</li>
+<li>
+<p>What does a small p-value indicate?
+→ Strong evidence against <em>H₀</em>, suggesting it may be rejected.</p>
+</li>
+<li>
+<p>What is the significance level (α)?
+→ Predefined threshold (e.g., 0.05) for rejecting <em>H₀</em>; probability of Type I error.</p>
+</li>
+<li>
+<p>What is a Type I error?
+→ Rejecting <em>H₀</em> when it is actually true (false positive).</p>
+</li>
+<li>
+<p>What is a Type II error?
+→ Failing to reject <em>H₀</em> when <em>H₁</em> is true (false negative).</p>
+</li>
+<li>
+<p>What is statistical power?
+→ Probability of correctly rejecting <em>H₀</em> when <em>H₁</em> is true (1 − Type II error).</p>
+</li>
+<li>
+<p>What is the t-test?
+→ Tests whether the means of two groups are significantly different, used with small samples or unknown variance.</p>
+</li>
+<li>
+<p>What is the z-test, and how does it differ from a t-test?
+→ Tests mean differences when population variance is known or large sample; t-test used when variance unknown or small sample.</p>
+</li>
+<li>
+<p>What is the chi-square test used for?
+→ Tests association between categorical variables or goodness-of-fit to expected distribution.</p>
+</li>
+<li>
+<p>What is ANOVA (Analysis of Variance)?
+→ Compares means across three or more groups to determine if at least one group differs significantly.</p>
+</li>
+<li>
+<p>What is the F-test?
+→ Evaluates ratio of variances; used in ANOVA to test overall mean differences.</p>
+</li>
+<li>
+<p>What are confidence intervals, and how are they interpreted?
+→ Range of values likely to contain the true parameter with specified probability (e.g., 95% CI).</p>
+</li>
+<li>
+<p>What is bootstrapping in statistics?
+→ Resampling technique using repeated sampling with replacement to estimate variability, confidence intervals, or distributions.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-d-calculus--optimization-q371%E2%80%93q385"><strong>Section D: Calculus &amp; Optimization (Q371–Q385)</strong></h3>
+<ol start="371">
+<li>
+<p>What is differentiation?
+→ The process of calculating the rate at which a function changes with respect to its variable; gives the derivative.</p>
+</li>
+<li>
+<p>What is integration?
+→ The process of finding the area under a curve or the accumulation of quantities; inverse of differentiation.</p>
+</li>
+<li>
+<p>What is a gradient in the context of ML?
+→ Vector of partial derivatives showing the direction of steepest increase of a function.</p>
+</li>
+<li>
+<p>What is partial differentiation?
+→ Derivative of a function with respect to one variable while keeping others constant.</p>
+</li>
+<li>
+<p>What is the gradient vector, and why is it important?
+→ Collection of all partial derivatives; guides optimization by indicating steepest ascent/descent direction.</p>
+</li>
+<li>
+<p>What is the Hessian matrix?
+→ Square matrix of second-order partial derivatives; describes curvature of a multivariable function.</p>
+</li>
+<li>
+<p>What is the difference between convex and non-convex functions?
+→ Convex: any local minimum is global; Non-convex: may have multiple local minima and saddle points.</p>
+</li>
+<li>
+<p>What is optimization in ML?
+→ Process of adjusting model parameters to minimize (or maximize) a loss or objective function.</p>
+</li>
+<li>
+<p>What is the goal of gradient descent?
+→ Iteratively update parameters in the direction of negative gradient to minimize the loss function.</p>
+</li>
+<li>
+<p>How does stochastic gradient descent (SGD) differ from batch gradient descent?
+→ SGD updates parameters per sample (noisy, faster convergence); batch gradient descent uses entire dataset for updates.</p>
+</li>
+<li>
+<p>What is the learning rate, and how does it affect convergence?
+→ Step size in gradient descent; too high: overshoot minima, too low: slow convergence.</p>
+</li>
+<li>
+<p>What is momentum in gradient descent?
+→ Technique that accumulates past gradients to accelerate convergence and smooth updates.</p>
+</li>
+<li>
+<p>What is the Adam optimizer, and how does it work?
+→ Combines momentum and adaptive learning rates per parameter for faster, stable convergence in stochastic optimization.</p>
+</li>
+<li>
+<p>What is the difference between local minima and global minima?
+→ Local minima: point lower than neighbors but not lowest overall; Global minima: lowest point in entire domain.</p>
+</li>
+<li>
+<p>What is a saddle point in optimization?
+→ Point where gradient is zero but function is a minimum along one direction and maximum along another.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-e-information-theory-q386%E2%80%93q395"><strong>Section E: Information Theory (Q386–Q395)</strong></h3>
+<ol start="386">
+<li>
+<p>What is information theory?
+→ Mathematical framework for quantifying information, uncertainty, and communication efficiency in signals or data.</p>
+</li>
+<li>
+<p>What is entropy, and what does it measure?
+→ Entropy quantifies uncertainty or randomness in a probability distribution; higher entropy = more unpredictability.</p>
+</li>
+<li>
+<p>What is joint entropy?
+→ Measures uncertainty of two or more random variables considered together.</p>
+</li>
+<li>
+<p>What is conditional entropy?
+→ Uncertainty remaining in one variable given knowledge of another variable.</p>
+</li>
+<li>
+<p>What is Kullback–Leibler (KL) divergence?
+→ Measures how one probability distribution diverges from a reference distribution; not symmetric.</p>
+</li>
+<li>
+<p>How is KL divergence used in ML?
+→ Loss function in probabilistic models, e.g., variational autoencoders, and for comparing distributions.</p>
+</li>
+<li>
+<p>What is cross-entropy loss?
+→ Measures difference between true labels and predicted probability distributions; common in classification tasks.</p>
+</li>
+<li>
+<p>What is mutual information?
+→ Measures amount of information one variable provides about another; quantifies dependency.</p>
+</li>
+<li>
+<p>How is mutual information used for feature selection?
+→ Select features most informative about the target by ranking based on mutual information scores.</p>
+</li>
+<li>
+<p>What is perplexity, and where is it used?
+→ Exponential of entropy; measures uncertainty in a probability model, often used in language modeling.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-f-numerical-methods--advanced-math-q396%E2%80%93q400"><strong>Section F: Numerical Methods &amp; Advanced Math (Q396–Q400)</strong></h3>
+<ol start="396">
+<li>
+<p>What is matrix factorization?
+→ Decomposing a matrix into product of two or more smaller matrices, often used in recommender systems or dimensionality reduction.</p>
+</li>
+<li>
+<p>What is gradient clipping?
+→ Technique to limit (clip) gradients during training to prevent exploding gradients in neural networks.</p>
+</li>
+<li>
+<p>What is convex optimization?
+→ Optimization of a convex function over a convex set; guarantees global minimum and efficient solutions.</p>
+</li>
+<li>
+<p>What are Lagrange multipliers?
+→ Technique to find extrema of a function subject to constraints by introducing additional variables for constraints.</p>
+</li>
+<li>
+<p>What is the Jacobian matrix, and how is it used in deep learning?
+→ Matrix of all first-order partial derivatives of a vector-valued function; used in backpropagation to compute gradients for multiple outputs.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%A7%A0-batch-5-q401%E2%80%93q500-deep-learning-basics--neural-networks">🧠 <strong>Batch 5 (Q401–Q500): Deep Learning Basics &amp; Neural Networks</strong></h2>
+<hr>
+<h3 id="section-a-neural-network-fundamentals-q401%E2%80%93q425"><strong>Section A: Neural Network Fundamentals (Q401–Q425)</strong></h3>
+<ol start="401">
+<li>
+<p>What is a neural network?
+→ Computational model inspired by the brain, composed of layers of interconnected neurons that transform inputs into outputs.</p>
+</li>
+<li>
+<p>What is a perceptron?
+→ Simplest type of neural network; a single neuron model performing linear classification.</p>
+</li>
+<li>
+<p>Who invented the perceptron model?
+→ Frank Rosenblatt in 1958.</p>
+</li>
+<li>
+<p>What is the mathematical formula for a perceptron output?
+→ (y = f(\sum_i w_i x_i + b)), where (f) is an activation function.</p>
+</li>
+<li>
+<p>What are weights and biases in a neural network?
+→ Weights scale input features; biases shift the activation function, allowing flexibility.</p>
+</li>
+<li>
+<p>What is an activation function?
+→ Function applied to a neuron’s weighted sum to introduce non-linearity.</p>
+</li>
+<li>
+<p>What is the purpose of an activation function?
+→ Enables the network to learn complex, non-linear mappings between inputs and outputs.</p>
+</li>
+<li>
+<p>What is a linear activation function?
+→ Outputs the weighted sum directly, (f(x) = x).</p>
+</li>
+<li>
+<p>Why can’t we use only linear activations in deep networks?
+→ Stacking linear layers remains linear; network cannot model non-linear relationships.</p>
+</li>
+<li>
+<p>What is the ReLU activation function?
+→ Rectified Linear Unit: (f(x) = \max(0, x)).</p>
+</li>
+<li>
+<p>What are the advantages of using ReLU?
+→ Simple, efficient, reduces vanishing gradient, promotes sparsity.</p>
+</li>
+<li>
+<p>What is the vanishing gradient problem?
+→ Gradients become very small during backpropagation, slowing or stopping learning in deep layers.</p>
+</li>
+<li>
+<p>What is the exploding gradient problem?
+→ Gradients become excessively large, causing unstable updates and divergence.</p>
+</li>
+<li>
+<p>What are the common activation functions used in DL?
+→ Sigmoid, tanh, ReLU, Leaky ReLU, ELU, Softmax.</p>
+</li>
+<li>
+<p>What is the difference between sigmoid and tanh activations?
+→ Sigmoid: outputs 0–1; Tanh: outputs -1 to 1, zero-centered, often preferred in hidden layers.</p>
+</li>
+<li>
+<p>What is leaky ReLU?
+→ Variant of ReLU allowing small slope for negative inputs to avoid “dying ReLU” problem.</p>
+</li>
+<li>
+<p>What is the softmax function used for?
+→ Converts logits into probability distribution over multiple classes in classification.</p>
+</li>
+<li>
+<p>What is a neuron’s receptive field?
+→ The subset of input space that a neuron responds to, especially in convolutional networks.</p>
+</li>
+<li>
+<p>What is a bias term, and why is it important?
+→ Constant added to weighted sum; allows neuron to fit data better by shifting activation.</p>
+</li>
+<li>
+<p>What is forward propagation?
+→ Process of passing inputs through network layers to compute outputs.</p>
+</li>
+<li>
+<p>What is backward propagation (backpropagation)?
+→ Algorithm to compute gradients of loss w.r.t weights using chain rule for optimization.</p>
+</li>
+<li>
+<p>How does the chain rule apply in backpropagation?
+→ Gradients are computed layer by layer using derivatives of composed functions to update weights.</p>
+</li>
+<li>
+<p>What is the loss function in neural networks?
+→ Quantifies difference between predicted outputs and true targets; guides training.</p>
+</li>
+<li>
+<p>What is the difference between loss and cost functions?
+→ Loss: error for a single example; Cost: average loss over the entire dataset.</p>
+</li>
+<li>
+<p>What are epochs, batches, and iterations in training?
+→ Epoch: one pass over dataset; Batch: subset of data processed together; Iteration: one update step per batch.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-b-network-architecture--training-q426%E2%80%93q450"><strong>Section B: Network Architecture &amp; Training (Q426–Q450)</strong></h3>
+<ol start="426">
+<li>
+<p>What is a feedforward neural network (FNN)?
+→ Neural network where information flows only from input to output without cycles or feedback.</p>
+</li>
+<li>
+<p>What is a multilayer perceptron (MLP)?
+→ FNN with one or more hidden layers using non-linear activation functions.</p>
+</li>
+<li>
+<p>How does an MLP differ from a single-layer perceptron?
+→ MLP has multiple hidden layers and can model non-linear relationships; single-layer perceptron is linear.</p>
+</li>
+<li>
+<p>What is weight initialization, and why is it important?
+→ Setting initial weights before training; poor initialization can cause slow learning, vanishing/exploding gradients.</p>
+</li>
+<li>
+<p>What is Xavier (Glorot) initialization?
+→ Initializes weights to keep variance of activations consistent across layers; often used with sigmoid/tanh activations.</p>
+</li>
+<li>
+<p>What is He initialization, and when is it used?
+→ Initializes weights scaled for ReLU activations to prevent vanishing/exploding gradients.</p>
+</li>
+<li>
+<p>What are vanishing gradients caused by poor initialization?
+→ Gradients shrink excessively during backprop, slowing or stopping learning in deep networks.</p>
+</li>
+<li>
+<p>What is the purpose of batch processing in neural networks?
+→ Processes multiple samples together to balance memory efficiency and gradient estimation stability.</p>
+</li>
+<li>
+<p>What is a mini-batch gradient descent?
+→ Updates weights using small subsets (batches) of data per iteration for faster and stable convergence.</p>
+</li>
+<li>
+<p>What is an epoch in neural network training?
+→ One complete pass through the entire training dataset.</p>
+</li>
+<li>
+<p>What is the difference between online and batch learning?
+→ Online: updates after each sample; Batch: updates after processing entire dataset; Mini-batch: compromise.</p>
+</li>
+<li>
+<p>What are optimization algorithms in deep learning?
+→ Methods like SGD, RMSProp, Adam that adjust weights to minimize loss functions.</p>
+</li>
+<li>
+<p>Compare SGD, RMSProp, and Adam optimizers.
+→ SGD: simple, may converge slowly; RMSProp: adaptive learning rates per parameter; Adam: combines momentum + RMSProp, widely used.</p>
+</li>
+<li>
+<p>What is the learning rate schedule?
+→ Strategy to adjust learning rate over time to improve convergence and avoid overshooting minima.</p>
+</li>
+<li>
+<p>What is gradient clipping, and when is it used?
+→ Limits gradient magnitude to prevent exploding gradients, common in RNNs or deep networks.</p>
+</li>
+<li>
+<p>What are activation maps in neural networks?
+→ Outputs of neurons after activation function, showing which features are activated.</p>
+</li>
+<li>
+<p>What is the role of the output layer in classification tasks?
+→ Produces final predictions (e.g., probabilities) matching the number of classes.</p>
+</li>
+<li>
+<p>What are logits in neural networks?
+→ Raw outputs of the final layer before applying activation (e.g., softmax).</p>
+</li>
+<li>
+<p>What is model convergence?
+→ When training stabilizes and loss stops decreasing significantly, indicating learning has plateaued.</p>
+</li>
+<li>
+<p>What is the role of a validation set during training?
+→ Monitor performance on unseen data to tune hyperparameters and detect overfitting.</p>
+</li>
+<li>
+<p>How do you detect overfitting during training?
+→ Training accuracy improves while validation accuracy stagnates or declines; loss gap widens.</p>
+</li>
+<li>
+<p>What is early stopping, and how does it prevent overfitting?
+→ Halts training when validation performance stops improving, preventing the model from memorizing training data.</p>
+</li>
+<li>
+<p>What is the importance of random initialization in neural networks?
+→ Breaks symmetry between neurons so they learn different features during training.</p>
+</li>
+<li>
+<p>What is the role of dropout in training?
+→ Randomly disables neurons during training to prevent co-adaptation and reduce overfitting.</p>
+</li>
+<li>
+<p>What are weight decay and L2 regularization?
+→ Penalizes large weights by adding sum of squared weights to loss; helps prevent overfitting.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-c-loss-functions-q451%E2%80%93q465"><strong>Section C: Loss Functions (Q451–Q465)</strong></h3>
+<ol start="451">
+<li>
+<p>What is a loss function?
+→ A function that quantifies the difference between predicted outputs and true targets.</p>
+</li>
+<li>
+<p>Why are loss functions important in training?
+→ They guide optimization by providing a measure to minimize during model training.</p>
+</li>
+<li>
+<p>What is Mean Squared Error (MSE)?
+→ Average of squared differences between predicted and actual values.</p>
+</li>
+<li>
+<p>When is MSE typically used?
+→ Regression tasks where large errors should be penalized more heavily.</p>
+</li>
+<li>
+<p>What is Mean Absolute Error (MAE)?
+→ Average of absolute differences between predicted and actual values; less sensitive to outliers than MSE.</p>
+</li>
+<li>
+<p>What is cross-entropy loss?
+→ Measures difference between true labels and predicted probability distributions; commonly used in classification.</p>
+</li>
+<li>
+<p>When is binary cross-entropy used?
+→ For binary classification tasks.</p>
+</li>
+<li>
+<p>What is categorical cross-entropy?
+→ Generalization of binary cross-entropy for multi-class classification.</p>
+</li>
+<li>
+<p>How does cross-entropy relate to KL divergence?
+→ Cross-entropy = KL divergence + entropy of true distribution; minimizing cross-entropy approximates true distribution.</p>
+</li>
+<li>
+<p>What is the hinge loss function?
+→ Loss used in SVMs; penalizes predictions that are on the wrong side or within margin of decision boundary.</p>
+</li>
+<li>
+<p>What is the purpose of the log loss function?
+→ Measures classification error using negative log-likelihood of predicted probabilities; equivalent to cross-entropy.</p>
+</li>
+<li>
+<p>What is the negative log-likelihood loss?
+→ Loss function derived from maximizing likelihood; minimizes negative log probability of correct class.</p>
+</li>
+<li>
+<p>What is the connection between likelihood maximization and loss minimization?
+→ Maximizing likelihood is equivalent to minimizing negative log-likelihood loss.</p>
+</li>
+<li>
+<p>What is contrastive loss, and where is it used?
+→ Loss that pulls similar samples together and pushes dissimilar samples apart; used in metric learning and Siamese networks.</p>
+</li>
+<li>
+<p>What are custom loss functions, and when are they needed?
+→ User-defined losses tailored to specific objectives or domain constraints when standard losses are insufficient.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-d-regularization-techniques-q466%E2%80%93q485"><strong>Section D: Regularization Techniques (Q466–Q485)</strong></h3>
+<ol start="466">
+<li>
+<p>What is regularization in deep learning?
+→ Techniques that constrain model complexity to prevent overfitting and improve generalization.</p>
+</li>
+<li>
+<p>Why is regularization necessary?
+→ Prevents models from memorizing training data, reducing variance and enhancing performance on unseen data.</p>
+</li>
+<li>
+<p>What is L1 regularization, and what effect does it have?
+→ Adds sum of absolute weights to loss; encourages sparsity by driving some weights to zero.</p>
+</li>
+<li>
+<p>What is L2 regularization?
+→ Adds sum of squared weights to loss; penalizes large weights without forcing exact zeros.</p>
+</li>
+<li>
+<p>Compare L1 and L2 regularization effects on weights.
+→ L1: sparse, can perform feature selection; L2: small, distributed weights, smooths the model.</p>
+</li>
+<li>
+<p>What is elastic net regularization?
+→ Combines L1 and L2 penalties to balance sparsity and smoothness in weight optimization.</p>
+</li>
+<li>
+<p>What is dropout regularization?
+→ Randomly disables neurons during training to reduce co-adaptation and overfitting.</p>
+</li>
+<li>
+<p>How does dropout work mathematically?
+→ Each neuron output is multiplied by a Bernoulli random variable (0 or 1) during training.</p>
+</li>
+<li>
+<p>What is the typical dropout rate used in practice?
+→ Commonly 0.2–0.5, depending on network depth and size.</p>
+</li>
+<li>
+<p>What are the benefits of dropout?
+→ Reduces overfitting, improves generalization, acts like an ensemble of subnetworks.</p>
+</li>
+<li>
+<p>What is batch normalization?
+→ Normalizes activations per batch to zero mean and unit variance, then scales and shifts with learned parameters.</p>
+</li>
+<li>
+<p>How does batch normalization stabilize training?
+→ Reduces internal covariate shift, allowing higher learning rates and faster convergence.</p>
+</li>
+<li>
+<p>What are the parameters of batch normalization (γ and β)?
+→ γ: scaling factor; β: shift factor; both are learned during training.</p>
+</li>
+<li>
+<p>What is layer normalization?
+→ Normalizes activations across features per sample instead of per batch.</p>
+</li>
+<li>
+<p>Compare batch normalization and layer normalization.
+→ Batch norm: depends on batch statistics, good for CNNs; Layer norm: independent of batch, better for RNNs.</p>
+</li>
+<li>
+<p>What is data augmentation, and how does it reduce overfitting?
+→ Creates modified versions of training data (e.g., rotation, flips) to increase dataset diversity, preventing memorization.</p>
+</li>
+<li>
+<p>What is weight sharing?
+→ Using the same weights across multiple neurons or layers to reduce parameters and enforce consistency (common in CNNs).</p>
+</li>
+<li>
+<p>What is early stopping, and why is it considered a regularization method?
+→ Stops training when validation performance stops improving; prevents overfitting by limiting training.</p>
+</li>
+<li>
+<p>What is label smoothing?
+→ Softens target labels (e.g., 0.9 instead of 1) to prevent overconfident predictions and improve generalization.</p>
+</li>
+<li>
+<p>How does regularization improve model generalization?
+→ By constraining model complexity and reducing sensitivity to noise, it ensures better performance on unseen data.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-e-neural-network-frameworks--tools-q486%E2%80%93q500"><strong>Section E: Neural Network Frameworks &amp; Tools (Q486–Q500)</strong></h3>
+<ol start="486">
+<li>
+<p>What is TensorFlow?
+→ Open-source deep learning framework by Google for building and training neural networks using computational graphs.</p>
+</li>
+<li>
+<p>What is Keras, and how does it relate to TensorFlow?
+→ High-level neural network API running on top of TensorFlow, simplifying model creation and training.</p>
+</li>
+<li>
+<p>What is PyTorch?
+→ Open-source deep learning framework by Facebook offering dynamic computation graphs and strong Python integration.</p>
+</li>
+<li>
+<p>Compare TensorFlow and PyTorch.
+→ TensorFlow: static graph (graph execution), production-ready, rich ecosystem; PyTorch: dynamic graph (eager execution), intuitive, popular in research.</p>
+</li>
+<li>
+<p>What are tensors in deep learning frameworks?
+→ Multi-dimensional arrays representing data (scalars: 0D, vectors: 1D, matrices: 2D, higher dimensions: tensors).</p>
+</li>
+<li>
+<p>What is automatic differentiation?
+→ Technique to compute derivatives of functions programmatically, used for backpropagation.</p>
+</li>
+<li>
+<p>What is the computational graph?
+→ Directed graph representing operations and data flow in a neural network for gradient computation.</p>
+</li>
+<li>
+<p>What is eager execution in PyTorch?
+→ Immediate execution of operations as they are called, enabling dynamic graphs and intuitive debugging.</p>
+</li>
+<li>
+<p>What are checkpoints in training?
+→ Saved model states (weights, optimizer state) during training to resume or prevent loss of progress.</p>
+</li>
+<li>
+<p>What is a callback in model training?
+→ Functions triggered at specific events (e.g., end of epoch) to monitor performance, save models, or adjust learning rate.</p>
+</li>
+<li>
+<p>How can GPUs accelerate deep learning?
+→ Parallelize tensor computations, significantly speeding up matrix operations central to neural network training.</p>
+</li>
+<li>
+<p>What is CUDA?
+→ NVIDIA’s parallel computing platform and API enabling GPU acceleration for deep learning.</p>
+</li>
+<li>
+<p>What is mixed precision training?
+→ Uses lower-precision (e.g., float16) for computations while keeping key variables in higher precision (float32) to speed up training with minimal accuracy loss.</p>
+</li>
+<li>
+<p>What is model serialization (saving models)?
+→ Storing a trained model’s architecture and weights to disk for later use or deployment.</p>
+</li>
+<li>
+<p>What are ONNX models, and why are they used?
+→ Open Neural Network Exchange format; allows interoperability between different deep learning frameworks (e.g., PyTorch → TensorFlow).</p>
+</li>
+</ol>
+<hr>
+<h2 id="%E2%9A%99%EF%B8%8F-batch-6-q501%E2%80%93q600-advanced-deep-learning-architectures">⚙️ <strong>Batch 6 (Q501–Q600): Advanced Deep Learning Architectures</strong></h2>
+<hr>
+<h3 id="section-a-convolutional-neural-networks-cnns-q501%E2%80%93q530"><strong>Section A: Convolutional Neural Networks (CNNs) (Q501–Q530)</strong></h3>
+<ol start="501">
+<li>
+<p>What is a Convolutional Neural Network (CNN)?
+→ A neural network designed to process grid-like data (e.g., images) using convolutional layers to extract spatial hierarchies of features.</p>
+</li>
+<li>
+<p>What are the main components of a CNN?
+→ Convolutional layers, activation functions, pooling layers, and fully connected layers.</p>
+</li>
+<li>
+<p>What is a convolution operation?
+→ Sliding a filter (kernel) over input data to compute weighted sums, extracting local features.</p>
+</li>
+<li>
+<p>What is a filter (kernel) in a CNN?
+→ Small matrix of weights used in convolution to detect specific patterns like edges or textures.</p>
+</li>
+<li>
+<p>What are feature maps?
+→ Output of applying a filter over input data; shows locations of detected features.</p>
+</li>
+<li>
+<p>What is stride in a convolution layer?
+→ Step size by which the filter moves across the input; larger strides reduce spatial dimensions.</p>
+</li>
+<li>
+<p>What is padding, and why is it used?
+→ Adding extra pixels around input; preserves spatial dimensions or enables edge feature detection.</p>
+</li>
+<li>
+<p>What are the different types of padding (valid vs same)?
+→ Valid: no padding, output smaller than input; Same: pads so output size equals input size.</p>
+</li>
+<li>
+<p>What is pooling in CNNs?
+→ Downsampling operation that reduces spatial dimensions while retaining important features.</p>
+</li>
+<li>
+<p>What is max pooling?
+→ Takes the maximum value in each pooling window.</p>
+</li>
+<li>
+<p>What is average pooling?
+→ Takes the average value in each pooling window.</p>
+</li>
+<li>
+<p>Why is pooling used in CNNs?
+→ Reduces computation, controls overfitting, and provides translation invariance.</p>
+</li>
+<li>
+<p>What is a receptive field in CNNs?
+→ Region of input influencing a particular neuron’s output.</p>
+</li>
+<li>
+<p>What are 1×1 convolutions, and why are they useful?
+→ Convolutions with 1×1 filter; reduce channels, add non-linearity, and improve computational efficiency.</p>
+</li>
+<li>
+<p>What is the role of non-linearity in CNNs?
+→ Allows modeling complex, non-linear feature interactions after convolution operations.</p>
+</li>
+<li>
+<p>What is the typical structure of a CNN?
+→ Alternating convolution + activation + pooling layers, ending with fully connected layers.</p>
+</li>
+<li>
+<p>What are feature hierarchies in CNNs?
+→ Lower layers detect simple patterns (edges), higher layers detect complex structures (objects).</p>
+</li>
+<li>
+<p>What is the difference between shallow and deep CNNs?
+→ Shallow: few layers, captures simple features; Deep: many layers, captures complex hierarchical features.</p>
+</li>
+<li>
+<p>What are fully connected (dense) layers in CNNs?
+→ Layers where each neuron connects to all activations in previous layer, usually at network end for classification.</p>
+</li>
+<li>
+<p>How do CNNs differ from traditional MLPs?
+→ CNNs use local connectivity, weight sharing, and pooling; MLPs use dense connections only.</p>
+</li>
+<li>
+<p>What are the advantages of CNNs for image data?
+→ Exploit spatial structure, reduce parameters, capture hierarchical features, robust to translation.</p>
+</li>
+<li>
+<p>What are the main hyperparameters in CNN design?
+→ Number of layers, filter size, stride, padding, number of filters, pooling size, learning rate.</p>
+</li>
+<li>
+<p>What is filter visualization, and why is it done?
+→ Visualizing learned filters to understand what features the network detects.</p>
+</li>
+<li>
+<p>What is the difference between a convolution layer and a pooling layer?
+→ Convolution: feature extraction via filters; Pooling: downsampling to reduce spatial dimensions.</p>
+</li>
+<li>
+<p>What are transposed convolutions (deconvolutions)?
+→ Convolutions that increase spatial dimensions; used in upsampling and generative models.</p>
+</li>
+<li>
+<p>What is a residual connection in CNNs?
+→ Shortcut that adds input of a layer directly to its output to ease learning.</p>
+</li>
+<li>
+<p>What problem do residual connections solve?
+→ Mitigate vanishing gradients and enable training very deep networks.</p>
+</li>
+<li>
+<p>Describe the architecture of LeNet.
+→ 2 convolution + pooling layers, followed by 2 fully connected layers; used for digit recognition.</p>
+</li>
+<li>
+<p>Describe the architecture of AlexNet.
+→ 5 convolution + pooling layers, 3 fully connected layers, ReLU, dropout, trained on ImageNet.</p>
+</li>
+<li>
+<p>What innovations did AlexNet introduce?
+→ ReLU activation, dropout, data augmentation, GPU training, overlapping pooling.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-b-advanced-cnn-architectures-q531%E2%80%93q550"><strong>Section B: Advanced CNN Architectures (Q531–Q550)</strong></h3>
+<ol start="531">
+<li>
+<p>What is VGGNet, and how does it differ from AlexNet?
+→ VGGNet uses very deep networks (16–19 layers) with small 3×3 filters; more uniform and deeper than AlexNet.</p>
+</li>
+<li>
+<p>What are the key design principles of VGGNet?
+→ Use small 3×3 convolutions, stack layers to increase depth, and use max pooling for downsampling.</p>
+</li>
+<li>
+<p>What is GoogLeNet (Inception Network)?
+→ Deep CNN with Inception modules combining multiple filter sizes in parallel, improving efficiency and accuracy.</p>
+</li>
+<li>
+<p>What is an inception module?
+→ Module performing 1×1, 3×3, 5×5 convolutions and pooling in parallel, concatenating outputs.</p>
+</li>
+<li>
+<p>What is ResNet?
+→ Deep CNN using residual connections to allow training of very deep networks (50–152+ layers).</p>
+</li>
+<li>
+<p>What is the concept of identity mapping in ResNet?
+→ Shortcut connections that add input directly to output, preserving information across layers.</p>
+</li>
+<li>
+<p>What problem does ResNet address?
+→ Vanishing gradients in very deep networks, enabling stable training.</p>
+</li>
+<li>
+<p>What is DenseNet, and how does it differ from ResNet?
+→ DenseNet connects each layer to all subsequent layers, promoting feature reuse; ResNet only uses additive skip connections.</p>
+</li>
+<li>
+<p>What is MobileNet, and why is it efficient?
+→ Lightweight CNN for mobile devices; uses depthwise separable convolutions to reduce computation.</p>
+</li>
+<li>
+<p>What are depthwise separable convolutions?
+→ Factorizes standard convolution into depthwise (per channel) and pointwise (1×1) convolutions to save computation.</p>
+</li>
+<li>
+<p>What is SqueezeNet?
+→ Compact CNN architecture using 1×1 “squeeze” filters and 3×3 “expand” filters to reduce parameters.</p>
+</li>
+<li>
+<p>What are bottleneck layers in CNNs?
+→ Layers with reduced number of channels to decrease computation while maintaining performance.</p>
+</li>
+<li>
+<p>What are skip connections, and why are they useful?
+→ Connections that bypass one or more layers; help prevent vanishing gradients and enable deeper networks.</p>
+</li>
+<li>
+<p>What is EfficientNet?
+→ CNN architecture scaling width, depth, and resolution uniformly to achieve high accuracy with fewer resources.</p>
+</li>
+<li>
+<p>What is compound scaling in EfficientNet?
+→ Systematic scaling of network depth, width, and input resolution using a compound coefficient.</p>
+</li>
+<li>
+<p>What is the purpose of global average pooling?
+→ Reduces each feature map to a single number, replacing fully connected layers and reducing parameters.</p>
+</li>
+<li>
+<p>What is batch normalization’s role in CNNs?
+→ Normalizes activations, stabilizes training, allows higher learning rates, and reduces overfitting.</p>
+</li>
+<li>
+<p>How can CNNs be regularized effectively?
+→ Dropout, weight decay (L2), data augmentation, early stopping, and batch normalization.</p>
+</li>
+<li>
+<p>What are transfer learning and fine-tuning in CNNs?
+→ Transfer learning: use pre-trained CNN features; Fine-tuning: retrain some/all layers on new task.</p>
+</li>
+<li>
+<p>What are some popular pre-trained CNN models?
+→ VGGNet, ResNet, Inception/GoogLeNet, DenseNet, MobileNet, EfficientNet, AlexNet.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-c-recurrent-neural-networks-rnns-q551%E2%80%93q570"><strong>Section C: Recurrent Neural Networks (RNNs) (Q551–Q570)</strong></h3>
+<ol start="551">
+<li>
+<p>What is a Recurrent Neural Network (RNN)?
+→ Neural network designed for sequential data, with connections forming cycles to retain information across time steps.</p>
+</li>
+<li>
+<p>How does RNN differ from a feedforward network?
+→ RNNs have temporal dependencies with hidden states; feedforward networks process inputs independently.</p>
+</li>
+<li>
+<p>What is the hidden state in RNNs?
+→ Internal memory storing information from previous time steps to influence current output.</p>
+</li>
+<li>
+<p>What is backpropagation through time (BPTT)?
+→ Extension of backpropagation to unroll RNN across time steps for gradient computation.</p>
+</li>
+<li>
+<p>What is the vanishing gradient problem in RNNs?
+→ Gradients shrink over long sequences, preventing learning of long-term dependencies.</p>
+</li>
+<li>
+<p>What is the exploding gradient problem in RNNs?
+→ Gradients grow excessively large, causing unstable updates and divergence.</p>
+</li>
+<li>
+<p>How are these gradient issues mitigated?
+→ Gradient clipping, proper initialization, LSTM/GRU architectures, and careful learning rate selection.</p>
+</li>
+<li>
+<p>What are the advantages of RNNs?
+→ Can model sequences, capture temporal dependencies, and handle variable-length inputs.</p>
+</li>
+<li>
+<p>What are the limitations of vanilla RNNs?
+→ Difficult to learn long-term dependencies due to vanishing/exploding gradients, computationally intensive for long sequences.</p>
+</li>
+<li>
+<p>What are Long Short-Term Memory (LSTM) networks?
+→ RNN variant with gates controlling information flow to capture long-term dependencies.</p>
+</li>
+<li>
+<p>What is the purpose of gates in LSTM?
+→ Regulate information flow, deciding what to keep, update, or forget in the cell state.</p>
+</li>
+<li>
+<p>What are the three main gates in an LSTM?
+→ Forget gate, input gate, and output gate.</p>
+</li>
+<li>
+<p>What is the cell state in LSTM, and why is it important?
+→ Internal memory that carries long-term information across time steps, controlled by gates.</p>
+</li>
+<li>
+<p>How does an LSTM differ from a GRU?
+→ GRU combines forget and input gates into a single update gate; simpler, fewer parameters than LSTM.</p>
+</li>
+<li>
+<p>What is a Gated Recurrent Unit (GRU)?
+→ Simplified RNN variant with update and reset gates to manage memory, easier to train than LSTM.</p>
+</li>
+<li>
+<p>Compare GRU and LSTM in terms of performance and complexity.
+→ GRU: simpler, faster, fewer parameters; LSTM: more flexible, slightly better for long sequences.</p>
+</li>
+<li>
+<p>What is sequence-to-sequence (seq2seq) modeling?
+→ RNN framework mapping input sequences to output sequences, often with encoder-decoder architecture.</p>
+</li>
+<li>
+<p>What are bidirectional RNNs?
+→ RNNs processing sequences in both forward and backward directions for richer context.</p>
+</li>
+<li>
+<p>What are attention-based RNNs?
+→ RNNs that weight input elements differently for each output, improving long-term dependency handling.</p>
+</li>
+<li>
+<p>What are some real-world applications of RNNs?
+→ Language modeling, machine translation, speech recognition, time series forecasting, text generation.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-d-attention--transformer-architectures-q571%E2%80%93q590"><strong>Section D: Attention &amp; Transformer Architectures (Q571–Q590)</strong></h3>
+<ol start="571">
+<li>
+<p>What is the attention mechanism in deep learning?
+→ Technique that allows models to focus on relevant parts of input when producing each output, weighting information dynamically.</p>
+</li>
+<li>
+<p>Why was attention introduced in sequence models?
+→ To handle long-range dependencies better than RNNs and improve sequence-to-sequence performance.</p>
+</li>
+<li>
+<p>What is self-attention?
+→ Mechanism where elements of a sequence attend to other elements within the same sequence to capture relationships.</p>
+</li>
+<li>
+<p>What is the difference between self-attention and cross-attention?
+→ Self-attention: attends within the same sequence; Cross-attention: attends from one sequence (decoder) to another (encoder).</p>
+</li>
+<li>
+<p>How does attention differ from recurrence?
+→ Attention directly connects all positions in a sequence; recurrence processes sequentially, step by step.</p>
+</li>
+<li>
+<p>What is a query, key, and value in attention mechanisms?
+→ Query: what we are looking for; Key: what we compare against; Value: information we retrieve.</p>
+</li>
+<li>
+<p>What is the scaled dot-product attention formula?
+→ (\text{Attention}(Q,K,V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V).</p>
+</li>
+<li>
+<p>What is multi-head attention?
+→ Uses multiple attention heads in parallel to capture information from different representation subspaces.</p>
+</li>
+<li>
+<p>What are positional encodings, and why are they needed in Transformers?
+→ Encodings added to input embeddings to provide sequence order information, since Transformers have no inherent recurrence.</p>
+</li>
+<li>
+<p>What is the architecture of a Transformer?
+→ Stacked encoder and decoder layers with multi-head attention, feedforward networks, residual connections, and layer normalization.</p>
+</li>
+<li>
+<p>What are encoder and decoder blocks in Transformers?
+→ Encoder: processes input sequence with self-attention + feedforward layers; Decoder: generates output using self-attention, cross-attention, and feedforward layers.</p>
+</li>
+<li>
+<p>What are residual connections and layer normalization in Transformers?
+→ Residual: shortcut connections to stabilize gradient flow; Layer norm: normalizes activations for faster convergence.</p>
+</li>
+<li>
+<p>How does the Transformer replace recurrence?
+→ Uses self-attention and positional encodings to model dependencies without sequential processing.</p>
+</li>
+<li>
+<p>What are some advantages of Transformers over RNNs?
+→ Parallelizable, handle long-range dependencies efficiently, faster training, better performance on large datasets.</p>
+</li>
+<li>
+<p>What is the feedforward network in each Transformer block?
+→ Fully connected layers applied to each position independently after attention; includes non-linearity (ReLU or GELU).</p>
+</li>
+<li>
+<p>What is the difference between encoder-only and decoder-only Transformers?
+→ Encoder-only (e.g., BERT) for understanding tasks; Decoder-only (e.g., GPT) for generation tasks.</p>
+</li>
+<li>
+<p>What are some popular Transformer-based models?
+→ BERT, GPT, RoBERTa, T5, XLNet, DistilBERT, ViT (Vision Transformer).</p>
+</li>
+<li>
+<p>What is BERT, and what tasks is it used for?
+→ Bidirectional Encoder Representations from Transformers; used for NLP tasks like classification, QA, and NER.</p>
+</li>
+<li>
+<p>What is GPT, and how is it different from BERT?
+→ Generative Pre-trained Transformer; decoder-only, unidirectional, designed for text generation.</p>
+</li>
+<li>
+<p>What is the significance of the “attention is all you need” paper?
+→ Introduced the Transformer, demonstrating that attention mechanisms alone can replace recurrence and achieve state-of-the-art sequence modeling.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-e-generative-models-q591%E2%80%93q595"><strong>Section E: Generative Models (Q591–Q595)</strong></h3>
+<ol start="591">
+<li>
+<p>What is a generative model?
+→ A model that learns to generate new data samples resembling the training data by modeling its underlying distribution.</p>
+</li>
+<li>
+<p>What is a Variational Autoencoder (VAE)?
+→ Probabilistic autoencoder that encodes inputs into a latent distribution and samples from it to reconstruct data.</p>
+</li>
+<li>
+<p>How does a VAE differ from a standard autoencoder?
+→ VAE learns a distribution over latent space and imposes regularization for smooth sampling; standard autoencoder learns deterministic codes.</p>
+</li>
+<li>
+<p>What is a Generative Adversarial Network (GAN)?
+→ Framework with two neural networks—a generator and a discriminator—competing in a zero-sum game to generate realistic data.</p>
+</li>
+<li>
+<p>How does a GAN work (generator vs discriminator)?
+→ Generator creates fake samples; discriminator evaluates real vs fake; both are trained iteratively to improve generation quality.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-f-transfer-learning-fine-tuning-and-domain-adaptation-q596%E2%80%93q600"><strong>Section F: Transfer Learning, Fine-Tuning, and Domain Adaptation (Q596–Q600)</strong></h3>
+<ol start="596">
+<li>
+<p>What is transfer learning in deep learning?
+→ Technique where a pre-trained model on one task is reused for a related task to leverage learned representations.</p>
+</li>
+<li>
+<p>What is fine-tuning, and how is it performed?
+→ Adjusting some or all layers of a pre-trained model on new data to adapt it to a specific task.</p>
+</li>
+<li>
+<p>What is feature extraction in the context of transfer learning?
+→ Using pre-trained model’s layers as fixed feature extractors, only training new output layers for the target task.</p>
+</li>
+<li>
+<p>What is domain adaptation?
+→ Adjusting a model trained on one domain to perform well on a different but related domain with distribution differences.</p>
+</li>
+<li>
+<p>What are the advantages and limitations of transfer learning?
+→ Advantages: faster training, requires less data, improves performance; Limitations: may not transfer well if source and target domains differ significantly, risk of negative transfer.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%97%A3%EF%B8%8F-batch-7-q601%E2%80%93q700-natural-language-processing-nlp">🗣️ <strong>Batch 7 (Q601–Q700): Natural Language Processing (NLP)</strong></h2>
+<hr>
+<h3 id="section-a-text-preprocessing-q601%E2%80%93q625"><strong>Section A: Text Preprocessing (Q601–Q625)</strong></h3>
+<ol start="601">
+<li>
+<p>What is Natural Language Processing (NLP)?
+→ Field of AI focused on enabling machines to understand, interpret, and generate human language.</p>
+</li>
+<li>
+<p>What are the main tasks in NLP?
+→ Text classification, sentiment analysis, machine translation, NER, POS tagging, parsing, summarization, question answering.</p>
+</li>
+<li>
+<p>What is text preprocessing, and why is it important?
+→ Cleaning and transforming raw text into a structured format; essential for model performance and reducing noise.</p>
+</li>
+<li>
+<p>What is tokenization?
+→ Splitting text into smaller units like words, subwords, or characters.</p>
+</li>
+<li>
+<p>What are the different types of tokenizers?
+→ Word-level, subword-level (BPE, WordPiece), character-level, sentence-level.</p>
+</li>
+<li>
+<p>What is sentence segmentation?
+→ Dividing text into individual sentences.</p>
+</li>
+<li>
+<p>What is word segmentation in NLP?
+→ Splitting sentences into individual words or meaningful units, important in languages without spaces (e.g., Chinese).</p>
+</li>
+<li>
+<p>What is stemming?
+→ Reducing words to their root form by chopping suffixes (e.g., “running” → “run”).</p>
+</li>
+<li>
+<p>What is lemmatization, and how does it differ from stemming?
+→ Reduces words to dictionary form considering context and POS (e.g., “better” → “good”); more accurate than stemming.</p>
+</li>
+<li>
+<p>What is stopword removal?
+→ Eliminating common words (e.g., “the”, “is”) that carry little semantic meaning.</p>
+</li>
+<li>
+<p>What is the bag-of-words model?
+→ Represents text as unordered collection of word counts or frequencies, ignoring grammar and word order.</p>
+</li>
+<li>
+<p>What is n-gram representation?
+→ Sequence of n consecutive tokens used to capture local word context.</p>
+</li>
+<li>
+<p>What are unigrams, bigrams, and trigrams?
+→ Unigrams: single words; Bigrams: two-word sequences; Trigrams: three-word sequences.</p>
+</li>
+<li>
+<p>What is term frequency (TF)?
+→ Count or proportion of a word in a document.</p>
+</li>
+<li>
+<p>What is inverse document frequency (IDF)?
+→ Measures how rare a word is across all documents; rare words get higher weight.</p>
+</li>
+<li>
+<p>How is TF-IDF calculated?
+→ TF × IDF for each term in each document.</p>
+</li>
+<li>
+<p>What are the advantages of TF-IDF?
+→ Highlights important words, reduces influence of common words, simple and interpretable.</p>
+</li>
+<li>
+<p>What are the limitations of TF-IDF?
+→ Ignores word order, semantics, context, and can be sparse in large vocabularies.</p>
+</li>
+<li>
+<p>What is text normalization?
+→ Converting text to a canonical form, including lowercasing, removing punctuation, expanding contractions.</p>
+</li>
+<li>
+<p>What are special characters and punctuation handling techniques?
+→ Removal, replacement, or tokenization depending on model needs.</p>
+</li>
+<li>
+<p>What is case folding?
+→ Converting all text to lowercase to reduce vocabulary size and variability.</p>
+</li>
+<li>
+<p>What are part-of-speech (POS) tags?
+→ Labels indicating grammatical roles of words (e.g., noun, verb, adjective).</p>
+</li>
+<li>
+<p>What is named entity recognition (NER)?
+→ Identifying and classifying entities in text like names, locations, organizations.</p>
+</li>
+<li>
+<p>What is dependency parsing?
+→ Analyzing grammatical structure by identifying dependencies between words in a sentence.</p>
+</li>
+<li>
+<p>What is syntactic vs semantic analysis?
+→ Syntactic: studies grammatical structure; Semantic: studies meaning and interpretation of text.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-b-text-representations--embeddings-q626%E2%80%93q650"><strong>Section B: Text Representations &amp; Embeddings (Q626–Q650)</strong></h3>
+<ol start="626">
+<li>
+<p>What are word embeddings?
+→ Dense vector representations of words capturing semantic and syntactic meaning in a continuous space.</p>
+</li>
+<li>
+<p>Why are embeddings used instead of one-hot encoding?
+→ Lower dimensional, capture word similarity, and reduce sparsity compared to high-dimensional one-hot vectors.</p>
+</li>
+<li>
+<p>What is the curse of dimensionality in text data?
+→ High-dimensional sparse vectors (like one-hot) make computation and generalization difficult.</p>
+</li>
+<li>
+<p>What is Word2Vec?
+→ Predictive embedding model learning word vectors by predicting context (CBOW) or target words (skip-gram).</p>
+</li>
+<li>
+<p>How does the Word2Vec skip-gram model work?
+→ Predicts surrounding context words given a target word, maximizing likelihood of context.</p>
+</li>
+<li>
+<p>What is the CBOW (Continuous Bag of Words) model?
+→ Predicts the target word given surrounding context words by averaging context embeddings.</p>
+</li>
+<li>
+<p>What is cosine similarity, and how is it used in NLP?
+→ Measures angle similarity between vectors; used to find similar words or documents.</p>
+</li>
+<li>
+<p>What is the difference between similarity and relatedness?
+→ Similarity: words are alike in meaning; Relatedness: words are associated but not necessarily similar.</p>
+</li>
+<li>
+<p>What is GloVe embedding?
+→ Global Vectors for Word Representation; embedding learned from word co-occurrence statistics in corpus.</p>
+</li>
+<li>
+<p>How does GloVe differ from Word2Vec?
+→ GloVe uses global co-occurrence counts; Word2Vec predicts context locally using neural networks.</p>
+</li>
+<li>
+<p>What are contextual embeddings?
+→ Word representations that vary depending on surrounding context (e.g., “bank” in finance vs river).</p>
+</li>
+<li>
+<p>What is ELMo, and how does it differ from Word2Vec?
+→ Deep contextualized embeddings using bi-directional LSTMs; Word2Vec produces static embeddings.</p>
+</li>
+<li>
+<p>What is BERT embedding?
+→ Contextual embeddings from Transformer-based pre-trained models capturing bidirectional context.</p>
+</li>
+<li>
+<p>What is sentence embedding?
+→ Vector representing entire sentence capturing its semantic meaning.</p>
+</li>
+<li>
+<p>What is doc2vec?
+→ Extension of Word2Vec generating fixed-length embeddings for entire documents or paragraphs.</p>
+</li>
+<li>
+<p>What are subword embeddings?
+→ Representations of subword units (morphemes, character n-grams) to handle rare or unknown words.</p>
+</li>
+<li>
+<p>What is tokenization in BERT models?
+→ Splits text into WordPiece tokens to handle rare and unknown words efficiently.</p>
+</li>
+<li>
+<p>What is Byte Pair Encoding (BPE)?
+→ Subword tokenization method merging frequent character pairs iteratively to form tokens.</p>
+</li>
+<li>
+<p>What are embeddings in Transformer models?
+→ Input token embeddings combined with positional embeddings, forming input representations for attention layers.</p>
+</li>
+<li>
+<p>What is positional embedding in Transformers?
+→ Encodes token position information since Transformers lack recurrence.</p>
+</li>
+<li>
+<p>What are static vs dynamic word embeddings?
+→ Static: same vector for word regardless of context (Word2Vec, GloVe); Dynamic: varies with context (ELMo, BERT).</p>
+</li>
+<li>
+<p>What is fine-tuning embeddings?
+→ Adjusting pre-trained embeddings on task-specific data during training to improve performance.</p>
+</li>
+<li>
+<p>What is embedding visualization (e.g., t-SNE)?
+→ Project high-dimensional embeddings to 2D/3D space to explore semantic relationships visually.</p>
+</li>
+<li>
+<p>What is the embedding matrix in a neural network?
+→ Matrix where each row represents the embedding vector of a word or token.</p>
+</li>
+<li>
+<p>What are pre-trained embeddings, and how are they used?
+→ Word vectors trained on large corpora (Word2Vec, GloVe, BERT) and used to initialize models for faster convergence and better performance.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-c-sequence-models--architectures-q651%E2%80%93q675"><strong>Section C: Sequence Models &amp; Architectures (Q651–Q675)</strong></h3>
+<ol start="651">
+<li>
+<p>What are sequence models in NLP?
+→ Models designed to handle sequential data, capturing dependencies between elements in a sequence, e.g., text or speech.</p>
+</li>
+<li>
+<p>What is a sequence-to-sequence (seq2seq) model?
+→ Model that maps input sequences to output sequences, typically using encoder-decoder architectures.</p>
+</li>
+<li>
+<p>How does an encoder-decoder architecture work?
+→ Encoder processes input sequence into context representation; decoder generates output sequence based on this representation.</p>
+</li>
+<li>
+<p>What is teacher forcing in seq2seq training?
+→ Training technique where the decoder receives the true previous token instead of its own prediction for faster convergence.</p>
+</li>
+<li>
+<p>What is beam search in NLP decoding?
+→ Heuristic search keeping top-k most probable sequences at each step to improve output quality.</p>
+</li>
+<li>
+<p>What is greedy decoding?
+→ Selecting the most probable token at each step; faster but may yield suboptimal sequences.</p>
+</li>
+<li>
+<p>What is attention in sequence models?
+→ Mechanism allowing the model to focus on relevant parts of input when generating each output token.</p>
+</li>
+<li>
+<p>What is the role of the decoder in translation tasks?
+→ Generates target language tokens step-by-step using encoder context and previously generated tokens.</p>
+</li>
+<li>
+<p>What are bidirectional RNNs in NLP?
+→ RNNs processing sequences in both forward and backward directions to capture past and future context.</p>
+</li>
+<li>
+<p>What are the limitations of RNNs for text modeling?
+→ Sequential processing slows training, difficulty with long-range dependencies, vanishing/exploding gradients.</p>
+</li>
+<li>
+<p>What advantages do Transformers offer for NLP?
+→ Parallelizable, handle long-range dependencies efficiently, and achieve state-of-the-art performance.</p>
+</li>
+<li>
+<p>What is self-attention in Transformer-based NLP models?
+→ Mechanism where each token attends to all tokens in the sequence to capture dependencies.</p>
+</li>
+<li>
+<p>What is positional encoding in Transformers?
+→ Encodes token positions into embeddings to retain order information.</p>
+</li>
+<li>
+<p>What is the encoder stack in BERT?
+→ Multiple Transformer encoder layers with self-attention and feedforward networks for contextual embeddings.</p>
+</li>
+<li>
+<p>What is masked language modeling (MLM)?
+→ Pre-training task where random tokens are masked, and the model predicts them using context.</p>
+</li>
+<li>
+<p>What is next sentence prediction (NSP)?
+→ Pre-training task predicting whether one sentence logically follows another.</p>
+</li>
+<li>
+<p>How is BERT fine-tuned for specific tasks?
+→ Add task-specific output layer (e.g., classification head) and train on labeled data.</p>
+</li>
+<li>
+<p>What is a sequence classification model?
+→ Model predicting a label for an entire sequence (e.g., sentiment classification).</p>
+</li>
+<li>
+<p>What is text generation?
+→ Producing coherent sequences of text given an input or prompt.</p>
+</li>
+<li>
+<p>What is a language model?
+→ Model estimating probability distribution over sequences of words or tokens.</p>
+</li>
+<li>
+<p>What is the difference between autoregressive and autoencoding models?
+→ Autoregressive: predict next token based on past tokens (e.g., GPT); Autoencoding: reconstruct masked input from context (e.g., BERT).</p>
+</li>
+<li>
+<p>What is GPT architecture based on?
+→ Transformer decoder stack using autoregressive modeling for text generation.</p>
+</li>
+<li>
+<p>What is the transformer decoder block?
+→ Composed of masked self-attention, cross-attention (optional), feedforward network, residual connections, and layer norm.</p>
+</li>
+<li>
+<p>What are pre-training and fine-tuning phases in LLMs?
+→ Pre-training: learn general language patterns on large corpora; Fine-tuning: adapt to specific downstream tasks.</p>
+</li>
+<li>
+<p>What is parameter sharing in NLP models?
+→ Using the same weights across layers or positions to reduce model size and improve efficiency.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-d-core-nlp-tasks-q676%E2%80%93q690"><strong>Section D: Core NLP Tasks (Q676–Q690)</strong></h3>
+<ol start="676">
+<li>
+<p>What is sentiment analysis?
+→ Task of identifying and classifying emotions or opinions in text as positive, negative, or neutral.</p>
+</li>
+<li>
+<p>What is topic modeling?
+→ Unsupervised technique to discover abstract topics from a collection of documents.</p>
+</li>
+<li>
+<p>What is Latent Dirichlet Allocation (LDA)?
+→ Probabilistic topic modeling method that represents documents as mixtures of topics and topics as distributions over words.</p>
+</li>
+<li>
+<p>What is keyword extraction?
+→ Identifying the most relevant and informative words or phrases in a text.</p>
+</li>
+<li>
+<p>What is machine translation?
+→ Automatic conversion of text from one language to another.</p>
+</li>
+<li>
+<p>What is the difference between rule-based and neural machine translation?
+→ Rule-based: relies on linguistic rules and dictionaries; Neural: uses neural networks to learn translations from data.</p>
+</li>
+<li>
+<p>What is summarization in NLP?
+→ Producing a concise representation of a longer text while preserving key information.</p>
+</li>
+<li>
+<p>What is the difference between extractive and abstractive summarization?
+→ Extractive: selects sentences/phrases directly from text; Abstractive: generates new sentences summarizing content.</p>
+</li>
+<li>
+<p>What is question answering (QA)?
+→ Task where a model provides answers to questions from a given text or knowledge base.</p>
+</li>
+<li>
+<p>What is NER (Named Entity Recognition), and where is it used?
+→ Identifies proper nouns like names, locations, dates; used in search engines, information extraction, and chatbots.</p>
+</li>
+<li>
+<p>What is coreference resolution?
+→ Identifying when different expressions in text refer to the same entity (e.g., “Alice” = “she”).</p>
+</li>
+<li>
+<p>What is text classification?
+→ Assigning predefined labels or categories to text documents.</p>
+</li>
+<li>
+<p>What is text entailment?
+→ Determining if a hypothesis logically follows from a premise (natural language inference).</p>
+</li>
+<li>
+<p>What is semantic similarity?
+→ Quantifying how similar two pieces of text are in meaning.</p>
+</li>
+<li>
+<p>What is relation extraction in NLP?
+→ Identifying relationships between entities in text, e.g., “Steve Jobs → founder → Apple.”</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-e-advanced-nlp-concepts-q691%E2%80%93q700"><strong>Section E: Advanced NLP Concepts (Q691–Q700)</strong></h3>
+<ol start="691">
+<li>
+<p>What are Large Language Models (LLMs)?
+→ Deep learning models with billions of parameters trained on massive text corpora to generate, understand, and reason over natural language.</p>
+</li>
+<li>
+<p>What is prompt engineering?
+→ Crafting specific inputs or instructions to guide LLMs toward desired outputs effectively.</p>
+</li>
+<li>
+<p>What are zero-shot and few-shot learning in LLMs?
+→ Zero-shot: model performs tasks without any examples; Few-shot: model uses a few examples in the prompt to guide predictions.</p>
+</li>
+<li>
+<p>What is instruction tuning?
+→ Fine-tuning LLMs on datasets of task instructions and responses to improve adherence to user prompts.</p>
+</li>
+<li>
+<p>What is reinforcement learning from human feedback (RLHF)?
+→ Training method where human feedback guides model behavior to align outputs with preferences or correctness.</p>
+</li>
+<li>
+<p>What is chain-of-thought reasoning in LLMs?
+→ Technique where models generate intermediate reasoning steps before producing a final answer, improving complex problem-solving.</p>
+</li>
+<li>
+<p>What are hallucinations in generative NLP models?
+→ Model outputs that are plausible but factually incorrect or unsupported by input data.</p>
+</li>
+<li>
+<p>What are the ethical concerns around LLMs?
+→ Bias, misinformation, privacy violations, environmental impact, and misuse for harmful content.</p>
+</li>
+<li>
+<p>What is multilingual NLP?
+→ NLP techniques and models capable of understanding and generating text in multiple languages.</p>
+</li>
+<li>
+<p>What are the recent trends in NLP and LLM development?
+→ Scaling model size, instruction-tuned models, RLHF, multimodal integration, efficient fine-tuning (LoRA, adapters), and domain-specific LLMs.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%96%BC%EF%B8%8F-batch-8-q701%E2%80%93q800-computer-vision--image-processing">🖼️ <strong>Batch 8 (Q701–Q800): Computer Vision &amp; Image Processing</strong></h2>
+<hr>
+<h3 id="section-a-image-fundamentals-q701%E2%80%93q725"><strong>Section A: Image Fundamentals (Q701–Q725)</strong></h3>
+<ol start="701">
+<li>
+<p>What is computer vision?
+→ Field of AI enabling machines to interpret, analyze, and understand visual information from images or videos.</p>
+</li>
+<li>
+<p>What are the main tasks of computer vision?
+→ Image classification, object detection, segmentation, recognition, tracking, pose estimation, and image generation.</p>
+</li>
+<li>
+<p>What is a digital image?
+→ Representation of visual information as a grid of discrete pixels with intensity and color values.</p>
+</li>
+<li>
+<p>What is a pixel?
+→ Smallest unit of a digital image representing color or intensity at a specific location.</p>
+</li>
+<li>
+<p>What are image channels?
+→ Separate components representing color or intensity information, e.g., R, G, B channels.</p>
+</li>
+<li>
+<p>What are grayscale and RGB images?
+→ Grayscale: single channel representing intensity; RGB: three channels representing red, green, blue colors.</p>
+</li>
+<li>
+<p>What is an image histogram?
+→ Graph showing distribution of pixel intensities in an image.</p>
+</li>
+<li>
+<p>What is image resolution?
+→ Number of pixels along width and height of an image; higher resolution = more detail.</p>
+</li>
+<li>
+<p>What is the difference between spatial and frequency domains in images?
+→ Spatial: pixel-based representation; Frequency: represents image as combination of sine/cosine waves capturing patterns and textures.</p>
+</li>
+<li>
+<p>What is image thresholding?
+→ Converting grayscale image into binary image by setting pixels above/below a threshold.</p>
+</li>
+<li>
+<p>What is Otsu’s thresholding method?
+→ Automatic method to find threshold that minimizes intra-class variance in binary segmentation.</p>
+</li>
+<li>
+<p>What is histogram equalization?
+→ Technique to enhance contrast by redistributing pixel intensities evenly across available range.</p>
+</li>
+<li>
+<p>What is image normalization?
+→ Scaling pixel values to a standard range, often 0–1 or -1 to 1, for consistent input to models.</p>
+</li>
+<li>
+<p>What is contrast enhancement?
+→ Techniques to improve distinction between light and dark regions in an image.</p>
+</li>
+<li>
+<p>What is image filtering?
+→ Applying convolution or other operations to emphasize features or reduce noise.</p>
+</li>
+<li>
+<p>What are convolutional filters in image processing?
+→ Small kernels applied over images to extract features like edges, textures, or patterns.</p>
+</li>
+<li>
+<p>What is edge detection?
+→ Identifying boundaries or significant changes in intensity within an image.</p>
+</li>
+<li>
+<p>What are common edge detection algorithms (Sobel, Canny, etc.)?
+→ Sobel: gradient-based; Canny: multi-stage edge detector with smoothing, gradient, and hysteresis.</p>
+</li>
+<li>
+<p>What is Gaussian blur?
+→ Smoothing filter that reduces noise by averaging pixels with a Gaussian kernel.</p>
+</li>
+<li>
+<p>What is image sharpening?
+→ Enhancing edges and fine details by emphasizing high-frequency components.</p>
+</li>
+<li>
+<p>What is dilation in image processing?
+→ Morphological operation expanding bright regions in binary images.</p>
+</li>
+<li>
+<p>What is erosion in image processing?
+→ Morphological operation shrinking bright regions, removing small noise.</p>
+</li>
+<li>
+<p>What are morphological operations?
+→ Techniques (dilation, erosion, opening, closing) for shape-based image processing.</p>
+</li>
+<li>
+<p>What is image augmentation?
+→ Creating modified versions of images (rotation, flip, crop, color jitter) to increase dataset diversity.</p>
+</li>
+<li>
+<p>Why is image augmentation used in training CNNs?
+→ Reduces overfitting, improves generalization, and allows models to learn invariance to transformations.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-b-image-classification--feature-extraction-q726%E2%80%93q745"><strong>Section B: Image Classification &amp; Feature Extraction (Q726–Q745)</strong></h3>
+<ol start="726">
+<li>
+<p>What is image classification?
+→ Task of assigning a label or category to an entire image based on its content.</p>
+</li>
+<li>
+<p>How do CNNs perform image classification?
+→ Extract hierarchical features through convolution and pooling layers, then predict class probabilities using fully connected layers.</p>
+</li>
+<li>
+<p>What are features in the context of images?
+→ Distinctive patterns, edges, textures, or shapes that help identify objects.</p>
+</li>
+<li>
+<p>What is feature extraction?
+→ Process of detecting and representing informative aspects of images for recognition or classification.</p>
+</li>
+<li>
+<p>What is a feature map?
+→ Output of a convolutional layer showing locations of detected features in the input image.</p>
+</li>
+<li>
+<p>What is the difference between handcrafted and learned features?
+→ Handcrafted: manually designed (SIFT, HOG); Learned: automatically extracted by CNNs during training.</p>
+</li>
+<li>
+<p>What is SIFT (Scale-Invariant Feature Transform)?
+→ Algorithm to detect and describe local features invariant to scale, rotation, and lighting.</p>
+</li>
+<li>
+<p>What is SURF (Speeded-Up Robust Features)?
+→ Faster alternative to SIFT using integral images and approximations for keypoint detection and description.</p>
+</li>
+<li>
+<p>What is HOG (Histogram of Oriented Gradients)?
+→ Describes local object appearance by computing histograms of gradient orientations.</p>
+</li>
+<li>
+<p>What is ORB (Oriented FAST and Rotated BRIEF)?
+→ Efficient keypoint detector and descriptor combining FAST corner detection and BRIEF binary descriptors.</p>
+</li>
+<li>
+<p>What are keypoints and descriptors?
+→ Keypoints: distinctive points in an image; Descriptors: vectors representing local appearance around keypoints.</p>
+</li>
+<li>
+<p>What is feature matching?
+→ Finding correspondences between features in different images for tasks like image stitching or recognition.</p>
+</li>
+<li>
+<p>What is the role of CNNs in feature extraction?
+→ Automatically learn hierarchical, discriminative features optimized for the classification task.</p>
+</li>
+<li>
+<p>What are fully connected layers used for in CNN classifiers?
+→ Aggregate extracted features to predict class probabilities at the network output.</p>
+</li>
+<li>
+<p>What is transfer learning for image classification?
+→ Using pre-trained CNNs as feature extractors or starting points, then adapting to new classification tasks.</p>
+</li>
+<li>
+<p>What are common pre-trained CNNs used for classification?
+→ VGGNet, ResNet, Inception, DenseNet, MobileNet, EfficientNet.</p>
+</li>
+<li>
+<p>What is fine-tuning in image classification tasks?
+→ Adjusting pre-trained model weights on new dataset to improve task-specific performance.</p>
+</li>
+<li>
+<p>What is the top-1 vs top-5 accuracy metric?
+→ Top-1: predicted class matches true label; Top-5: true label is among the five highest probability predictions.</p>
+</li>
+<li>
+<p>What are confusion matrices in classification?
+→ Table showing counts of true positives, false positives, true negatives, and false negatives for each class.</p>
+</li>
+<li>
+<p>What are precision-recall curves in image classifiers?
+→ Graphs showing trade-off between precision and recall across different decision thresholds; useful for imbalanced classes.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-c-object-detection--localization-q746%E2%80%93q765"><strong>Section C: Object Detection &amp; Localization (Q746–Q765)</strong></h3>
+<ol start="746">
+<li>
+<p>What is object detection?
+→ Task of identifying and locating objects in an image, providing both class labels and bounding boxes.</p>
+</li>
+<li>
+<p>What is the difference between classification and detection?
+→ Classification assigns a single label to the entire image; detection finds multiple objects with their locations.</p>
+</li>
+<li>
+<p>What is object localization?
+→ Predicting the position (usually a bounding box) of an object within an image.</p>
+</li>
+<li>
+<p>What are bounding boxes?
+→ Rectangular boxes around detected objects indicating their position and size.</p>
+</li>
+<li>
+<p>What is the Intersection over Union (IoU) metric?
+→ Ratio of overlap area between predicted and ground-truth boxes to their union; measures detection accuracy.</p>
+</li>
+<li>
+<p>What is non-maximum suppression (NMS)?
+→ Technique to remove redundant overlapping bounding boxes by keeping the highest confidence prediction.</p>
+</li>
+<li>
+<p>What is the sliding window approach in object detection?
+→ Moving a fixed-size window over the image to classify regions; computationally expensive.</p>
+</li>
+<li>
+<p>What is the region proposal method?
+→ Generates candidate object regions (proposals) for further classification, reducing search space.</p>
+</li>
+<li>
+<p>What is R-CNN (Regions with CNN features)?
+→ Extracts region proposals, computes CNN features, and classifies each region separately.</p>
+</li>
+<li>
+<p>How does Fast R-CNN improve over R-CNN?
+→ Processes entire image with CNN once, then classifies region proposals using ROI pooling; faster and more efficient.</p>
+</li>
+<li>
+<p>How does Faster R-CNN work?
+→ Introduces Region Proposal Network (RPN) to generate proposals directly within the CNN, making detection end-to-end trainable.</p>
+</li>
+<li>
+<p>What is a Region Proposal Network (RPN)?
+→ CNN that predicts object proposals with scores and bounding boxes, replacing external proposal methods.</p>
+</li>
+<li>
+<p>What is YOLO (You Only Look Once)?
+→ Single-stage detector predicting bounding boxes and class probabilities simultaneously in one pass.</p>
+</li>
+<li>
+<p>What are the key differences between YOLO and R-CNN?
+→ YOLO: single-stage, fast, real-time; R-CNN: two-stage, slower, more accurate on small objects.</p>
+</li>
+<li>
+<p>What is SSD (Single Shot MultiBox Detector)?
+→ Single-stage object detector predicting multiple boxes and classes at different scales from feature maps.</p>
+</li>
+<li>
+<p>What is RetinaNet, and what problem does it solve?
+→ Single-stage detector using Focal Loss to address class imbalance between foreground and background.</p>
+</li>
+<li>
+<p>What is the Focal Loss function?
+→ Modified cross-entropy giving higher weight to hard-to-classify examples, reducing impact of easy negatives.</p>
+</li>
+<li>
+<p>What is anchor box-based detection?
+→ Predefined bounding boxes of various sizes and aspect ratios used as reference for predictions.</p>
+</li>
+<li>
+<p>What are key challenges in object detection?
+→ Small or overlapping objects, scale variation, occlusion, class imbalance, real-time performance.</p>
+</li>
+<li>
+<p>What are the latest trends in object detection?
+→ Transformer-based detectors (DETR), lightweight models for edge devices, multi-scale detection, anchor-free methods, and self-supervised pre-training.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-d-image-segmentation--advanced-vision-tasks-q766%E2%80%93q785"><strong>Section D: Image Segmentation &amp; Advanced Vision Tasks (Q766–Q785)</strong></h3>
+<ol start="766">
+<li>
+<p>What is image segmentation?
+→ Dividing an image into meaningful regions or segments, often at the pixel level.</p>
+</li>
+<li>
+<p>What is the difference between semantic and instance segmentation?
+→ Semantic: labels all pixels of a class identically; Instance: distinguishes between individual objects of the same class.</p>
+</li>
+<li>
+<p>What is panoptic segmentation?
+→ Combines semantic and instance segmentation to label both object instances and background classes.</p>
+</li>
+<li>
+<p>What is a segmentation mask?
+→ Binary or multi-class map indicating which pixels belong to which object or class.</p>
+</li>
+<li>
+<p>What is the U-Net architecture?
+→ Encoder-decoder CNN with skip connections for precise pixel-level segmentation, widely used in biomedical imaging.</p>
+</li>
+<li>
+<p>How does U-Net perform upsampling?
+→ Uses transposed convolutions or up-convolutions along with skip connections from encoder layers.</p>
+</li>
+<li>
+<p>What is FCN (Fully Convolutional Network)?
+→ CNN where fully connected layers are replaced by convolution layers to produce dense pixel-wise predictions.</p>
+</li>
+<li>
+<p>What are skip connections in segmentation networks?
+→ Connections from encoder layers to corresponding decoder layers to preserve spatial details.</p>
+</li>
+<li>
+<p>What is Mask R-CNN?
+→ Extends Faster R-CNN to perform instance segmentation by predicting object masks alongside bounding boxes.</p>
+</li>
+<li>
+<p>What is pixel-level classification?
+→ Assigning a class label to every individual pixel in an image.</p>
+</li>
+<li>
+<p>What are conditional random fields (CRFs) in segmentation?
+→ Probabilistic models used to refine segmentation by enforcing spatial consistency between neighboring pixels.</p>
+</li>
+<li>
+<p>What are encoder-decoder networks in segmentation?
+→ Architecture with encoder extracting features and decoder reconstructing pixel-level predictions.</p>
+</li>
+<li>
+<p>What is DeepLab, and how does it perform segmentation?
+→ CNN using atrous convolutions and CRFs for multi-scale semantic segmentation.</p>
+</li>
+<li>
+<p>What are atrous (dilated) convolutions?
+→ Convolutions with inserted zeros to expand receptive field without reducing resolution.</p>
+</li>
+<li>
+<p>What is superpixel segmentation?
+→ Groups pixels into perceptually meaningful clusters for simplified image representation.</p>
+</li>
+<li>
+<p>What is image matting?
+→ Extracting precise object boundaries and alpha transparency from an image, often for compositing.</p>
+</li>
+<li>
+<p>What is depth estimation in computer vision?
+→ Predicting the distance of each pixel from the camera to understand 3D structure.</p>
+</li>
+<li>
+<p>What is stereo vision?
+→ Using two or more images from different viewpoints to estimate depth via disparity.</p>
+</li>
+<li>
+<p>What is 3D reconstruction?
+→ Rebuilding a 3D model of a scene or object from 2D images or video.</p>
+</li>
+<li>
+<p>What is optical flow analysis?
+→ Estimating motion of objects or pixels between consecutive frames in a video.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-e-vision-transformers-vits--multimodal-ai-q786%E2%80%93q800"><strong>Section E: Vision Transformers (ViTs) &amp; Multimodal AI (Q786–Q800)</strong></h3>
+<ol start="786">
+<li>
+<p>What is a Vision Transformer (ViT)?
+→ Transformer-based architecture for image tasks, treating images as sequences of patches instead of using convolutions.</p>
+</li>
+<li>
+<p>How does ViT differ from CNNs?
+→ ViT uses self-attention on image patches, capturing global context directly; CNNs rely on local receptive fields and convolutions.</p>
+</li>
+<li>
+<p>What is the input representation in ViTs?
+→ Images split into fixed-size patches, flattened, and embedded as token vectors for the Transformer.</p>
+</li>
+<li>
+<p>What is the patch embedding technique in ViTs?
+→ Flatten each image patch and project it via a linear layer into a fixed-dimensional vector.</p>
+</li>
+<li>
+<p>What are positional encodings in ViTs?
+→ Added to patch embeddings to retain spatial order information in the Transformer.</p>
+</li>
+<li>
+<p>What is the self-attention mechanism in ViTs?
+→ Each patch attends to all other patches to capture global relationships in the image.</p>
+</li>
+<li>
+<p>What are hybrid CNN-Transformer models?
+→ Models combining CNNs for low-level feature extraction with Transformers for global attention.</p>
+</li>
+<li>
+<p>What are the advantages of ViTs over CNNs?
+→ Better at capturing long-range dependencies, scalable to large datasets, and flexible for multimodal extensions.</p>
+</li>
+<li>
+<p>What are the challenges of training Vision Transformers?
+→ Require large datasets, high computational cost, and careful regularization to prevent overfitting.</p>
+</li>
+<li>
+<p>What is CLIP (Contrastive Language–Image Pretraining)?
+→ Model learning joint embeddings of images and text using contrastive learning to align visual and language representations.</p>
+</li>
+<li>
+<p>How does CLIP learn joint vision-language embeddings?
+→ Trains image and text encoders so paired images and captions have similar embeddings, while non-paired are pushed apart.</p>
+</li>
+<li>
+<p>What are multimodal models?
+→ Models processing and integrating multiple data types, e.g., text, images, audio.</p>
+</li>
+<li>
+<p>What are applications of multimodal AI (e.g., image captioning, VQA)?
+→ Image captioning, visual question answering, text-to-image generation, speech-to-text with visual context.</p>
+</li>
+<li>
+<p>What are diffusion models in image generation?
+→ Generative models that iteratively denoise random noise to produce realistic images, often outperforming GANs in fidelity.</p>
+</li>
+<li>
+<p>What are the latest trends in computer vision research?
+→ Vision Transformers, multimodal AI, self-supervised learning, diffusion models, efficient architectures for edge devices, and 3D perception from images.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%A4%96-batch-9-q801%E2%80%93q900-reinforcement-learning--advanced-ai-topics">🤖 <strong>Batch 9 (Q801–Q900): Reinforcement Learning &amp; Advanced AI Topics</strong></h2>
+<hr>
+<h3 id="section-a-reinforcement-learning-fundamentals-q801%E2%80%93q825"><strong>Section A: Reinforcement Learning Fundamentals (Q801–Q825)</strong></h3>
+<ol start="801">
+<li>
+<p>What is Reinforcement Learning (RL)?
+→ Learning paradigm where an agent learns to make sequential decisions by interacting with an environment to maximize cumulative reward.</p>
+</li>
+<li>
+<p>How does RL differ from supervised and unsupervised learning?
+→ RL learns from trial-and-error feedback (rewards), not from labeled data (supervised) or structure discovery (unsupervised).</p>
+</li>
+<li>
+<p>What are the main components of an RL system?
+→ Agent, environment, states, actions, rewards, policy, and value functions.</p>
+</li>
+<li>
+<p>What is an agent in RL?
+→ The decision-making entity that interacts with the environment to achieve goals.</p>
+</li>
+<li>
+<p>What is an environment in RL?
+→ The external system with which the agent interacts and receives states and rewards.</p>
+</li>
+<li>
+<p>What is a state in RL?
+→ Representation of the environment at a given time.</p>
+</li>
+<li>
+<p>What is an action in RL?
+→ Choice the agent can make to influence the environment.</p>
+</li>
+<li>
+<p>What is a reward in RL?
+→ Scalar feedback signal indicating immediate performance or success of an action.</p>
+</li>
+<li>
+<p>What is a policy in RL?
+→ Strategy mapping states to actions, can be deterministic or stochastic.</p>
+</li>
+<li>
+<p>What is a value function?
+→ Estimates expected cumulative reward from a state under a given policy.</p>
+</li>
+<li>
+<p>What is a Q-function (action-value function)?
+→ Estimates expected cumulative reward for taking an action in a state and following a policy thereafter.</p>
+</li>
+<li>
+<p>What is a Markov Decision Process (MDP)?
+→ Mathematical framework defining RL problems: states, actions, transition probabilities, rewards, and discount factor.</p>
+</li>
+<li>
+<p>What is the Markov property?
+→ Future state depends only on the current state and action, not on past history.</p>
+</li>
+<li>
+<p>What is the difference between deterministic and stochastic policies?
+→ Deterministic: single action per state; Stochastic: probability distribution over actions per state.</p>
+</li>
+<li>
+<p>What is an episode in RL?
+→ Sequence of states, actions, and rewards from start to terminal state.</p>
+</li>
+<li>
+<p>What is the discount factor (γ)?
+→ Factor (0 ≤ γ ≤ 1) reducing future rewards’ importance in cumulative return calculation.</p>
+</li>
+<li>
+<p>What is the Bellman equation?
+→ Recursive equation expressing value function in terms of immediate reward and discounted future value.</p>
+</li>
+<li>
+<p>What is policy evaluation?
+→ Computing the value function for a given policy.</p>
+</li>
+<li>
+<p>What is policy improvement?
+→ Updating policy to choose better actions based on value function estimates.</p>
+</li>
+<li>
+<p>What is policy iteration?
+→ Alternating policy evaluation and policy improvement until convergence to optimal policy.</p>
+</li>
+<li>
+<p>What is value iteration?
+→ Iteratively updating value function using Bellman optimality equation to derive optimal policy.</p>
+</li>
+<li>
+<p>What is exploration vs exploitation?
+→ Exploration: try new actions to discover rewards; Exploitation: choose best-known actions to maximize reward.</p>
+</li>
+<li>
+<p>What are common exploration strategies (ε-greedy, softmax)?
+→ ε-greedy: mostly exploit, occasionally explore randomly; Softmax: sample actions based on probability proportional to estimated value.</p>
+</li>
+<li>
+<p>What is the difference between on-policy and off-policy learning?
+→ On-policy: learns value of the policy being followed; Off-policy: learns value of a different target policy while following another.</p>
+</li>
+<li>
+<p>What are some real-world applications of RL?
+→ Robotics, game playing (AlphaGo), autonomous vehicles, recommendation systems, finance, resource management, and industrial control.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-b-model-free-rl-methods-q826%E2%80%93q850"><strong>Section B: Model-Free RL Methods (Q826–Q850)</strong></h3>
+<ol start="826">
+<li>
+<p>What is Monte Carlo learning?
+→ RL method estimating value functions or policies using returns from complete episodes without requiring a model of the environment.</p>
+</li>
+<li>
+<p>What is Temporal Difference (TD) learning?
+→ Combines ideas of Monte Carlo and dynamic programming; updates value estimates based on observed reward plus estimated value of next state.</p>
+</li>
+<li>
+<p>What is SARSA in RL?
+→ On-policy TD algorithm updating Q-values based on state-action-next state-next action sequence.</p>
+</li>
+<li>
+<p>What is Q-learning?
+→ Off-policy TD algorithm that learns the optimal action-value function regardless of the agent’s behavior policy.</p>
+</li>
+<li>
+<p>What is the update rule for Q-learning?
+→ (Q(s,a) \leftarrow Q(s,a) + \alpha \big[r + \gamma \max_{a'} Q(s',a') - Q(s,a)\big])</p>
+</li>
+<li>
+<p>What is the difference between Q-learning and SARSA?
+→ Q-learning: off-policy, uses max next Q-value; SARSA: on-policy, uses Q-value of next action actually taken.</p>
+</li>
+<li>
+<p>What are eligibility traces in RL?
+→ Mechanism to assign credit to recently visited states and actions for faster learning (combines TD and MC).</p>
+</li>
+<li>
+<p>What is n-step TD learning?
+→ TD method using returns accumulated over n steps to update value estimates instead of single-step or full-episode return.</p>
+</li>
+<li>
+<p>What is the TD error?
+→ Difference between predicted value and observed reward plus discounted next state value: (\delta = r + \gamma V(s') - V(s)).</p>
+</li>
+<li>
+<p>What is the advantage of model-free methods?
+→ Learn optimal policies without requiring a model of the environment’s dynamics.</p>
+</li>
+<li>
+<p>What are the limitations of model-free RL?
+→ Data inefficient, slower convergence, may struggle in complex or high-dimensional environments.</p>
+</li>
+<li>
+<p>What is function approximation in RL?
+→ Using parameterized functions (e.g., neural networks) to estimate value functions or policies in large/continuous state spaces.</p>
+</li>
+<li>
+<p>What is a replay buffer?
+→ Memory storing past experiences (state, action, reward, next state) for training in minibatches.</p>
+</li>
+<li>
+<p>What is experience replay used for?
+→ Breaks correlation between consecutive samples, improves data efficiency, and stabilizes training.</p>
+</li>
+<li>
+<p>What are target networks in Deep Q-learning?
+→ Separate network providing stable Q-value targets during training, updated periodically from main network.</p>
+</li>
+<li>
+<p>What is Deep Q-Network (DQN)?
+→ Q-learning algorithm using deep neural networks to approximate Q-values for high-dimensional state spaces.</p>
+</li>
+<li>
+<p>How does DQN stabilize training?
+→ Uses experience replay and target networks to reduce correlation and oscillations in updates.</p>
+</li>
+<li>
+<p>What is Double DQN?
+→ Variation addressing overestimation in Q-values by decoupling action selection and evaluation.</p>
+</li>
+<li>
+<p>What is Dueling DQN?
+→ Architecture separating value and advantage streams to better estimate Q-values.</p>
+</li>
+<li>
+<p>What is Prioritized Experience Replay?
+→ Samples experiences with higher TD error more frequently to accelerate learning.</p>
+</li>
+<li>
+<p>What are some limitations of DQN?
+→ Cannot handle continuous action spaces directly, sensitive to hyperparameters, sample inefficient.</p>
+</li>
+<li>
+<p>What is continuous action space?
+→ Action space where actions are real-valued rather than discrete.</p>
+</li>
+<li>
+<p>Why can’t DQN handle continuous actions directly?
+→ Max over actions in Q-learning requires enumerating all actions, impossible for infinite/continuous spaces.</p>
+</li>
+<li>
+<p>What are policy gradient methods?
+→ RL methods that directly parameterize and optimize the policy using gradient ascent on expected reward.</p>
+</li>
+<li>
+<p>What is the main advantage of policy gradient methods?
+→ Naturally handle continuous action spaces and stochastic policies, suitable for complex control tasks.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-c-policy-gradient--actor-critic-methods-q851%E2%80%93q875"><strong>Section C: Policy Gradient &amp; Actor-Critic Methods (Q851–Q875)</strong></h3>
+<ol start="851">
+<li>
+<p>What is the policy gradient theorem?
+→ Provides a formula for computing the gradient of expected cumulative reward with respect to policy parameters, enabling direct policy optimization.</p>
+</li>
+<li>
+<p>What is the REINFORCE algorithm?
+→ Monte Carlo policy gradient method that updates policy parameters using sampled returns from episodes.</p>
+</li>
+<li>
+<p>What is a baseline in policy gradient methods?
+→ Value function or estimate subtracted from returns to reduce variance without introducing bias.</p>
+</li>
+<li>
+<p>What is variance reduction in policy gradient estimation?
+→ Techniques (like baselines) to reduce fluctuations in gradient estimates, improving learning stability.</p>
+</li>
+<li>
+<p>What is an actor-critic method?
+→ Combines policy-based (actor) and value-based (critic) approaches; actor selects actions, critic evaluates them.</p>
+</li>
+<li>
+<p>What are the roles of actor and critic?
+→ Actor: chooses actions; Critic: estimates value function or advantage to guide policy updates.</p>
+</li>
+<li>
+<p>What is Advantage Actor-Critic (A2C)?
+→ Actor-critic method using advantage function (A(s,a) = Q(s,a) - V(s)) for more stable policy updates.</p>
+</li>
+<li>
+<p>What is Asynchronous Advantage Actor-Critic (A3C)?
+→ Extension of A2C with multiple parallel agents updating a shared global model asynchronously.</p>
+</li>
+<li>
+<p>What is Proximal Policy Optimization (PPO)?
+→ Policy gradient method using clipped surrogate objective to ensure stable updates.</p>
+</li>
+<li>
+<p>What is the clipping function in PPO?
+→ Limits change in policy probability ratios to avoid large, destabilizing updates.</p>
+</li>
+<li>
+<p>What is Trust Region Policy Optimization (TRPO)?
+→ Policy gradient method enforcing a constraint on KL divergence between old and new policies to maintain stable learning.</p>
+</li>
+<li>
+<p>What is Deep Deterministic Policy Gradient (DDPG)?
+→ Off-policy actor-critic algorithm for continuous action spaces using deterministic policies and neural networks.</p>
+</li>
+<li>
+<p>How does DDPG handle continuous actions?
+→ Actor network outputs continuous actions; critic evaluates action-value; uses target networks and experience replay.</p>
+</li>
+<li>
+<p>What is Twin Delayed DDPG (TD3)?
+→ DDPG variant using two critics, delayed policy updates, and target policy smoothing to reduce overestimation.</p>
+</li>
+<li>
+<p>What is Soft Actor-Critic (SAC)?
+→ Off-policy RL algorithm maximizing expected reward plus entropy to encourage exploration.</p>
+</li>
+<li>
+<p>What is entropy regularization in SAC?
+→ Adds entropy term to objective, promoting stochastic policies and preventing premature convergence.</p>
+</li>
+<li>
+<p>What is the difference between model-free and model-based RL?
+→ Model-free: learns policy/value directly from interaction; Model-based: learns environment dynamics for planning.</p>
+</li>
+<li>
+<p>What are world models in model-based RL?
+→ Neural network models that simulate environment dynamics for planning and imagination-based learning.</p>
+</li>
+<li>
+<p>What is reward shaping?
+→ Modifying or augmenting reward signals to guide agent learning more efficiently.</p>
+</li>
+<li>
+<p>What is imitation learning?
+→ Learning policies by observing and mimicking expert behavior rather than receiving explicit rewards.</p>
+</li>
+<li>
+<p>What is behavior cloning?
+→ Supervised learning approach to imitate expert actions directly from state-action pairs.</p>
+</li>
+<li>
+<p>What is inverse reinforcement learning (IRL)?
+→ Learning the underlying reward function from expert demonstrations.</p>
+</li>
+<li>
+<p>What is hierarchical RL?
+→ RL framework decomposing tasks into sub-tasks or higher-level goals with temporal abstraction.</p>
+</li>
+<li>
+<p>What are options and sub-policies in hierarchical RL?
+→ Options: temporally extended actions; Sub-policies: policies for completing sub-tasks or options.</p>
+</li>
+<li>
+<p>What are multi-agent reinforcement learning systems?
+→ RL environments with multiple interacting agents, learning policies that may be cooperative, competitive, or mixed.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-d-advanced-rl--ai-ethics-q876%E2%80%93q890"><strong>Section D: Advanced RL &amp; AI Ethics (Q876–Q890)</strong></h3>
+<ol start="876">
+<li>
+<p>What is exploration-exploitation tradeoff in more detail?
+→ The dilemma in RL between exploring new actions to discover better rewards (exploration) and choosing the best-known actions to maximize immediate reward (exploitation); balancing both is critical for optimal long-term performance.</p>
+</li>
+<li>
+<p>What is curiosity-driven learning?
+→ RL approach where agents receive intrinsic motivation or reward for exploring novel states, encouraging efficient exploration.</p>
+</li>
+<li>
+<p>What are intrinsic rewards in RL?
+→ Rewards generated internally (e.g., novelty, information gain) rather than from the environment to guide learning and exploration.</p>
+</li>
+<li>
+<p>What is meta-reinforcement learning?
+→ Learning algorithms that enable agents to quickly adapt to new tasks by leveraging experience from previous tasks (“learning to learn”).</p>
+</li>
+<li>
+<p>What is transfer learning in RL?
+→ Reusing policies, value functions, or models learned in one task/domain to accelerate learning in a related task.</p>
+</li>
+<li>
+<p>What is lifelong learning in RL?
+→ Continuously learning across multiple tasks while retaining knowledge from previous tasks to improve efficiency and adaptability.</p>
+</li>
+<li>
+<p>What are safety concerns in RL?
+→ Risks include unsafe exploration, unintended behaviors, reward hacking, or catastrophic failures during deployment.</p>
+</li>
+<li>
+<p>What is reward hacking?
+→ Agent exploits loopholes in the reward function to achieve high reward in unintended ways without performing the intended task.</p>
+</li>
+<li>
+<p>What are safe exploration techniques?
+→ Methods like constrained RL, risk-sensitive policies, or intrinsic penalty signals to prevent dangerous or unsafe actions.</p>
+</li>
+<li>
+<p>What are ethical concerns in RL?
+→ Unintended harmful behaviors, bias in learned policies, environmental or human safety, and misuse in autonomous systems.</p>
+</li>
+<li>
+<p>What is AI fairness?
+→ Ensuring AI models make decisions without unjust bias or discrimination across different demographic groups.</p>
+</li>
+<li>
+<p>What is bias in machine learning?
+→ Systematic errors or unfairness in model predictions due to data, algorithm design, or societal biases.</p>
+</li>
+<li>
+<p>What is algorithmic accountability?
+→ Ensuring that AI systems’ decisions and processes can be audited, explained, and held responsible.</p>
+</li>
+<li>
+<p>What is model interpretability?
+→ Ability to understand and explain how a model arrives at its predictions or decisions.</p>
+</li>
+<li>
+<p>What are explainability techniques in ML/AI?
+→ Methods like feature importance, LIME, SHAP, saliency maps, attention visualization, and surrogate models to interpret predictions.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-e-explainability-hybrid-systems--future-ai-q891%E2%80%93q900"><strong>Section E: Explainability, Hybrid Systems &amp; Future AI (Q891–Q900)</strong></h3>
+<ol start="891">
+<li>
+<p>What is SHAP (SHapley Additive exPlanations)?
+→ Model-agnostic method assigning each feature a contribution value for a prediction based on Shapley values from cooperative game theory.</p>
+</li>
+<li>
+<p>What is LIME (Local Interpretable Model-agnostic Explanations)?
+→ Explains individual predictions by approximating the model locally with an interpretable surrogate model (e.g., linear model).</p>
+</li>
+<li>
+<p>What is the difference between SHAP and LIME?
+→ SHAP provides theoretically consistent, global and local feature contributions; LIME focuses on local approximations and may vary depending on sampling.</p>
+</li>
+<li>
+<p>What are counterfactual explanations?
+→ Show how input features could be minimally changed to alter the model’s prediction, helping understand decision boundaries.</p>
+</li>
+<li>
+<p>What are neuro-symbolic AI systems?
+→ AI systems combining neural networks for perception and learning with symbolic reasoning for logic, rules, and knowledge representation.</p>
+</li>
+<li>
+<p>What is a knowledge graph?
+→ Structured graph representing entities and their relationships, used for reasoning and linking information.</p>
+</li>
+<li>
+<p>What is reasoning in AI systems?
+→ Deductive, inductive, or probabilistic inference to derive new knowledge or make decisions based on existing data and rules.</p>
+</li>
+<li>
+<p>What are hybrid AI systems combining symbolic and neural methods?
+→ Systems integrating neural learning for perception or pattern recognition with symbolic reasoning for logic, planning, or explainability.</p>
+</li>
+<li>
+<p>What are current challenges in explainable AI (XAI)?
+→ Trade-off between interpretability and accuracy, scalability to large models, human-understandable explanations, and bias detection.</p>
+</li>
+<li>
+<p>What are the emerging frontiers in advanced AI research?
+→ Multimodal reasoning, foundation models, neuro-symbolic AI, causal inference, continual learning, safe RL, large-scale language models, and AI alignment.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%E2%9A%99%EF%B8%8F-batch-10-q901%E2%80%93q1000-mlops-deployment--emerging-trends">⚙️ <strong>Batch 10 (Q901–Q1000): MLOps, Deployment, &amp; Emerging Trends</strong></h2>
+<hr>
+<h3 id="section-a-model-deployment--serving-q901%E2%80%93q925"><strong>Section A: Model Deployment &amp; Serving (Q901–Q925)</strong></h3>
+<ol start="901">
+<li>
+<p>What is model deployment in machine learning?
+→ Process of making a trained ML model available for use in production to generate predictions on new data.</p>
+</li>
+<li>
+<p>What are the main steps in deploying a machine learning model?
+→ Model serialization, containerization, setting up serving infrastructure, exposing APIs, monitoring, and updating models.</p>
+</li>
+<li>
+<p>What is model serving?
+→ Running a trained model in a production environment to handle inference requests.</p>
+</li>
+<li>
+<p>What are REST and gRPC APIs used for in deployment?
+→ Interfaces allowing applications to send data to the model and receive predictions. REST: HTTP-based; gRPC: high-performance, binary protocol.</p>
+</li>
+<li>
+<p>What is batch inference?
+→ Generating predictions for a large set of inputs at once, typically offline.</p>
+</li>
+<li>
+<p>What is real-time inference?
+→ Generating predictions instantly for individual inputs as they arrive.</p>
+</li>
+<li>
+<p>What is online vs offline prediction?
+→ Online: real-time or near real-time predictions; Offline: batch processing of historical or large datasets.</p>
+</li>
+<li>
+<p>What is model serialization?
+→ Saving a trained model to disk in a standard format for later loading and inference.</p>
+</li>
+<li>
+<p>What is ONNX, and why is it used?
+→ Open Neural Network Exchange format for interoperability between frameworks (e.g., PyTorch → TensorFlow).</p>
+</li>
+<li>
+<p>What is TensorFlow Serving?
+→ Production-ready system for serving TensorFlow models with high performance and version management.</p>
+</li>
+<li>
+<p>What is TorchServe?
+→ Framework for deploying PyTorch models with APIs, scaling, and monitoring support.</p>
+</li>
+<li>
+<p>What are containerization tools (e.g., Docker) used for in ML?
+→ Package models and dependencies into portable, isolated environments for consistent deployment.</p>
+</li>
+<li>
+<p>What is container orchestration?
+→ Managing deployment, scaling, and operation of multiple containers across clusters.</p>
+</li>
+<li>
+<p>What is Kubernetes, and how does it help ML deployment?
+→ Container orchestration platform that automates scaling, deployment, and management of ML services.</p>
+</li>
+<li>
+<p>What is model versioning?
+→ Tracking different trained versions of a model to ensure reproducibility and rollback capability.</p>
+</li>
+<li>
+<p>What is model rollback?
+→ Reverting to a previous model version if the current one performs poorly or fails in production.</p>
+</li>
+<li>
+<p>What is an inference pipeline?
+→ Sequence of preprocessing, model inference, and postprocessing steps for generating predictions.</p>
+</li>
+<li>
+<p>What are the differences between CPU, GPU, and TPU deployments?
+→ CPU: general-purpose, slower; GPU: parallel processing for high-throughput ML; TPU: specialized hardware for TensorFlow, optimized for large-scale neural networks.</p>
+</li>
+<li>
+<p>What is model latency?
+→ Time taken for the model to produce a prediction after receiving input.</p>
+</li>
+<li>
+<p>What is model throughput?
+→ Number of predictions a model can generate per unit time.</p>
+</li>
+<li>
+<p>What is an API gateway in model serving?
+→ Entry point managing requests, routing, authentication, rate-limiting, and load balancing for ML APIs.</p>
+</li>
+<li>
+<p>What are edge AI deployments?
+→ Running ML models locally on devices near data sources to reduce latency and bandwidth usage.</p>
+</li>
+<li>
+<p>What are serverless ML deployments?
+→ Deployments where infrastructure is managed automatically, scaling dynamically with requests (e.g., AWS Lambda).</p>
+</li>
+<li>
+<p>What is streaming inference?
+→ Continuous real-time predictions on data streams rather than discrete batch inputs.</p>
+</li>
+<li>
+<p>What are the challenges in large-scale ML deployments?
+→ Scalability, low-latency inference, versioning, monitoring, model drift, reproducibility, hardware optimization, and security.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-b-mlops--automation-q926%E2%80%93q950"><strong>Section B: MLOps &amp; Automation (Q926–Q950)</strong></h3>
+<ol start="926">
+<li>
+<p>What is MLOps?
+→ Practice combining machine learning, DevOps, and data engineering to streamline deployment, monitoring, and maintenance of ML models in production.</p>
+</li>
+<li>
+<p>What are the goals of MLOps?
+→ Ensure reproducibility, scalability, automation, continuous integration/deployment, monitoring, and governance of ML systems.</p>
+</li>
+<li>
+<p>How is MLOps different from DevOps?
+→ DevOps focuses on software delivery; MLOps extends it to ML, handling data pipelines, model training, versioning, and deployment.</p>
+</li>
+<li>
+<p>What are the key components of an MLOps pipeline?
+→ Data ingestion, preprocessing, feature engineering, model training, validation, deployment, monitoring, and retraining.</p>
+</li>
+<li>
+<p>What is continuous integration (CI) in ML?
+→ Automatically testing and integrating code, data, and models to detect errors early.</p>
+</li>
+<li>
+<p>What is continuous deployment (CD) in ML?
+→ Automatically deploying validated models to production for real-time or batch inference.</p>
+</li>
+<li>
+<p>What is continuous training (CT)?
+→ Automatically retraining models as new data becomes available to maintain performance.</p>
+</li>
+<li>
+<p>What is a feature store?
+→ Centralized repository for storing, sharing, and managing engineered features for consistent model training and serving.</p>
+</li>
+<li>
+<p>What are model registries?
+→ Systems to track, version, and manage ML models, ensuring reproducibility and governance.</p>
+</li>
+<li>
+<p>What is ML metadata tracking?
+→ Capturing information about datasets, model parameters, training runs, and evaluation metrics for reproducibility and auditing.</p>
+</li>
+<li>
+<p>What is model drift?
+→ Degradation of model performance over time due to changes in data distribution or environment.</p>
+</li>
+<li>
+<p>What is data drift?
+→ Changes in input data distribution that can negatively impact model predictions.</p>
+</li>
+<li>
+<p>How is drift detected and mitigated?
+→ Monitoring metrics (e.g., input statistics, performance), retraining models, updating features, and using adaptive algorithms.</p>
+</li>
+<li>
+<p>What are pipeline orchestration tools (e.g., Kubeflow, Airflow)?
+→ Tools that automate, schedule, and manage ML workflows and data pipelines.</p>
+</li>
+<li>
+<p>What is MLflow used for?
+→ Tracking experiments, managing models, deployment, and reproducibility in ML projects.</p>
+</li>
+<li>
+<p>What are experiment tracking tools?
+→ Systems to log hyperparameters, metrics, artifacts, and results to compare and reproduce ML experiments.</p>
+</li>
+<li>
+<p>What is reproducibility in ML experiments?
+→ Ability to replicate model training and results using the same data, code, and environment.</p>
+</li>
+<li>
+<p>What are model monitoring tools?
+→ Tools that track deployed model performance, detect drift, anomalies, and provide alerts.</p>
+</li>
+<li>
+<p>What is automated retraining?
+→ Scheduled or triggered retraining of models when performance drops or new data is available.</p>
+</li>
+<li>
+<p>What is model governance?
+→ Policies, procedures, and standards ensuring responsible, compliant, and auditable ML operations.</p>
+</li>
+<li>
+<p>What are data versioning tools (e.g., DVC)?
+→ Tools to track versions of datasets and experiments, enabling reproducible ML workflows.</p>
+</li>
+<li>
+<p>What are CI/CD pipelines for ML?
+→ Automated workflows integrating testing, model validation, and deployment to streamline production updates.</p>
+</li>
+<li>
+<p>What are the benefits of automation in ML lifecycle management?
+→ Faster deployment, reduced errors, reproducibility, scalability, and continuous performance monitoring.</p>
+</li>
+<li>
+<p>What are the common challenges in MLOps adoption?
+→ Data quality, integration complexity, skill gaps, model drift, infrastructure costs, and organizational resistance.</p>
+</li>
+<li>
+<p>What are best practices for maintaining ML systems in production?
+→ Monitor performance, version control, automate retraining, ensure reproducibility, enforce governance, and manage resources efficiently.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-c-scalability-distributed--federated-learning-q951%E2%80%93q970"><strong>Section C: Scalability, Distributed &amp; Federated Learning (Q951–Q970)</strong></h3>
+<ol start="951">
+<li>
+<p>What is distributed machine learning?
+→ Training ML models across multiple machines or devices to handle large datasets, high-dimensional models, or reduce training time.</p>
+</li>
+<li>
+<p>What is data parallelism?
+→ Splitting the dataset across multiple devices, each with a copy of the model, aggregating gradients after each batch.</p>
+</li>
+<li>
+<p>What is model parallelism?
+→ Splitting a large model across multiple devices so different parts of the network are processed in parallel.</p>
+</li>
+<li>
+<p>What is parameter server architecture?
+→ Centralized servers store and update model parameters while workers compute gradients on data partitions.</p>
+</li>
+<li>
+<p>What is all-reduce in distributed training?
+→ Collective communication operation that sums and distributes gradients across all nodes efficiently.</p>
+</li>
+<li>
+<p>What is synchronous vs asynchronous training?
+→ Synchronous: all workers update parameters together; Asynchronous: workers update independently, reducing wait but may cause staleness.</p>
+</li>
+<li>
+<p>What are communication bottlenecks in distributed ML?
+→ Delays in gradient or parameter exchange between devices or nodes, slowing overall training.</p>
+</li>
+<li>
+<p>What is federated learning?
+→ Collaborative learning where models are trained across decentralized devices without sharing raw data.</p>
+</li>
+<li>
+<p>What is the main motivation behind federated learning?
+→ Preserve data privacy and reduce central data storage by training locally on edge devices.</p>
+</li>
+<li>
+<p>How does federated learning preserve data privacy?
+→ Only model updates (gradients/weights) are shared, not raw data; combined with encryption and aggregation.</p>
+</li>
+<li>
+<p>What are client and server roles in federated learning?
+→ Clients: train local models; Server: aggregates updates to form a global model.</p>
+</li>
+<li>
+<p>What is secure aggregation in federated learning?
+→ Cryptographic protocol ensuring individual client updates cannot be inspected, only aggregated sum is visible.</p>
+</li>
+<li>
+<p>What are challenges in federated learning?
+→ Data heterogeneity, limited device resources, communication efficiency, privacy, and model convergence.</p>
+</li>
+<li>
+<p>What is edge computing?
+→ Processing and analyzing data close to the source devices instead of centralized cloud servers.</p>
+</li>
+<li>
+<p>How is edge AI different from cloud AI?
+→ Edge AI runs models locally on devices for low latency and privacy; cloud AI runs centrally with scalable resources but higher latency.</p>
+</li>
+<li>
+<p>What is model compression?
+→ Reducing model size and computation requirements to deploy on resource-constrained devices.</p>
+</li>
+<li>
+<p>What are pruning and quantization techniques?
+→ Pruning: removing redundant weights/connections; Quantization: reducing precision of weights/activations to save memory and computation.</p>
+</li>
+<li>
+<p>What is knowledge distillation?
+→ Training a smaller “student” model to mimic predictions of a larger “teacher” model for efficiency.</p>
+</li>
+<li>
+<p>What is energy-efficient AI?
+→ Designing models and hardware to minimize energy consumption during training and inference.</p>
+</li>
+<li>
+<p>What are distributed frameworks for ML (Horovod, Ray, etc.)?
+→ Software libraries enabling efficient distributed training across multiple devices or nodes with simplified APIs.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-d-ai-safety-ethics--responsible-ai-q971%E2%80%93q985"><strong>Section D: AI Safety, Ethics, &amp; Responsible AI (Q971–Q985)</strong></h3>
+<ol start="971">
+<li>
+<p>What is AI safety?
+→ Field focused on ensuring AI systems behave reliably, predictably, and without causing unintended harm.</p>
+</li>
+<li>
+<p>What are common risks in deploying AI systems?
+→ Bias, unfairness, adversarial attacks, model drift, safety hazards, privacy violations, and misaligned objectives.</p>
+</li>
+<li>
+<p>What is robustness in AI models?
+→ Ability of models to maintain performance under noisy, perturbed, or adversarial inputs.</p>
+</li>
+<li>
+<p>What is fairness in AI systems?
+→ Ensuring AI decisions are unbiased and equitable across different demographic or protected groups.</p>
+</li>
+<li>
+<p>How is bias introduced in ML models?
+→ Through biased training data, unbalanced datasets, flawed labeling, or biased feature selection.</p>
+</li>
+<li>
+<p>What is algorithmic transparency?
+→ Clarity on how AI models make decisions, including data, logic, and reasoning behind outputs.</p>
+</li>
+<li>
+<p>What are privacy-preserving ML techniques (e.g., differential privacy)?
+→ Methods to train or query models without exposing sensitive individual data; includes differential privacy, federated learning, homomorphic encryption.</p>
+</li>
+<li>
+<p>What is adversarial ML?
+→ Study and defense against inputs intentionally designed to mislead or fool machine learning models.</p>
+</li>
+<li>
+<p>What are adversarial examples?
+→ Inputs slightly perturbed to cause model misclassification while appearing normal to humans.</p>
+</li>
+<li>
+<p>What is explainable AI (XAI)?
+→ Techniques and tools to make AI model predictions understandable and interpretable to humans.</p>
+</li>
+<li>
+<p>What are AI auditing frameworks?
+→ Structured procedures and tools to evaluate AI systems for fairness, compliance, security, and performance.</p>
+</li>
+<li>
+<p>What are regulatory frameworks for AI (e.g., EU AI Act)?
+→ Legal standards defining safe, transparent, and ethical deployment of AI technologies.</p>
+</li>
+<li>
+<p>What is ethical AI governance?
+→ Organizational policies, standards, and practices ensuring AI systems are developed and used responsibly.</p>
+</li>
+<li>
+<p>What is model accountability?
+→ Responsibility for AI model behavior, including monitoring, auditing, and correcting unintended consequences.</p>
+</li>
+<li>
+<p>What are human-in-the-loop AI systems?
+→ Systems where humans oversee, validate, or guide AI decisions to ensure safety, correctness, and ethical outcomes.</p>
+</li>
+</ol>
+<hr>
+<h3 id="section-e-future-trends--emerging-ai-technologies-q986%E2%80%93q1000"><strong>Section E: Future Trends &amp; Emerging AI Technologies (Q986–Q1000)</strong></h3>
+<ol start="986">
+<li>
+<p>What are foundation models?
+→ Large pre-trained models (usually on massive datasets) that can be adapted to many downstream tasks, e.g., GPT, BERT, CLIP.</p>
+</li>
+<li>
+<p>What are multimodal AI models?
+→ Models capable of processing and integrating multiple data types, such as text, images, audio, or video.</p>
+</li>
+<li>
+<p>What is retrieval-augmented generation (RAG)?
+→ Technique combining external knowledge retrieval with generative models to produce more accurate and informed outputs.</p>
+</li>
+<li>
+<p>What are large multimodal models (LMMs)?
+→ Scaled foundation models trained on diverse modalities to handle tasks like text-to-image, image captioning, and vision-language reasoning.</p>
+</li>
+<li>
+<p>What is the role of synthetic data in AI?
+→ Generating artificial but realistic data to augment training datasets, reduce biases, and protect privacy.</p>
+</li>
+<li>
+<p>What is neuromorphic computing?
+→ Hardware and algorithms inspired by the brain’s structure and function, often using spiking neurons for energy-efficient AI.</p>
+</li>
+<li>
+<p>What is quantum machine learning?
+→ Using quantum computing principles to accelerate ML algorithms or represent data in quantum states.</p>
+</li>
+<li>
+<p>What is spiking neural network?
+→ Neural network model that communicates via discrete spikes over time, mimicking biological neurons.</p>
+</li>
+<li>
+<p>What are self-supervised learning techniques?
+→ Methods where models generate pseudo-labels from data itself to learn representations without human annotations.</p>
+</li>
+<li>
+<p>What is continual learning?
+→ AI systems learning incrementally over time while retaining knowledge from previous tasks and avoiding catastrophic forgetting.</p>
+</li>
+<li>
+<p>What are autonomous AI agents?
+→ AI systems capable of making decisions, planning, and acting independently to achieve goals in dynamic environments.</p>
+</li>
+<li>
+<p>What is AGI (Artificial General Intelligence)?
+→ Hypothetical AI that possesses human-level cognitive abilities across a wide range of tasks, not limited to specific domains.</p>
+</li>
+<li>
+<p>What are the leading theories about achieving AGI?
+→ Scaling large foundation models, neuro-symbolic integration, cognitive architectures, brain-inspired computation, and self-improving AI agents.</p>
+</li>
+<li>
+<p>What are current limitations of AI research?
+→ Data dependency, lack of true reasoning, generalization, interpretability challenges, ethical concerns, energy costs, and domain specificity.</p>
+</li>
+<li>
+<p>What does the future of AI and MLOps integration look like?
+→ Seamless pipelines for training, deploying, monitoring, and continuously improving foundation and multimodal models, with automation, governance, and real-time adaptation becoming standard.</p>
+</li>
+</ol>
+<hr>
+
+<script src="_enhance.js"></script>
+</body>
+</html>

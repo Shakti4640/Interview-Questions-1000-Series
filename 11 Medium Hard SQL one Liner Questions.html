@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>11 Medium Hard SQL one Liner Questions.md</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+<link rel="stylesheet" href="_enhance.css">
+</head>
+<body class="enh-sql">
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="sql-one-liner-interview-questions"><strong>SQL One Liner Interview Questions</strong></h1>
+<hr>
+<h3 id="50-medium%E2%80%93hard-sql-questions-with-hints"><strong>50 Medium–Hard SQL Questions (With Hints)</strong></h3>
+<ol>
+<li><strong>How do you remove duplicate rows while keeping the latest record?</strong>
+→ <strong>(Hint: Window magic)</strong></li>
+<li><strong>How can you pivot rows into columns dynamically?</strong>
+→ <strong>(Hint: Columns that appear on the fly)</strong></li>
+<li><strong>How do you unpivot multiple columns into rows?</strong>
+→ <strong>(Hint: Spread becomes skinny)</strong></li>
+<li><strong>How do you find the second-highest salary without using MAX twice?</strong>
+→ <strong>(Hint: OFFSET helps)</strong></li>
+<li><strong>How do you get the nth highest value in a column?</strong>
+→ <strong>(Hint: Ranking helps)</strong></li>
+<li><strong>How do you identify gaps in a sequence of numbers?</strong>
+→ <strong>(Hint: Compare with row numbers)</strong></li>
+<li><strong>How do you detect overlapping date ranges?</strong>
+→ <strong>(Hint: Start &lt; End trouble)</strong></li>
+<li><strong>How do you split a comma-separated string into rows?</strong>
+→ <strong>(Hint: Explode the list)</strong></li>
+<li><strong>How do you join only the latest record from a history table?</strong>
+→ <strong>(Hint: Row_number = 1)</strong></li>
+<li><strong>How do you compare two tables and find mismatched rows?</strong>
+→ <strong>(Hint: Full outer join detective)</strong></li>
+</ol>
+<hr>
+<ol start="11">
+<li><strong>How do you update a table using data from another table?</strong>
+→ <strong>(Hint: Update + join)</strong></li>
+<li><strong>How do you find customers who bought the same product twice in a row?</strong>
+→ <strong>(Hint: Lag behind)</strong></li>
+<li><strong>How do you calculate running totals?</strong>
+→ <strong>(Hint: Cumulative windows)</strong></li>
+<li><strong>How do you get the most recent non-null value?</strong>
+→ <strong>(Hint: Lag with filtering)</strong></li>
+<li><strong>How do you find islands and gaps in time-based data?</strong>
+→ <strong>(Hint: Lead and lag)</strong></li>
+<li><strong>How do you detect duplicate groups, not duplicate rows?</strong>
+→ <strong>(Hint: Count &gt; 1 trick)</strong></li>
+<li><strong>How do you create a recursive hierarchy query?</strong>
+→ <strong>(Hint: CTE climbs trees)</strong></li>
+<li><strong>How do you find rows where a column changed compared to previous rows?</strong>
+→ <strong>(Hint: Lag again!)</strong></li>
+<li><strong>How do you remove records appearing more than N times?</strong>
+→ <strong>(Hint: Group, then chop)</strong></li>
+<li><strong>How do you get rows with the maximum value per group?</strong>
+→ <strong>(Hint: Partition by group)</strong></li>
+</ol>
+<hr>
+<ol start="21">
+<li><strong>How do you join on multiple conditions including range matches?</strong>
+→ <strong>(Hint: Between joins)</strong></li>
+<li><strong>How do you check if two tables have exactly the same data?</strong>
+→ <strong>(Hint: Except or minus)</strong></li>
+<li><strong>How do you detect when a sequence resets?</strong>
+→ <strong>(Hint: Row_number with partitions)</strong></li>
+<li><strong>How do you find the longest streak of consecutive days?</strong>
+→ <strong>(Hint: Date difference trick)</strong></li>
+<li><strong>How do you generate a date calendar on the fly?</strong>
+→ <strong>(Hint: Recursive CTE again)</strong></li>
+<li><strong>How do you remove leading zeros from a string?</strong>
+→ <strong>(Hint: Cast then convert)</strong></li>
+<li><strong>How do you return only rows that appear in all groups?</strong>
+→ <strong>(Hint: Having count distinct)</strong></li>
+<li><strong>How do you filter groups based on conditions inside them?</strong>
+→ <strong>(Hint: Having is boss)</strong></li>
+<li><strong>How do you rank ties without skipping numbers?</strong>
+→ <strong>(Hint: Dense_rank)</strong></li>
+<li><strong>How do you rank ties while skipping numbers?</strong>
+→ <strong>(Hint: Rank)</strong></li>
+</ol>
+<hr>
+<ol start="31">
+<li><strong>How do you list employees who earn more than their department averages?</strong>
+→ <strong>(Hint: Subquery challenge)</strong></li>
+<li><strong>How do you create rolling monthly averages?</strong>
+→ <strong>(Hint: Frame clauses)</strong></li>
+<li><strong>How do you find customers who never bought anything?</strong>
+→ <strong>(Hint: Anti join)</strong></li>
+<li><strong>How do you find customers who bought everything in a category?</strong>
+→ <strong>(Hint: Division logic)</strong></li>
+<li><strong>How do you identify the “top 1 per category” when ties exist?</strong>
+→ <strong>(Hint: Rank with filters)</strong></li>
+<li><strong>How do you find the 3 most sold products per region?</strong>
+→ <strong>(Hint: Limit inside window)</strong></li>
+<li><strong>How do you detect cycles in hierarchical data?</strong>
+→ <strong>(Hint: Recursive CTE with stop)</strong></li>
+<li><strong>How do you sample random records efficiently?</strong>
+→ <strong>(Hint: Order by random is expensive)</strong></li>
+<li><strong>How do you count distinct values but ignore nulls?</strong>
+→ <strong>(Hint: Distinct does it)</strong></li>
+<li><strong>How do you replace nulls with values from another column?</strong>
+→ <strong>(Hint: Coalesce)</strong></li>
+</ol>
+<hr>
+<ol start="41">
+<li><strong>How do you combine multiple rows into a single comma-separated list?</strong>
+→ <strong>(Hint: String aggregate)</strong></li>
+<li><strong>How do you validate if a string is numeric?</strong>
+→ <strong>(Hint: Use regex or try_cast)</strong></li>
+<li><strong>How do you find overlapping subscriptions per user?</strong>
+→ <strong>(Hint: Date overlaps again)</strong></li>
+<li><strong>How do you fetch one row per group randomly?</strong>
+→ <strong>(Hint: Random + window)</strong></li>
+<li><strong>How do you delete duplicates but keep the lowest ID?</strong>
+→ <strong>(Hint: Row_number = 1 survives)</strong></li>
+<li><strong>How do you detect missing foreign key references?</strong>
+→ <strong>(Hint: Left join + null check)</strong></li>
+<li><strong>How do you compute year-over-year percentage change?</strong>
+→ <strong>(Hint: Lag yearly)</strong></li>
+<li><strong>How do you flatten nested JSON fields?</strong>
+→ <strong>(Hint: Cross apply openjson)</strong></li>
+<li><strong>How do you join on a computed value like the first letter of a name?</strong>
+→ <strong>(Hint: Join expressions)</strong></li>
+<li><strong>How do you find the earliest timestamp per user but only on weekdays?</strong>
+→ <strong>(Hint: Filter + grouping)</strong></li>
+</ol>
+<hr>
+<h1 id="100-more-medium%E2%80%93hard-sql-questions-with-hints"><strong>100 More Medium–Hard SQL Questions (With Hints)</strong></h1>
+<h3 id="1%E2%80%9320-joins-grouping--aggregations"><strong>1–20: Joins, Grouping &amp; Aggregations</strong></h3>
+<ol>
+<li><strong>How do you find rows that match on one column but differ on another?</strong>
+→ <strong>(Hint: Same same, but different)</strong></li>
+<li><strong>How do you list groups where the average exceeds the median?</strong>
+→ <strong>(Hint: Median needs a window trick)</strong></li>
+<li><strong>How do you identify groups where no value repeats?</strong>
+→ <strong>(Hint: Count distinct vs count)</strong></li>
+<li><strong>How do you compute weighted averages?</strong>
+→ <strong>(Hint: Multiply before dividing)</strong></li>
+<li><strong>How do you find rows belonging to the top 10% of values?</strong>
+→ <strong>(Hint: Percent_rank)</strong></li>
+<li><strong>How do you find groups with continuous sequences of IDs?</strong>
+→ <strong>(Hint: ID difference trick)</strong></li>
+<li><strong>How do you show customers who bought more than one type of product?</strong>
+→ <strong>(Hint: Count distinct)</strong></li>
+<li><strong>How do you list groups whose total matches the grand total?</strong>
+→ <strong>(Hint: Having = total)</strong></li>
+<li><strong>How do you get the min and max values from the same group in one scan?</strong>
+→ <strong>(Hint: Aggregate both)</strong></li>
+<li><strong>How do you find each group's most common value?</strong>
+→ <strong>(Hint: Mode with count)</strong></li>
+<li><strong>How do you detect groups with outliers?</strong>
+→ <strong>(Hint: Stddev or IQR)</strong></li>
+<li><strong>How do you count only rows that meet a condition?</strong>
+→ <strong>(Hint: SUM with CASE)</strong></li>
+<li><strong>How do you calculate conditional percentages?</strong>
+→ <strong>(Hint: Divide conditional counts)</strong></li>
+<li><strong>How do you list the top-k items per group but without ties?</strong>
+→ <strong>(Hint: Row_number)</strong></li>
+<li><strong>How do you make groups of size N from a table?</strong>
+→ <strong>(Hint: Use row_number chunks)</strong></li>
+<li><strong>How do you compute moving min/max values?</strong>
+→ <strong>(Hint: Window frame)</strong></li>
+<li><strong>How do you calculate the geometric mean?</strong>
+→ <strong>(Hint: Multiply then nth root)</strong></li>
+<li><strong>How do you find rows belonging to incomplete groups?</strong>
+→ <strong>(Hint: Having count &lt; expected)</strong></li>
+<li><strong>How do you get the average of the top 3 values per user?</strong>
+→ <strong>(Hint: Rank then avg)</strong></li>
+<li><strong>How do you list the groups with no matching rows in another table?</strong>
+→ <strong>(Hint: Anti join)</strong></li>
+</ol>
+<hr>
+<h3 id="21%E2%80%9340-window-functions"><strong>21–40: Window Functions</strong></h3>
+<ol start="21">
+<li><strong>How do you get the previous non-null value in a sequence?</strong>
+→ <strong>(Hint: Ignore nulls)</strong></li>
+<li><strong>How do you compute the time between events per user?</strong>
+→ <strong>(Hint: Lag timestamps)</strong></li>
+<li><strong>How do you rank events by custom ordering?</strong>
+→ <strong>(Hint: Order by expressions)</strong></li>
+<li><strong>How do you get cumulative unique counts?</strong>
+→ <strong>(Hint: Distinct windows… tricky)</strong></li>
+<li><strong>How do you compare current row to the average of last 5 rows?</strong>
+→ <strong>(Hint: Frame rows)</strong></li>
+<li><strong>How do you get the earliest event of each quarter?</strong>
+→ <strong>(Hint: Partition by quarter)</strong></li>
+<li><strong>How do you find sudden spikes in values?</strong>
+→ <strong>(Hint: Compare with lag)</strong></li>
+<li><strong>How do you compute half-life decay values row by row?</strong>
+→ <strong>(Hint: Recursive + window)</strong></li>
+<li><strong>How do you track “running max minus running min”?</strong>
+→ <strong>(Hint: Two windows)</strong></li>
+<li><strong>How do you label streaks of identical values?</strong>
+→ <strong>(Hint: Row_number difference)</strong></li>
+<li><strong>How do you detect when a rolling sum crosses a threshold?</strong>
+→ <strong>(Hint: Window sum + compare)</strong></li>
+<li><strong>How do you find values that drop compared to last month?</strong>
+→ <strong>(Hint: Lag by interval)</strong></li>
+<li><strong>How do you create a moving z-score?</strong>
+→ <strong>(Hint: Mean &amp; stddev window)</strong></li>
+<li><strong>How do you get “time since first event”?</strong>
+→ <strong>(Hint: Min timestamp window)</strong></li>
+<li><strong>How do you compute cumulative median?</strong>
+→ <strong>(Hint: Hard — nested windows)</strong></li>
+<li><strong>How do you assign row numbers only within certain conditions?</strong>
+→ <strong>(Hint: Partition on CASE)</strong></li>
+<li><strong>How do you calculate rolling distinct counts?</strong>
+→ <strong>(Hint: Precompute mapping)</strong></li>
+<li><strong>How do you detect every time a value resets to zero?</strong>
+→ <strong>(Hint: Lag compare)</strong></li>
+<li><strong>How do you calculate “current rank vs previous rank”?</strong>
+→ <strong>(Hint: Lag the rank)</strong></li>
+<li><strong>How do you compute running unique sums like “new categories seen”?</strong>
+→ <strong>(Hint: Boolean accumulators)</strong></li>
+</ol>
+<hr>
+<h3 id="41%E2%80%9360-subqueries-advanced-filtering"><strong>41–60: Subqueries, Advanced Filtering</strong></h3>
+<ol start="41">
+<li><strong>How do you find customers whose total spending is above the overall median?</strong>
+→ <strong>(Hint: Subquery + compare)</strong></li>
+<li><strong>How do you find rows that don’t belong to any subquery results?</strong>
+→ <strong>(Hint: Not exists)</strong></li>
+<li><strong>How do you get rows where a value is the minimum but only when the group meets a condition?</strong>
+→ <strong>(Hint: Conditional having)</strong></li>
+<li><strong>How do you fetch only the earliest row that matches multiple filters?</strong>
+→ <strong>(Hint: Order then limit)</strong></li>
+<li><strong>How do you find records in table A that match multiple rows in table B?</strong>
+→ <strong>(Hint: Group by key)</strong></li>
+<li><strong>How do you get the largest gap between two events?</strong>
+→ <strong>(Hint: Lead difference)</strong></li>
+<li><strong>How do you list values that occur exactly once globally?</strong>
+→ <strong>(Hint: Having count = 1)</strong></li>
+<li><strong>How do you detect “orphaned” child rows?</strong>
+→ <strong>(Hint: No parent match)</strong></li>
+<li><strong>How do you find pairs of users who share at least 3 common items?</strong>
+→ <strong>(Hint: Self-join + group)</strong></li>
+<li><strong>How do you detect when a user changes their category?</strong>
+→ <strong>(Hint: Lag category)</strong></li>
+<li><strong>How do you find rows that match the top value per group but non-uniquely?</strong>
+→ <strong>(Hint: Max join)</strong></li>
+<li><strong>How do you return all rows except the last N?</strong>
+→ <strong>(Hint: Offset or anti-window)</strong></li>
+<li><strong>How do you select rows that appear in <em>exactly</em> two categories?</strong>
+→ <strong>(Hint: Count distinct)</strong></li>
+<li><strong>How do you find users who have gaps in activity &gt; X days?</strong>
+→ <strong>(Hint: Date diff with lag)</strong></li>
+<li><strong>How do you find rows matching the most frequent value?</strong>
+→ <strong>(Hint: Mode)</strong></li>
+<li><strong>How do you get customers who bought A before B?</strong>
+→ <strong>(Hint: Min dates compare)</strong></li>
+<li><strong>How do you list rows where the next row is earlier in time?</strong>
+→ <strong>(Hint: Out-of-order detection)</strong></li>
+<li><strong>How do you find the first purchase after a specific event?</strong>
+→ <strong>(Hint: Min with filter)</strong></li>
+<li><strong>How do you return rows only if the subquery count equals N?</strong>
+→ <strong>(Hint: Having)</strong></li>
+<li><strong>How do you find rows whose value is greater than the average of their neighbors?</strong>
+→ <strong>(Hint: Lag + lead)</strong></li>
+</ol>
+<hr>
+<h3 id="61%E2%80%9380-strings-dates-json-and-functions"><strong>61–80: Strings, Dates, JSON, and Functions</strong></h3>
+<ol start="61">
+<li><strong>How do you extract the numeric part from alphanumeric strings?</strong>
+→ <strong>(Hint: Regex rescue)</strong></li>
+<li><strong>How do you find palindromic strings in a table?</strong>
+→ <strong>(Hint: Reverse = original)</strong></li>
+<li><strong>How do you remove repeated characters in a string?</strong>
+→ <strong>(Hint: Regex replace)</strong></li>
+<li><strong>How do you generate a running concatenated string?</strong>
+→ <strong>(Hint: String_agg window)</strong></li>
+<li><strong>How do you check if a string contains only vowels?</strong>
+→ <strong>(Hint: Regex check)</strong></li>
+<li><strong>How do you correct invalid dates stored as text?</strong>
+→ <strong>(Hint: Try-convert)</strong></li>
+<li><strong>How do you find rows where timestamps overlap but not fully?</strong>
+→ <strong>(Hint: Partial overlap logic)</strong></li>
+<li><strong>How do you calculate week numbers respecting ISO rules?</strong>
+→ <strong>(Hint: ISO week function)</strong></li>
+<li><strong>How do you merge two JSON arrays in SQL?</strong>
+→ <strong>(Hint: JSON array combine)</strong></li>
+<li><strong>How do you extract nested key-value pairs from JSON columns?</strong>
+→ <strong>(Hint: Cross apply)</strong></li>
+<li><strong>How do you detect missing keys in semi-structured data?</strong>
+→ <strong>(Hint: JSON existence check)</strong></li>
+<li><strong>How do you convert epoch milliseconds to timestamps?</strong>
+→ <strong>(Hint: Add seconds)</strong></li>
+<li><strong>How do you get the last day of each month?</strong>
+→ <strong>(Hint: Date functions)</strong></li>
+<li><strong>How do you group by hour when timestamp includes milliseconds?</strong>
+→ <strong>(Hint: Truncate)</strong></li>
+<li><strong>How do you filter rows where the date falls on weekends?</strong>
+→ <strong>(Hint: Day of week)</strong></li>
+<li><strong>How do you calculate the number of business days between two dates?</strong>
+→ <strong>(Hint: Calendar table)</strong></li>
+<li><strong>How do you check if two strings are anagrams?</strong>
+→ <strong>(Hint: Sort characters)</strong></li>
+<li><strong>How do you extract URLs from messy text?</strong>
+→ <strong>(Hint: Regex sniper)</strong></li>
+<li><strong>How do you group by transformed string values like lowercase names?</strong>
+→ <strong>(Hint: Group by expression)</strong></li>
+<li><strong>How do you detect invalid JSON in a column?</strong>
+→ <strong>(Hint: Try_parse)</strong></li>
+</ol>
+<hr>
+<h3 id="81%E2%80%93100-performance-optimization--architecture"><strong>81–100: Performance, Optimization &amp; Architecture</strong></h3>
+<ol start="81">
+<li><strong>How do you detect missing indexes that would speed up a query?</strong>
+→ <strong>(Hint: Explain plan clue)</strong></li>
+<li><strong>How do you rewrite correlated subqueries to improve speed?</strong>
+→ <strong>(Hint: Join instead)</strong></li>
+<li><strong>How do you reduce sorting in window functions?</strong>
+→ <strong>(Hint: Partition wisely)</strong></li>
+<li><strong>How do you avoid scanning an entire table when filtering by a non-indexed column?</strong>
+→ <strong>(Hint: Create or use index)</strong></li>
+<li>*<em>How do you rewrite queries to avoid the dreaded “SELECT <em>”?</em></em>
+→ <strong>(Hint: Pick columns)</strong></li>
+<li><strong>How do you detect when an index is never used?</strong>
+→ <strong>(Hint: Index usage stats)</strong></li>
+<li><strong>How do you speed up “top-k” per group queries?</strong>
+→ <strong>(Hint: Partial sort)</strong></li>
+<li><strong>How do you reduce join explosion in many-to-many joins?</strong>
+→ <strong>(Hint: Pre-aggregate)</strong></li>
+<li><strong>How do you rewrite OR conditions for better performance?</strong>
+→ <strong>(Hint: Union all)</strong></li>
+<li><strong>How do you detect cardinality misestimation?</strong>
+→ <strong>(Hint: Explain plan off)</strong></li>
+<li><strong>How do you optimise wide table scans with many unused columns?</strong>
+→ <strong>(Hint: Column pruning)</strong></li>
+<li><strong>How do you reduce the cost of large IN lists?</strong>
+→ <strong>(Hint: Temp table or join)</strong></li>
+<li><strong>How do you handle NULLs in join keys without performance drop?</strong>
+→ <strong>(Hint: Coalesce carefully)</strong></li>
+<li><strong>How do you check if your join order is efficient?</strong>
+→ <strong>(Hint: Check plan)</strong></li>
+<li><strong>How do you avoid window function recomputation?</strong>
+→ <strong>(Hint: Subquery reuse)</strong></li>
+<li><strong>How do you maintain summary tables efficiently?</strong>
+→ <strong>(Hint: Incremental loads)</strong></li>
+<li><strong>How do you speed up “distinct” queries on big datasets?</strong>
+→ <strong>(Hint: Hash aggregations)</strong></li>
+<li><strong>How do you ensure partition pruning happens?</strong>
+→ <strong>(Hint: Filter on partition column)</strong></li>
+<li><strong>How do you detect if your query is spilling to disk?</strong>
+→ <strong>(Hint: Explain/monitor)</strong></li>
+<li><strong>How do you decide between indexing and partitioning?</strong>
+→ <strong>(Hint: Filter vs volume)</strong></li>
+</ol>
+<hr>
+<h1 id="100-more-medium%E2%80%93hard-sql-questions-fresh--non-repeated"><strong>100 More Medium–Hard SQL Questions (Fresh &amp; Non-Repeated)</strong></h1>
+<h3 id="1%E2%80%9320-joins-grouping-set-logic"><strong>1–20: Joins, Grouping, Set Logic</strong></h3>
+<ol>
+<li><strong>How do you find rows that appear in table A but not at all in table B?</strong>
+→ <strong>(Hint: Anti-join)</strong></li>
+<li><strong>How do you show only rows that match in both tables with different column names?</strong>
+→ <strong>(Hint: Explicit join mapping)</strong></li>
+<li><strong>How do you join two tables when the join key can be in one of two columns?</strong>
+→ <strong>(Hint: OR join… carefully)</strong></li>
+<li><strong>How do you match rows where one table stores ranges and the other stores single values?</strong>
+→ <strong>(Hint: Between join)</strong></li>
+<li><strong>How do you detect one-to-many relationships accidentally turning into many-to-many?</strong>
+→ <strong>(Hint: Unexpected row explosion)</strong></li>
+<li><strong>How do you join on the nearest date?</strong>
+→ <strong>(Hint: Min(abs(date diff)</strong>)<strong>)</strong></li>
+<li><strong>How do you find groups whose minimum appears in multiple rows?</strong>
+→ <strong>(Hint: Join with subquery)</strong></li>
+<li><strong>How do you compute group-level statistics excluding the current row?</strong>
+→ <strong>(Hint: Window frame skip)</strong></li>
+<li><strong>How do you union two sets but keep duplicates?</strong>
+→ <strong>(Hint: UNION ALL)</strong></li>
+<li><strong>How do you compare two tables row-by-row including null differences?</strong>
+→ <strong>(Hint: Full join + coalesce)</strong></li>
+<li><strong>How do you find rows that exist in both tables but with different values?</strong>
+→ <strong>(Hint: Join + inequality)</strong></li>
+<li><strong>How do you list groups that have at least one NULL and at least one NOT NULL?</strong>
+→ <strong>(Hint: Boolean grouping)</strong></li>
+<li><strong>How do you check if two queries produce identical result sets?</strong>
+→ <strong>(Hint: EXCEPT both ways)</strong></li>
+<li><strong>How do you detect when a group violates a uniqueness rule?</strong>
+→ <strong>(Hint: Count &gt; 1)</strong></li>
+<li><strong>How do you implement relational division?</strong>
+→ <strong>(Hint: “All of” logic)</strong></li>
+<li><strong>How do you find groups missing exactly one expected item?</strong>
+→ <strong>(Hint: Expected count minus actual)</strong></li>
+<li><strong>How do you join tables where one key is case-sensitive and the other is not?</strong>
+→ <strong>(Hint: Apply function)</strong></li>
+<li><strong>How do you detect multiple parent matches for a child row?</strong>
+→ <strong>(Hint: Count per child)</strong></li>
+<li><strong>How do you join when one table stores composite keys in a single column?</strong>
+→ <strong>(Hint: Split + join)</strong></li>
+<li><strong>How do you return matching rows even if the join column contains trailing spaces?</strong>
+→ <strong>(Hint: Trim)</strong></li>
+</ol>
+<hr>
+<h3 id="21%E2%80%9340-window-functions-ranking-time-series"><strong>21–40: Window Functions, Ranking, Time Series</strong></h3>
+<ol start="21">
+<li><strong>How do you find the largest interval between successive timestamps?</strong>
+→ <strong>(Hint: Lead gap)</strong></li>
+<li><strong>How do you return only rows where the value jumps by &gt;50% compared to previous row?</strong>
+→ <strong>(Hint: Lag + ratio)</strong></li>
+<li><strong>How do you assign rank but restart ranking whenever value resets to zero?</strong>
+→ <strong>(Hint: Partition by running group)</strong></li>
+<li><strong>How do you create a window that looks only forward, not backward?</strong>
+→ <strong>(Hint: Lead frame)</strong></li>
+<li><strong>How do you compare each row with the average of the next 3 rows?</strong>
+→ <strong>(Hint: Following window)</strong></li>
+<li><strong>How do you calculate rolling percentiles?</strong>
+→ <strong>(Hint: Window with percentile_cont)</strong></li>
+<li><strong>How do you compute “days since previous activity” per user?</strong>
+→ <strong>(Hint: Lag timestamps)</strong></li>
+<li><strong>How do you detect when a streak of increasing values breaks?</strong>
+→ <strong>(Hint: Value &lt; lag)</strong></li>
+<li><strong>How do you compute a moving weighted sum?</strong>
+→ <strong>(Hint: Frame + math)</strong></li>
+<li><strong>How do you generate an index that restarts every time a category changes?</strong>
+→ <strong>(Hint: Row number + change detection)</strong></li>
+<li><strong>How do you calculate the slope of a time series using SQL only?</strong>
+→ <strong>(Hint: Regression functions)</strong></li>
+<li><strong>How do you detect monotonic trends per group?</strong>
+→ <strong>(Hint: LEAST + GREATEST)</strong></li>
+<li><strong>How do you compute rolling correlation between two columns?</strong>
+→ <strong>(Hint: Window + stats)</strong></li>
+<li><strong>How do you detect the first row where a rolling sum exceeds a threshold?</strong>
+→ <strong>(Hint: Running total + filter)</strong></li>
+<li><strong>How do you assign session IDs based on gaps in timestamps?</strong>
+→ <strong>(Hint: Compare with lag)</strong></li>
+<li><strong>How do you compute trailing 12-month sums ignoring partial months?</strong>
+→ <strong>(Hint: Range between 12 months)</strong></li>
+<li><strong>How do you remove rows that are duplicates in everything except timestamp?</strong>
+→ <strong>(Hint: Row_number)</strong></li>
+<li><strong>How do you detect rows where the timestamp jumps backward?</strong>
+→ <strong>(Hint: Lag comparison)</strong></li>
+<li><strong>How do you find the median difference between two consecutive values?</strong>
+→ <strong>(Hint: Lag diff + median)</strong></li>
+<li><strong>How do you get the “first non-null in each group by time”?</strong>
+→ <strong>(Hint: Order + fetch first)</strong></li>
+</ol>
+<hr>
+<h3 id="41%E2%80%9360-subqueries-filtering-advanced-conditions"><strong>41–60: Subqueries, Filtering, Advanced Conditions</strong></h3>
+<ol start="41">
+<li><strong>How do you return rows where the value is greater than the subquery’s maximum?</strong>
+→ <strong>(Hint: Compare with scalar)</strong></li>
+<li><strong>How do you detect rows that match <em>all</em> filters from another table?</strong>
+→ <strong>(Hint: Division logic)</strong></li>
+<li><strong>How do you filter based on a count from a correlated subquery?</strong>
+→ <strong>(Hint: Correlated count)</strong></li>
+<li><strong>How do you find rows where a column matches the max of a filtered subset?</strong>
+→ <strong>(Hint: Conditional max)</strong></li>
+<li><strong>How do you get “top X% per group”?</strong>
+→ <strong>(Hint: Percentile-related rank)</strong></li>
+<li><strong>How do you detect when a row violates a uniqueness rule across multiple columns?</strong>
+→ <strong>(Hint: Grouping sets)</strong></li>
+<li><strong>How do you detect when a value appears in exactly N different months?</strong>
+→ <strong>(Hint: Count distinct month)</strong></li>
+<li><strong>How do you return only the first K rows per partition after a filter?</strong>
+→ <strong>(Hint: Window filters)</strong></li>
+<li><strong>How do you find rows that fall inside the interquartile range?</strong>
+→ <strong>(Hint: Q1–Q3)</strong></li>
+<li><strong>How do you return rows that match any of a dynamic set of values?</strong>
+→ <strong>(Hint: Subquery IN)</strong></li>
+<li><strong>How do you detect rows where two values alternate (like 1,2,1,2)</strong>?**
+→ <strong>(Hint: Lag pattern)</strong></li>
+<li><strong>How do you find rows where a numeric value repeats more than X consecutive times?</strong>
+→ <strong>(Hint: Streak detection)</strong></li>
+<li><strong>How do you detect when values change too frequently?</strong>
+→ <strong>(Hint: Count changes)</strong></li>
+<li><strong>How do you return only rows that are not the min or max within their group?</strong>
+→ <strong>(Hint: Filter extremes)</strong></li>
+<li><strong>How do you detect rows that violate a “must be increasing” rule within groups?</strong>
+→ <strong>(Hint: Lag comparison)</strong></li>
+<li><strong>How do you find rows that satisfy two correlated conditions?</strong>
+→ <strong>(Hint: Exists inside exists)</strong></li>
+<li><strong>How do you get the difference between a value and the group’s second highest value?</strong>
+→ <strong>(Hint: Rank)</strong></li>
+<li><strong>How do you detect rows that are similar but not identical?</strong>
+→ <strong>(Hint: Fuzzy match)</strong></li>
+<li><strong>How do you filter rows where a value appears more times than its group average count?</strong>
+→ <strong>(Hint: Subquery counts)</strong></li>
+<li><strong>How do you return rows where a column’s value is within the top 5%?</strong>
+→ <strong>(Hint: percentile_cont)</strong></li>
+</ol>
+<hr>
+<h3 id="61%E2%80%9380-strings-text-parsing-json-regex"><strong>61–80: Strings, Text, Parsing, JSON, Regex</strong></h3>
+<ol start="61">
+<li><strong>How do you find strings containing letters in strictly alphabetical order?</strong>
+→ <strong>(Hint: Compare to sorted version)</strong></li>
+<li><strong>How do you extract the last number from a mixed string?</strong>
+→ <strong>(Hint: Regex capture)</strong></li>
+<li><strong>How do you check if two strings differ in only one character?</strong>
+→ <strong>(Hint: Compare positions)</strong></li>
+<li><strong>How do you find strings with repeated substrings like “ABABAB”?</strong>
+→ <strong>(Hint: Regex repetition)</strong></li>
+<li><strong>How do you split a string using multiple delimiters?</strong>
+→ <strong>(Hint: Regex split)</strong></li>
+<li><strong>How do you return the first word in a sentence?</strong>
+→ <strong>(Hint: Locate space)</strong></li>
+<li><strong>How do you find strings that contain at least 3 digit sequences?</strong>
+→ <strong>(Hint: Regex count)</strong></li>
+<li><strong>How do you mask part of a string except the first and last character?</strong>
+→ <strong>(Hint: Substring + repeat)</strong></li>
+<li><strong>How do you detect strange whitespace like tabs inside a string?</strong>
+→ <strong>(Hint: Regex whitespace classes)</strong></li>
+<li><strong>How do you find rows with invalid email formats?</strong>
+→ <strong>(Hint: Regex pattern)</strong></li>
+<li><strong>How do you extract the domain from a list of URLs?</strong>
+→ <strong>(Hint: Split on slashes)</strong></li>
+<li><strong>How do you compare JSON objects ignoring ordering?</strong>
+→ <strong>(Hint: Normalize then compare)</strong></li>
+<li><strong>How do you check if JSON contains a specific nested value?</strong>
+→ <strong>(Hint: JSON path query)</strong></li>
+<li><strong>How do you expand JSON arrays into separate rows?</strong>
+→ <strong>(Hint: Cross apply)</strong></li>
+<li><strong>How do you flatten nested JSON into columns?</strong>
+→ <strong>(Hint: Depth + apply)</strong></li>
+<li><strong>How do you store key–value pairs from JSON into relational tables?</strong>
+→ <strong>(Hint: Shred JSON)</strong></li>
+<li><strong>How do you detect malformed XML?</strong>
+→ <strong>(Hint: Try-parse)</strong></li>
+<li><strong>How do you combine string fields with NULLs without losing them?</strong>
+→ <strong>(Hint: Concat_ws)</strong></li>
+<li><strong>How do you extract only letters from a noisy string?</strong>
+→ <strong>(Hint: Regex replace)</strong></li>
+<li><strong>How do you validate that a phone number follows country rules?</strong>
+→ <strong>(Hint: Regex with optional groups)</strong></li>
+</ol>
+<hr>
+<h3 id="81%E2%80%93100-performance-optimization-query-tuning"><strong>81–100: Performance, Optimization, Query Tuning</strong></h3>
+<ol start="81">
+<li><strong>How do you detect a slow query caused by implicit conversions?</strong>
+→ <strong>(Hint: Execution plan notes)</strong></li>
+<li><strong>How do you ensure a large join uses the index instead of scanning?</strong>
+→ <strong>(Hint: Matching data types)</strong></li>
+<li><strong>How do you rewrite a slow correlated subquery into an efficient join?</strong>
+→ <strong>(Hint: Pre-aggregate)</strong></li>
+<li><strong>How do you find top N groups efficiently on big tables?</strong>
+→ <strong>(Hint: Partial sorting)</strong></li>
+<li><strong>How do you reduce hashing overhead in joins?</strong>
+→ <strong>(Hint: Pre-sorting)</strong></li>
+<li><strong>How do you ensure your query uses partition pruning?</strong>
+→ <strong>(Hint: Filter on partition column)</strong></li>
+<li><strong>How do you detect when a join is accidentally cross-joined?</strong>
+→ <strong>(Hint: Row count explosion)</strong></li>
+<li><strong>How do you rewrite DISTINCT to run faster?</strong>
+→ <strong>(Hint: Use group by)</strong></li>
+<li><strong>How do you reduce memory footprint in window-heavy queries?</strong>
+→ <strong>(Hint: Subquery reuse)</strong></li>
+<li><strong>How do you identify bottlenecks in multi-join queries?</strong>
+→ <strong>(Hint: Explain plan step-by-step)</strong></li>
+<li><strong>How do you ensure statistics are fresh for better optimization?</strong>
+→ <strong>(Hint: Update stats)</strong></li>
+<li><strong>How do you diagnose parameter sniffing issues?</strong>
+→ <strong>(Hint: Compare plans)</strong></li>
+<li><strong>How do you eliminate redundant joins for performance?</strong>
+→ <strong>(Hint: Check unused columns)</strong></li>
+<li><strong>How do you accelerate full-text search conditions?</strong>
+→ <strong>(Hint: Full-text index)</strong></li>
+<li><strong>How do you detect missing foreign key constraints causing bad plans?</strong>
+→ <strong>(Hint: Referential clues)</strong></li>
+<li><strong>How do you tune complex expressions inside WHERE clauses?</strong>
+→ <strong>(Hint: Precompute expressions)</strong></li>
+<li><strong>How do you detect spilled sorts in the execution plan?</strong>
+→ <strong>(Hint: Spill to disk warnings)</strong></li>
+<li><strong>How do you rewrite LIKE queries for better performance?</strong>
+→ <strong>(Hint: Avoid wildcard at front)</strong></li>
+<li><strong>How do you reduce overhead from huge IN (…)</strong> lists?**
+→ <strong>(Hint: Join with derived table)</strong></li>
+<li><strong>How do you verify if query parallelism actually helps?</strong>
+→ <strong>(Hint: Compare cost models)</strong></li>
+</ol>
+<hr>
+
+<script src="_enhance.js"></script>
+</body>
+</html>

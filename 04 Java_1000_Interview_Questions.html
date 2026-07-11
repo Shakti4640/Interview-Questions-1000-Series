@@ -1,0 +1,4573 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>04 Java_1000_Interview_Questions.md</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+<link rel="stylesheet" href="_enhance.css">
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="java-programming-interview-questions"><strong>Java Programming Interview Questions</strong></h1>
+<h2>Jump to Batch</h2>
+<ul>
+  <li><a href="#%F0%9F%A7%A9-batch-1--core-java-basics-to-intermediate-q1%E2%80%93q100">🧩 Batch 1 - Core Java Basics to Intermediate (Q1-Q100)</a></li>
+  <li><a href="#%F0%9F%A7%A0-batch-2--advanced-core-java--jvm-internals-q101%E2%80%93q200">🧠 Batch 2 - Advanced Core Java & JVM Internals (Q101-Q200)</a></li>
+  <li><a href="#%E2%9A%99%EF%B8%8F-batch-3--advanced-concurrency--multithreading-q201%E2%80%93q300">⚙️ Batch 3 - Advanced Concurrency & Multithreading (Q201-Q300)</a></li>
+  <li><a href="#%F0%9F%92%BE-batch-4--java-io-nio-serialization-and-networking-q301%E2%80%93q400">💾 Batch 4 - Java I/O, NIO, Serialization, and Networking (Q301-Q400)</a></li>
+  <li><a href="#%F0%9F%8F%A6-batch-5--jdbc-orm-and-transaction-management-q401%E2%80%93q500">🏦 Batch 5 - JDBC, ORM, and Transaction Management (Q401-Q500)</a></li>
+  <li><a href="#%F0%9F%8C%B1-batch-6-of-10--spring-core-ioc-di-and-aop-q501%E2%80%93q600">🌱 Batch 6 of 10 - Spring Core, IoC, DI, and AOP (Q501-Q600)</a></li>
+  <li><a href="#%F0%9F%9A%80-batch-7--spring-boot-rest-and-configuration-q601%E2%80%93q700">🚀 Batch 7 - Spring Boot, REST, and Configuration (Q601-Q700)</a></li>
+  <li><a href="#%F0%9F%8C%90-batch-8--microservices-spring-cloud-and-distributed-systems-q701%E2%80%93q800">🌐 Batch 8 - Microservices, Spring Cloud, and Distributed Systems (Q701-Q800)</a></li>
+  <li><a href="#%E2%9A%A1-batch-9--advanced-java-javafx-caching-reactive-and-performance-q801%E2%80%93q900">⚡ Batch 9 - Advanced Java, JavaFX, Caching, Reactive, and Performance (Q801-Q900)</a></li>
+  <li><a href="#%F0%9F%8F%81-batch-10--advanced-microservices-security-testing-devops-cloud-and-java-17-q901%E2%80%93q1000">🏁 Batch 10 - Advanced Microservices, Security, Testing, DevOps, Cloud, and Java 17+ (Q901-Q1000)</a></li>
+</ul>
+<hr>
+<h2 id="%F0%9F%A7%A9-batch-1--core-java-basics-to-intermediate-q1%E2%80%93q100">🧩 <strong>Batch 1 — Core Java Basics to Intermediate (Q1–Q100)</strong></h2>
+<h3 id="java-basics"><strong>Java Basics</strong></h3>
+<ol>
+<li>
+<p>What is Java, and why is it platform-independent?
+→ Java runs on the JVM, which makes the same bytecode work on any machine—like magic slippers for code.</p>
+</li>
+<li>
+<p>Explain the difference between JDK, JRE, and JVM.
+→ JDK is the full toolbox, JRE is the running environment, and JVM is the engine that actually runs your bytecode.</p>
+</li>
+<li>
+<p>What are the main features of Java?
+→ It’s object-oriented, portable, secure, and has garbage collection to clean up your mess.</p>
+</li>
+<li>
+<p>What is the difference between Java and other programming languages like C++?
+→ Java removes tricky stuff like pointers and manual memory management, making life a little less stressful.</p>
+</li>
+<li>
+<p>What is bytecode in Java?
+→ It’s the intermediate code the JVM understands—a universal language for all Java programs.</p>
+</li>
+<li>
+<p>What is the Java Virtual Machine (JVM)?
+→ It’s the software engine that runs Java bytecode and keeps things platform-independent.</p>
+</li>
+<li>
+<p>What are the different types of memory areas allocated by JVM?
+→ Heap, Stack, Method Area, PC Registers, and Native Method Stack—like rooms in a tiny code hotel.</p>
+</li>
+<li>
+<p>What is the role of the Just-In-Time (JIT) compiler in Java?
+→ It turns hot bytecode into machine code on the fly to make your program zoom faster.</p>
+</li>
+<li>
+<p>What is the difference between a compiler and an interpreter?
+→ A compiler translates everything at once; an interpreter reads it line by line like a storyteller.</p>
+</li>
+<li>
+<p>What is the significance of the <code>main()</code> method in Java?
+→ It’s the official entry door where every Java program begins its journey.</p>
+</li>
+<li>
+<p>Why is Java considered an object-oriented language?
+→ Because it focuses on objects and classes, making everything feel modular and neat.</p>
+</li>
+<li>
+<p>What are objects and classes in Java?
+→ Classes are blueprints, and objects are the actual things built from those blueprints.</p>
+</li>
+<li>
+<p>What is the difference between a class and an object?
+→ A class is the idea; an object is the real thing created from that idea.</p>
+</li>
+<li>
+<p>What is a constructor in Java?
+→ It’s a special method that sets up an object when it’s born.</p>
+</li>
+<li>
+<p>What is the default constructor?
+→ It’s the empty constructor Java auto-creates when you don’t provide one.</p>
+</li>
+<li>
+<p>Can a constructor be private?
+→ Yes, usually for patterns like singletons to keep object creation controlled.</p>
+</li>
+<li>
+<p>Can a constructor return a value?
+→ No—constructors don’t return anything, not even a sneaky void.</p>
+</li>
+<li>
+<p>What is the difference between <code>this</code> and <code>super</code> keywords?
+→ <code>this</code> points to the current class, while <code>super</code> reaches up to the parent class.</p>
+</li>
+<li>
+<p>What is method overloading?
+→ Same method name, different parameters—a friendly multitasker.</p>
+</li>
+<li>
+<p>What is method overriding?
+→ When a subclass rewrites a parent method to give it a fresh personality.</p>
+</li>
+</ol>
+<h3 id="data-types--variables"><strong>Data Types &amp; Variables</strong></h3>
+<ol start="21">
+<li>
+<p>What are primitive data types in Java?
+→ They are the basic built-in types like int, char, double, and boolean—Java’s tiny building blocks.</p>
+</li>
+<li>
+<p>What is the difference between primitive and reference data types?
+→ Primitives store actual values, while references store addresses pointing to objects.</p>
+</li>
+<li>
+<p>What is type casting in Java?
+→ It’s converting one data type into another—like fitting data into a new costume.</p>
+</li>
+<li>
+<p>What is the difference between implicit and explicit casting?
+→ Implicit is automatic widening, explicit is manual narrowing.</p>
+</li>
+<li>
+<p>What are wrapper classes in Java?
+→ Object versions of primitive types, like Integer for int and Double for double.</p>
+</li>
+<li>
+<p>Why are wrapper classes needed?
+→ They let primitives work in object-only places like collections.</p>
+</li>
+<li>
+<p>What is autoboxing and unboxing?
+→ Autoboxing converts primitives to wrappers; unboxing converts them back.</p>
+</li>
+<li>
+<p>What is the default value of different data types in Java?
+→ Primitives get zeros or false, references get null.</p>
+</li>
+<li>
+<p>What is the difference between <code>==</code> and <code>.equals()</code>?
+→ <code>==</code> checks memory addresses, <code>.equals()</code> checks actual content.</p>
+</li>
+<li>
+<p>What is the difference between <code>String</code>, <code>StringBuilder</code>, and <code>StringBuffer</code>?
+→ String is immutable, StringBuilder is mutable and fast, StringBuffer is mutable and thread-safe.</p>
+</li>
+</ol>
+<h3 id="control-flow-statements"><strong>Control Flow Statements</strong></h3>
+<ol start="31">
+<li>
+<p>What are the different control statements in Java?
+→ Selection (if, switch), looping (for, while, do-while), and jump statements (break, continue, return).</p>
+</li>
+<li>
+<p>How does the <code>switch</code> statement work?
+→ It checks a value against multiple cases and runs the matching block.</p>
+</li>
+<li>
+<p>Can a <code>switch</code> statement use a <code>String</code>?
+→ Yes, from Java 7 onward.</p>
+</li>
+<li>
+<p>What is the difference between <code>break</code> and <code>continue</code>?
+→ <code>Break</code> stops the loop entirely, <code>continue</code> skips to the next iteration.</p>
+</li>
+<li>
+<p>What is the difference between <code>while</code> and <code>do-while</code> loops?
+→ <code>While</code> checks first, <code>do-while</code> runs once before checking.</p>
+</li>
+<li>
+<p>Can a <code>for</code> loop be infinite?
+→ Yes—just leave out the condition.</p>
+</li>
+<li>
+<p>What is the enhanced for loop (for-each loop)?
+→ A simplified loop used to traverse arrays and collections.</p>
+</li>
+<li>
+<p>What is the difference between <code>return</code>, <code>break</code>, and <code>continue</code>?
+→ <code>Return</code> exits the method, <code>break</code> exits a loop or switch, <code>continue</code> skips to the next loop cycle.</p>
+</li>
+<li>
+<p>Can we use multiple <code>return</code> statements in a method?
+→ Yes, as long as the flow logically allows it.</p>
+</li>
+<li>
+<p>What happens if you forget a <code>break</code> in a <code>switch</code> case?
+→ Execution “falls through” into the next case.</p>
+</li>
+</ol>
+<h3 id="oops-concepts"><strong>OOPs Concepts</strong></h3>
+<ol start="41">
+<li>
+<p>What are the four pillars of Object-Oriented Programming?
+→ Inheritance, Polymorphism, Encapsulation, and Abstraction—the fantastic four of OOP.</p>
+</li>
+<li>
+<p>What is inheritance?
+→ A way for one class to reuse and extend another class’s features.</p>
+</li>
+<li>
+<p>What is polymorphism?
+→ One action behaving differently depending on the object using it.</p>
+</li>
+<li>
+<p>What is encapsulation?
+→ Wrapping data and methods together and guarding them with access control.</p>
+</li>
+<li>
+<p>What is abstraction?
+→ Showing only the important stuff and hiding all the messy details.</p>
+</li>
+<li>
+<p>What is the difference between abstraction and encapsulation?
+→ Abstraction hides complexity, encapsulation protects access.</p>
+</li>
+<li>
+<p>What is an abstract class?
+→ A class you can’t fully use until a subclass fills in the missing pieces.</p>
+</li>
+<li>
+<p>What is an interface?
+→ A contract listing methods that classes must implement.</p>
+</li>
+<li>
+<p>Can an interface have method implementations?
+→ Yes—default and static methods can have bodies.</p>
+</li>
+<li>
+<p>What is the difference between an abstract class and an interface?
+→ Abstract classes have partial implementation; interfaces mostly define rules.</p>
+</li>
+<li>
+<p>Can we create an object of an abstract class?
+→ Nope—it's like trying to use a sketch as a finished machine.</p>
+</li>
+<li>
+<p>Can a class implement multiple interfaces?
+→ Yes—Java happily allows it.</p>
+</li>
+<li>
+<p>What is multiple inheritance?
+→ A class having more than one parent.</p>
+</li>
+<li>
+<p>Does Java support multiple inheritance?
+→ Not with classes, to avoid chaos.</p>
+</li>
+<li>
+<p>How can we achieve multiple inheritance in Java?
+→ By implementing multiple interfaces.</p>
+</li>
+<li>
+<p>What is a static method?
+→ A method that belongs to the class, not the object.</p>
+</li>
+<li>
+<p>Can we override a static method?
+→ No—static methods can only be hidden, not overridden.</p>
+</li>
+<li>
+<p>What is a final variable, method, or class?
+→ Final variable can’t change, final method can’t be overridden, final class can’t be extended.</p>
+</li>
+<li>
+<p>What is the difference between <code>final</code>, <code>finally</code>, and <code>finalize()</code>?
+→ <code>final</code> restricts, <code>finally</code> always runs, <code>finalize()</code> was for cleanup but is now basically retired.</p>
+</li>
+<li>
+<p>What is the <code>super</code> keyword used for?
+→ To call parent class methods, constructors, or access its hidden members.</p>
+</li>
+</ol>
+<h3 id="exception-handling"><strong>Exception Handling</strong></h3>
+<ol start="61">
+<li>
+<p>What is exception handling in Java?
+→ A way to manage runtime problems without crashing the program.</p>
+</li>
+<li>
+<p>What are checked and unchecked exceptions?
+→ Checked must be handled at compile time; unchecked appear at runtime.</p>
+</li>
+<li>
+<p>What is the <code>try-catch</code> block used for?
+→ To wrap risky code and handle errors safely.</p>
+</li>
+<li>
+<p>Can we have multiple <code>catch</code> blocks?
+→ Yes—each can handle a different exception type.</p>
+</li>
+<li>
+<p>What is the <code>finally</code> block?
+→ A block that runs no matter what, usually for cleanup.</p>
+</li>
+<li>
+<p>Can <code>finally</code> block be skipped?
+→ Only if the JVM shuts down unexpectedly.</p>
+</li>
+<li>
+<p>What is the <code>throw</code> keyword used for?
+→ To manually create and send out an exception.</p>
+</li>
+<li>
+<p>What is the <code>throws</code> keyword used for?
+→ To declare that a method might toss certain exceptions.</p>
+</li>
+<li>
+<p>Can we have a <code>try</code> block without <code>catch</code>?
+→ Yes, if you use a <code>finally</code> block.</p>
+</li>
+<li>
+<p>What is the difference between <code>throw</code> and <code>throws</code>?
+→ <code>throw</code> launches an exception; <code>throws</code> announces potential exceptions.</p>
+</li>
+<li>
+<p>What happens when an exception is not handled?
+→ The program terminates and the JVM shows an error message.</p>
+</li>
+<li>
+<p>Can we create custom exceptions in Java?
+→ Yes—Java lets you craft your own exception types.</p>
+</li>
+<li>
+<p>How do we create a custom exception?
+→ Make a class that extends <code>Exception</code> or <code>RuntimeException</code>.</p>
+</li>
+<li>
+<p>What is the root class of all exceptions in Java?
+→ <code>Throwable</code> sits at the very top.</p>
+</li>
+<li>
+<p>What is the difference between <code>Error</code> and <code>Exception</code>?
+→ Errors are severe system issues; exceptions are recoverable program issues.</p>
+</li>
+</ol>
+<h3 id="collections-framework-intro"><strong>Collections Framework (Intro)</strong></h3>
+<ol start="76">
+<li>
+<p>What is the Java Collections Framework?
+→ A set of ready-made data structures and algorithms to manage groups of objects.</p>
+</li>
+<li>
+<p>What is the difference between a Collection and a Map?
+→ Collection stores elements; Map stores key-value pairs.</p>
+</li>
+<li>
+<p>What are the main interfaces in the Java Collections Framework?
+→ List, Set, Queue, Deque, and Map.</p>
+</li>
+<li>
+<p>What is the difference between List, Set, and Map?
+→ List allows duplicates, Set avoids duplicates, Map stores key-value pairs.</p>
+</li>
+<li>
+<p>What is the difference between ArrayList and LinkedList?
+→ ArrayList is fast at access, LinkedList is fast at insert/delete.</p>
+</li>
+<li>
+<p>What is the difference between HashSet and TreeSet?
+→ HashSet is fast and unordered; TreeSet is sorted and slower.</p>
+</li>
+<li>
+<p>What is the difference between HashMap and TreeMap?
+→ HashMap is fast and unordered; TreeMap is sorted by keys.</p>
+</li>
+<li>
+<p>What is the difference between Iterator and ListIterator?
+→ Iterator moves forward; ListIterator moves both ways and supports more operations.</p>
+</li>
+<li>
+<p>What is the difference between fail-fast and fail-safe iterators?
+→ Fail-fast crash on modification; fail-safe work on a copy.</p>
+</li>
+<li>
+<p>What is the difference between HashMap and Hashtable?
+→ HashMap is non-synchronized and faster; Hashtable is synchronized and older.</p>
+</li>
+<li>
+<p>What is the load factor in HashMap?
+→ A threshold that triggers resizing, usually 0.75.</p>
+</li>
+<li>
+<p>What happens if two keys in a HashMap have the same hashcode?
+→ They land in the same bucket and form a chain or tree.</p>
+</li>
+<li>
+<p>What is the internal structure of a HashMap?
+→ An array of buckets using linked lists or balanced trees.</p>
+</li>
+<li>
+<p>What is the difference between <code>Array</code> and <code>ArrayList</code>?
+→ Array is fixed-size; ArrayList grows dynamically.</p>
+</li>
+<li>
+<p>Can we store null values in a HashMap?
+→ Yes—one null key and multiple null values.</p>
+</li>
+</ol>
+<h3 id="multithreading-intro"><strong>Multithreading (Intro)</strong></h3>
+<ol start="91">
+<li>
+<p>What is a thread in Java?
+→ A lightweight unit of execution that runs tasks concurrently.</p>
+</li>
+<li>
+<p>How do you create a thread in Java?
+→ Either extend <code>Thread</code> or implement <code>Runnable</code> and pass it to a <code>Thread</code> object.</p>
+</li>
+<li>
+<p>What is the difference between extending <code>Thread</code> and implementing <code>Runnable</code>?
+→ Extending limits inheritance; implementing is flexible and preferred.</p>
+</li>
+<li>
+<p>What is thread synchronization?
+→ A way to prevent multiple threads from messing with shared data at the same time.</p>
+</li>
+<li>
+<p>What is a synchronized block?
+→ A protected section of code that only one thread can enter at once.</p>
+</li>
+<li>
+<p>What is a deadlock?
+→ When threads wait on each other forever like stubborn statues.</p>
+</li>
+<li>
+<p>What is the difference between <code>wait()</code> and <code>sleep()</code>?
+→ <code>wait()</code> releases the lock; <code>sleep()</code> doesn’t.</p>
+</li>
+<li>
+<p>What is the difference between <code>notify()</code> and <code>notifyAll()</code>?
+→ <code>notify()</code> wakes one waiting thread; <code>notifyAll()</code> wakes them all.</p>
+</li>
+<li>
+<p>What is thread priority?
+→ A hint to the scheduler about how important a thread is.</p>
+</li>
+<li>
+<p>What is the difference between a process and a thread?
+→ A process is a full program; threads are smaller tasks inside it sharing resources.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%A7%A0-batch-2--advanced-core-java--jvm-internals-q101%E2%80%93q200">🧠 <strong>Batch 2 — Advanced Core Java &amp; JVM Internals (Q101–Q200)</strong></h2>
+<h3 id="jvm--memory-management"><strong>JVM &amp; Memory Management</strong></h3>
+<ol start="101">
+<li>
+<p>What are the different components of JVM architecture?
+→ ClassLoader, Runtime Data Areas, Execution Engine, and Native Interface—basically JVM’s internal city map.</p>
+</li>
+<li>
+<p>What is the ClassLoader in Java?
+→ A module that loads classes into memory like a librarian fetching books.</p>
+</li>
+<li>
+<p>What are the types of ClassLoaders?
+→ Bootstrap, Extension, and Application ClassLoaders.</p>
+</li>
+<li>
+<p>What is the purpose of the Bootstrap ClassLoader?
+→ To load core Java classes—it's the boss loader.</p>
+</li>
+<li>
+<p>What is the Method Area in JVM memory?
+→ A zone storing class-level data like methods, constants, and bytecode.</p>
+</li>
+<li>
+<p>What is the difference between heap and stack memory?
+→ Heap stores objects; stack stores method calls and local variables.</p>
+</li>
+<li>
+<p>What is garbage collection in Java?
+→ Automatic cleanup of unused objects—Java’s own housekeeping robot.</p>
+</li>
+<li>
+<p>How does the garbage collector know which objects to delete?
+→ It checks reachability—if nobody points to it, it’s out.</p>
+</li>
+<li>
+<p>What are strong, weak, soft, and phantom references?
+→ Different &quot;strengths&quot; of how tightly objects are held for GC decisions.</p>
+</li>
+<li>
+<p>What are memory leaks in Java, and how do they occur?
+→ When unused objects stay referenced, hogging memory like unreturned library books.</p>
+</li>
+<li>
+<p>How do you trigger garbage collection manually?
+→ Call <code>System.gc()</code>, but it’s just a polite request, not a command.</p>
+</li>
+<li>
+<p>What is the <code>finalize()</code> method used for?
+→ A last-chance cleanup callback before GC—like a farewell whisper.</p>
+</li>
+<li>
+<p>Is it a good idea to rely on <code>finalize()</code>? Why or why not?
+→ No, it’s unpredictable and deprecated.</p>
+</li>
+<li>
+<p>What is the difference between minor GC and major GC?
+→ Minor GC cleans young generation; major GC cleans old generation and is heavier.</p>
+</li>
+<li>
+<p>What is the Metaspace in Java 8 and above?
+→ A native-memory area storing class metadata, replacing PermGen.</p>
+</li>
+<li>
+<p>How do you analyze memory usage in a Java application?
+→ Use profiling tools, logs, and heap dumps.</p>
+</li>
+<li>
+<p>What tools can be used for profiling Java memory?
+→ VisualVM, JProfiler, YourKit, and Java Mission Control.</p>
+</li>
+<li>
+<p>What are OutOfMemoryError and StackOverflowError?
+→ OOM means memory ran out; StackOverflow means recursion went wild.</p>
+</li>
+<li>
+<p>How can you prevent memory leaks in Java?
+→ Remove unwanted references, close resources, and avoid static hoarding.</p>
+</li>
+<li>
+<p>What is the difference between JVM tuning and profiling?
+→ Tuning adjusts performance settings; profiling inspects behavior to find issues.</p>
+</li>
+</ol>
+<h3 id="advanced-oop--design"><strong>Advanced OOP &amp; Design</strong></h3>
+<ol start="121">
+<li>
+<p>What is composition in Java?
+→ Using one class inside another to build complex objects.</p>
+</li>
+<li>
+<p>How does composition differ from inheritance?
+→ Composition uses “has-a”; inheritance uses “is-a”.</p>
+</li>
+<li>
+<p>What are access modifiers in Java?
+→ Keywords controlling visibility: public, private, protected, and default.</p>
+</li>
+<li>
+<p>What is the default access modifier?
+→ Package-private—visible only within the same package.</p>
+</li>
+<li>
+<p>What are nested classes in Java?
+→ Classes defined inside another class.</p>
+</li>
+<li>
+<p>What are static nested classes?
+→ Nested classes that don’t need an outer class object to be used.</p>
+</li>
+<li>
+<p>What is an anonymous inner class?
+→ A nameless class created for quick one-time use.</p>
+</li>
+<li>
+<p>What are local inner classes?
+→ Classes defined inside a method.</p>
+</li>
+<li>
+<p>What is the purpose of <code>this</code> and <code>super</code> in constructor chaining?
+→ <code>this</code> calls another constructor in the same class; <code>super</code> calls a parent constructor.</p>
+</li>
+<li>
+<p>What is a copy constructor?
+→ A constructor that makes a new object by copying another one.</p>
+</li>
+<li>
+<p>How can you implement a copy constructor in Java?
+→ Create a constructor that accepts the same class type and copies its fields.</p>
+</li>
+<li>
+<p>What is the clone() method in Java?
+→ A method to duplicate objects using the Cloneable mechanism.</p>
+</li>
+<li>
+<p>What is shallow copy vs deep copy?
+→ Shallow copies references; deep copy clones everything inside too.</p>
+</li>
+<li>
+<p>How can you achieve deep copy in Java?
+→ Clone fields manually, use copy constructors, or use serialization.</p>
+</li>
+<li>
+<p>Why should we override the <code>equals()</code> and <code>hashCode()</code> methods together?
+→ To keep consistent behavior in hashed collections.</p>
+</li>
+<li>
+<p>What is the <code>toString()</code> method used for?
+→ To return a readable string version of an object.</p>
+</li>
+<li>
+<p>Can we override <code>equals()</code> without overriding <code>hashCode()</code>?
+→ Yes, but it breaks hashed collections.</p>
+</li>
+<li>
+<p>What is immutability in Java?
+→ When an object cannot be changed after creation.</p>
+</li>
+<li>
+<p>How do you create an immutable class?
+→ Make fields final, private, no setters, and return copies of mutable fields.</p>
+</li>
+<li>
+<p>What is the <code>Object</code> class in Java, and what are its key methods?
+→ The root class of all Java classes containing methods like equals, hashCode, toString, clone, and finalize.</p>
+</li>
+</ol>
+<h3 id="generics"><strong>Generics</strong></h3>
+<ol start="141">
+<li>
+<p>What are generics in Java?
+→ A way to write flexible, type-safe classes and methods.</p>
+</li>
+<li>
+<p>Why were generics introduced?
+→ To prevent type errors and reduce casting headaches.</p>
+</li>
+<li>
+<p>What are the advantages of using generics?
+→ Type safety, cleaner code, and reusable components.</p>
+</li>
+<li>
+<p>What is type erasure in Java generics?
+→ The process where generic types vanish at runtime.</p>
+</li>
+<li>
+<p>Can generics be used with primitive types?
+→ No—only reference types.</p>
+</li>
+<li>
+<p>What are bounded type parameters?
+→ Type parameters restricted using <code>extends</code> or <code>super</code>.</p>
+</li>
+<li>
+<p>What is the difference between <code>&lt;T&gt;</code>, <code>&lt;T extends Class&gt;</code>, and <code>&lt;T super Class&gt;</code>?
+→ <code>&lt;T&gt;</code> is generic, <code>extends</code> is upper-bound, <code>super</code> is lower-bound.</p>
+</li>
+<li>
+<p>What are wildcards in generics?
+→ Question marks that allow flexible unknown types.</p>
+</li>
+<li>
+<p>What is the difference between <code>List&lt;?&gt;</code>, <code>List&lt;Object&gt;</code>, and <code>List&lt;? extends Object&gt;</code>?
+→ <code>List&lt;?&gt;</code> accepts anything read-only, <code>List&lt;Object&gt;</code> needs exact Object, <code>? extends Object</code> allows reading from any subtype.</p>
+</li>
+<li>
+<p>What is a generic method?
+→ A method with its own type parameter.</p>
+</li>
+<li>
+<p>Can a generic class implement a non-generic interface?
+→ Yes—no issues there.</p>
+</li>
+<li>
+<p>Can you create an array of generics? Why or why not?
+→ No—runtime type erasure breaks array type safety.</p>
+</li>
+<li>
+<p>What is type inference?
+→ The compiler guessing the generic type automatically.</p>
+</li>
+<li>
+<p>What are the limitations of generics in Java?
+→ No primitives, no arrays, and erased types.</p>
+</li>
+<li>
+<p>Can you overload methods using generics?
+→ Yes, but type erasure can cause conflicts.</p>
+</li>
+<li>
+<p>How do you create a generic class?
+→ Add <code>&lt;T&gt;</code> after the class name and use T as a placeholder.</p>
+</li>
+<li>
+<p>What is the diamond operator (<code>&lt;&gt;</code>) in Java?
+→ A shorthand letting the compiler infer generic types.</p>
+</li>
+<li>
+<p>What is the difference between compile-time and runtime type checking in generics?
+→ Generics enforce type safety at compile-time; runtime sees erased types.</p>
+</li>
+<li>
+<p>What happens to generics during runtime?
+→ They’re erased and operate as raw types.</p>
+</li>
+<li>
+<p>How do generics improve code reusability?
+→ By letting one structure handle many data types safely.</p>
+</li>
+</ol>
+<h3 id="collections-framework-deep-dive"><strong>Collections Framework (Deep Dive)</strong></h3>
+<ol start="161">
+<li>
+<p>How does an ArrayList work internally?
+→ It uses a dynamic array that grows as needed.</p>
+</li>
+<li>
+<p>What happens when an ArrayList reaches its capacity?
+→ It expands by creating a bigger array and copying elements.</p>
+</li>
+<li>
+<p>How does a LinkedList work internally?
+→ It uses nodes linked together with next/previous pointers.</p>
+</li>
+<li>
+<p>What is the internal data structure of a HashSet?
+→ A HashMap underneath, storing elements as keys.</p>
+</li>
+<li>
+<p>How does HashMap resolve hash collisions?
+→ Using linked lists or balanced trees in buckets.</p>
+</li>
+<li>
+<p>What is rehashing in HashMap?
+→ Recomputing bucket positions when resizing.</p>
+</li>
+<li>
+<p>How does the equals() and hashCode() contract affect HashMap behavior?
+→ Proper hashing ensures correct key lookup and storage.</p>
+</li>
+<li>
+<p>What is the internal structure of a ConcurrentHashMap?
+→ A segmented, lock-efficient hash table.</p>
+</li>
+<li>
+<p>What is the difference between ConcurrentHashMap and synchronizedMap()?
+→ ConcurrentHashMap uses fine-grained locking; synchronizedMap locks the whole map.</p>
+</li>
+<li>
+<p>What is CopyOnWriteArrayList and how does it work?
+→ A thread-safe list that copies the array on each write.</p>
+</li>
+<li>
+<p>What is the difference between Hashtable and ConcurrentHashMap?
+→ Hashtable locks everything; ConcurrentHashMap locks only parts.</p>
+</li>
+<li>
+<p>What is the purpose of WeakHashMap?
+→ To allow keys to be garbage collected when weakly referenced.</p>
+</li>
+<li>
+<p>What is the difference between TreeMap and LinkedHashMap?
+→ TreeMap is sorted; LinkedHashMap keeps insertion order.</p>
+</li>
+<li>
+<p>How does LinkedHashMap maintain insertion order?
+→ Through a doubly linked list of entries.</p>
+</li>
+<li>
+<p>How can you make a Collection thread-safe?
+→ Use <code>Collections.synchronizedXXX()</code> or concurrent classes.</p>
+</li>
+<li>
+<p>What is the difference between synchronized collection and concurrent collection?
+→ Synchronized is fully locked; concurrent allows safe parallel access.</p>
+</li>
+<li>
+<p>What is Enumeration and Iterator?
+→ Enumeration is the old cursor; Iterator is modern and supports removal.</p>
+</li>
+<li>
+<p>What is a BlockingQueue?
+→ A queue that waits when adding/removing until space/data appears.</p>
+</li>
+<li>
+<p>What is the difference between PriorityQueue and ArrayDeque?
+→ PriorityQueue orders elements by priority; ArrayDeque is a fast double-ended queue.</p>
+</li>
+<li>
+<p>How do you sort a List of objects in Java?
+→ Use <code>Collections.sort()</code> or <code>list.sort()</code> with a Comparator.</p>
+</li>
+</ol>
+<h3 id="functional-programming-java-8-and-beyond"><strong>Functional Programming (Java 8 and Beyond)</strong></h3>
+<ol start="181">
+<li>
+<p>What are lambda expressions in Java?
+→ Short functions written in a compact, arrow-style format.</p>
+</li>
+<li>
+<p>What is a functional interface?
+→ An interface with exactly one abstract method.</p>
+</li>
+<li>
+<p>Give examples of built-in functional interfaces in Java.
+→ Runnable, Predicate, Function, Supplier, Consumer.</p>
+</li>
+<li>
+<p>What is the difference between a lambda expression and an anonymous class?
+→ Lambdas are shorter and focus on behavior, not type.</p>
+</li>
+<li>
+<p>What is the <code>Predicate</code> interface used for?
+→ Testing a condition and returning true/false.</p>
+</li>
+<li>
+<p>What is the <code>Function</code> interface used for?
+→ Converting one value into another.</p>
+</li>
+<li>
+<p>What is the <code>Supplier</code> interface used for?
+→ Providing values without any input.</p>
+</li>
+<li>
+<p>What is the <code>Consumer</code> interface used for?
+→ Accepting a value and performing an action.</p>
+</li>
+<li>
+<p>What is a method reference?
+→ A shorthand way to refer to an existing method.</p>
+</li>
+<li>
+<p>What is the syntax for constructor references?
+→ ClassName::new.</p>
+</li>
+<li>
+<p>What are streams in Java?
+→ Pipelines for processing data in a functional style.</p>
+</li>
+<li>
+<p>What is the difference between intermediate and terminal operations in streams?
+→ Intermediate steps transform data; terminal steps produce results.</p>
+</li>
+<li>
+<p>What are some examples of intermediate operations?
+→ map, filter, sorted, flatMap, distinct.</p>
+</li>
+<li>
+<p>What are some examples of terminal operations?
+→ collect, forEach, reduce, count, findFirst.</p>
+</li>
+<li>
+<p>What is the difference between <code>map()</code> and <code>flatMap()</code>?
+→ map transforms elements; flatMap flattens nested structures too.</p>
+</li>
+<li>
+<p>What is the difference between sequential and parallel streams?
+→ Sequential runs in one thread; parallel uses multiple threads.</p>
+</li>
+<li>
+<p>What is lazy evaluation in Java streams?
+→ Operations run only when a terminal operation is called.</p>
+</li>
+<li>
+<p>How can you filter and sort using streams?
+→ Use filter() for conditions and sorted() for ordering.</p>
+</li>
+<li>
+<p>What are Optional objects in Java?
+→ Containers that may or may not hold a value.</p>
+</li>
+<li>
+<p>What is the purpose of the <code>Optional</code> class, and how do you use it?
+→ To avoid null checks—use methods like of(), empty(), get(), orElse().</p>
+</li>
+</ol>
+<hr>
+<h2 id="%E2%9A%99%EF%B8%8F-batch-3--advanced-concurrency--multithreading-q201%E2%80%93q300">⚙️ <strong>Batch 3 — Advanced Concurrency &amp; Multithreading (Q201–Q300)</strong></h2>
+<h3 id="threads--life-cycle"><strong>Threads &amp; Life Cycle</strong></h3>
+<ol start="201">
+<li>
+<p>What are the different states of a thread in Java?
+→ New, Runnable, Running, Blocked/Waiting, and Terminated — like a tiny worker with mood swings.</p>
+</li>
+<li>
+<p>How can you check if a thread is alive or not?
+→ Use <code>thread.isAlive()</code> to see if it’s still buzzing around.</p>
+</li>
+<li>
+<p>What is the difference between <code>start()</code> and <code>run()</code> methods in threads?
+→ <code>start()</code> creates a real new thread; <code>run()</code> is just a normal method pretending to be fancy.</p>
+</li>
+<li>
+<p>Can you call <code>run()</code> directly instead of <code>start()</code>? What happens?
+→ Yes, but it runs on the same thread, so no actual “multithreading magic” happens.</p>
+</li>
+<li>
+<p>What is the life cycle of a thread?
+→ It goes from born → runnable → running → waiting/blocking → done forever.</p>
+</li>
+<li>
+<p>What happens when the <code>run()</code> method throws an exception?
+→ The thread quietly dies with that exception as its last words.</p>
+</li>
+<li>
+<p>How do you stop a thread gracefully?
+→ Use a flag (like <code>isRunning</code>) and let the thread exit politely on its own.</p>
+</li>
+<li>
+<p>What is the <code>volatile</code> keyword used for?
+→ It makes a variable always read the fresh, up-to-date value from memory.</p>
+</li>
+<li>
+<p>How is <code>volatile</code> different from <code>synchronized</code>?
+→ <code>volatile</code> gives visibility, while <code>synchronized</code> gives both visibility and “one-at-a-time” access.</p>
+</li>
+<li>
+<p>What is the difference between <code>Thread.sleep()</code> and <code>Object.wait()</code>?
+→ <code>sleep()</code> just pauses; <code>wait()</code> pauses <em>and</em> gives up the lock like a polite guest.</p>
+</li>
+</ol>
+<h3 id="synchronization"><strong>Synchronization</strong></h3>
+<ol start="211">
+<li>
+<p>What is synchronization in Java?
+→ It’s Java’s way of making threads take turns instead of wrestling over shared data.</p>
+</li>
+<li>
+<p>Why is synchronization needed?
+→ To stop threads from messing up shared variables like kids fighting over one toy.</p>
+</li>
+<li>
+<p>What are intrinsic locks or monitor locks?
+→ Built-in locks every Java object secretly carries around like a personal door key.</p>
+</li>
+<li>
+<p>What is a synchronized method vs synchronized block?
+→ A synchronized method locks the whole method; a block locks only the tiny part you choose.</p>
+</li>
+<li>
+<p>Can static methods be synchronized?
+→ Yes, they lock on the class itself like a big global gate.</p>
+</li>
+<li>
+<p>What happens if one thread holds a lock and another tries to access it?
+→ The second one just waits patiently like someone stuck outside a bathroom door.</p>
+</li>
+<li>
+<p>What is a reentrant lock?
+→ A lock that lets the same thread enter again without getting locked out by itself.</p>
+</li>
+<li>
+<p>What are the disadvantages of synchronization?
+→ Slower performance and the risk of deadlocks — like traffic jams for threads.</p>
+</li>
+<li>
+<p>What is the difference between synchronized and concurrent collections?
+→ Synchronized ones block everything; concurrent ones let more action happen safely at once.</p>
+</li>
+<li>
+<p>What is thread interference?
+→ When two threads scramble shared data by poking it at the same time.</p>
+</li>
+</ol>
+<h3 id="deadlock-livelock--starvation"><strong>Deadlock, Livelock &amp; Starvation</strong></h3>
+<ol start="221">
+<li>
+<p>What is a deadlock?
+→ It’s when two threads wait on each other forever like two people holding doors saying “you first.”</p>
+</li>
+<li>
+<p>What are the four conditions that cause deadlock?
+→ Mutual exclusion, hold-and-wait, no preemption, and circular waiting — the four horsemen of thread misery.</p>
+</li>
+<li>
+<p>How do you detect a deadlock?
+→ Look for threads stuck waiting on each other with no chance of escape.</p>
+</li>
+<li>
+<p>How can you prevent a deadlock?
+→ Break at least one of the four conditions by ordering locks or avoiding long lock-holds.</p>
+</li>
+<li>
+<p>What is livelock?
+→ Threads keep moving but never progress, like two people dancing sideways to avoid each other.</p>
+</li>
+<li>
+<p>What is thread starvation?
+→ When one thread never gets CPU time because others hog the spotlight.</p>
+</li>
+<li>
+<p>What are some ways to avoid thread starvation?
+→ Use fair locks, balanced priorities, and avoid greedy resource grabbing.</p>
+</li>
+<li>
+<p>Can deadlocks occur with only one thread?
+→ Nope, you need at least two troublemakers.</p>
+</li>
+<li>
+<p>How do you debug deadlocks in Java?
+→ Take thread dumps and look for threads stuck in <code>BLOCKED</code> with circular lock waits.</p>
+</li>
+<li>
+<p>What tools can be used to identify deadlocks?
+→ JDK tools like <code>jstack</code>, VisualVM, Mission Control, and IntelliJ/IDE debuggers.</p>
+</li>
+</ol>
+<h3 id="thread-communication"><strong>Thread Communication</strong></h3>
+<ol start="231">
+<li>
+<p>What is inter-thread communication?
+→ It’s how threads politely talk and coordinate instead of bumping into each other.</p>
+</li>
+<li>
+<p>What are the three main methods of inter-thread communication?
+→ <code>wait()</code>, <code>notify()</code>, and <code>notifyAll()</code> — the tiny messaging trio.</p>
+</li>
+<li>
+<p>What is the difference between <code>notify()</code> and <code>notifyAll()</code>?
+→ <code>notify()</code> wakes one waiter; <code>notifyAll()</code> wakes the whole sleepy crowd.</p>
+</li>
+<li>
+<p>What happens if <code>notify()</code> is called with no waiting threads?
+→ Nothing at all — it just vanishes into the void.</p>
+</li>
+<li>
+<p>Why must <code>wait()</code> and <code>notify()</code> be called inside synchronized blocks?
+→ Because they need the object’s lock to avoid wild, unsafe wake-ups.</p>
+</li>
+<li>
+<p>What is spurious wakeup in Java?
+→ When a thread wakes up even though nobody actually notified it — a random nudge.</p>
+</li>
+<li>
+<p>How can you handle spurious wakeups?
+→ Always wait in a loop that re-checks the condition.</p>
+</li>
+<li>
+<p>Can <code>wait()</code> be interrupted?
+→ Yes, and it throws <code>InterruptedException</code> to say so.</p>
+</li>
+<li>
+<p>What happens if <code>wait()</code> is called on an object without holding its lock?
+→ It throws <code>IllegalMonitorStateException</code> like a strict bouncer.</p>
+</li>
+<li>
+<p>What is the purpose of the <code>join()</code> method in threads?
+→ It makes one thread wait until another finishes its work.</p>
+</li>
+</ol>
+<h3 id="executor-framework"><strong>Executor Framework</strong></h3>
+<ol start="241">
+<li>
+<p>What is the Executor Framework in Java?
+→ A system that manages threads for you so you don’t juggle them manually.</p>
+</li>
+<li>
+<p>Why was the Executor Framework introduced?
+→ To simplify thread management and make concurrency less chaotic.</p>
+</li>
+<li>
+<p>What is the difference between Executor and ExecutorService?
+→ Executor just runs tasks; ExecutorService adds extras like shutdown and task tracking.</p>
+</li>
+<li>
+<p>What is the role of <code>Callable</code> and <code>Future</code>?
+→ <code>Callable</code> returns a value; <code>Future</code> holds that value for later pickup.</p>
+</li>
+<li>
+<p>What is the difference between <code>Runnable</code> and <code>Callable</code>?
+→ <code>Runnable</code> returns nothing; <code>Callable</code> returns something and can throw checked exceptions.</p>
+</li>
+<li>
+<p>What is the <code>submit()</code> method used for?
+→ To send a task to the executor and get a <code>Future</code> back.</p>
+</li>
+<li>
+<p>What is a <code>FutureTask</code>?
+→ A wrapper combining a task and its future result in one neat package.</p>
+</li>
+<li>
+<p>How do you cancel a running task?
+→ Call <code>future.cancel(true)</code> and hope the task behaves.</p>
+</li>
+<li>
+<p>What are the different types of thread pools in <code>Executors</code>?
+→ Fixed, cached, single-thread, and scheduled pools.</p>
+</li>
+<li>
+<p>How does a <code>FixedThreadPool</code> work?
+→ It uses a set number of threads that reuse themselves endlessly.</p>
+</li>
+<li>
+<p>What is the difference between <code>CachedThreadPool</code> and <code>FixedThreadPool</code>?
+→ Cached expands and shrinks freely; fixed stays the same size.</p>
+</li>
+<li>
+<p>What is a <code>SingleThreadExecutor</code>?
+→ A pool with exactly one worker that handles tasks one by one.</p>
+</li>
+<li>
+<p>What is a <code>ScheduledThreadPoolExecutor</code>?
+→ A pool that can delay or repeat tasks on a schedule.</p>
+</li>
+<li>
+<p>How do you schedule a task for repeated execution?
+→ Use <code>scheduleAtFixedRate()</code> or <code>scheduleWithFixedDelay()</code>.</p>
+</li>
+<li>
+<p>What is the difference between <code>schedule()</code> and <code>scheduleAtFixedRate()</code>?
+→ <code>schedule()</code> runs once; <code>scheduleAtFixedRate()</code> repeats at steady intervals.</p>
+</li>
+<li>
+<p>What is the role of the <code>RejectedExecutionHandler</code>?
+→ It decides what to do when the pool refuses a task.</p>
+</li>
+<li>
+<p>How do you shut down an executor service?
+→ Call <code>shutdown()</code> or <code>shutdownNow()</code> politely or forcefully.</p>
+</li>
+<li>
+<p>What is the difference between <code>shutdown()</code> and <code>shutdownNow()</code>?
+→ <code>shutdown()</code> lets tasks finish; <code>shutdownNow()</code> tries to stop everything instantly.</p>
+</li>
+<li>
+<p>What happens if you submit a task after shutdown?
+→ You get a rejection because the pool has closed shop.</p>
+</li>
+<li>
+<p>How do you handle exceptions in threads using ExecutorService?
+→ Catch them via <code>Future.get()</code> or wrap tasks with custom handlers.</p>
+</li>
+</ol>
+<h3 id="locks-and-synchronizers"><strong>Locks and Synchronizers</strong></h3>
+<ol start="261">
+<li>
+<p>What is the <code>Lock</code> interface in Java?
+→ A manual lock you control yourself instead of relying on <code>synchronized</code>.</p>
+</li>
+<li>
+<p>What is the difference between <code>Lock</code> and <code>synchronized</code>?
+→ <code>Lock</code> gives more control; <code>synchronized</code> is automatic and simpler.</p>
+</li>
+<li>
+<p>What is <code>ReentrantLock</code>?
+→ A lock that lets the same thread re-enter without blocking itself.</p>
+</li>
+<li>
+<p>What are the advantages of using <code>ReentrantLock</code>?
+→ Try-locking, fair locking, interruptible locking, and more flexibility.</p>
+</li>
+<li>
+<p>What is <code>tryLock()</code> used for?
+→ To attempt a lock without waiting forever.</p>
+</li>
+<li>
+<p>What is a fair lock?
+→ A lock that hands out turns in strict arrival order.</p>
+</li>
+<li>
+<p>What is a <code>ReadWriteLock</code>?
+→ A lock with one write lock and many read locks.</p>
+</li>
+<li>
+<p>When would you use a <code>ReadWriteLock</code>?
+→ When reads are frequent and writes are rare.</p>
+</li>
+<li>
+<p>What is the <code>StampedLock</code> in Java 8?
+→ A lock with stamps that supports optimistic reads.</p>
+</li>
+<li>
+<p>What is the difference between <code>StampedLock</code> and <code>ReentrantLock</code>?
+→ <code>StampedLock</code> supports fast optimistic reads; <code>ReentrantLock</code> doesn’t.</p>
+</li>
+<li>
+<p>What is <code>Condition</code> in Java concurrency?
+→ A tool for finer control of waiting and signalling inside locks.</p>
+</li>
+<li>
+<p>What is the difference between <code>Condition</code> and <code>Object.wait()</code>?
+→ <code>Condition</code> works with Lock; <code>wait()</code> works with intrinsic locks.</p>
+</li>
+<li>
+<p>How do you use a <code>Condition</code> to signal between threads?
+→ Lock → wait with <code>await()</code> → signal with <code>signal()</code> or <code>signalAll()</code>.</p>
+</li>
+<li>
+<p>What is a <code>Semaphore</code>?
+→ A counter that limits how many threads can access something.</p>
+</li>
+<li>
+<p>What is the difference between binary and counting semaphores?
+→ Binary allows one permit; counting allows many.</p>
+</li>
+<li>
+<p>What is a <code>CountDownLatch</code>?
+→ A latch that releases threads once its count hits zero.</p>
+</li>
+<li>
+<p>How is a <code>CountDownLatch</code> different from a <code>CyclicBarrier</code>?
+→ Latch is one-time; barrier resets and can be reused.</p>
+</li>
+<li>
+<p>What is a <code>CyclicBarrier</code> used for?
+→ To make threads wait until all have reached the same point.</p>
+</li>
+<li>
+<p>What is a <code>Phaser</code>?
+→ A flexible barrier that supports dynamic registration of parties.</p>
+</li>
+<li>
+<p>What is the difference between <code>Phaser</code> and <code>CyclicBarrier</code>?
+→ Phaser is more flexible and reusable with changing participants.</p>
+</li>
+</ol>
+<h3 id="atomic-and-concurrent-utilities"><strong>Atomic and Concurrent Utilities</strong></h3>
+<ol start="281">
+<li>
+<p>What are atomic variables in Java?
+→ Special variables that update safely without locks.</p>
+</li>
+<li>
+<p>What is the difference between atomic and volatile variables?
+→ Atomic changes values safely; volatile only guarantees visibility.</p>
+</li>
+<li>
+<p>What is compare-and-swap (CAS)?
+→ A fast trick to update a value only if it hasn’t changed.</p>
+</li>
+<li>
+<p>What is the role of the <code>AtomicInteger</code> class?
+→ To do thread-safe integer updates without locks.</p>
+</li>
+<li>
+<p>What is the difference between <code>AtomicInteger</code> and <code>synchronized</code> increment?
+→ Atomic uses CAS; synchronized uses locking.</p>
+</li>
+<li>
+<p>What is the <code>ConcurrentLinkedQueue</code>?
+→ A lock-free, thread-safe queue.</p>
+</li>
+<li>
+<p>How is <code>ConcurrentHashMap</code> made thread-safe?
+→ By using fine-grained locking and non-blocking reads.</p>
+</li>
+<li>
+<p>What is the difference between <code>CopyOnWriteArrayList</code> and <code>Vector</code>?
+→ CopyOnWrite copies on writes; Vector locks everything.</p>
+</li>
+<li>
+<p>What is <code>ConcurrentSkipListMap</code>?
+→ A sorted, thread-safe map based on skip-list structures.</p>
+</li>
+<li>
+<p>When should you use <code>ConcurrentSkipListMap</code> instead of <code>ConcurrentHashMap</code>?
+→ When you need sorted, navigable ordering.</p>
+</li>
+<li>
+<p>What is <code>BlockingQueue</code> and its types?
+→ A queue that waits on insert/remove; types include array, linked, priority, delay, and synchronous.</p>
+</li>
+<li>
+<p>What is the difference between <code>ArrayBlockingQueue</code> and <code>LinkedBlockingQueue</code>?
+→ Array is fixed-size; linked can grow larger.</p>
+</li>
+<li>
+<p>What is the purpose of a <code>DelayQueue</code>?
+→ To release items only after their delay expires.</p>
+</li>
+<li>
+<p>What is the <code>SynchronousQueue</code>?
+→ A queue with zero capacity that hands items directly from one thread to another.</p>
+</li>
+<li>
+<p>What is the <code>Exchanger</code> class?
+→ A tool for two threads to swap data.</p>
+</li>
+<li>
+<p>What is the difference between <code>CountDownLatch</code> and <code>Exchanger</code>?
+→ Latch waits for a countdown; Exchanger swaps data between two threads.</p>
+</li>
+<li>
+<p>What is the difference between concurrent and parallel programming?
+→ Concurrent means many tasks in progress; parallel means tasks run literally at the same time.</p>
+</li>
+<li>
+<p>What are fork/join frameworks in Java?
+→ A system for splitting big tasks into smaller ones and combining results.</p>
+</li>
+<li>
+<p>What is the <code>RecursiveTask</code> in fork/join?
+→ A task that returns a result after splitting and joining.</p>
+</li>
+<li>
+<p>What is the difference between <code>ForkJoinPool</code> and <code>ExecutorService</code>?
+→ ForkJoinPool uses work-stealing for divide-and-conquer tasks; ExecutorService uses simpler task execution.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%92%BE-batch-4--java-io-nio-serialization-and-networking-q301%E2%80%93q400">💾 <strong>Batch 4 — Java I/O, NIO, Serialization, and Networking (Q301–Q400)</strong></h2>
+<h3 id="java-io-streams-and-readerswriters"><strong>Java I/O (Streams and Readers/Writers)</strong></h3>
+<ol start="301">
+<li>
+<p>What is Java I/O?
+→ It’s Java’s system for reading and writing data from sources like files, memory, and networks.</p>
+</li>
+<li>
+<p>What are the main types of I/O streams in Java?
+→ Byte streams and character streams.</p>
+</li>
+<li>
+<p>What is the difference between byte streams and character streams?
+→ Byte streams handle raw bytes; character streams handle text with proper encoding.</p>
+</li>
+<li>
+<p>What are the main abstract classes for byte streams?
+→ <code>InputStream</code> and <code>OutputStream</code>.</p>
+</li>
+<li>
+<p>What are the main abstract classes for character streams?
+→ <code>Reader</code> and <code>Writer</code>.</p>
+</li>
+<li>
+<p>What is the difference between <code>InputStream</code> and <code>Reader</code>?
+→ <code>InputStream</code> reads bytes; <code>Reader</code> reads characters.</p>
+</li>
+<li>
+<p>What is the difference between <code>OutputStream</code> and <code>Writer</code>?
+→ <code>OutputStream</code> writes bytes; <code>Writer</code> writes characters.</p>
+</li>
+<li>
+<p>What is the role of <code>FileInputStream</code> and <code>FileOutputStream</code>?
+→ They read and write raw byte data to files.</p>
+</li>
+<li>
+<p>How does <code>BufferedInputStream</code> improve performance?
+→ It reduces disk reads by loading chunks of data into a buffer.</p>
+</li>
+<li>
+<p>What is the difference between <code>BufferedReader</code> and <code>FileReader</code>?
+→ <code>BufferedReader</code> adds efficient line-by-line reading on top of a reader like <code>FileReader</code>.</p>
+</li>
+<li>
+<p>What is the purpose of <code>PrintWriter</code>?
+→ It provides easy text printing with convenience methods.</p>
+</li>
+<li>
+<p>What is the difference between <code>flush()</code> and <code>close()</code>?
+→ <code>flush()</code> pushes pending data out; <code>close()</code> flushes and then terminates the stream.</p>
+</li>
+<li>
+<p>What happens if you write to a stream after closing it?
+→ It throws an <code>IOException</code>.</p>
+</li>
+<li>
+<p>What is the purpose of <code>DataInputStream</code> and <code>DataOutputStream</code>?
+→ They read and write Java primitive data types in a portable form.</p>
+</li>
+<li>
+<p>What are filter streams in Java?
+→ Streams that wrap other streams to add extra features like buffering or type handling.</p>
+</li>
+<li>
+<p>What is <code>SequenceInputStream</code> used for?
+→ To read multiple input streams as if they were one continuous stream.</p>
+</li>
+<li>
+<p>What is the difference between <code>pushback</code> and <code>buffered</code> streams?
+→ Pushback lets you “unread” bytes; buffered improves speed by storing chunks.</p>
+</li>
+<li>
+<p>What is <code>ObjectInputStream</code> used for?
+→ For reading serialized Java objects back into memory.</p>
+</li>
+<li>
+<p>What is the purpose of <code>InputStreamReader</code> and <code>OutputStreamWriter</code>?
+→ They convert between byte streams and character streams using a chosen encoding.</p>
+</li>
+<li>
+<p>How does character encoding affect file reading and writing?
+→ It determines how characters map to bytes, influencing correctness of text data.</p>
+</li>
+</ol>
+<h3 id="file-handling"><strong>File Handling</strong></h3>
+<ol start="321">
+<li>
+<p>How do you create a file in Java?
+→ Use <code>new File(&quot;name&quot;).createNewFile()</code>.</p>
+</li>
+<li>
+<p>How do you delete a file in Java?
+→ Call <code>file.delete()</code>.</p>
+</li>
+<li>
+<p>How do you check if a file exists?
+→ Use <code>file.exists()</code>.</p>
+</li>
+<li>
+<p>What is the <code>File</code> class in Java used for?
+→ To represent file and directory paths.</p>
+</li>
+<li>
+<p>How do you list all files in a directory?
+→ Use <code>file.list()</code> or <code>file.listFiles()</code>.</p>
+</li>
+<li>
+<p>How do you create a directory in Java?
+→ Call <code>file.mkdir()</code> or <code>file.mkdirs()</code>.</p>
+</li>
+<li>
+<p>Can you rename a file using Java?
+→ Yes, with <code>file.renameTo(newFile)</code>.</p>
+</li>
+<li>
+<p>What is the difference between absolute and relative file paths?
+→ Absolute gives full location; relative depends on current working directory.</p>
+</li>
+<li>
+<p>What happens if you try to read from a non-existent file?
+→ You get a <code>FileNotFoundException</code>.</p>
+</li>
+<li>
+<p>What are some common exceptions in file handling?
+→ <code>IOException</code>, <code>FileNotFoundException</code>, <code>SecurityException</code>.</p>
+</li>
+<li>
+<p>How do you handle large files efficiently?
+→ Use buffered streams or NIO channels.</p>
+</li>
+<li>
+<p>What are the advantages of using buffered streams for file operations?
+→ Faster reads/writes by reducing direct disk access.</p>
+</li>
+<li>
+<p>How do you copy a file using Java I/O?
+→ Read from input stream and write to output stream in a loop.</p>
+</li>
+<li>
+<p>How do you move a file in Java?
+→ Use <code>Files.move()</code> in NIO.</p>
+</li>
+<li>
+<p>How do you append data to a file?
+→ Use <code>FileWriter(file, true)</code> or <code>Files.write(..., APPEND)</code>.</p>
+</li>
+<li>
+<p>What is the difference between <code>FileWriter</code> and <code>FileOutputStream</code>?
+→ <code>FileWriter</code> writes characters; <code>FileOutputStream</code> writes bytes.</p>
+</li>
+<li>
+<p>What are the limitations of the <code>java.io.File</code> API?
+→ Limited metadata handling and no real file operations like copy/move.</p>
+</li>
+<li>
+<p>How do you check if a file is readable or writable?
+→ Use <code>file.canRead()</code> and <code>file.canWrite()</code>.</p>
+</li>
+<li>
+<p>How do you set file permissions in Java?
+→ Use <code>file.setReadable()</code>, <code>setWritable()</code>, or NIO <code>PosixFilePermissions</code>.</p>
+</li>
+<li>
+<p>What is <code>Files</code> class in Java NIO used for?
+→ High-level operations like copy, move, delete, read, and write.</p>
+</li>
+</ol>
+<h3 id="java-nio-new-io"><strong>Java NIO (New I/O)</strong></h3>
+<ol start="341">
+<li>
+<p>What is Java NIO?
+→ It’s a faster, scalable I/O system using buffers, channels, and selectors.</p>
+</li>
+<li>
+<p>Why was NIO introduced when we already had I/O?
+→ To support non-blocking, high-performance, multiplexed I/O.</p>
+</li>
+<li>
+<p>What are buffers in NIO?
+→ Memory containers that hold data read from or written to channels.</p>
+</li>
+<li>
+<p>What are channels in NIO?
+→ Bidirectional data pipes that connect buffers to I/O sources.</p>
+</li>
+<li>
+<p>What is the difference between streams and channels?
+→ Streams are one-way; channels are two-way and buffer-based.</p>
+</li>
+<li>
+<p>What is the role of the <code>ByteBuffer</code> class?
+→ It stores bytes and provides methods to read/write them efficiently.</p>
+</li>
+<li>
+<p>What is a direct buffer?
+→ A buffer allocated outside the JVM heap for faster native I/O.</p>
+</li>
+<li>
+<p>What are the types of buffers available in NIO?
+→ Byte, Char, Short, Int, Long, Float, and Double buffers.</p>
+</li>
+<li>
+<p>How do you read data from a channel into a buffer?
+→ Call <code>channel.read(buffer)</code>.</p>
+</li>
+<li>
+<p>What are non-blocking channels?
+→ Channels that return immediately without waiting for data readiness.</p>
+</li>
+<li>
+<p>What is the purpose of <code>FileChannel</code>?
+→ To perform high-speed file operations using buffers.</p>
+</li>
+<li>
+<p>How do you transfer data between channels?
+→ Using <code>transferTo()</code> or <code>transferFrom()</code>.</p>
+</li>
+<li>
+<p>What is the difference between scatter and gather operations?
+→ Scatter reads into multiple buffers; gather writes from multiple buffers.</p>
+</li>
+<li>
+<p>What is a selector in NIO?
+→ A component that monitors multiple channels for I/O readiness.</p>
+</li>
+<li>
+<p>What is the role of the <code>SelectionKey</code> class?
+→ It represents a channel’s registration and readiness state with a selector.</p>
+</li>
+<li>
+<p>What are the possible selection operations in NIO?
+→ <code>OP_READ</code>, <code>OP_WRITE</code>, <code>OP_ACCEPT</code>, and <code>OP_CONNECT</code>.</p>
+</li>
+<li>
+<p>What is the difference between blocking and non-blocking I/O?
+→ Blocking waits for data; non-blocking returns instantly.</p>
+</li>
+<li>
+<p>How do selectors help in multiplexed I/O?
+→ They let one thread manage many channels efficiently.</p>
+</li>
+<li>
+<p>What is asynchronous I/O in Java NIO.2?
+→ I/O operations that run independently and signal completion later.</p>
+</li>
+<li>
+<p>What is the <code>Path</code> interface used for?
+→ Representing file system paths in a modern, flexible way.</p>
+</li>
+</ol>
+<h3 id="nio2-file-and-path-api"><strong>NIO.2 (File and Path API)</strong></h3>
+<ol start="361">
+<li>
+<p>What is the <code>Paths</code> class used for?
+→ To create <code>Path</code> objects easily.</p>
+</li>
+<li>
+<p>How do you create a path using NIO.2?
+→ Use <code>Paths.get(&quot;path&quot;)</code>.</p>
+</li>
+<li>
+<p>What is the <code>Files.walk()</code> method used for?
+→ To recursively traverse directories.</p>
+</li>
+<li>
+<p>What is the difference between <code>Files.readAllBytes()</code> and <code>Files.lines()</code>?
+→ One returns raw bytes; the other returns a stream of text lines.</p>
+</li>
+<li>
+<p>What is the <code>FileVisitor</code> interface used for?
+→ Custom directory walking logic.</p>
+</li>
+<li>
+<p>What is <code>SimpleFileVisitor</code>?
+→ A helper class with default <code>FileVisitor</code> implementations.</p>
+</li>
+<li>
+<p>How do you read file attributes in NIO.2?
+→ Use <code>Files.readAttributes(path, BasicFileAttributes.class)</code>.</p>
+</li>
+<li>
+<p>What is the <code>BasicFileAttributes</code> interface?
+→ A view of common metadata like size, timestamps, and type.</p>
+</li>
+<li>
+<p>How do you copy files using <code>Files.copy()</code>?
+→ Call <code>Files.copy(src, dest, options...)</code>.</p>
+</li>
+<li>
+<p>What is symbolic linking in NIO.2?
+→ Creating a shortcut-like path pointing to another file.</p>
+</li>
+<li>
+<p>How do you watch directory changes in NIO.2?
+→ By using a <code>WatchService</code>.</p>
+</li>
+<li>
+<p>What is the <code>WatchService</code> API?
+→ A system for monitoring file events in directories.</p>
+</li>
+<li>
+<p>What are the possible events in <code>WatchService</code>?
+→ <code>ENTRY_CREATE</code>, <code>ENTRY_MODIFY</code>, and <code>ENTRY_DELETE</code>.</p>
+</li>
+<li>
+<p>How do you register a directory with <code>WatchService</code>?
+→ Use <code>path.register(watchService, events...)</code>.</p>
+</li>
+<li>
+<p>What happens when a watched file is modified or deleted?
+→ The watch key receives the corresponding event.</p>
+</li>
+<li>
+<p>What are the advantages of NIO.2 over traditional I/O?
+→ Better file APIs, async I/O, and robust path handling.</p>
+</li>
+<li>
+<p>What is the difference between asynchronous and synchronous channels?
+→ Sync waits for completion; async continues immediately.</p>
+</li>
+<li>
+<p>What is the <code>AsynchronousFileChannel</code>?
+→ A channel for non-blocking file operations.</p>
+</li>
+<li>
+<p>How do you perform asynchronous read/write in NIO.2?
+→ Call <code>read()</code> or <code>write()</code> with a <code>CompletionHandler</code>.</p>
+</li>
+<li>
+<p>What is the use of <code>CompletionHandler</code>?
+→ To receive callbacks when async operations finish.</p>
+</li>
+</ol>
+<h3 id="serialization"><strong>Serialization</strong></h3>
+<ol start="381">
+<li>
+<p>What is serialization in Java?
+→ Converting an object into a byte stream.</p>
+</li>
+<li>
+<p>Why do we need serialization?
+→ To store or send objects across systems.</p>
+</li>
+<li>
+<p>How do you make a class serializable?
+→ Implement <code>Serializable</code>.</p>
+</li>
+<li>
+<p>What is the role of the <code>Serializable</code> interface?
+→ It marks a class as eligible for serialization.</p>
+</li>
+<li>
+<p>What happens if a superclass is not serializable?
+→ Its fields are skipped and must be reinitialized.</p>
+</li>
+<li>
+<p>What is the <code>serialVersionUID</code>?
+→ A version marker for serialized classes.</p>
+</li>
+<li>
+<p>What happens if <code>serialVersionUID</code> is not declared?
+→ Java generates one, risking mismatch errors.</p>
+</li>
+<li>
+<p>How do you prevent serialization of certain fields?
+→ Mark them <code>transient</code>.</p>
+</li>
+<li>
+<p>What is the <code>transient</code> keyword used for?
+→ To exclude a field from serialization.</p>
+</li>
+<li>
+<p>What is the difference between <code>Serializable</code> and <code>Externalizable</code>?
+→ <code>Externalizable</code> gives full manual control.</p>
+</li>
+<li>
+<p>How do you customize serialization?
+→ Implement <code>writeObject()</code> and <code>readObject()</code>.</p>
+</li>
+<li>
+<p>What are some common issues with serialization?
+→ Version conflicts, performance cost, security risks.</p>
+</li>
+<li>
+<p>What is deep serialization?
+→ Serializing an object and all referenced objects.</p>
+</li>
+<li>
+<p>Can static fields be serialized?
+→ No, because they belong to the class.</p>
+</li>
+<li>
+<p>How do you serialize a list of objects?
+→ Write the list itself with <code>ObjectOutputStream</code>.</p>
+</li>
+<li>
+<p>What is object deserialization?
+→ Rebuilding an object from its byte stream.</p>
+</li>
+<li>
+<p>What is the risk of deserializing untrusted data?
+→ Possible remote code execution.</p>
+</li>
+<li>
+<p>What are alternatives to Java’s built-in serialization?
+→ JSON, XML, Protobuf, Kryo, Avro.</p>
+</li>
+<li>
+<p>How do you compress serialized data?
+→ Wrap streams with <code>GZIPOutputStream</code>.</p>
+</li>
+<li>
+<p>What libraries are commonly used for faster or safer serialization?
+→ Kryo, Protobuf, Avro, Jackson.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%8F%A6-batch-5--jdbc-orm-and-transaction-management-q401%E2%80%93q500">🏦 <strong>Batch 5 — JDBC, ORM, and Transaction Management (Q401–Q500)</strong></h2>
+<h3 id="jdbc-basics"><strong>JDBC Basics</strong></h3>
+<ol start="401">
+<li>
+<p>What is JDBC?
+→ It’s Java’s way of talking to databases.</p>
+</li>
+<li>
+<p>What are the main steps to connect a Java application to a database using JDBC?
+→ Load driver, get connection, create statement, run query, close everything.</p>
+</li>
+<li>
+<p>What are the core components of JDBC?
+→ DriverManager, Connection, Statement, ResultSet.</p>
+</li>
+<li>
+<p>What is the role of the <code>DriverManager</code> class?
+→ It hands out database connections like a polite receptionist.</p>
+</li>
+<li>
+<p>What are JDBC drivers?
+→ Little connectors that let Java talk to specific databases.</p>
+</li>
+<li>
+<p>What are the different types of JDBC drivers?
+→ Type 1, Type 2, Type 3, Type 4.</p>
+</li>
+<li>
+<p>What is the difference between Type 1, Type 2, Type 3, and Type 4 JDBC drivers?
+→ Type 1 uses ODBC, Type 2 uses native APIs, Type 3 uses middleware, Type 4 talks directly to the DB.</p>
+</li>
+<li>
+<p>Which type of JDBC driver is platform-independent?
+→ Type 4.</p>
+</li>
+<li>
+<p>What is the <code>Connection</code> interface in JDBC used for?
+→ To open a communication line with the database.</p>
+</li>
+<li>
+<p>How do you establish a JDBC connection to a database?
+→ Use <code>DriverManager.getConnection(url, user, pass)</code>.</p>
+</li>
+<li>
+<p>What is a connection string (JDBC URL)?
+→ A special address telling Java where and how to reach your database.</p>
+</li>
+<li>
+<p>What are some common JDBC connection URLs?
+→ <code>jdbc:mysql://…</code>, <code>jdbc:postgresql://…</code>, <code>jdbc:oracle:thin:@…</code>.</p>
+</li>
+<li>
+<p>What is the <code>Statement</code> interface used for?
+→ Running SQL commands.</p>
+</li>
+<li>
+<p>What is the difference between <code>Statement</code>, <code>PreparedStatement</code>, and <code>CallableStatement</code>?
+→ Statement is basic, PreparedStatement is precompiled, CallableStatement calls stored procedures.</p>
+</li>
+<li>
+<p>What is SQL injection, and how does <code>PreparedStatement</code> prevent it?
+→ A sneaky input attack; PreparedStatement separates data from SQL code.</p>
+</li>
+<li>
+<p>What is the advantage of using <code>PreparedStatement</code> over <code>Statement</code>?
+→ Faster and safer.</p>
+</li>
+<li>
+<p>How do you execute a query in JDBC?
+→ Call <code>executeQuery()</code> or <code>executeUpdate()</code>.</p>
+</li>
+<li>
+<p>What is the <code>ResultSet</code> interface?
+→ A table-like view of your query results.</p>
+</li>
+<li>
+<p>How do you iterate over a <code>ResultSet</code>?
+→ Use a <code>while (rs.next())</code> loop.</p>
+</li>
+<li>
+<p>What are the different types of <code>ResultSet</code>?
+→ Forward-only, scrollable, and updatable.</p>
+</li>
+</ol>
+<h3 id="advanced-jdbc-concepts"><strong>Advanced JDBC Concepts</strong></h3>
+<ol start="421">
+<li>
+<p>What is the difference between <code>execute()</code>, <code>executeQuery()</code>, and <code>executeUpdate()</code>?
+→ <code>execute()</code> handles any SQL, <code>executeQuery()</code> returns results, <code>executeUpdate()</code> returns affected rows.</p>
+</li>
+<li>
+<p>What are batch updates in JDBC?
+→ Grouped SQL operations sent together.</p>
+</li>
+<li>
+<p>How do you execute batch updates?
+→ Add statements with <code>addBatch()</code> and run them with <code>executeBatch()</code>.</p>
+</li>
+<li>
+<p>What is connection pooling?
+→ Reusing a set of open database connections.</p>
+</li>
+<li>
+<p>What is the benefit of connection pooling?
+→ Faster performance and lower resource cost.</p>
+</li>
+<li>
+<p>What is <code>DataSource</code> in JDBC?
+→ An object that hands out connections in a managed way.</p>
+</li>
+<li>
+<p>How does <code>DataSource</code> differ from <code>DriverManager</code>?
+→ It supports pooling and is container-friendly.</p>
+</li>
+<li>
+<p>What is JNDI and how does it relate to <code>DataSource</code>?
+→ A naming service used to look up <code>DataSource</code> objects.</p>
+</li>
+<li>
+<p>What is auto-commit mode in JDBC?
+→ Each SQL statement is committed automatically.</p>
+</li>
+<li>
+<p>How do you disable auto-commit mode?
+→ Call <code>conn.setAutoCommit(false)</code>.</p>
+</li>
+<li>
+<p>How do you perform manual transaction management in JDBC?
+→ Disable auto-commit, run SQL, then call <code>commit()</code> or <code>rollback()</code>.</p>
+</li>
+<li>
+<p>What are <code>commit()</code> and <code>rollback()</code> used for?
+→ Commit saves changes; rollback undoes them.</p>
+</li>
+<li>
+<p>What happens if a <code>commit()</code> is not called?
+→ Changes are lost when the connection closes.</p>
+</li>
+<li>
+<p>What is the difference between savepoint and rollback?
+→ A savepoint marks a spot; rollback returns to it.</p>
+</li>
+<li>
+<p>How do you create a savepoint in JDBC?
+→ Use <code>conn.setSavepoint()</code>.</p>
+</li>
+<li>
+<p>What is metadata in JDBC?
+→ Information about the database and results.</p>
+</li>
+<li>
+<p>What are <code>DatabaseMetaData</code> and <code>ResultSetMetaData</code>?
+→ One describes the DB; the other describes result columns.</p>
+</li>
+<li>
+<p>How can you retrieve column names dynamically from a query?
+→ Use <code>ResultSetMetaData.getColumnName()</code>.</p>
+</li>
+<li>
+<p>What are scrollable and updatable <code>ResultSet</code>s?
+→ Scrollable moves freely; updatable allows edits.</p>
+</li>
+<li>
+<p>What is the difference between forward-only and scroll-sensitive <code>ResultSet</code>s?
+→ Forward-only moves one way; scroll-sensitive reacts to underlying data changes.</p>
+</li>
+</ol>
+<h3 id="jdbc-best-practices--performance"><strong>JDBC Best Practices &amp; Performance</strong></h3>
+<ol start="441">
+<li>
+<p>What are some common JDBC performance issues?
+→ Slow queries, too many connections, unclosed resources.</p>
+</li>
+<li>
+<p>How do you handle resource cleanup in JDBC?
+→ Close ResultSet, Statement, and Connection properly.</p>
+</li>
+<li>
+<p>What is the try-with-resources statement and how does it help?
+→ It auto-closes JDBC objects for you.</p>
+</li>
+<li>
+<p>How do you log SQL queries executed through JDBC?
+→ Use logging frameworks or driver-level logging.</p>
+</li>
+<li>
+<p>What is connection leak detection?
+→ Spotting connections that were opened but never closed.</p>
+</li>
+<li>
+<p>What are common causes of connection leaks?
+→ Missing <code>close()</code>, exceptions, or bad code paths.</p>
+</li>
+<li>
+<p>How can you tune JDBC performance?
+→ Use pooling, batching, indexing, and prepared statements.</p>
+</li>
+<li>
+<p>What is the difference between JDBC batch update and bulk insert?
+→ Batch sends many statements; bulk insert is DB-specific high-speed insertion.</p>
+</li>
+<li>
+<p>What is the impact of using large transactions in JDBC?
+→ More locks, more memory, slower performance.</p>
+</li>
+<li>
+<p>How can you improve database connection performance?
+→ Use pooling, reduce round-trips, and optimize queries.</p>
+</li>
+</ol>
+<h3 id="orm-concepts-object-relational-mapping"><strong>ORM Concepts (Object-Relational Mapping)</strong></h3>
+<ol start="451">
+<li>
+<p>What is ORM (Object-Relational Mapping)?
+→ A way to map Java objects to database tables automatically.</p>
+</li>
+<li>
+<p>What problem does ORM solve?
+→ The mismatch between object models and relational databases.</p>
+</li>
+<li>
+<p>What are some popular ORM frameworks in Java?
+→ Hibernate, JPA, EclipseLink, Spring Data JPA.</p>
+</li>
+<li>
+<p>What is the difference between JDBC and ORM?
+→ JDBC is manual SQL; ORM handles SQL for you.</p>
+</li>
+<li>
+<p>What is the role of JPA in ORM?
+→ It defines the standard rules that ORM tools follow.</p>
+</li>
+<li>
+<p>What is the Java Persistence API (JPA)?
+→ A specification for managing Java object persistence.</p>
+</li>
+<li>
+<p>What is the difference between JPA and Hibernate?
+→ JPA is a standard; Hibernate is its implementation.</p>
+</li>
+<li>
+<p>What are entities in JPA?
+→ Java classes mapped to database tables.</p>
+</li>
+<li>
+<p>What is the <code>@Entity</code> annotation used for?
+→ Marking a class as a persistent table-backed entity.</p>
+</li>
+<li>
+<p>What is the role of the <code>@Id</code> annotation?
+→ It marks the primary key field.</p>
+</li>
+<li>
+<p>What is the purpose of the <code>@GeneratedValue</code> annotation?
+→ Auto-generating primary key values.</p>
+</li>
+<li>
+<p>What are entity relationships in JPA?
+→ Links between entities that reflect table relationships.</p>
+</li>
+<li>
+<p>What are the types of entity relationships?
+→ One-to-One, One-to-Many, Many-to-One, Many-to-Many.</p>
+</li>
+<li>
+<p>What is the difference between <code>@OneToOne</code> and <code>@OneToMany</code>?
+→ One-to-one links single entities; one-to-many links a parent to many children.</p>
+</li>
+<li>
+<p>What is a bidirectional relationship in JPA?
+→ A relationship navigable from both sides.</p>
+</li>
+<li>
+<p>What is the <code>mappedBy</code> attribute used for?
+→ To mark the owning side of a bidirectional relationship.</p>
+</li>
+<li>
+<p>What is the difference between <code>fetch = FetchType.LAZY</code> and <code>fetch = FetchType.EAGER</code>?
+→ LAZY loads later; EAGER loads immediately.</p>
+</li>
+<li>
+<p>What is cascading in JPA?
+→ Automatic propagation of operations to related entities.</p>
+</li>
+<li>
+<p>What are the different cascade types available in JPA?
+→ PERSIST, MERGE, REMOVE, REFRESH, DETACH, ALL.</p>
+</li>
+<li>
+<p>What is orphan removal in JPA?
+→ Auto-deleting child entities no longer referenced.</p>
+</li>
+</ol>
+<h3 id="hibernate-framework"><strong>Hibernate Framework</strong></h3>
+<ol start="471">
+<li>
+<p>What is Hibernate?
+→ A powerful ORM framework that maps Java objects to database tables.</p>
+</li>
+<li>
+<p>What are the advantages of Hibernate over JDBC?
+→ Less SQL, cleaner code, caching, and automatic table-object mapping.</p>
+</li>
+<li>
+<p>What are the main components of the Hibernate architecture?
+→ SessionFactory, Session, Transaction, Query, and mapping files.</p>
+</li>
+<li>
+<p>What is the role of <code>SessionFactory</code>?
+→ It creates Sessions and holds heavy configuration.</p>
+</li>
+<li>
+<p>What is the <code>Session</code> interface used for?
+→ Performing CRUD and database operations.</p>
+</li>
+<li>
+<p>What is the difference between <code>Session</code> and <code>EntityManager</code>?
+→ Session is Hibernate-specific; EntityManager is JPA-standard.</p>
+</li>
+<li>
+<p>How do you persist an entity using Hibernate?
+→ Call <code>session.save()</code> or <code>persist()</code> inside a transaction.</p>
+</li>
+<li>
+<p>What are Hibernate mappings?
+→ Rules that link classes to tables and fields to columns.</p>
+</li>
+<li>
+<p>What are HQL and Criteria API?
+→ Hibernate’s query language and its programmatic query builder.</p>
+</li>
+<li>
+<p>What is the difference between HQL and SQL?
+→ HQL uses entity names; SQL uses table names.</p>
+</li>
+<li>
+<p>What are named queries in Hibernate?
+→ Predefined reusable HQL or SQL queries.</p>
+</li>
+<li>
+<p>What is the difference between <code>merge()</code> and <code>update()</code> in Hibernate?
+→ <code>merge()</code> copies changes safely; <code>update()</code> reattaches directly.</p>
+</li>
+<li>
+<p>What is the difference between <code>save()</code>, <code>persist()</code>, and <code>saveOrUpdate()</code>?
+→ <code>save()</code> returns ID, <code>persist()</code> follows JPA rules, <code>saveOrUpdate()</code> chooses insert or update.</p>
+</li>
+<li>
+<p>What are transient, persistent, and detached states in Hibernate?
+→ New object, managed object, and previously managed but now disconnected.</p>
+</li>
+<li>
+<p>What is lazy loading in Hibernate?
+→ Loading data only when it’s actually accessed.</p>
+</li>
+<li>
+<p>What is the N+1 select problem?
+→ Too many repeated queries for related entities.</p>
+</li>
+<li>
+<p>How can you solve the N+1 select problem in Hibernate?
+→ Use JOIN FETCH, batching, or entity graphs.</p>
+</li>
+<li>
+<p>What is caching in Hibernate?
+→ Storing data to reduce database trips.</p>
+</li>
+<li>
+<p>What are the types of caching in Hibernate?
+→ First-level, second-level, and query cache.</p>
+</li>
+<li>
+<p>What is the difference between first-level and second-level cache?
+→ First-level is per-session; second-level is shared across sessions.</p>
+</li>
+<li>
+<p>What is the purpose of the query cache?
+→ Caching results of frequently run queries.</p>
+</li>
+<li>
+<p>What cache providers does Hibernate support?
+→ Ehcache, Infinispan, Hazelcast, Redis-based providers.</p>
+</li>
+<li>
+<p>What is dirty checking in Hibernate?
+→ Auto-detection of changed fields for update.</p>
+</li>
+<li>
+<p>How does Hibernate manage transactions?
+→ Through <code>Transaction</code> objects tied to the Session.</p>
+</li>
+<li>
+<p>What is optimistic locking?
+→ Conflict prevention using version checks.</p>
+</li>
+<li>
+<p>What is pessimistic locking?
+→ Locking rows directly to avoid conflicts.</p>
+</li>
+<li>
+<p>What is the difference between the two locking mechanisms?
+→ Optimistic avoids locks; pessimistic uses them.</p>
+</li>
+<li>
+<p>What is Hibernate Validator?
+→ Hibernate’s framework for bean validation.</p>
+</li>
+<li>
+<p>What are some common annotations used for validation?
+→ <code>@NotNull</code>, <code>@Size</code>, <code>@Email</code>, <code>@Min</code>, <code>@Max</code>.</p>
+</li>
+<li>
+<p>What are the advantages and disadvantages of using Hibernate?
+→ Pros: less SQL, caching, portability; cons: overhead and learning curve.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%8C%B1-batch-6-of-10--spring-core-ioc-di-and-aop-q501%E2%80%93q600">🌱 <strong>Batch 6 of 10 — Spring Core, IoC, DI, and AOP (Q501–Q600)</strong></h2>
+<h3 id="spring-framework-basics"><strong>Spring Framework Basics</strong></h3>
+<ol start="501">
+<li>
+<p>What is the Spring Framework?
+→ A big helper toolkit that makes building Java apps easier and cleaner.</p>
+</li>
+<li>
+<p>Why is Spring so popular in enterprise development?
+→ It simplifies complex tasks and keeps apps flexible and modular.</p>
+</li>
+<li>
+<p>What are the key features of the Spring Framework?
+→ IoC, DI, AOP, data access, web support, and tons of utilities.</p>
+</li>
+<li>
+<p>What are the different modules of Spring?
+→ Core, AOP, Data, MVC, Security, Boot, and more.</p>
+</li>
+<li>
+<p>What is Inversion of Control (IoC)?
+→ Letting Spring create and manage objects instead of you.</p>
+</li>
+<li>
+<p>How does IoC differ from traditional programming approaches?
+→ You don’t “new” things; Spring hands them to you.</p>
+</li>
+<li>
+<p>What is Dependency Injection (DI)?
+→ Spring plugging needed objects into your classes automatically.</p>
+</li>
+<li>
+<p>How does Dependency Injection improve testability and maintainability?
+→ It avoids tight wiring, making code easier to swap and test.</p>
+</li>
+<li>
+<p>What are the types of Dependency Injection supported in Spring?
+→ Constructor, setter, and field injection.</p>
+</li>
+<li>
+<p>What is the difference between constructor injection and setter injection?
+→ Constructor sets everything upfront; setter sets things later.</p>
+</li>
+<li>
+<p>What are the benefits of constructor-based DI?
+→ Strong immutability and guaranteed dependencies.</p>
+</li>
+<li>
+<p>What are the benefits of setter-based DI?
+→ More flexibility and optional dependencies.</p>
+</li>
+<li>
+<p>What is the difference between IoC and DI?
+→ IoC is the big idea; DI is one way to do it.</p>
+</li>
+<li>
+<p>What is a Spring Bean?
+→ Any object Spring creates and manages for you.</p>
+</li>
+<li>
+<p>How does Spring manage beans internally?
+→ Through its container, which builds, wires, and tracks them.</p>
+</li>
+<li>
+<p>What is the role of the ApplicationContext in Spring?
+→ It’s the boss that loads beans and handles config.</p>
+</li>
+<li>
+<p>How does ApplicationContext differ from BeanFactory?
+→ ApplicationContext has more features like events and AOP.</p>
+</li>
+<li>
+<p>What are some common implementations of ApplicationContext?
+→ <code>ClassPathXmlApplicationContext</code>, <code>AnnotationConfigApplicationContext</code>, <code>WebApplicationContext</code>.</p>
+</li>
+<li>
+<p>What is the difference between <code>AnnotationConfigApplicationContext</code> and <code>ClassPathXmlApplicationContext</code>?
+→ One uses annotations; the other uses XML.</p>
+</li>
+<li>
+<p>What are bean definitions in Spring?
+→ Instructions telling Spring how to build a bean.</p>
+</li>
+</ol>
+<h3 id="bean-configuration--lifecycle"><strong>Bean Configuration &amp; Lifecycle</strong></h3>
+<ol start="521">
+<li>
+<p>What are the different ways to configure Spring beans?
+→ XML, Java classes, and annotations.</p>
+</li>
+<li>
+<p>What is XML-based configuration in Spring?
+→ Defining beans and wiring inside XML files.</p>
+</li>
+<li>
+<p>What is Java-based configuration in Spring?
+→ Using <code>@Configuration</code> classes and <code>@Bean</code> methods.</p>
+</li>
+<li>
+<p>What is annotation-based configuration?
+→ Marking classes with annotations so Spring auto-detects them.</p>
+</li>
+<li>
+<p>What are the advantages of annotation-based configuration?
+→ Cleaner code and fewer external files.</p>
+</li>
+<li>
+<p>What is the <code>@Configuration</code> annotation used for?
+→ Marking a class as a bean-creating config source.</p>
+</li>
+<li>
+<p>What is the <code>@Bean</code> annotation used for?
+→ Telling Spring to create and manage a specific object.</p>
+</li>
+<li>
+<p>What is the <code>@Component</code> annotation?
+→ A general marker for classes Spring should manage.</p>
+</li>
+<li>
+<p>What is the difference between <code>@Component</code>, <code>@Service</code>, <code>@Repository</code>, and <code>@Controller</code>?
+→ Same idea, different roles: generic, business, DB, and web.</p>
+</li>
+<li>
+<p>What is component scanning?
+→ Spring searching packages to find annotated beans.</p>
+</li>
+<li>
+<p>What is the <code>@ComponentScan</code> annotation used for?
+→ Telling Spring where to look for components.</p>
+</li>
+<li>
+<p>What are the different bean scopes in Spring?
+→ Singleton, prototype, request, session, and application.</p>
+</li>
+<li>
+<p>What is the difference between <code>singleton</code> and <code>prototype</code> scope?
+→ Singleton gives one instance; prototype gives a new one each time.</p>
+</li>
+<li>
+<p>What are <code>request</code>, <code>session</code>, and <code>application</code> scopes used for?
+→ Web apps: per-request, per-session, and per-servlet-context beans.</p>
+</li>
+<li>
+<p>How does Spring handle bean lifecycle?
+→ It creates, wires, initializes, uses, and destroys beans.</p>
+</li>
+<li>
+<p>What are the callback methods in Spring bean lifecycle?
+→ Init methods, destroy methods, and post-processors.</p>
+</li>
+<li>
+<p>What is the <code>InitializingBean</code> interface used for?
+→ For custom initialization code.</p>
+</li>
+<li>
+<p>What is the <code>DisposableBean</code> interface used for?
+→ For custom cleanup code.</p>
+</li>
+<li>
+<p>What is the <code>@PostConstruct</code> annotation used for?
+→ Running code right after bean creation.</p>
+</li>
+<li>
+<p>What is the <code>@PreDestroy</code> annotation used for?
+→ Running code before the bean is removed.</p>
+</li>
+</ol>
+<h3 id="dependency-injection-details"><strong>Dependency Injection Details</strong></h3>
+<ol start="541">
+<li>
+<p>What is autowiring in Spring?
+→ Spring automatically injects required beans without manual wiring.</p>
+</li>
+<li>
+<p>What are the types of autowiring modes in Spring?
+→ By type, by name, constructor, and autodetect (older XML modes).</p>
+</li>
+<li>
+<p>What is the <code>@Autowired</code> annotation?
+→ A marker telling Spring to inject a matching bean.</p>
+</li>
+<li>
+<p>How does Spring resolve dependencies with multiple beans of the same type?
+→ By using qualifiers, primary beans, or bean names.</p>
+</li>
+<li>
+<p>What is the <code>@Qualifier</code> annotation used for?
+→ To pick the exact bean you want when several match.</p>
+</li>
+<li>
+<p>What is the <code>@Primary</code> annotation used for?
+→ To mark one bean as Spring’s default choice.</p>
+</li>
+<li>
+<p>What is the difference between field injection and constructor injection using annotations?
+→ Field injects directly; constructor injects through parameters.</p>
+</li>
+<li>
+<p>Why is constructor injection preferred over field injection?
+→ It ensures required dependencies and makes testing easier.</p>
+</li>
+<li>
+<p>What happens if Spring cannot autowire a dependency?
+→ It throws a <code>NoSuchBeanDefinitionException</code>.</p>
+</li>
+<li>
+<p>What is circular dependency, and how does Spring handle it?
+→ Two beans depend on each other; Spring resolves some cases via proxies or fails if impossible.</p>
+</li>
+</ol>
+<h3 id="spring-expression-language-spel"><strong>Spring Expression Language (SpEL)</strong></h3>
+<ol start="551">
+<li>
+<p>What is the Spring Expression Language (SpEL)?
+→ A mini-language for dynamic values in Spring.</p>
+</li>
+<li>
+<p>How is SpEL used in Spring applications?
+→ Inside annotations, XML, or config to compute values.</p>
+</li>
+<li>
+<p>What are some common use cases for SpEL?
+→ Reading properties, calling methods, doing math, conditional logic.</p>
+</li>
+<li>
+<p>How do you enable SpEL in configuration?
+→ Use <code>#{...}</code> inside bean definitions.</p>
+</li>
+<li>
+<p>What are the operators supported by SpEL?
+→ Math, logical, relational, and conditional operators.</p>
+</li>
+<li>
+<p>Can SpEL access properties or method results?
+→ Yes, it can read fields and call methods.</p>
+</li>
+<li>
+<p>Can SpEL be used in annotations?
+→ Yes, especially with <code>@Value</code>.</p>
+</li>
+<li>
+<p>What is the difference between <code>${}</code> and <code>#{}</code> in Spring configuration?
+→ <code>${}</code> reads properties; <code>#{}</code> evaluates SpEL expressions.</p>
+</li>
+<li>
+<p>How do you inject values from a properties file using SpEL?
+→ Combine <code>@Value(&quot;${key}&quot;)</code> with property sources.</p>
+</li>
+<li>
+<p>What are environment properties in Spring?
+→ External config values loaded from the system, files, or profiles.</p>
+</li>
+</ol>
+<h3 id="spring-aop-aspect-oriented-programming"><strong>Spring AOP (Aspect-Oriented Programming)</strong></h3>
+<ol start="561">
+<li>
+<p>What is AOP (Aspect-Oriented Programming)?
+→ A way to add common behaviors across methods without cluttering code.</p>
+</li>
+<li>
+<p>Why is AOP needed in Spring?
+→ To cleanly handle things like logging, security, and transactions.</p>
+</li>
+<li>
+<p>What are cross-cutting concerns?
+→ Features that affect many parts of an app.</p>
+</li>
+<li>
+<p>What are the key concepts in AOP?
+→ Aspects, join points, pointcuts, advices, and weaving.</p>
+</li>
+<li>
+<p>What is an Aspect?
+→ A module that bundles cross-cutting logic.</p>
+</li>
+<li>
+<p>What is a Join Point?
+→ A place in code where extra behavior can run.</p>
+</li>
+<li>
+<p>What is a Pointcut?
+→ A rule that selects which join points to target.</p>
+</li>
+<li>
+<p>What is an Advice?
+→ The actual code that runs at matched join points.</p>
+</li>
+<li>
+<p>What are the different types of Advices in AOP?
+→ Before, After, AfterReturning, AfterThrowing, Around.</p>
+</li>
+<li>
+<p>What is a Weaving process in AOP?
+→ The act of applying aspects to code.</p>
+</li>
+<li>
+<p>What are the types of weaving?
+→ Compile-time, load-time, and runtime.</p>
+</li>
+<li>
+<p>What is the difference between compile-time, load-time, and runtime weaving?
+→ When the aspect gets applied: during compile, class loading, or execution.</p>
+</li>
+<li>
+<p>What is the <code>@Aspect</code> annotation used for?
+→ Marking a class as an aspect container.</p>
+</li>
+<li>
+<p>What is the <code>@Before</code> annotation used for?
+→ Running logic before a method executes.</p>
+</li>
+<li>
+<p>What is the <code>@After</code> annotation used for?
+→ Running logic after a method finishes (success or failure).</p>
+</li>
+<li>
+<p>What is the <code>@AfterReturning</code> annotation?
+→ Running logic only when a method returns normally.</p>
+</li>
+<li>
+<p>What is the <code>@AfterThrowing</code> annotation?
+→ Running logic when a method throws an exception.</p>
+</li>
+<li>
+<p>What is the <code>@Around</code> advice?
+→ Code that wraps around a method call.</p>
+</li>
+<li>
+<p>How does <code>@Around</code> advice differ from other advices?
+→ It can block, modify, or proceed with execution.</p>
+</li>
+<li>
+<p>What is the role of <code>ProceedingJoinPoint</code>?
+→ It lets <code>@Around</code> advice control the actual method call.</p>
+</li>
+</ol>
+<h3 id="advanced-spring-aop--proxy-concepts"><strong>Advanced Spring AOP &amp; Proxy Concepts</strong></h3>
+<ol start="581">
+<li>
+<p>What is proxy-based AOP in Spring?
+→ Spring creates proxy objects that wrap your beans to apply AOP logic.</p>
+</li>
+<li>
+<p>What is the difference between JDK dynamic proxy and CGLIB proxy?
+→ JDK proxies work with interfaces; CGLIB proxies subclass concrete classes.</p>
+</li>
+<li>
+<p>When does Spring use JDK proxy vs CGLIB proxy?
+→ JDK if you use interfaces; CGLIB if no interfaces exist.</p>
+</li>
+<li>
+<p>What are the limitations of Spring AOP compared to AspectJ?
+→ Spring can advise only methods, not constructors or fields.</p>
+</li>
+<li>
+<p>What is AspectJ, and how does it differ from Spring AOP?
+→ AspectJ is a full AOP framework with deeper weaving power.</p>
+</li>
+<li>
+<p>What is the difference between declarative and programmatic AOP?
+→ Declarative uses annotations; programmatic calls advice manually.</p>
+</li>
+<li>
+<p>Can we apply multiple advices to a single method?
+→ Yes, and Spring runs them in order.</p>
+</li>
+<li>
+<p>How does Spring order multiple aspects?
+→ By priority rules or annotations.</p>
+</li>
+<li>
+<p>What is the purpose of the <code>@Order</code> annotation in AOP?
+→ It sets which aspect runs first.</p>
+</li>
+<li>
+<p>What is a custom annotation-based aspect?
+→ An aspect triggered by your own custom-made annotation.</p>
+</li>
+</ol>
+<h3 id="spring-core-utilities--context"><strong>Spring Core Utilities &amp; Context</strong></h3>
+<ol start="591">
+<li>
+<p>What is the Environment abstraction in Spring?
+→ A helper that gives access to properties, profiles, and environment details.</p>
+</li>
+<li>
+<p>What is a PropertySource in Spring?
+→ A place where Spring loads key–value configuration from.</p>
+</li>
+<li>
+<p>How do you externalize configuration in Spring?
+→ By moving settings to properties/YAML files or environment variables.</p>
+</li>
+<li>
+<p>What is the role of <code>@PropertySource</code>?
+→ To load a specific properties file into the Spring Environment.</p>
+</li>
+<li>
+<p>What is the <code>MessageSource</code> used for?
+→ Handling text messages, especially for localization.</p>
+</li>
+<li>
+<p>What is internationalization (i18n) in Spring?
+→ Making apps support multiple languages and cultures.</p>
+</li>
+<li>
+<p>How do you support i18n in Spring applications?
+→ Use <code>MessageSource</code> and locale resolvers.</p>
+</li>
+<li>
+<p>What is an ApplicationEvent in Spring?
+→ A message that signals something happened inside the app.</p>
+</li>
+<li>
+<p>What is the difference between standard Java events and Spring events?
+→ Spring events are simpler, loosely coupled, and container-managed.</p>
+</li>
+<li>
+<p>How do you publish and listen to custom events in Spring?
+→ Publish with <code>ApplicationEventPublisher</code> and handle with <code>@EventListener</code>.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%9A%80-batch-7--spring-boot-rest-and-configuration-q601%E2%80%93q700">🚀 <strong>Batch 7 — Spring Boot, REST, and Configuration (Q601–Q700)</strong></h2>
+<h3 id="spring-boot-basics"><strong>Spring Boot Basics</strong></h3>
+<ol start="601">
+<li>
+<p>What is Spring Boot?
+→ A tool that helps you build Spring apps quickly with minimal setup.</p>
+</li>
+<li>
+<p>How is Spring Boot different from the Spring Framework?
+→ Boot auto-configures things; Spring needs more manual setup.</p>
+</li>
+<li>
+<p>What are the main advantages of using Spring Boot?
+→ Faster development, fewer configs, built-in servers, easy packaging.</p>
+</li>
+<li>
+<p>What is auto-configuration in Spring Boot?
+→ Boot guessing and setting things up for you automatically.</p>
+</li>
+<li>
+<p>What is the role of <code>@SpringBootApplication</code>?
+→ It marks the main class and turns on key Boot features.</p>
+</li>
+<li>
+<p>What three annotations are combined in <code>@SpringBootApplication</code>?
+→ <code>@Configuration</code>, <code>@EnableAutoConfiguration</code>, <code>@ComponentScan</code>.</p>
+</li>
+<li>
+<p>What is a Spring Boot starter?
+→ A ready-made dependency bundle for common features.</p>
+</li>
+<li>
+<p>Name some commonly used Spring Boot starters.
+→ Web, Data JPA, Security, Test, Thymeleaf.</p>
+</li>
+<li>
+<p>How does Spring Boot simplify dependency management?
+→ By using curated starter packs with fixed versions.</p>
+</li>
+<li>
+<p>What is the role of <code>application.properties</code> or <code>application.yml</code>?
+→ They hold your app’s external configuration.</p>
+</li>
+<li>
+<p>How do you run a Spring Boot application?
+→ Use the main method, Maven/Gradle, or jar execution.</p>
+</li>
+<li>
+<p>What is an embedded server in Spring Boot?
+→ A built-in web server inside your app.</p>
+</li>
+<li>
+<p>Which embedded servers are supported by Spring Boot?
+→ Tomcat, Jetty, and Undertow.</p>
+</li>
+<li>
+<p>What is the default embedded server in Spring Boot?
+→ Tomcat.</p>
+</li>
+<li>
+<p>Can Spring Boot run without an embedded server?
+→ Yes, if it’s not a web app.</p>
+</li>
+<li>
+<p>How do you change the server port in Spring Boot?
+→ Set <code>server.port</code> in properties or YAML.</p>
+</li>
+<li>
+<p>What is the difference between Spring Boot CLI and Spring Boot Starter?
+→ CLI runs apps from the command line; starters manage dependencies.</p>
+</li>
+<li>
+<p>What are the profiles in Spring Boot?
+→ Named sets of configuration for different environments.</p>
+</li>
+<li>
+<p>How do you activate a profile in Spring Boot?
+→ Set <code>spring.profiles.active</code> in config or CLI.</p>
+</li>
+<li>
+<p>What is the role of the <code>@Profile</code> annotation?
+→ It enables a bean only for certain profiles.</p>
+</li>
+</ol>
+<h3 id="spring-boot-configuration--properties"><strong>Spring Boot Configuration &amp; Properties</strong></h3>
+<ol start="621">
+<li>
+<p>What is externalized configuration in Spring Boot?
+→ Storing settings outside the code so they’re easy to change.</p>
+</li>
+<li>
+<p>What is the difference between <code>application.properties</code> and <code>application.yml</code>?
+→ Same purpose, different formats—properties is key=value, YAML is structured.</p>
+</li>
+<li>
+<p>How do you load properties from a custom file?
+→ Use <code>@PropertySource</code> or put it in the config path.</p>
+</li>
+<li>
+<p>What is the <code>@Value</code> annotation used for?
+→ Injecting simple values from properties.</p>
+</li>
+<li>
+<p>How do you bind a configuration to a POJO?
+→ Use <code>@ConfigurationProperties</code>.</p>
+</li>
+<li>
+<p>What is <code>@ConfigurationProperties</code>?
+→ A way to map groups of configs to a class.</p>
+</li>
+<li>
+<p>How do you validate configuration properties?
+→ Add validation annotations and enable validation.</p>
+</li>
+<li>
+<p>What is the difference between <code>@PropertySource</code> and <code>@ConfigurationProperties</code>?
+→ One loads files; the other binds values into objects.</p>
+</li>
+<li>
+<p>How do you override properties using command-line arguments?
+→ Pass them as <code>--key=value</code> when starting the app.</p>
+</li>
+<li>
+<p>What is the difference between profile-specific properties and default properties?
+→ Default applies to all; profile-specific applies only when that profile is active.</p>
+</li>
+</ol>
+<h3 id="spring-boot-actuator--monitoring"><strong>Spring Boot Actuator &amp; Monitoring</strong></h3>
+<ol start="631">
+<li>
+<p>What is Spring Boot Actuator?
+→ A toolkit that gives you live info and monitoring for your app.</p>
+</li>
+<li>
+<p>How do you enable Actuator endpoints?
+→ Add the Actuator starter and configure <code>management.endpoints</code> in properties.</p>
+</li>
+<li>
+<p>Name some common Actuator endpoints.
+→ <code>/health</code>, <code>/info</code>, <code>/metrics</code>, <code>/env</code>, <code>/beans</code>.</p>
+</li>
+<li>
+<p>How do you secure Actuator endpoints?
+→ Use Spring Security and restrict access rules.</p>
+</li>
+<li>
+<p>What is health check in Actuator?
+→ A quick report telling if your app is running fine.</p>
+</li>
+<li>
+<p>How can you customize health indicators?
+→ Create your own <code>HealthIndicator</code> beans.</p>
+</li>
+<li>
+<p>What is the difference between public and sensitive endpoints?
+→ Public is harmless; sensitive exposes deeper system details.</p>
+</li>
+<li>
+<p>What is the <code>/info</code> endpoint used for?
+→ Showing app metadata like version or description.</p>
+</li>
+<li>
+<p>What is the <code>/metrics</code> endpoint used for?
+→ Displaying numbers about app performance and resources.</p>
+</li>
+<li>
+<p>How do you expose custom metrics using Actuator?
+→ Register counters or gauges with Micrometer.</p>
+</li>
+</ol>
+<h3 id="spring-boot-rest"><strong>Spring Boot REST</strong></h3>
+<ol start="641">
+<li>
+<p>What is REST?
+→ A style for building web APIs using simple HTTP rules.</p>
+</li>
+<li>
+<p>What are the principles of REST architecture?
+→ Statelessness, resources, URIs, standard verbs, and uniform responses.</p>
+</li>
+<li>
+<p>How do you create a REST controller in Spring Boot?
+→ Use <code>@RestController</code> and mapping annotations.</p>
+</li>
+<li>
+<p>What is the difference between <code>@Controller</code> and <code>@RestController</code>?
+→ RestController auto-returns JSON; Controller needs <code>@ResponseBody</code>.</p>
+</li>
+<li>
+<p>How do you map HTTP methods to controller methods?
+→ With <code>@GetMapping</code>, <code>@PostMapping</code>, and friends.</p>
+</li>
+<li>
+<p>What is the difference between <code>@RequestMapping</code> and the specialized annotations like <code>@GetMapping</code>?
+→ RequestMapping is generic; specialized ones are shortcuts.</p>
+</li>
+<li>
+<p>How do you pass path variables in Spring Boot REST?
+→ Put them in the URL and grab them with <code>@PathVariable</code>.</p>
+</li>
+<li>
+<p>What is the <code>@PathVariable</code> annotation used for?
+→ Capturing values from the URL path.</p>
+</li>
+<li>
+<p>How do you pass query parameters?
+→ Add them to the URL and read with <code>@RequestParam</code>.</p>
+</li>
+<li>
+<p>What is the <code>@RequestParam</code> annotation used for?
+→ Extracting query parameters.</p>
+</li>
+<li>
+<p>How do you handle POST requests with JSON payload?
+→ Use <code>@PostMapping</code> and bind data with <code>@RequestBody</code>.</p>
+</li>
+<li>
+<p>What is the <code>@RequestBody</code> annotation used for?
+→ Turning JSON into a Java object.</p>
+</li>
+<li>
+<p>How do you return JSON responses?
+→ Return objects from <code>@RestController</code> methods.</p>
+</li>
+<li>
+<p>What is the <code>@ResponseBody</code> annotation?
+→ It tells Spring to write the return value as JSON/XML.</p>
+</li>
+<li>
+<p>How do you handle custom response statuses?
+→ Use <code>@ResponseStatus</code> or return <code>ResponseEntity</code>.</p>
+</li>
+<li>
+<p>What is the <code>@ResponseStatus</code> annotation?
+→ A way to set a fixed HTTP status for a method.</p>
+</li>
+<li>
+<p>How do you handle exceptions in REST controllers?
+→ Create handlers using <code>@ExceptionHandler</code>.</p>
+</li>
+<li>
+<p>What is <code>@ControllerAdvice</code> used for?
+→ Centralized, global exception handling.</p>
+</li>
+<li>
+<p>What is <code>@ExceptionHandler</code>?
+→ A method that handles a specific exception type.</p>
+</li>
+<li>
+<p>How do you validate REST request payloads?
+→ Use <code>@Valid</code> with validation annotations.</p>
+</li>
+</ol>
+<h3 id="spring-boot-data--repositories"><strong>Spring Boot Data &amp; Repositories</strong></h3>
+<ol start="661">
+<li>
+<p>What is Spring Data JPA?
+→ A helper library that makes JPA database work super easy.</p>
+</li>
+<li>
+<p>How do you integrate Spring Data JPA with Spring Boot?
+→ Add the JPA starter and set DB properties.</p>
+</li>
+<li>
+<p>What is a Spring Data repository?
+→ An interface that gives you ready-made CRUD operations.</p>
+</li>
+<li>
+<p>What is the difference between <code>CrudRepository</code>, <code>JpaRepository</code>, and <code>PagingAndSortingRepository</code>?
+→ Crud = basic ops, PagingAndSorting = adds paging, JpaRepository = adds JPA extras.</p>
+</li>
+<li>
+<p>How do you define custom queries in Spring Data JPA?
+→ Use query methods or the <code>@Query</code> annotation.</p>
+</li>
+<li>
+<p>What is the <code>@Query</code> annotation used for?
+→ Writing your own JPQL or SQL queries.</p>
+</li>
+<li>
+<p>How do you use derived query methods in Spring Data?
+→ By naming methods like <code>findByName</code> or <code>findByAgeGreaterThan</code>.</p>
+</li>
+<li>
+<p>How do you implement pagination in Spring Data?
+→ Pass a <code>PageRequest</code> to repository methods.</p>
+</li>
+<li>
+<p>How do you implement sorting in Spring Data?
+→ Use a <code>Sort</code> object in your calls.</p>
+</li>
+<li>
+<p>What is the difference between <code>save()</code> and <code>saveAndFlush()</code>?
+→ <code>save()</code> waits to write; <code>saveAndFlush()</code> writes immediately.</p>
+</li>
+</ol>
+<h3 id="spring-boot-security-basics"><strong>Spring Boot Security Basics</strong></h3>
+<ol start="671">
+<li>
+<p>How do you enable Spring Security in a Spring Boot application?
+→ Just add the Spring Security starter and boom—security turns itself on.</p>
+</li>
+<li>
+<p>What is the default security configuration in Spring Boot?
+→ Everything is locked down with a generated password and basic auth.</p>
+</li>
+<li>
+<p>How do you customize authentication in Spring Boot?
+→ Provide your own security config class and override the rules.</p>
+</li>
+<li>
+<p>How do you configure in-memory users?
+→ Define them in a security config using an in-memory user details manager.</p>
+</li>
+<li>
+<p>How do you configure JDBC-based authentication?
+→ Point Spring Security to a database and let it read users and roles.</p>
+</li>
+<li>
+<p>What is the role of <code>PasswordEncoder</code>?
+→ It scrambles passwords so they aren’t stored like plain text.</p>
+</li>
+<li>
+<p>How do you secure REST endpoints?
+→ Add authorization rules in your security config.</p>
+</li>
+<li>
+<p>What is CSRF protection in Spring Security?
+→ A shield that stops sneaky cross-site attacks.</p>
+</li>
+<li>
+<p>How do you disable CSRF for REST APIs?
+→ Turn it off in the security config because REST usually doesn’t need it.</p>
+</li>
+<li>
+<p>How do you implement role-based access control in Spring Boot?
+→ Assign roles and lock endpoints with <code>hasRole()</code> or annotations.</p>
+</li>
+</ol>
+<h3 id="spring-boot-testing"><strong>Spring Boot Testing</strong></h3>
+<ol start="681">
+<li>
+<p>How do you test Spring Boot applications?
+→ Use Spring’s testing support with mock tools and test slices.</p>
+</li>
+<li>
+<p>What is <code>@SpringBootTest</code> used for?
+→ Spinning up the whole app for full integration tests.</p>
+</li>
+<li>
+<p>How do you test REST controllers?
+→ Use <code>MockMvc</code> or <code>WebMvcTest</code>.</p>
+</li>
+<li>
+<p>What is <code>@WebMvcTest</code>?
+→ A test slice for just the web layer.</p>
+</li>
+<li>
+<p>What is <code>@DataJpaTest</code>?
+→ A test slice for JPA repositories with an in-memory DB.</p>
+</li>
+<li>
+<p>How do you mock beans in Spring Boot tests?
+→ Add <code>@MockBean</code> to replace real beans.</p>
+</li>
+<li>
+<p>What is the difference between <code>@MockBean</code> and <code>@SpyBean</code>?
+→ MockBean fakes everything; SpyBean wraps the real bean.</p>
+</li>
+<li>
+<p>How do you perform integration testing in Spring Boot?
+→ Use <code>@SpringBootTest</code> with real components wired together.</p>
+</li>
+<li>
+<p>How do you use TestRestTemplate?
+→ Auto-inject it in tests and call endpoints like a real client.</p>
+</li>
+<li>
+<p>How do you use <code>MockMvc</code> for REST testing?
+→ Build it with <code>@WebMvcTest</code> and send mock HTTP requests.</p>
+</li>
+</ol>
+<h3 id="advanced-spring-boot-features"><strong>Advanced Spring Boot Features</strong></h3>
+<ol start="691">
+<li>
+<p>What are Spring Boot Starters?
+→ Ready-made dependency bundles for common features.</p>
+</li>
+<li>
+<p>What is the purpose of <code>spring-boot-starter-web</code>?
+→ To build web and REST apps quickly.</p>
+</li>
+<li>
+<p>What is the purpose of <code>spring-boot-starter-data-jpa</code>?
+→ To plug in JPA and Spring Data easily.</p>
+</li>
+<li>
+<p>What is the purpose of <code>spring-boot-starter-security</code>?
+→ To add authentication and authorization support.</p>
+</li>
+<li>
+<p>How do you enable asynchronous processing in Spring Boot?
+→ Add <code>@EnableAsync</code> in a config class.</p>
+</li>
+<li>
+<p>What is the <code>@Async</code> annotation used for?
+→ Running a method in the background.</p>
+</li>
+<li>
+<p>How do you configure task executors in Spring Boot?
+→ Define a <code>TaskExecutor</code> bean with custom settings.</p>
+</li>
+<li>
+<p>What is the difference between synchronous and asynchronous methods?
+→ Sync waits for results; async runs independently.</p>
+</li>
+<li>
+<p>How do you enable caching in Spring Boot?
+→ Add <code>@EnableCaching</code> and use caching annotations.</p>
+</li>
+<li>
+<p>How do you configure cache managers in Spring Boot?
+→ Define a cache manager bean or use an auto-configured one.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%8C%90-batch-8--microservices-spring-cloud-and-distributed-systems-q701%E2%80%93q800">🌐 <strong>Batch 8 — Microservices, Spring Cloud, and Distributed Systems (Q701–Q800)</strong></h2>
+<h3 id="microservices-basics"><strong>Microservices Basics</strong></h3>
+<ol start="701">
+<li>
+<p>What is a microservices architecture?
+→ A way of building apps as lots of tiny, independent services that work together.</p>
+</li>
+<li>
+<p>How do microservices differ from a monolithic architecture?
+→ Microservices break everything into small pieces, while monoliths keep everything glued together in one big chunk.</p>
+</li>
+<li>
+<p>What are the benefits of microservices?
+→ They make scaling, updating, and deploying parts of the system easier and safer.</p>
+</li>
+<li>
+<p>What are the challenges of microservices?
+→ Managing many moving parts, communication, and failures becomes trickier.</p>
+</li>
+<li>
+<p>What is service decomposition?
+→ Splitting a big system into small, focused services.</p>
+</li>
+<li>
+<p>How do you identify microservice boundaries?
+→ Look for natural business areas that can work on their own without stepping on others’ toes.</p>
+</li>
+<li>
+<p>What is the difference between synchronous and asynchronous communication in microservices?
+→ Synchronous waits for a reply; asynchronous sends a message and moves on happily.</p>
+</li>
+<li>
+<p>What is the role of APIs in microservices?
+→ APIs let services talk to each other politely and clearly.</p>
+</li>
+<li>
+<p>What is API Gateway?
+→ A single entry door that routes requests to the right microservice.</p>
+</li>
+<li>
+<p>How does an API Gateway differ from a load balancer?
+→ A gateway handles routing and extra logic, while a load balancer mainly spreads traffic evenly.</p>
+</li>
+<li>
+<p>What is service discovery in microservices?
+→ A system that helps services find each other without playing hide-and-seek.</p>
+</li>
+<li>
+<p>What are some service discovery tools?
+→ Tools like Consul, Eureka, and etcd.</p>
+</li>
+<li>
+<p>What is client-side vs server-side discovery?
+→ Client-side makes the caller pick the service; server-side lets a central helper choose.</p>
+</li>
+<li>
+<p>What is circuit breaker pattern in microservices?
+→ A safety switch that stops calling a failing service for a while.</p>
+</li>
+<li>
+<p>Why is the circuit breaker pattern important?
+→ It prevents one broken service from dragging everything else down.</p>
+</li>
+<li>
+<p>What is the difference between a circuit breaker and a fallback?
+→ A circuit breaker stops bad calls; a fallback provides a backup response instead.</p>
+</li>
+<li>
+<p>What is load balancing in microservices?
+→ Spreading requests across many service instances so none of them screams for help.</p>
+</li>
+<li>
+<p>What are some strategies for load balancing?
+→ Round robin, least connections, and random selection.</p>
+</li>
+<li>
+<p>What is the role of configuration management in microservices?
+→ It keeps all services using the right settings without chaos.</p>
+</li>
+<li>
+<p>How do microservices handle failure and retries?
+→ They retry safely, use timeouts, and lean on patterns like circuit breakers and backoff.</p>
+</li>
+</ol>
+<h3 id="spring-cloud-basics"><strong>Spring Cloud Basics</strong></h3>
+<ol start="721">
+<li>
+<p>What is Spring Cloud?
+→ A toolkit that helps build distributed, cloud-friendly microservices in the Spring world.</p>
+</li>
+<li>
+<p>How does Spring Cloud complement Spring Boot?
+→ Spring Boot makes apps easy; Spring Cloud adds tools to connect and manage them.</p>
+</li>
+<li>
+<p>What are the main modules of Spring Cloud?
+→ Config, Eureka, Gateway, LoadBalancer, Feign, Sleuth, and more.</p>
+</li>
+<li>
+<p>What is Spring Cloud Config?
+→ A system for managing all service configurations in one neat place.</p>
+</li>
+<li>
+<p>How does Spring Cloud Config provide centralized configuration?
+→ It stores configs in a shared repo and serves them to services on demand.</p>
+</li>
+<li>
+<p>What is the role of the Config Server?
+→ It fetches config files from the repo and hands them out to clients.</p>
+</li>
+<li>
+<p>How do clients access configuration from Spring Cloud Config?
+→ They call the Config Server automatically at startup or refresh time.</p>
+</li>
+<li>
+<p>What is Spring Cloud Netflix Eureka?
+→ A service registry that helps microservices find each other.</p>
+</li>
+<li>
+<p>How does Eureka support service discovery?
+→ Services register with it, and Eureka shares their locations with others.</p>
+</li>
+<li>
+<p>What is a Eureka Client?
+→ A service that registers itself with Eureka and looks up others.</p>
+</li>
+<li>
+<p>How does a microservice register with Eureka?
+→ It starts up with Eureka enabled and sends regular “I’m alive” updates.</p>
+</li>
+<li>
+<p>What is Spring Cloud Gateway?
+→ A modern gateway that routes, filters, and secures requests.</p>
+</li>
+<li>
+<p>What are the differences between Zuul and Spring Cloud Gateway?
+→ Gateway is faster, newer, reactive, and easier to extend than Zuul.</p>
+</li>
+<li>
+<p>What is Spring Cloud Ribbon?
+→ A tool for client-side load balancing.</p>
+</li>
+<li>
+<p>How does Ribbon perform client-side load balancing?
+→ It keeps a list of service instances and picks one based on a strategy.</p>
+</li>
+<li>
+<p>What is the difference between Ribbon and Spring Cloud LoadBalancer?
+→ Ribbon is older and deprecated; LoadBalancer is the newer replacement.</p>
+</li>
+<li>
+<p>What is Spring Cloud Feign?
+→ A declarative REST client that turns HTTP calls into simple interfaces.</p>
+</li>
+<li>
+<p>How does Feign simplify REST client calls?
+→ You just write an interface and Feign handles the calling magic.</p>
+</li>
+<li>
+<p>How does Feign integrate with Ribbon for load balancing?
+→ Feign uses Ribbon behind the scenes to pick a service instance.</p>
+</li>
+<li>
+<p>What is Spring Cloud Hystrix?
+→ A fault-tolerance tool that adds circuit breaking and resilience.</p>
+</li>
+</ol>
+<h3 id="rest-best-practices"><strong>REST Best Practices</strong></h3>
+<ol start="741">
+<li>What are some best practices for designing REST APIs?</li>
+<li>What are RESTful principles?</li>
+<li>What is the difference between PUT and PATCH?</li>
+<li>When should you use POST vs PUT?</li>
+<li>What is HATEOAS?</li>
+<li>How do you implement versioning in REST APIs?</li>
+<li>What are some common approaches to API versioning?</li>
+<li>How do you handle exceptions in REST APIs?</li>
+<li>How do you implement global exception handling in Spring Boot REST?</li>
+<li>What HTTP status codes should you use for common scenarios?</li>
+</ol>
+<h3 id="microservices-data-management"><strong>Microservices Data Management</strong></h3>
+<ol start="741">
+<li>
+<p>What are some best practices for designing REST APIs?
+→ Keep URLs clean, use proper HTTP methods, return clear status codes, and keep things predictable.</p>
+</li>
+<li>
+<p>What are RESTful principles?
+→ Use resources, standard HTTP verbs, stateless calls, and clear representations.</p>
+</li>
+<li>
+<p>What is the difference between PUT and PATCH?
+→ PUT replaces the whole thing; PATCH updates only the parts you care about.</p>
+</li>
+<li>
+<p>When should you use POST vs PUT?
+→ POST creates something new; PUT updates or replaces something that already exists.</p>
+</li>
+<li>
+<p>What is HATEOAS?
+→ A way to include helpful links in responses so clients know what actions to take next.</p>
+</li>
+<li>
+<p>How do you implement versioning in REST APIs?
+→ Add a version number in the URL, header, or media type.</p>
+</li>
+<li>
+<p>What are some common approaches to API versioning?
+→ URI versioning, header versioning, and content-type versioning.</p>
+</li>
+<li>
+<p>How do you handle exceptions in REST APIs?
+→ Catch errors, return friendly messages, and send proper status codes.</p>
+</li>
+<li>
+<p>How do you implement global exception handling in Spring Boot REST?
+→ Use <code>@ControllerAdvice</code> with <code>@ExceptionHandler</code>.</p>
+</li>
+<li>
+<p>What HTTP status codes should you use for common scenarios?
+→ 200 for success, 201 for created, 400 for bad input, 401 for unauthorized, 404 for not found, 500 for server errors.</p>
+</li>
+</ol>
+<h3 id="messaging--asynchronous-communication"><strong>Messaging &amp; Asynchronous Communication</strong></h3>
+<ol start="761">
+<li>
+<p>What is the difference between synchronous and asynchronous messaging?
+→ Synchronous waits for a reply; asynchronous fires the message and happily carries on.</p>
+</li>
+<li>
+<p>What is a message broker?
+→ A middleman that takes messages from one place and safely hands them to another.</p>
+</li>
+<li>
+<p>What are some popular message brokers in Java ecosystem?
+→ RabbitMQ, Kafka, ActiveMQ, and Redis Streams.</p>
+</li>
+<li>
+<p>How do you integrate Spring Boot with RabbitMQ?
+→ Use Spring AMQP starters and let Spring handle the queues and listeners for you.</p>
+</li>
+<li>
+<p>How do you integrate Spring Boot with Kafka?
+→ Use Spring Kafka starters and define producers, consumers, and topics.</p>
+</li>
+<li>
+<p>What is the difference between a queue and a topic in messaging systems?
+→ A queue sends each message to one consumer; a topic broadcasts it to everyone listening.</p>
+</li>
+<li>
+<p>What is the role of producers and consumers?
+→ Producers send messages; consumers receive and process them.</p>
+</li>
+<li>
+<p>What is the difference between point-to-point and publish-subscribe messaging?
+→ Point-to-point is one-to-one; publish-subscribe is one-to-many.</p>
+</li>
+<li>
+<p>How do you ensure message delivery guarantees?
+→ Use acknowledgements, retries, durable storage, and good old persistence.</p>
+</li>
+<li>
+<p>What are idempotent consumers in messaging?
+→ Consumers that can process the same message again without messing anything up.</p>
+</li>
+</ol>
+<h3 id="resiliency--observability"><strong>Resiliency &amp; Observability</strong></h3>
+<ol start="771">
+<li>
+<p>What is resiliency in microservices?
+→ The ability of services to stay steady and recover gracefully when things go wrong.</p>
+</li>
+<li>
+<p>How do you implement retries in microservices?
+→ Use retry libraries or configs that automatically re-attempt failed calls with delays.</p>
+</li>
+<li>
+<p>What is a fallback mechanism?
+→ A backup response used when the main call fails.</p>
+</li>
+<li>
+<p>What is rate limiting?
+→ A way to control how many requests a client can make so the system doesn’t get overwhelmed.</p>
+</li>
+<li>
+<p>How do you implement circuit breakers using Spring Cloud?
+→ Use Spring Cloud Circuit Breaker with libraries like Resilience4j.</p>
+</li>
+<li>
+<p>What is monitoring in microservices?
+→ Watching services’ health, performance, and behaviour in real time.</p>
+</li>
+<li>
+<p>What is logging in distributed systems?
+→ Collecting and storing events from many services so issues can be understood later.</p>
+</li>
+<li>
+<p>What is distributed tracing?
+→ Tracking a request as it hops across multiple services.</p>
+</li>
+<li>
+<p>What are some tools for distributed tracing?
+→ Zipkin, Jaeger, and OpenTelemetry.</p>
+</li>
+<li>
+<p>What is the difference between metrics, logs, and traces?
+→ Metrics show numbers over time, logs record events, and traces follow request paths.</p>
+</li>
+</ol>
+<h3 id="security-in-microservices"><strong>Security in Microservices</strong></h3>
+<ol start="781">
+<li>
+<p>What are the main security challenges in microservices?
+→ Securing many small services, their communication, and their data all at once.</p>
+</li>
+<li>
+<p>How do you secure REST APIs?
+→ Use authentication, authorization, HTTPS, and proper validation.</p>
+</li>
+<li>
+<p>What is OAuth2?
+→ A framework that lets users grant limited access without sharing passwords.</p>
+</li>
+<li>
+<p>What is JWT (JSON Web Token)?
+→ A compact token that carries signed user data for secure stateless authentication.</p>
+</li>
+<li>
+<p>How do you implement JWT authentication in Spring Boot microservices?
+→ Generate tokens on login, validate them with filters, and secure routes with Spring Security.</p>
+</li>
+<li>
+<p>What is API key-based authentication?
+→ A simple method where clients include a unique key to prove who they are.</p>
+</li>
+<li>
+<p>How do you handle user roles and permissions?
+→ Assign roles and restrict access to routes based on those roles.</p>
+</li>
+<li>
+<p>What is CORS, and how do you configure it in Spring Boot?
+→ CORS controls which domains can call your API, set via <code>@CrossOrigin</code> or WebConfig.</p>
+</li>
+<li>
+<p>How do you protect microservices against CSRF attacks?
+→ Use CSRF tokens or simply disable CSRF when using stateless JWT APIs.</p>
+</li>
+<li>
+<p>What is rate limiting and throttling for security?
+→ Restricting how many requests a client can make to prevent abuse.</p>
+</li>
+</ol>
+<h3 id="spring-cloud-advanced-patterns"><strong>Spring Cloud Advanced Patterns</strong></h3>
+<ol start="791">
+<li>
+<p>What is a config server vs config client?
+→ The server stores and serves configs; the client fetches and uses them.</p>
+</li>
+<li>
+<p>How do Spring Cloud Bus and messaging work together?
+→ The Bus uses a message broker to broadcast config changes across services.</p>
+</li>
+<li>
+<p>What is Spring Cloud Sleuth?
+→ A tool that adds tracing IDs to logs automatically.</p>
+</li>
+<li>
+<p>How does Sleuth help with distributed tracing?
+→ It tags every request with trace IDs so you can follow them across services.</p>
+</li>
+<li>
+<p>What is Spring Cloud Zipkin?
+→ A tracing system that collects and shows trace data from Sleuth.</p>
+</li>
+<li>
+<p>How do you visualize distributed traces?
+→ Open the Zipkin UI (or Jaeger) to see timelines and service hops.</p>
+</li>
+<li>
+<p>What is Spring Cloud Consul?
+→ A toolkit that uses Consul for discovery, config, and health checks.</p>
+</li>
+<li>
+<p>What is the difference between Consul and Eureka?
+→ Consul offers discovery plus KV storage; Eureka focuses mainly on discovery.</p>
+</li>
+<li>
+<p>How do you perform blue-green deployments with microservices?
+→ Run two versions side-by-side and switch traffic from old to new instantly.</p>
+</li>
+<li>
+<p>How do you implement canary releases in microservices?
+→ Send a small slice of traffic to the new version first, then increase gradually.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%E2%9A%A1-batch-9--advanced-java-javafx-caching-reactive-and-performance-q801%E2%80%93q900">⚡ <strong>Batch 9 — Advanced Java, JavaFX, Caching, Reactive, and Performance (Q801–Q900)</strong></h2>
+<h3 id="advanced-java-concepts"><strong>Advanced Java Concepts</strong></h3>
+<ol start="801">
+<li>
+<p>What is reflection in Java?
+→ A way for Java code to peek inside classes, fields, and methods while the program is running.</p>
+</li>
+<li>
+<p>How do you obtain class information using reflection?
+→ Grab a <code>Class</code> object using <code>Class.forName()</code> or <code>.getClass()</code> and inspect it.</p>
+</li>
+<li>
+<p>How do you create objects dynamically with reflection?
+→ Use <code>Class.newInstance()</code> or <code>clazz.getConstructor().newInstance()</code>.</p>
+</li>
+<li>
+<p>How do you access private fields or methods via reflection?
+→ Call <code>setAccessible(true)</code> on them before using them.</p>
+</li>
+<li>
+<p>What are the use cases for reflection?
+→ Framework magic like dependency injection, serialization, and runtime inspection.</p>
+</li>
+<li>
+<p>What are the drawbacks of reflection?
+→ It’s slower, less safe, and easy to mess things up if misused.</p>
+</li>
+<li>
+<p>What are annotations in Java?
+→ Tiny metadata tags that add extra meaning to code.</p>
+</li>
+<li>
+<p>What are meta-annotations?
+→ Special annotations that describe how other annotations behave.</p>
+</li>
+<li>
+<p>How do you create a custom annotation?
+→ Define it with <code>@interface</code> and specify its elements.</p>
+</li>
+<li>
+<p>What is retention policy in annotations?
+→ It decides how long an annotation sticks around (source, class, or runtime).</p>
+</li>
+<li>
+<p>What is the difference between <code>@Retention(RetentionPolicy.RUNTIME)</code> and <code>CLASS</code>?
+→ RUNTIME is kept alive for reflection; CLASS disappears at runtime.</p>
+</li>
+<li>
+<p>How do you process annotations at runtime?
+→ Use reflection to scan classes, methods, or fields for annotations.</p>
+</li>
+<li>
+<p>What is the difference between marker, single-value, and multi-value annotations?
+→ Marker has no values, single-value has one, multi-value has many.</p>
+</li>
+<li>
+<p>What is the <code>@Repeatable</code> annotation?
+→ It lets you slap the same annotation onto something multiple times.</p>
+</li>
+<li>
+<p>How do annotations improve frameworks like Spring?
+→ They let Spring auto-detect, configure, and wire things with less boilerplate.</p>
+</li>
+<li>
+<p>What is the <code>Proxy</code> class in Java?
+→ A utility that creates on-the-fly proxy objects for interfaces.</p>
+</li>
+<li>
+<p>What is the difference between static and dynamic proxies?
+→ Static ones are prewritten; dynamic ones are generated at runtime.</p>
+</li>
+<li>
+<p>What is the role of <code>InvocationHandler</code>?
+→ It intercepts method calls on a proxy and decides what happens.</p>
+</li>
+<li>
+<p>What is the difference between Java SE dynamic proxy and CGLIB proxy?
+→ Java SE proxies only wrap interfaces; CGLIB proxies subclass concrete classes.</p>
+</li>
+<li>
+<p>How are proxies used in AOP?
+→ They wrap target objects to add extra behaviors like logging or transactions.</p>
+</li>
+</ol>
+<h3 id="javafx-basics"><strong>JavaFX Basics</strong></h3>
+<ol start="821">
+<li>
+<p>What is JavaFX?
+→ A modern Java library for building rich GUI applications with graphics, media, and UI controls.</p>
+</li>
+<li>
+<p>How does JavaFX differ from Swing?
+→ JavaFX is newer, supports CSS styling, FXML, and hardware-accelerated graphics; Swing is older and less flexible.</p>
+</li>
+<li>
+<p>What are the main components of a JavaFX application?
+→ <code>Stage</code>, <code>Scene</code>, and <code>Nodes</code>.</p>
+</li>
+<li>
+<p>What is the <code>Stage</code> in JavaFX?
+→ The top-level window of a JavaFX application.</p>
+</li>
+<li>
+<p>What is the <code>Scene</code> in JavaFX?
+→ The container holding all UI elements (Nodes) for display inside a Stage.</p>
+</li>
+<li>
+<p>What are Nodes in JavaFX?
+→ The basic building blocks of the UI like buttons, text fields, shapes, and layouts.</p>
+</li>
+<li>
+<p>How do you create a simple UI with JavaFX?
+→ Instantiate Nodes, add them to a layout, set the Scene on a Stage, and show it.</p>
+</li>
+<li>
+<p>What are layouts in JavaFX?
+→ Containers that arrange Nodes automatically, like <code>VBox</code>, <code>HBox</code>, or <code>GridPane</code>.</p>
+</li>
+<li>
+<p>What is the difference between <code>VBox</code>, <code>HBox</code>, and <code>GridPane</code>?
+→ <code>VBox</code> stacks vertically, <code>HBox</code> stacks horizontally, <code>GridPane</code> arranges in rows and columns.</p>
+</li>
+<li>
+<p>How do you handle events in JavaFX?
+→ Attach an <code>EventHandler</code> to Nodes or use lambda expressions.</p>
+</li>
+<li>
+<p>What is the <code>EventHandler</code> interface?
+→ It defines a single <code>handle(Event e)</code> method to process events.</p>
+</li>
+<li>
+<p>How do you bind UI components to data?
+→ Use properties and bind them with <code>.bind()</code> or <code>.bindBidirectional()</code>.</p>
+</li>
+<li>
+<p>What is property binding in JavaFX?
+→ Automatically synchronizing a UI component’s property with another property.</p>
+</li>
+<li>
+<p>What is observable list in JavaFX?
+→ A list that notifies listeners when its data changes, used for dynamic UI updates.</p>
+</li>
+<li>
+<p>How do you style JavaFX components with CSS?
+→ Assign a CSS file via <code>scene.getStylesheets().add()</code> and use style classes or IDs.</p>
+</li>
+<li>
+<p>How do you load FXML files in JavaFX?
+→ Use <code>FXMLLoader.load(getClass().getResource(&quot;file.fxml&quot;))</code>.</p>
+</li>
+<li>
+<p>What is the role of <code>FXMLLoader</code>?
+→ It parses FXML, creates the UI, and wires it with the controller.</p>
+</li>
+<li>
+<p>How do you handle controller classes in FXML?
+→ Specify the controller in FXML with <code>fx:controller</code> and use <code>@FXML</code> to link components.</p>
+</li>
+<li>
+<p>How do you create custom controls in JavaFX?
+→ Extend existing controls or <code>Region</code> and define behavior, style, and layout.</p>
+</li>
+<li>
+<p>What are animations and transitions in JavaFX?
+→ Tools to change Node properties over time, like <code>FadeTransition</code>, <code>TranslateTransition</code>, and <code>Timeline</code>.</p>
+</li>
+</ol>
+<h3 id="caching"><strong>Caching</strong></h3>
+<ol start="841">
+<li>
+<p>What is caching in Java applications?
+→ Temporarily storing frequently accessed data to improve performance.</p>
+</li>
+<li>
+<p>What is the difference between in-memory and distributed cache?
+→ In-memory cache is local to one JVM; distributed cache is shared across multiple servers.</p>
+</li>
+<li>
+<p>What are popular caching frameworks in Java?
+→ Ehcache, Caffeine, Hazelcast, and Redis.</p>
+</li>
+<li>
+<p>What is Ehcache?
+→ A Java in-memory caching library for boosting application performance.</p>
+</li>
+<li>
+<p>What is Redis?
+→ An open-source, in-memory key-value store often used as a cache or database.</p>
+</li>
+<li>
+<p>How do you integrate Redis with Spring Boot?
+→ Add Spring Data Redis dependency, configure RedisConnectionFactory, and use <code>@Cacheable</code>/<code>RedisTemplate</code>.</p>
+</li>
+<li>
+<p>What is the difference between <code>@Cacheable</code> and <code>@CachePut</code>?
+→ <code>@Cacheable</code> reads from cache if present; <code>@CachePut</code> always updates the cache.</p>
+</li>
+<li>
+<p>What is <code>@CacheEvict</code> used for?
+→ Removing entries from the cache.</p>
+</li>
+<li>
+<p>What is the difference between read-through and write-through caching?
+→ Read-through fetches data into cache on read miss; write-through updates cache when writing to DB.</p>
+</li>
+<li>
+<p>What is cache invalidation, and why is it important?
+→ Removing or updating stale cache entries to ensure data consistency.</p>
+</li>
+</ol>
+<h3 id="messaging--patterns"><strong>Messaging &amp; Patterns</strong></h3>
+<ol start="851">
+<li>
+<p>What is the publisher-subscriber pattern?
+→ A design where publishers send messages to multiple subscribers without knowing them directly.</p>
+</li>
+<li>
+<p>What is the difference between message queues and topics?
+→ Queues deliver each message to one consumer; topics broadcast messages to all subscribers.</p>
+</li>
+<li>
+<p>What is point-to-point messaging?
+→ A messaging model where a message is sent to a specific queue and consumed by a single receiver.</p>
+</li>
+<li>
+<p>How do you ensure exactly-once message delivery?
+→ Combine idempotent processing, deduplication, and transactional messaging.</p>
+</li>
+<li>
+<p>What is the difference between at-most-once, at-least-once, and exactly-once delivery?
+→ At-most-once: may lose messages; At-least-once: may duplicate; Exactly-once: delivered once reliably.</p>
+</li>
+<li>
+<p>What is a dead letter queue?
+→ A queue that holds messages that cannot be delivered or processed successfully.</p>
+</li>
+<li>
+<p>How do you handle message retries?
+→ Retry with backoff, limit attempts, and move failed messages to a dead letter queue.</p>
+</li>
+<li>
+<p>What is idempotency in messaging?
+→ Processing a message multiple times has the same effect as processing it once.</p>
+</li>
+<li>
+<p>What is a fan-out pattern in messaging?
+→ A single message is sent to multiple consumers simultaneously.</p>
+</li>
+<li>
+<p>How do microservices communicate asynchronously using messaging?
+→ By publishing messages to queues or topics, letting services process them independently.</p>
+</li>
+</ol>
+<h3 id="reactive-programming"><strong>Reactive Programming</strong></h3>
+<ol start="861">
+<li>
+<p>What is reactive programming?
+→ A programming paradigm focused on asynchronous data streams and the propagation of change.</p>
+</li>
+<li>
+<p>What is the difference between reactive and imperative programming?
+→ Imperative tells <em>how</em> to do things step by step; reactive declares <em>what</em> happens when data changes.</p>
+</li>
+<li>
+<p>What are the main principles of reactive programming?
+→ Responsive, resilient, elastic, and message-driven.</p>
+</li>
+<li>
+<p>What is backpressure in reactive streams?
+→ A mechanism to prevent a fast producer from overwhelming a slow consumer.</p>
+</li>
+<li>
+<p>What are the core interfaces in Project Reactor?
+→ <code>Publisher</code>, <code>Subscriber</code>, <code>Subscription</code>, <code>Processor</code>, plus Reactor’s <code>Mono</code> and <code>Flux</code>.</p>
+</li>
+<li>
+<p>What is a <code>Mono</code>?
+→ A reactive stream that emits 0 or 1 item.</p>
+</li>
+<li>
+<p>What is a <code>Flux</code>?
+→ A reactive stream that emits 0 to N items.</p>
+</li>
+<li>
+<p>How do you create a reactive pipeline using Reactor?
+→ Chain operators like <code>map()</code>, <code>flatMap()</code>, <code>filter()</code>, and <code>subscribe()</code> on a <code>Mono</code> or <code>Flux</code>.</p>
+</li>
+<li>
+<p>What is <code>subscribeOn()</code> vs <code>publishOn()</code>?
+→ <code>subscribeOn()</code> changes the thread where subscription happens; <code>publishOn()</code> changes the thread for downstream operations.</p>
+</li>
+<li>
+<p>How does reactive programming integrate with Spring WebFlux?
+→ WebFlux uses reactive types (<code>Mono</code>, <code>Flux</code>) to handle HTTP requests non-blockingly.</p>
+</li>
+<li>
+<p>What is the difference between Spring MVC and WebFlux?
+→ MVC is blocking and servlet-based; WebFlux is non-blocking and reactive.</p>
+</li>
+<li>
+<p>How do you handle exceptions in reactive pipelines?
+→ Use operators like <code>onErrorReturn()</code>, <code>onErrorResume()</code>, or <code>doOnError()</code>.</p>
+</li>
+<li>
+<p>What is the role of <code>Schedulers</code> in Reactor?
+→ They control which thread or thread pool executes reactive operations.</p>
+</li>
+<li>
+<p>What is the difference between hot and cold publishers?
+→ Cold emits data per subscriber; hot emits data regardless of subscribers.</p>
+</li>
+<li>
+<p>How do you combine multiple reactive streams?
+→ Use operators like <code>merge()</code>, <code>zip()</code>, <code>concat()</code>, or <code>combineLatest()</code>.</p>
+</li>
+<li>
+<p>What is the difference between <code>flatMap()</code> and <code>map()</code> in reactive streams?
+→ <code>map()</code> transforms items synchronously; <code>flatMap()</code> transforms into another reactive stream asynchronously.</p>
+</li>
+<li>
+<p>How do you test reactive code?
+→ Use <code>StepVerifier</code> from Reactor Test to verify emitted sequences and behaviors.</p>
+</li>
+<li>
+<p>What is the difference between blocking and non-blocking IO in reactive applications?
+→ Blocking waits for results; non-blocking returns immediately and handles results asynchronously.</p>
+</li>
+<li>
+<p>How does reactive programming improve scalability?
+→ By freeing threads from waiting, allowing the system to handle many concurrent tasks efficiently.</p>
+</li>
+<li>
+<p>What is reactive backpressure strategy?
+→ Techniques like buffering, dropping, or throttling to manage fast producers and slow consumers.</p>
+</li>
+</ol>
+<h3 id="performance-tuning--optimization"><strong>Performance Tuning &amp; Optimization</strong></h3>
+<ol start="881">
+<li>
+<p>What are common JVM tuning options?
+→ <code>-Xmx</code>, <code>-Xms</code>, <code>-XX:+UseG1GC</code>, <code>-XX:MaxGCPauseMillis</code>, <code>-XX:+HeapDumpOnOutOfMemoryError</code>.</p>
+</li>
+<li>
+<p>How do you analyze memory usage in Java?
+→ Use tools like VisualVM, JConsole, or Java Flight Recorder to inspect heap and non-heap memory.</p>
+</li>
+<li>
+<p>What is the difference between heap and non-heap memory?
+→ Heap stores objects; non-heap stores metadata, code, and JVM internal structures.</p>
+</li>
+<li>
+<p>What is the difference between minor GC and major GC?
+→ Minor GC cleans young generation; major GC cleans old generation and is slower.</p>
+</li>
+<li>
+<p>How do you choose the right garbage collector?
+→ Based on throughput, latency requirements, and application memory footprint.</p>
+</li>
+<li>
+<p>What is the difference between Serial, Parallel, CMS, and G1 garbage collectors?
+→ Serial: single-threaded; Parallel: multi-threaded; CMS: concurrent low-pause; G1: concurrent with region-based heap.</p>
+</li>
+<li>
+<p>How do you optimize thread pools?
+→ Right-size threads, avoid blocking calls, and use <code>Executors</code> wisely.</p>
+</li>
+<li>
+<p>How do you detect thread contention?
+→ Monitor thread dumps, use profiling tools, or watch for high CPU and thread-blocked states.</p>
+</li>
+<li>
+<p>How do you profile a Java application?
+→ Use profiling tools to track memory, CPU, and thread activity during runtime.</p>
+</li>
+<li>
+<p>What tools can you use for profiling (memory, CPU)?
+→ VisualVM, YourKit, JProfiler, Java Flight Recorder.</p>
+</li>
+<li>
+<p>What are JVM flags for performance tuning?
+→ <code>-Xmx</code>, <code>-Xms</code>, <code>-XX:+UseG1GC</code>, <code>-XX:+UseParallelGC</code>, <code>-XX:MaxGCPauseMillis</code>.</p>
+</li>
+<li>
+<p>How do you avoid memory leaks in Java?
+→ Remove unused references, close resources, and use weak references when appropriate.</p>
+</li>
+<li>
+<p>How do you minimize object creation overhead?
+→ Reuse objects, use primitives when possible, and avoid unnecessary temporary objects.</p>
+</li>
+<li>
+<p>What is object pooling?
+→ Reusing objects from a pool instead of creating new ones each time.</p>
+</li>
+<li>
+<p>How do you reduce GC pauses in large applications?
+→ Use concurrent or low-pause GCs, tune heap sizes, and minimize object churn.</p>
+</li>
+<li>
+<p>How do you optimize SQL queries in Java applications?
+→ Use indexing, prepared statements, batch operations, and avoid N+1 query problems.</p>
+</li>
+<li>
+<p>How do you reduce network latency in microservices?
+→ Use caching, asynchronous calls, connection pooling, and minimize payload sizes.</p>
+</li>
+<li>
+<p>What is connection pooling, and why is it important?
+→ Reusing database/network connections to reduce creation overhead and improve performance.</p>
+</li>
+<li>
+<p>How do you implement caching for performance optimization?
+→ Use in-memory caches (Ehcache, Caffeine) or distributed caches (Redis) for frequently accessed data.</p>
+</li>
+<li>
+<p>How do you measure application performance in production?
+→ Use APM tools (New Relic, Dynatrace), logs, metrics, and real-time monitoring dashboards.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%8F%81-batch-10--advanced-microservices-security-testing-devops-cloud-and-java-17-q901%E2%80%93q1000">🏁 <strong>Batch 10 — Advanced Microservices, Security, Testing, DevOps, Cloud, and Java 17+ (Q901–Q1000)</strong></h2>
+<h3 id="advanced-spring-microservices"><strong>Advanced Spring Microservices</strong></h3>
+<ol start="901">
+<li>
+<p>What is the difference between monolithic and microservices in terms of deployment?
+→ Monolithic: single deployable unit; Microservices: multiple independently deployable services.</p>
+</li>
+<li>
+<p>How do you implement inter-service communication?
+→ Use REST, gRPC, or messaging systems like Kafka/RabbitMQ.</p>
+</li>
+<li>
+<p>What is API composition vs Command Query Responsibility Segregation (CQRS) in microservices?
+→ API composition: gather data from multiple services for a client; CQRS: separate read and write operations for scalability.</p>
+</li>
+<li>
+<p>How do you handle distributed transactions in microservices?
+→ Use Saga patterns or two-phase commit for consistency across services.</p>
+</li>
+<li>
+<p>What is Spring Cloud Gateway used for?
+→ It’s an API gateway for routing, filtering, and securing requests to microservices.</p>
+</li>
+<li>
+<p>How do you implement rate limiting in Spring Cloud Gateway?
+→ Configure <code>RequestRateLimiter</code> filter with Redis or in-memory policies.</p>
+</li>
+<li>
+<p>How do you implement authentication and authorization in Spring Cloud Gateway?
+→ Use filters that validate JWT tokens or OAuth2 tokens before forwarding requests.</p>
+</li>
+<li>
+<p>What is the difference between OAuth2 and OpenID Connect?
+→ OAuth2: authorization framework; OpenID Connect: authentication layer built on OAuth2.</p>
+</li>
+<li>
+<p>How do you secure microservices with JWT tokens?
+→ Issue JWTs from auth service and verify them in each microservice before processing requests.</p>
+</li>
+<li>
+<p>How do you implement API versioning in microservices?
+→ Use URL path, request header, or query parameter versioning strategies.</p>
+</li>
+</ol>
+<h3 id="spring-cloud--resiliency"><strong>Spring Cloud &amp; Resiliency</strong></h3>
+<ol start="911">
+<li>
+<p>What is Spring Cloud Circuit Breaker?
+→ A library to gracefully handle failures in microservices by stopping cascading errors.</p>
+</li>
+<li>
+<p>How do you implement fallback methods in Spring Cloud?
+→ Annotate with <code>@CircuitBreaker(name=&quot;service&quot;, fallbackMethod=&quot;methodName&quot;)</code>.</p>
+</li>
+<li>
+<p>What is bulkhead pattern in microservices?
+→ Isolates resources so one failing service doesn’t crash others.</p>
+</li>
+<li>
+<p>What is retry pattern?
+→ Automatically re-attempts failed operations a set number of times before failing.</p>
+</li>
+<li>
+<p>What is timeout pattern?
+→ Limits how long a service waits for a response to avoid hanging calls.</p>
+</li>
+<li>
+<p>How do you implement caching in microservices using Redis?
+→ Use <code>Spring Cache</code> with <code>@Cacheable</code> and configure Redis as the cache manager.</p>
+</li>
+<li>
+<p>What is Spring Cloud Sleuth used for?
+→ Adds tracing information to logs to track requests across microservices.</p>
+</li>
+<li>
+<p>How does Sleuth integrate with Zipkin for tracing?
+→ Sleuth sends trace data to Zipkin, which visualizes the call chains and latencies.</p>
+</li>
+<li>
+<p>How do you monitor microservices using Prometheus and Grafana?
+→ Expose metrics via <code>/actuator/prometheus</code> and visualize them in Grafana dashboards.</p>
+</li>
+<li>
+<p>How do you implement distributed logging in microservices?
+→ Use centralized logging systems like ELK stack or Loki, collecting logs from all services.</p>
+</li>
+</ol>
+<h3 id="security--identity"><strong>Security &amp; Identity</strong></h3>
+<ol start="921">
+<li>
+<p>How do you implement single sign-on (SSO) in microservices?
+→ Use a centralized identity provider (like Keycloak or Okta) to authenticate users across all services.</p>
+</li>
+<li>
+<p>How do you secure REST APIs with Spring Security OAuth2?
+→ Configure OAuth2 Resource Server to validate access tokens before granting access.</p>
+</li>
+<li>
+<p>What is the difference between symmetric and asymmetric encryption?
+→ Symmetric: same key for encrypt/decrypt; Asymmetric: public key encrypts, private key decrypts.</p>
+</li>
+<li>
+<p>How do you store secrets securely in microservices?
+→ Use secret management tools like Vault, AWS Secrets Manager, or environment variables encrypted at rest.</p>
+</li>
+<li>
+<p>How do you implement refresh tokens in OAuth2?
+→ Issue refresh tokens along with access tokens and use them to get new access tokens when expired.</p>
+</li>
+<li>
+<p>What is the difference between session-based and token-based authentication?
+→ Session-based stores state on server; token-based (like JWT) stores state in client token.</p>
+</li>
+<li>
+<p>What is Spring Security’s filter chain?
+→ A sequence of filters that intercept requests for authentication, authorization, and other security checks.</p>
+</li>
+<li>
+<p>How do you handle Cross-Origin Resource Sharing (CORS) in Spring Boot?
+→ Configure allowed origins, methods, and headers via <code>@CrossOrigin</code> or <code>WebMvcConfigurer</code>.</p>
+</li>
+<li>
+<p>How do you prevent CSRF attacks in REST APIs?
+→ Disable CSRF for stateless APIs or use CSRF tokens for stateful endpoints.</p>
+</li>
+<li>
+<p>How do you implement role-based access control (RBAC)?
+→ Define roles and use <code>@PreAuthorize</code> or <code>hasRole()</code> checks in controllers/services.</p>
+</li>
+</ol>
+<h3 id="testing--cicd"><strong>Testing &amp; CI/CD</strong></h3>
+<ol start="931">
+<li>
+<p>What is unit testing vs integration testing in Spring Boot?
+→ Unit testing: tests individual components in isolation; Integration testing: tests how components work together.</p>
+</li>
+<li>
+<p>What is <code>@SpringBootTest</code> used for?
+→ Boots up the full application context for integration tests.</p>
+</li>
+<li>
+<p>How do you test REST endpoints with <code>MockMvc</code>?
+→ Use <code>MockMvc</code> to perform HTTP requests and assert responses without starting the server.</p>
+</li>
+<li>
+<p>How do you test JPA repositories with <code>@DataJpaTest</code>?
+→ Loads only JPA components and an in-memory database for repository testing.</p>
+</li>
+<li>
+<p>What is test slicing in Spring Boot?
+→ Loads only relevant parts of the application context to speed up tests.</p>
+</li>
+<li>
+<p>How do you use <code>TestRestTemplate</code> for integration tests?
+→ Send real HTTP requests to the running server and verify responses.</p>
+</li>
+<li>
+<p>How do you mock beans in Spring tests?
+→ Use <code>@MockBean</code> to replace a bean with a mock in the application context.</p>
+</li>
+<li>
+<p>What is the difference between <code>@MockBean</code> and <code>@SpyBean</code>?
+→ <code>@MockBean</code>: creates a mock; <code>@SpyBean</code>: wraps real bean allowing partial mocking.</p>
+</li>
+<li>
+<p>How do you write contract tests for microservices?
+→ Use tools like Pact or Spring Cloud Contract to verify that services adhere to agreed APIs.</p>
+</li>
+<li>
+<p>What is the role of CI/CD in microservices?
+→ Automates build, test, and deployment pipelines for faster and reliable releases.</p>
+</li>
+<li>
+<p>How do you integrate Spring Boot tests with Jenkins or GitHub Actions?
+→ Configure pipelines to run <code>mvn test</code> or <code>gradle test</code> as part of CI steps.</p>
+</li>
+<li>
+<p>How do you perform automated deployment to Kubernetes or cloud platforms?
+→ Use CI/CD pipelines with <code>kubectl</code>, Helm charts, or cloud provider deployment APIs.</p>
+</li>
+<li>
+<p>What is canary deployment, and how is it implemented?
+→ Gradually releases a new version to a small subset of users before full rollout.</p>
+</li>
+<li>
+<p>What is blue-green deployment in microservices?
+→ Maintains two identical environments; traffic is switched from old (blue) to new (green) version.</p>
+</li>
+<li>
+<p>How do you implement rollback strategies for failed deployments?
+→ Keep previous versions ready and switch back traffic if the new version fails.</p>
+</li>
+<li>
+<p>How do you perform performance testing for microservices?
+→ Use tools like JMeter, Gatling, or Locust to simulate load and measure metrics.</p>
+</li>
+<li>
+<p>What is the difference between load testing, stress testing, and endurance testing?
+→ Load: normal/high load; Stress: beyond capacity; Endurance: long-term stability.</p>
+</li>
+<li>
+<p>How do you measure response time and throughput in production?
+→ Collect metrics via APM tools, logs, or monitoring dashboards.</p>
+</li>
+<li>
+<p>What tools are commonly used for monitoring performance?
+→ Prometheus, Grafana, New Relic, Datadog, ELK stack.</p>
+</li>
+<li>
+<p>How do you monitor JVM metrics in production?
+→ Use JMX, Micrometer, or Prometheus exporters to track memory, GC, threads, and CPU.</p>
+</li>
+</ol>
+<h3 id="cloud--containerization"><strong>Cloud &amp; Containerization</strong></h3>
+<ol start="951">
+<li>
+<p>How do you containerize a Spring Boot application?
+→ Write a <code>Dockerfile</code> to package the JAR and dependencies, then build and run the Docker image.</p>
+</li>
+<li>
+<p>What is Docker, and how does it help with microservices?
+→ Docker is a container platform that packages apps with all dependencies for consistent deployment.</p>
+</li>
+<li>
+<p>What is the difference between a Docker image and a container?
+→ Image: a blueprint; Container: a running instance of that image.</p>
+</li>
+<li>
+<p>How do you run multiple Spring Boot services using Docker Compose?
+→ Define services in <code>docker-compose.yml</code> and run <code>docker-compose up</code>.</p>
+</li>
+<li>
+<p>What is Kubernetes?
+→ A container orchestration platform for deploying, scaling, and managing containers.</p>
+</li>
+<li>
+<p>How do you deploy Spring Boot microservices to Kubernetes?
+→ Create Deployment and Service YAML files, then apply them with <code>kubectl apply -f</code>.</p>
+</li>
+<li>
+<p>What are pods, deployments, and services in Kubernetes?
+→ Pod: smallest deployable unit; Deployment: manages pod replicas; Service: exposes pods for access.</p>
+</li>
+<li>
+<p>How do you perform scaling in Kubernetes?
+→ Use <code>kubectl scale</code> or set <code>replicas</code> in Deployment YAML; Horizontal Pod Autoscaler can automate it.</p>
+</li>
+<li>
+<p>How do you implement service discovery in Kubernetes?
+→ Kubernetes Services provide DNS names to locate and connect pods automatically.</p>
+</li>
+<li>
+<p>How do you perform logging and monitoring in Kubernetes?
+→ Use centralized logging (ELK, Loki) and monitoring (Prometheus, Grafana) via sidecars or agents.</p>
+</li>
+<li>
+<p>What is Helm, and how does it help with deployment?
+→ Helm is a package manager for Kubernetes that simplifies deploying and managing apps with charts.</p>
+</li>
+<li>
+<p>What is the difference between stateful and stateless services in the cloud?
+→ Stateless: no persistent state; Stateful: maintains data or session across requests.</p>
+</li>
+<li>
+<p>How do you implement configuration management in cloud environments?
+→ Use ConfigMaps, environment variables, or external config servers like Spring Cloud Config.</p>
+</li>
+<li>
+<p>How do you handle secrets in Kubernetes?
+→ Store sensitive data in <code>Secrets</code> and mount them as environment variables or volumes.</p>
+</li>
+<li>
+<p>What is cloud-native design?
+→ Building applications to fully leverage cloud features: scalability, resilience, and automation.</p>
+</li>
+<li>
+<p>How do microservices achieve high availability in cloud environments?
+→ Deploy multiple instances across zones, use load balancers, and implement failover strategies.</p>
+</li>
+<li>
+<p>What is a service mesh?
+→ An infrastructure layer that manages service-to-service communication, security, and observability.</p>
+</li>
+<li>
+<p>How does Istio integrate with Spring Boot microservices?
+→ Injects sidecar proxies to manage traffic, security, and telemetry without changing service code.</p>
+</li>
+<li>
+<p>How do you implement traffic routing and observability with Istio?
+→ Use VirtualServices and DestinationRules for routing; collect metrics, logs, and traces via telemetry.</p>
+</li>
+<li>
+<p>What are best practices for cloud-native microservices?
+→ Design for resilience, scalability, observability, statelessness, automated CI/CD, and secure defaults.</p>
+</li>
+</ol>
+<h3 id="java-17-features"><strong>Java 17+ Features</strong></h3>
+<ol start="971">
+<li>
+<p>What are records in Java 16/17?
+→ Special classes for immutable data with auto-generated constructors, getters, <code>equals</code>, <code>hashCode</code>, and <code>toString</code>.</p>
+</li>
+<li>
+<p>How do records differ from normal classes?
+→ Records are concise, immutable, and primarily store data, unlike regular classes which require boilerplate code.</p>
+</li>
+<li>
+<p>What are sealed classes in Java 17?
+→ Classes or interfaces that restrict which other classes can extend or implement them.</p>
+</li>
+<li>
+<p>How do sealed classes enhance OOP design?
+→ They enforce controlled inheritance, improving type safety and maintainability.</p>
+</li>
+<li>
+<p>What is pattern matching for <code>instanceof</code>?
+→ Allows type casting inline when checking an object’s type.</p>
+</li>
+<li>
+<p>What is pattern matching for <code>switch</code> in Java 17+?
+→ Lets <code>switch</code> directly match types and bind variables without explicit casting.</p>
+</li>
+<li>
+<p>What are text blocks, and how do they simplify multiline strings?
+→ Multiline string literals using <code>&quot;&quot;&quot;</code> that preserve formatting and reduce escaping.</p>
+</li>
+<li>
+<p>What is the difference between <code>var</code> and explicit typing?
+→ <code>var</code> infers type from the initializer; explicit typing declares the type explicitly.</p>
+</li>
+<li>
+<p>What is a <code>sealed interface</code>?
+→ An interface that restricts which classes can implement it using <code>permits</code>.</p>
+</li>
+<li>
+<p>What are the new collection factory methods in Java 9+?
+→ <code>List.of()</code>, <code>Set.of()</code>, and <code>Map.of()</code> to create immutable collections concisely.</p>
+</li>
+<li>
+<p>How do you use <code>Optional.or()</code> and <code>Optional.stream()</code>?
+→ <code>or()</code>: fallback Optional; <code>stream()</code>: converts Optional to a Stream for fluent processing.</p>
+</li>
+<li>
+<p>What is <code>Stream.toList()</code> in Java 16+?
+→ Collects stream elements into an immutable List.</p>
+</li>
+<li>
+<p>What are helpful enhancements in <code>Map</code> and <code>Set</code> in Java 17?
+→ New <code>Map.copyOf()</code>, <code>Set.of()</code> factory methods, and <code>Map.computeIfAbsent</code> improvements.</p>
+</li>
+<li>
+<p>What is the difference between <code>==</code> and <code>equals()</code> for records?
+→ <code>==</code> checks reference equality; <code>equals()</code> checks content equality, auto-implemented for records.</p>
+</li>
+<li>
+<p>What is switch expression vs switch statement?
+→ Switch expression returns a value; switch statement executes statements without returning.</p>
+</li>
+<li>
+<p>How do you use <code>instanceof</code> pattern binding?
+→ <code>if (obj instanceof String s) { … }</code> binds <code>obj</code> to <code>s</code> directly if the type matches.</p>
+</li>
+<li>
+<p>What are enhanced pseudo-random number generators (PRNG) in Java 17?
+→ New <code>RandomGenerator</code> interface and algorithms with better performance and security options.</p>
+</li>
+<li>
+<p>What is the difference between <code>sealed</code>, <code>non-sealed</code>, and <code>permits</code>?
+→ <code>sealed</code>: restricts subclassing; <code>non-sealed</code>: allows unrestricted subclassing; <code>permits</code>: lists allowed subclasses.</p>
+</li>
+<li>
+<p>How do you use pattern matching to simplify code?
+→ Eliminates explicit casting and conditional checks when processing different object types.</p>
+</li>
+<li>
+<p>What are the key language enhancements in Java 17 LTS?
+→ Records, sealed classes, pattern matching, text blocks, new switch expressions, enhanced PRNGs, and collection factory methods.</p>
+</li>
+</ol>
+<h3 id="enterprise-patterns--best-practices"><strong>Enterprise Patterns &amp; Best Practices</strong></h3>
+<ol start="991">
+<li>
+<p>What is CQRS in enterprise architecture?
+→ Command Query Responsibility Segregation: separates read (query) and write (command) operations for scalability and clarity.</p>
+</li>
+<li>
+<p>How does Event Sourcing work?
+→ Stores state changes as a sequence of immutable events instead of overwriting current state.</p>
+</li>
+<li>
+<p>What is the Saga pattern in distributed transactions?
+→ A sequence of local transactions with compensating actions to maintain consistency across services.</p>
+</li>
+<li>
+<p>What is eventual consistency?
+→ Data will become consistent across distributed systems over time, without immediate synchronization.</p>
+</li>
+<li>
+<p>What are distributed locks, and how do you implement them?
+→ Mechanism to control access to shared resources across services; use Redis, Zookeeper, or database locks.</p>
+</li>
+<li>
+<p>How do you handle idempotent operations in microservices?
+→ Design operations so repeated requests produce the same effect without side effects.</p>
+</li>
+<li>
+<p>What are anti-corruption layers?
+→ A layer that translates between legacy systems and new systems to prevent design contamination.</p>
+</li>
+<li>
+<p>How do you implement the strangler pattern for migration?
+→ Gradually replace parts of a legacy system with new services, routing traffic incrementally.</p>
+</li>
+<li>
+<p>How do you ensure observability with logs, metrics, and tracing?
+→ Collect structured logs, expose metrics, and trace requests across services using tools like ELK, Prometheus, and Zipkin.</p>
+</li>
+<li>
+<p>What are best practices for building cloud-native, resilient, and maintainable Java microservices?
+→ Design for statelessness, scalability, observability, CI/CD automation, fault tolerance, secure defaults, and clear service boundaries.</p>
+</li>
+</ol>
+<hr>
+
+<script src="_enhance.js"></script>
+</body>
+</html>

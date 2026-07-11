@@ -1,0 +1,358 @@
+/* =====================================================================
+   _enhance.css  —  shared presentation layer for the Interview_Questions
+   HTML files. Adds theme colors, a top bar, a tab strip, a slide-in
+   chapter menu, and dark-mode code colors. No page content is changed;
+   the matching _enhance.js only moves existing nodes into tab panels.
+   ===================================================================== */
+
+/* ---- Theme colors (light is the default) ---------------------------- */
+:root {
+  --enh-bg: #ffffff;
+  --enh-fg: #1f2328;
+  --enh-muted: #57606a;
+  --enh-card-bg: #ffffff;
+  --enh-border: #d0d7de;
+  --enh-accent: #0969da;
+  --enh-accent-soft: #ddf4ff;
+  --enh-bar-bg: #f6f8fa;
+  --enh-code-bg: #f6f8fa;
+  --enh-hr: #e1e4e8;
+  --enh-shadow: rgba(27, 31, 36, 0.12);
+}
+
+html.enh-dark {
+  --enh-bg: #0d1117;
+  --enh-fg: #e6edf3;
+  --enh-muted: #9198a1;
+  --enh-card-bg: #161b22;
+  --enh-border: #30363d;
+  --enh-accent: #58a6ff;
+  --enh-accent-soft: #12283f;
+  --enh-bar-bg: #161b22;
+  --enh-code-bg: #161b22;
+  --enh-hr: #21262d;
+  --enh-shadow: rgba(0, 0, 0, 0.5);
+}
+
+html.enh-ready body {
+  background: var(--enh-bg) !important;
+  color: var(--enh-fg) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+html.enh-ready a { color: var(--enh-accent); }
+
+/* ---- Top bar -------------------------------------------------------- */
+#enh-topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px;
+  background: var(--enh-bar-bg);
+  border-bottom: 1px solid var(--enh-border);
+  box-shadow: 0 1px 4px var(--enh-shadow);
+  z-index: 1000;
+}
+
+#enh-title {
+  flex: 1;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--enh-fg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#enh-title strong { font-weight: 600; }
+
+.enh-iconbtn {
+  width: 40px; height: 40px;
+  flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  border: 1px solid var(--enh-border);
+  border-radius: 8px;
+  background: var(--enh-card-bg);
+  color: var(--enh-fg);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.enh-iconbtn:hover { background: var(--enh-accent-soft); }
+.enh-iconbtn:active { transform: scale(0.94); }
+a.enh-iconbtn { text-decoration: none; font-size: 18px; }
+a.enh-iconbtn:hover { text-decoration: none; }
+
+/* ---- Tab strip ------------------------------------------------------ */
+#enh-tabbar {
+  position: fixed;
+  top: 54px; left: 0; right: 0;
+  display: flex;
+  gap: 6px;
+  padding: 8px 12px;
+  overflow-x: auto;
+  background: var(--enh-bg);
+  border-bottom: 1px solid var(--enh-border);
+  z-index: 999;
+  scrollbar-width: thin;
+}
+#enh-tabbar::-webkit-scrollbar { height: 8px; }
+#enh-tabbar::-webkit-scrollbar-thumb {
+  background: var(--enh-border); border-radius: 4px;
+}
+
+.enh-tab {
+  flex: 0 0 auto;
+  max-width: 260px;
+  padding: 7px 14px;
+  font-size: 13.5px;
+  font-family: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  border: 1px solid var(--enh-border);
+  border-radius: 999px;
+  background: var(--enh-card-bg);
+  color: var(--enh-muted);
+  transition: all 0.15s ease;
+}
+.enh-tab:hover { color: var(--enh-fg); border-color: var(--enh-accent); }
+.enh-tab.active {
+  background: var(--enh-accent);
+  border-color: var(--enh-accent);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ---- Panels --------------------------------------------------------- */
+#enh-panels {
+  padding: 74px 28px 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  #enh-panels { padding: 74px 16px 60px; }
+}
+
+.enh-panel { display: none; animation: enh-fade 0.25s ease; }
+.enh-panel.active { display: block; }
+@keyframes enh-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.enh-panel h1,
+.enh-panel h2 {
+  border: none;
+  color: var(--enh-fg);
+  margin-top: 4px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--enh-accent);
+}
+.enh-panel h3 {
+  color: var(--enh-accent);
+  margin-top: 26px;
+  font-weight: 600;
+}
+.enh-panel hr {
+  border: 0;
+  border-bottom: 1px dashed var(--enh-hr);
+  margin: 22px 0;
+}
+
+/* Question lists become readable cards */
+.enh-panel ol > li {
+  background: var(--enh-card-bg);
+  border: 1px solid var(--enh-border);
+  border-left: 3px solid var(--enh-accent);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  box-shadow: 0 1px 2px var(--enh-shadow);
+}
+.enh-panel ol > li:hover { border-left-color: var(--enh-accent); }
+.enh-panel ol > li p { margin: 4px 0; }
+.enh-panel ul > li { margin: 6px 0; }
+
+.enh-panel blockquote {
+  background: var(--enh-accent-soft);
+  border-left: 4px solid var(--enh-accent);
+  border-radius: 6px;
+  padding: 8px 14px;
+  color: var(--enh-fg);
+}
+
+/* ---- Code blocks ---------------------------------------------------- */
+html.enh-ready pre {
+  background: var(--enh-code-bg) !important;
+  border: 1px solid var(--enh-border) !important;
+  border-radius: 8px;
+  padding: 14px 16px !important;
+}
+html.enh-ready :not(pre) > code {
+  background: var(--enh-accent-soft);
+  padding: 1px 6px;
+  border-radius: 5px;
+}
+
+/* Dark-mode syntax colors (light mode keeps the baked-in Tomorrow theme) */
+html.enh-dark :not(pre) > code { color: #ffab70; }
+html.enh-dark pre code { color: #e6edf3; }
+html.enh-dark .hljs-comment,
+html.enh-dark .hljs-quote { color: #8b949e; font-style: italic; }
+html.enh-dark .hljs-keyword,
+html.enh-dark .hljs-selector-tag { color: #ff7b72; }
+html.enh-dark .hljs-string,
+html.enh-dark .hljs-symbol,
+html.enh-dark .hljs-bullet,
+html.enh-dark .hljs-addition { color: #a5d6ff; }
+html.enh-dark .hljs-number,
+html.enh-dark .hljs-built_in,
+html.enh-dark .hljs-builtin-name,
+html.enh-dark .hljs-literal,
+html.enh-dark .hljs-type,
+html.enh-dark .hljs-params,
+html.enh-dark .hljs-meta,
+html.enh-dark .hljs-link { color: #79c0ff; }
+html.enh-dark .hljs-title,
+html.enh-dark .hljs-section { color: #d2a8ff; }
+html.enh-dark .hljs-variable,
+html.enh-dark .hljs-template-variable,
+html.enh-dark .hljs-tag,
+html.enh-dark .hljs-name,
+html.enh-dark .hljs-selector-id,
+html.enh-dark .hljs-selector-class,
+html.enh-dark .hljs-regexp,
+html.enh-dark .hljs-deletion { color: #7ee787; }
+html.enh-dark .hljs-attribute { color: #ffa657; }
+
+/* ---- Slide-in chapter menu (hamburger) ------------------------------ */
+#enh-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1001;
+}
+#enh-overlay.open { opacity: 1; visibility: visible; }
+
+#enh-drawer {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: 320px; max-width: 84vw;
+  background: var(--enh-bg);
+  border-right: 1px solid var(--enh-border);
+  box-shadow: 2px 0 16px var(--enh-shadow);
+  transform: translateX(-105%);
+  transition: transform 0.22s ease;
+  z-index: 1002;
+  display: flex; flex-direction: column;
+}
+#enh-drawer.open { transform: translateX(0); }
+
+#enh-drawer-head {
+  padding: 16px 18px;
+  font-size: 15px; font-weight: 600;
+  color: var(--enh-fg);
+  border-bottom: 1px solid var(--enh-border);
+}
+#enh-drawer-list {
+  list-style: none;
+  margin: 0; padding: 8px;
+  overflow-y: auto;
+}
+#enh-drawer-list li {
+  padding: 10px 14px;
+  margin: 3px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--enh-fg);
+  font-size: 14px;
+  border: 1px solid transparent;
+}
+#enh-drawer-list li:hover { background: var(--enh-accent-soft); }
+#enh-drawer-list li.active {
+  background: var(--enh-accent-soft);
+  border-color: var(--enh-accent);
+  font-weight: 600;
+}
+#enh-drawer-list li .enh-num {
+  display: inline-block;
+  min-width: 22px;
+  color: var(--enh-accent);
+  font-weight: 700;
+}
+
+/* Hide content until the tabs are built, to avoid a flash of raw markdown */
+html:not(.enh-ready) body { visibility: hidden; }
+
+/* ---- Question / answer toggle -------------------------------------- */
+.enh-q { font-weight: 600; }
+.enh-q p:first-child { margin-top: 0; }
+
+/* SQL file: questions are wrapped in <strong> in the source, so keep them plain */
+body.enh-sql .enh-q,
+body.enh-sql .enh-q strong { font-weight: 400; }
+
+.enh-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0 2px;
+  padding: 4px 12px;
+  font-size: 12.5px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--enh-accent);
+  background: var(--enh-accent-soft);
+  border: 1px solid var(--enh-accent);
+  border-radius: 999px;
+  transition: background 0.15s ease;
+}
+.enh-toggle:hover { background: var(--enh-accent); color: #fff; }
+.enh-toggle::before {
+  content: "\25B6";           /* small triangle, points right when closed */
+  font-size: 9px;
+  transition: transform 0.15s ease;
+}
+.enh-toggle.open::before { transform: rotate(90deg); } /* points down when open */
+
+.enh-a {
+  margin-top: 8px;
+  padding: 10px 14px;
+  border-left: 3px solid var(--enh-accent);
+  background: var(--enh-code-bg);
+  border-radius: 6px;
+  font-weight: 400;
+}
+.enh-a p:first-child { margin-top: 0; }
+.enh-a p:last-child { margin-bottom: 0; }
+
+/* master "show / hide all answers" button in the top bar */
+#enh-answers {
+  flex: 0 0 auto;
+  padding: 0 14px;
+  height: 40px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid var(--enh-border);
+  border-radius: 8px;
+  background: var(--enh-card-bg);
+  color: var(--enh-fg);
+  transition: background 0.15s ease;
+}
+#enh-answers:hover { background: var(--enh-accent-soft); }
+@media (max-width: 560px) {
+  #enh-answers { padding: 0 10px; font-size: 0; }
+  #enh-answers::before { content: "\1F441"; font-size: 16px; } /* eye icon on small screens */
+}

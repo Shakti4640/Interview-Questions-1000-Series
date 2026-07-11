@@ -1,0 +1,4457 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>04A Java one-liner hard interview questions.md</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+<link rel="stylesheet" href="_enhance.css">
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="100-one-liner-hard-interview-questions"><strong>100 one-liner hard interview questions</strong></h1>
+<h1>Jump to Batch</h1>
+<ul>
+  <li><a href="#%E2%9C%85-batch-1--java-basics--oop-q1%E2%80%93q100">✅ Batch 1 - Java Basics & OOP (Q1-Q100)</a></li>
+  <li><a href="#%E2%9C%85-batch-2--core-java-advanced--collections-q101%E2%80%93q200">✅ Batch 2 - Core Java Advanced & Collections (Q101-Q200)</a></li>
+  <li><a href="#%E2%9C%85-batch-3--advanced-concurrency--multithreading-q201%E2%80%93q300">✅ Batch 3 - Advanced Concurrency & Multithreading (Q201-Q300)</a></li>
+  <li><a href="#%E2%9C%85-batch-4--java-io-nio-serialization--networking-q301%E2%80%93q400">✅ Batch 4 - Java I/O, NIO, Serialization & Networking (Q301-Q400)</a></li>
+  <li><a href="#%E2%9C%85-batch-5--jdbc-orm-jpa--hibernate-q401%E2%80%93q500">✅ Batch 5 - JDBC, ORM, JPA & Hibernate (Q401-Q500)</a></li>
+  <li><a href="#%E2%9C%85-batch-6--spring-core-di-ioc--aop-q501%E2%80%93q600">✅ Batch 6 - Spring Core, DI, IoC & AOP (Q501-Q600)</a></li>
+  <li><a href="#%E2%9C%85-batch-7--spring-boot--rest-q601%E2%80%93q700">✅ Batch 7 - Spring Boot & REST (Q601-Q700)</a></li>
+  <li><a href="#%E2%9C%85-batch-8--microservices-spring-cloud--distributed-systems-q701%E2%80%93q800">✅ Batch 8 - Microservices, Spring Cloud & Distributed Systems (Q701-Q800)</a></li>
+  <li><a href="#%E2%9C%85-batch-9--advanced-java-javafx-caching-reactive-performance-q801%E2%80%93q900">✅ Batch 9 - Advanced Java, JavaFX, Caching, Reactive, Performance (Q801-Q900)</a></li>
+  <li><a href="#%E2%9C%85-batch-10-q901%E2%80%93q1000-advanced-microservices-security-testing-devops-cloud--java-17">✅ Batch 10 (Q901-Q1000): Advanced Microservices, Security, Testing, DevOps, Cloud & Java 17+</a></li>
+</ul>
+<hr>
+<h1 id="%E2%9C%85-batch-1--java-basics--oop-q1%E2%80%93q100">✅ <strong>Batch 1 — Java Basics &amp; OOP (Q1–Q100)</strong></h1>
+<h3 id="one-line-hard-questions--tiny-hints"><strong>One-Line Hard Questions + Tiny Hints</strong></h3>
+<ol>
+<li>
+<p>What exactly happens in memory when you create a new object?
+→ Hint: heap party + stack directions</p>
+</li>
+<li>
+<p>Why is <code>String</code> immutable in Java?
+→ Hint: safety + caching + class loader peace</p>
+</li>
+<li>
+<p>What does the JVM actually do when a program starts?
+→ Hint: loads, checks, runs… and babysits threads</p>
+</li>
+<li>
+<p>Explain how autoboxing can secretly hurt performance.
+→ Hint: tiny objects everywhere</p>
+</li>
+<li>
+<p>Why is <code>float</code> not precise?
+→ Hint: binary can’t handle some decimals nicely</p>
+</li>
+<li>
+<p>What does the <code>final</code> keyword actually guarantee?
+→ Hint: no change… but depends on where you put it</p>
+</li>
+<li>
+<p>How does the <code>==</code> operator behave differently for primitives vs objects?
+→ Hint: values vs addresses</p>
+</li>
+<li>
+<p>What really happens during method overloading resolution?
+→ Hint: compiler plays match-maker</p>
+</li>
+<li>
+<p>What is the purpose of a class loader hierarchy?
+→ Hint: parents first, kids later</p>
+</li>
+<li>
+<p>What happens if a constructor throws an exception?
+→ Hint: object never gets born</p>
+</li>
+<li>
+<p>Why can’t you override static methods?
+→ Hint: they belong to the class, not you</p>
+</li>
+<li>
+<p>What exactly is a marker interface?
+→ Hint: a tag with no mouth but serious power</p>
+</li>
+<li>
+<p>Why does Java enforce single inheritance?
+→ Hint: diamond problems make languages cry</p>
+</li>
+<li>
+<p>What does the <code>volatile</code> keyword do at the memory level?
+→ Hint: stop caching tricks</p>
+</li>
+<li>
+<p>How does Java determine which overloaded method to call with <code>null</code>?
+→ Hint: most specific wins… usually</p>
+</li>
+<li>
+<p>What’s the difference between a shallow copy and a deep copy?
+→ Hint: twins vs clones</p>
+</li>
+<li>
+<p>How does dynamic binding actually work?
+→ Hint: JVM decides at the last second</p>
+</li>
+<li>
+<p>What is the role of a class’s constant pool?
+→ Hint: storage for literal goodies</p>
+</li>
+<li>
+<p>Why can interfaces have default methods now?
+→ Hint: evolution without breaking elders</p>
+</li>
+<li>
+<p>How does Java resolve multiple interface default method conflicts?
+→ Hint: you must choose the favourite child</p>
+</li>
+<li>
+<p>What happens if you call <code>this()</code> and <code>super()</code> together?
+→ Hint: compiler says NOPE</p>
+</li>
+<li>
+<p>Why can enums have methods?
+→ Hint: they’re classes in fancy uniforms</p>
+</li>
+<li>
+<p>Explain method hiding with static methods.
+→ Hint: not overriding… just pretending</p>
+</li>
+<li>
+<p>Why is the main method static?
+→ Hint: JVM needs to start somewhere without setup</p>
+</li>
+<li>
+<p>What is the real difference between <code>StringBuilder</code> and <code>StringBuffer</code>?
+→ Hint: speed vs safety</p>
+</li>
+<li>
+<p>How does the compiler find unreachable code?
+→ Hint: flow-chart brain</p>
+</li>
+<li>
+<p>What does the JVM do when an exception is thrown?
+→ Hint: starts climbing the call stack mountain</p>
+</li>
+<li>
+<p>Why should you override <code>hashCode()</code> when overriding <code>equals()</code>?
+→ Hint: collection happiness</p>
+</li>
+<li>
+<p>How does Java prevent memory leaks without pointers?
+→ Hint: GC + reference tracking</p>
+</li>
+<li>
+<p>What is type erasure and why is it needed?
+→ Hint: generics didn’t exist before</p>
+</li>
+<li>
+<p>What happens when a thread dies inside a <code>finally</code> block?
+→ Hint: chaos + unpredictable sadness</p>
+</li>
+<li>
+<p>Why can abstract classes have constructors?
+→ Hint: parents need setup too</p>
+</li>
+<li>
+<p>How does Java treat an array under the hood?
+→ Hint: it’s an object in disguise</p>
+</li>
+<li>
+<p>Why is multiple public classes not allowed in a single file?
+→ Hint: filename loyalty</p>
+</li>
+<li>
+<p>What does the <code>super</code> keyword <em>really</em> reference?
+→ Hint: parent’s hidden toolbox</p>
+</li>
+<li>
+<p>Why should exceptions be immutable?
+→ Hint: thread safety + debugging sanity</p>
+</li>
+<li>
+<p>What is a class literal (<code>ClassName.class</code>)?
+→ Hint: ticket to reflection land</p>
+</li>
+<li>
+<p>How do wrapper classes maintain caching for some numbers?
+→ Hint: −128 to 127 VIP section</p>
+</li>
+<li>
+<p>What is the difference between checked and unchecked exceptions at bytecode level?
+→ Hint: compiler vs JVM responsibility</p>
+</li>
+<li>
+<p>Why are arrays covariant?
+→ Hint: legacy decisions… not always good ones</p>
+</li>
+<li>
+<p>Why are generics invariant?
+→ Hint: safety first</p>
+</li>
+<li>
+<p>How does Java detect stack overflow?
+→ Hint: no more stack frames available</p>
+</li>
+<li>
+<p>Why can’t constructors be inherited?
+→ Hint: each class builds itself</p>
+</li>
+<li>
+<p>What happens when you clone an object using <code>clone()</code>?
+→ Hint: shallow magic by default</p>
+</li>
+<li>
+<p>What exactly is the default value of uninitialized variables?
+→ Hint: depends where they live</p>
+</li>
+<li>
+<p>Why does <code>String + int</code> compile but <code>Object + int</code> doesn’t?
+→ Hint: special treatment for strings</p>
+</li>
+<li>
+<p>What causes the “diamond problem” in inheritance?
+→ Hint: two paths, one confused child</p>
+</li>
+<li>
+<p>How does Java represent a <code>null</code> reference internally?
+→ Hint: special zero value</p>
+</li>
+<li>
+<p>Why does Java use UTF-16 for <code>String</code>?
+→ Hint: Unicode history baggage</p>
+</li>
+<li>
+<p>How does iteration over a string work?
+→ Hint: char array marching</p>
+</li>
+<li>
+<p>Why do primitive arrays perform so well?
+→ Hint: tight memory layout</p>
+</li>
+<li>
+<p>What is the difference between <code>return;</code> and <code>return voidVar;</code>?
+→ Hint: compiler behaviour</p>
+</li>
+<li>
+<p>What happens when you divide by zero for integers vs floating numbers?
+→ Hint: exception vs infinity</p>
+</li>
+<li>
+<p>What is an anonymous inner class used for?
+→ Hint: quick one-time helpers</p>
+</li>
+<li>
+<p>Why can nested classes access private members of outer classes?
+→ Hint: compiler creates bridges</p>
+</li>
+<li>
+<p>What does “pass-by-value” really mean in Java?
+→ Hint: copies of references</p>
+</li>
+<li>
+<p>Why are logical operators short-circuited?
+→ Hint: speed + safety</p>
+</li>
+<li>
+<p>Why do <code>equals()</code> checks start with <code>==</code>?
+→ Hint: quick escape route</p>
+</li>
+<li>
+<p>What happens if a static block throws an exception?
+→ Hint: class will refuse to load</p>
+</li>
+<li>
+<p>Why use <code>transient</code>?
+→ Hint: skip unwanted baggage during serialization</p>
+</li>
+<li>
+<p>What is the difference between JDK, JRE, and JVM?
+→ Hint: toolkit, kitchen, stove</p>
+</li>
+<li>
+<p>Why is <code>main</code> not required in every Java program?
+→ Hint: frameworks call the shots</p>
+</li>
+<li>
+<p>How does Java handle integer overflow?
+→ Hint: wrap around like a loop-the-loop</p>
+</li>
+<li>
+<p>What is the role of the method area?
+→ Hint: class data sleeping spot</p>
+</li>
+<li>
+<p>Why use composition over inheritance?
+→ Hint: more flexible family tree</p>
+</li>
+<li>
+<p>What is the difference between <code>throw</code> and <code>throws</code>?
+→ Hint: action vs declaration</p>
+</li>
+<li>
+<p>How does the compiler treat switch statements with strings?
+→ Hint: hash + equals magic</p>
+</li>
+<li>
+<p>Why do enums prevent duplicate instances?
+→ Hint: private constructor lockdown</p>
+</li>
+<li>
+<p>What is a synthetic method?
+→ Hint: compiler’s secret helpers</p>
+</li>
+<li>
+<p>What happens when <code>System.gc()</code> is called?
+→ Hint: polite request, not an order</p>
+</li>
+<li>
+<p>Why can't you use primitives in generics?
+→ Hint: type erasure limitations</p>
+</li>
+<li>
+<p>How does Java ensure thread safety for class initialization?
+→ Hint: synchronized behind the scenes</p>
+</li>
+<li>
+<p>What is the difference between <code>instanceof</code> and <code>getClass()</code> checks?
+→ Hint: inheritance vs identity</p>
+</li>
+<li>
+<p>Why are static variables shared across objects?
+→ Hint: they live in class land, not object land</p>
+</li>
+<li>
+<p>How does the compiler inline constant values?
+→ Hint: replaces them at compile time</p>
+</li>
+<li>
+<p>What is the difference between JIT and AOT compilation?
+→ Hint: now vs before</p>
+</li>
+<li>
+<p>What happens during garbage collection of cyclic references?
+→ Hint: GC doesn’t care about circles</p>
+</li>
+<li>
+<p>Why does Java forbid multiple default constructors?
+→ Hint: only one no-arg entry point</p>
+</li>
+<li>
+<p>How does the stack frame store method parameters?
+→ Hint: one tidy frame per call</p>
+</li>
+<li>
+<p>What is a phantom reference?
+→ Hint: ghost signals after GC</p>
+</li>
+<li>
+<p>Why do strings use a hash cache?
+→ Hint: speed boost for repeated lookups</p>
+</li>
+<li>
+<p>What is a class initialization lock?
+→ Hint: safe one-time setup</p>
+</li>
+<li>
+<p>Why can an interface extend multiple interfaces?
+→ Hint: behaviour mix-and-match</p>
+</li>
+<li>
+<p>What happens when an exception is thrown in a static block?
+→ Hint: class dies instantly</p>
+</li>
+<li>
+<p>What is escape analysis?
+→ Hint: JVM decides heap vs stack</p>
+</li>
+<li>
+<p>Why does Java allow overloading but not overriding of private methods?
+→ Hint: private members aren’t visible</p>
+</li>
+<li>
+<p>How does the JVM verify bytecode?
+→ Hint: safety checks like airport security</p>
+</li>
+<li>
+<p>Why is <code>Object</code> the default root class?
+→ Hint: universal parent</p>
+</li>
+<li>
+<p>What is the difference between <code>intern()</code> and regular strings?
+→ Hint: shared pool vs heap copies</p>
+</li>
+<li>
+<p>Why are wrapper classes immutable?
+→ Hint: caching + thread safety</p>
+</li>
+<li>
+<p>What does <code>super()</code> always have to be the first line?
+→ Hint: parents get setup first</p>
+</li>
+<li>
+<p>How do multidimensional arrays work internally?
+→ Hint: array of arrays, not a grid</p>
+</li>
+<li>
+<p>Why can enums implement interfaces?
+→ Hint: behaviour mix allowed</p>
+</li>
+<li>
+<p>What is the difference between <code>char</code> and <code>Character</code>?
+→ Hint: primitive vs dressed-up version</p>
+</li>
+<li>
+<p>How does the JVM detect unreachable objects?
+→ Hint: reference graph walk</p>
+</li>
+<li>
+<p>Why is reflection expensive?
+→ Hint: lots of checks and indirection</p>
+</li>
+<li>
+<p>What is the difference between heap and metaspace?
+→ Hint: objects vs class metadata</p>
+</li>
+<li>
+<p>Why should you avoid using finalizers?
+→ Hint: unpredictable zombie behaviour</p>
+</li>
+<li>
+<p>What does the class loader do during linking?
+→ Hint: verify + prepare + resolve</p>
+</li>
+<li>
+<p>What is the difference between a no-arg constructor and the default constructor?
+→ Hint: one exists only if you don’t make your own</p>
+</li>
+</ol>
+<hr>
+<h3 id="%E2%9C%94%EF%B8%8F-batch-1-completed">✔️ <strong>Batch 1 completed!</strong></h3>
+<hr>
+<h1 id="%E2%9C%85-batch-2--core-java-advanced--collections-q101%E2%80%93q200">✅ <strong>Batch 2 — Core Java Advanced &amp; Collections (Q101–Q200)</strong></h1>
+<h3 id="one-line-hard-questions--tiny-hints"><strong>One-Line Hard Questions + Tiny Hints</strong></h3>
+<ol start="101">
+<li>
+<p>How does <code>HashMap</code> actually calculate a bucket index?
+ → Hint: hash → spread → index</p>
+</li>
+<li>
+<p>Why does <code>HashMap</code> use power-of-two bucket sizes?
+ → Hint: bitwise shortcuts</p>
+</li>
+<li>
+<p>What problem does hash spreading solve?
+ → Hint: avoids bucket crowding</p>
+</li>
+<li>
+<p>What is the difference between hash collision and hash clustering?
+ → Hint: same slot vs near slots</p>
+</li>
+<li>
+<p>Why did Java 8 add tree bins to HashMap?
+ → Hint: worst-case performance rescue</p>
+</li>
+<li>
+<p>When does a HashMap bucket convert to a tree?
+ → Hint: threshold + comparable keys</p>
+</li>
+<li>
+<p>Why must keys used in HashMap be immutable?
+ → Hint: stability of hash + equals</p>
+</li>
+<li>
+<p>What happens when a key’s hash changes after insertion?
+ → Hint: map can't find its own kid</p>
+</li>
+<li>
+<p>How does a <code>HashSet</code> internally work?
+ → Hint: it’s a HashMap in disguise</p>
+</li>
+<li>
+<p>Why does <code>LinkedHashMap</code> maintain insertion order?
+ → Hint: uses a double-linked list</p>
+</li>
+<li>
+<p>How does LRU mode work in LinkedHashMap?
+ → Hint: access order shuffle</p>
+</li>
+<li>
+<p>Why is <code>TreeMap</code> slower than <code>HashMap</code>?
+ → Hint: sorting costs time</p>
+</li>
+<li>
+<p>What is the structure used by TreeMap?
+ → Hint: Red-Black Tree</p>
+</li>
+<li>
+<p>Why do TreeMap keys need to be Comparable or have a Comparator?
+ → Hint: sorted tree needs directions</p>
+</li>
+<li>
+<p>How does TreeSet enforce uniqueness?
+ → Hint: compares, not hashes</p>
+</li>
+<li>
+<p>What is the fail-fast behaviour of iterators?
+ → Hint: detects sneaky changes</p>
+</li>
+<li>
+<p>Why are fail-fast iterators not guaranteed?
+ → Hint: best effort only</p>
+</li>
+<li>
+<p>How does a ConcurrentHashMap avoid locking the entire map?
+ → Hint: finer-grain control</p>
+</li>
+<li>
+<p>Why does ConcurrentHashMap disallow null keys?
+ → Hint: ambiguity with missing values</p>
+</li>
+<li>
+<p>How does computeIfAbsent work internally?
+ → Hint: double-check pattern</p>
+</li>
+<li>
+<p>What is the difference between Enumeration and Iterator?
+ → Hint: old vs newer</p>
+</li>
+<li>
+<p>What is the role of Spliterator?
+ → Hint: parallel-friendly iterator</p>
+</li>
+<li>
+<p>Why is CopyOnWriteArrayList good for read-heavy situations?
+ → Hint: snapshot magic</p>
+</li>
+<li>
+<p>Why is CopyOnWriteArrayList terrible for write-heavy?
+ → Hint: copying… every… time</p>
+</li>
+<li>
+<p>How does WeakHashMap work?
+ → Hint: keys disappear when GC runs</p>
+</li>
+<li>
+<p>What’s the purpose of IdentityHashMap?
+ → Hint: compares with <code>==</code></p>
+</li>
+<li>
+<p>Why would someone use ArrayDeque instead of Stack?
+ → Hint: newer and faster</p>
+</li>
+<li>
+<p>What is the time complexity of getting an element from ArrayList?
+ → Hint: O(1) happiness</p>
+</li>
+<li>
+<p>Why is LinkedList slow for random access?
+ → Hint: must walk nodes</p>
+</li>
+<li>
+<p>Why does ArrayList grow by 1.5x?
+ → Hint: balance between space and speed</p>
+</li>
+<li>
+<p>How does <code>ensureCapacity()</code> work?
+ → Hint: pre-reserve seats</p>
+</li>
+<li>
+<p>Why shouldn’t you modify a list while iterating without iterator methods?
+ → Hint: fail-fast chaos</p>
+</li>
+<li>
+<p>What happens if you call remove() twice in an iterator?
+ → Hint: iterator scolds you</p>
+</li>
+<li>
+<p>What is structural modification in collections?
+ → Hint: anything that reshapes the container</p>
+</li>
+<li>
+<p>How does PriorityQueue order elements?
+ → Hint: heap structure</p>
+</li>
+<li>
+<p>Why is PriorityQueue not a sorted queue?
+ → Hint: only top element matters</p>
+</li>
+<li>
+<p>What is the difference between comparator and comparable?
+ → Hint: external judge vs built-in judge</p>
+</li>
+<li>
+<p>Why must comparator logic be consistent with equals?
+ → Hint: avoid weird behaviour</p>
+</li>
+<li>
+<p>Why does Optional discourage null return values?
+ → Hint: clear intent, less surprise</p>
+</li>
+<li>
+<p>How does Optional.map differ from flatMap?
+ → Hint: nested vs flattened results</p>
+</li>
+<li>
+<p>Why are streams lazy?
+ → Hint: do work only when needed</p>
+</li>
+<li>
+<p>What triggers a stream pipeline to run?
+ → Hint: terminal operation</p>
+</li>
+<li>
+<p>Why are parallel streams dangerous?
+ → Hint: shared state + randomness</p>
+</li>
+<li>
+<p>How does a stream perform short-circuiting operations?
+ → Hint: stops when happy</p>
+</li>
+<li>
+<p>What is the difference between intermediate and terminal operations?
+ → Hint: setup vs execution</p>
+</li>
+<li>
+<p>What does the collector &quot;toMap&quot; do when keys collide?
+ → Hint: needs merge instructions</p>
+</li>
+<li>
+<p>Why can streams only be used once?
+ → Hint: they close shop after running</p>
+</li>
+<li>
+<p>How does reduce() differ from collect()?
+ → Hint: fold vs container-build</p>
+</li>
+<li>
+<p>Why are lambda expressions stateless by design?
+ → Hint: helps parallelism</p>
+</li>
+<li>
+<p>Why is method reference considered syntactic sugar?
+ → Hint: shortcut for lambda</p>
+</li>
+<li>
+<p>What is the difference between peek() and map()?
+ → Hint: sneak vs transform</p>
+</li>
+<li>
+<p>Why is Stream.ofNullable useful?
+ → Hint: skip null inputs gracefully</p>
+</li>
+<li>
+<p>How does groupingBy() work internally?
+ → Hint: map builder</p>
+</li>
+<li>
+<p>What is backpressure in stream-like systems?
+ → Hint: too-fast producer meets slow consumer</p>
+</li>
+<li>
+<p>How does LocalDate avoid mutability problems?
+ → Hint: returns new objects</p>
+</li>
+<li>
+<p>Why do date/time classes use ISO-8601?
+ → Hint: universal standard</p>
+</li>
+<li>
+<p>What is the difference between Period and Duration?
+ → Hint: human vs machine time</p>
+</li>
+<li>
+<p>Why is ZoneId essential for correct time calculations?
+ → Hint: world is big</p>
+</li>
+<li>
+<p>What is the difference between OffsetDateTime and ZonedDateTime?
+ → Hint: fixed offset vs full rules</p>
+</li>
+<li>
+<p>Why is EnumSet so fast?
+ → Hint: bitwise operations</p>
+</li>
+<li>
+<p>What is an iterator’s fail-safe behaviour?
+ → Hint: works on copies</p>
+</li>
+<li>
+<p>Why does TreeMap not allow null keys?
+ → Hint: comparator can't compare nothing</p>
+</li>
+<li>
+<p>What is a modCount?
+ → Hint: collection’s change counter</p>
+</li>
+<li>
+<p>Why should you choose ArrayList over Vector?
+ → Hint: Vector synchronizes too much</p>
+</li>
+<li>
+<p>How does a LinkedHashSet maintain order?
+ → Hint: linked list inside</p>
+</li>
+<li>
+<p>Why is BigInteger immutable?
+ → Hint: thread-safety and predictability</p>
+</li>
+<li>
+<p>Why is BigDecimal preferred for money?
+ → Hint: accuracy &gt; speed</p>
+</li>
+<li>
+<p>What is the scale in BigDecimal?
+ → Hint: digits after decimal</p>
+</li>
+<li>
+<p>Why can BigDecimal comparisons be tricky?
+ → Hint: scale differences</p>
+</li>
+<li>
+<p>What is the purpose of NavigableMap?
+ → Hint: floor, ceiling, nearby searches</p>
+</li>
+<li>
+<p>Why are queues FIFO by design?
+ → Hint: first come, first served</p>
+</li>
+<li>
+<p>How does LinkedList behave as a queue?
+ → Hint: head-tail operations</p>
+</li>
+<li>
+<p>Why are Deques double-ended?
+ → Hint: flexibility for stacks and queues</p>
+</li>
+<li>
+<p>How does <code>forEachRemaining()</code> work?
+ → Hint: bulk-visit all leftovers</p>
+</li>
+<li>
+<p>Why does <code>Arrays.asList()</code> produce a fixed-size list?
+ → Hint: wrapper around array</p>
+</li>
+<li>
+<p>How does <code>Collections.unmodifiableList()</code> work?
+ → Hint: wrapper that rejects edits</p>
+</li>
+<li>
+<p>Why shouldn’t you rely on concurrent modification exceptions?
+ → Hint: no guarantee</p>
+</li>
+<li>
+<p>What is the difference between map.merge and compute?
+ → Hint: merge is value-focused</p>
+</li>
+<li>
+<p>Why are ConcurrentSkipListMap and ConcurrentSkipListSet useful?
+ → Hint: sorted + concurrent</p>
+</li>
+<li>
+<p>How does a skip list achieve O(log n)?
+ → Hint: multi-level linked lists</p>
+</li>
+<li>
+<p>Why does HashMap allow null keys but Hashtable doesn't?
+ → Hint: old design vs new design</p>
+</li>
+<li>
+<p>What is the resizing cost in HashMap?
+ → Hint: rehashing storm</p>
+</li>
+<li>
+<p>Why does ArrayDeque disallow null elements?
+ → Hint: null is a special marker</p>
+</li>
+<li>
+<p>What is a spliterator characteristic?
+ → Hint: hints like ORDERED, SORTED</p>
+</li>
+<li>
+<p>Why is identity-based hashing rare?
+ → Hint: usually want equality</p>
+</li>
+<li>
+<p>Why does Optional.orElseThrow exist?
+ → Hint: fail loudly when necessary</p>
+</li>
+<li>
+<p>Why does Optional discourage get()?
+ → Hint: risky if empty</p>
+</li>
+<li>
+<p>What is the collector &quot;partitioningBy&quot; used for?
+ → Hint: true/false buckets</p>
+</li>
+<li>
+<p>Why are method references faster to read?
+ → Hint: shorthand for lambdas</p>
+</li>
+<li>
+<p>What is a stream pipeline?
+ → Hint: staged operations</p>
+</li>
+<li>
+<p>Why is map multi-thread friendly in parallel streams?
+ → Hint: stateless transformation</p>
+</li>
+<li>
+<p>Why should mutable reductions be avoided in streams?
+ → Hint: race problems</p>
+</li>
+<li>
+<p>Why is forEach not recommended for parallel streams?
+ → Hint: order chaos</p>
+</li>
+<li>
+<p>How does a StreamBuilder work?
+ → Hint: collects elements before building</p>
+</li>
+<li>
+<p>What makes EnumMap memory-efficient?
+ → Hint: uses ordinal as index</p>
+</li>
+<li>
+<p>Why is NavigableSet useful?
+ → Hint: nearest neighbours</p>
+</li>
+<li>
+<p>How does Objects.compare use a comparator?
+ → Hint: fallback to rules</p>
+</li>
+<li>
+<p>Why is Collections.rotate an efficient operation?
+ → Hint: uses reversal trick</p>
+</li>
+<li>
+<p>What is the difference between toArray() and toArray(T[])?
+ → Hint: type-safety vs cast</p>
+</li>
+<li>
+<p>Why is Arrays.sort faster for primitives?
+ → Hint: tuned algorithms</p>
+</li>
+</ol>
+<hr>
+<h3 id="%E2%9C%94%EF%B8%8F-batch-2-completed">✔️ <strong>Batch 2 completed!</strong></h3>
+<hr>
+<h1 id="%E2%9C%85-batch-3--advanced-concurrency--multithreading-q201%E2%80%93q300">✅ <strong>Batch 3 — Advanced Concurrency &amp; Multithreading (Q201–Q300)</strong></h1>
+<h3 id="one-line-hard-questions--tiny-hints"><strong>One-Line Hard Questions + Tiny Hints</strong></h3>
+<ol start="201">
+<li>
+<p>What happens when two threads try to update the same variable at the same time?
+ → Hint: race to chaos</p>
+</li>
+<li>
+<p>Why is <code>synchronized</code> not always enough for thread safety?
+ → Hint: slow + not flexible</p>
+</li>
+<li>
+<p>How does intrinsic locking actually work?
+ → Hint: every object carries a tiny lock</p>
+</li>
+<li>
+<p>Why is lock contention harmful?
+ → Hint: threads waiting in long lines</p>
+</li>
+<li>
+<p>What is a monitor in Java?
+ → Hint: lock + waiting room</p>
+</li>
+<li>
+<p>Why can't you lock on a <code>String</code> literal?
+ → Hint: shared across the whole app</p>
+</li>
+<li>
+<p>What is reentrant locking?
+ → Hint: same thread allowed back in</p>
+</li>
+<li>
+<p>Why does Java use biased locking?
+ → Hint: speed optimisation for single-threaded use</p>
+</li>
+<li>
+<p>What is lock inflation?
+ → Hint: small lock → big lock when needed</p>
+</li>
+<li>
+<p>Why are volatile variables not atomic?
+ → Hint: visibility ≠ protection</p>
+</li>
+<li>
+<p>How does a volatile write create a memory barrier?
+ → Hint: stops reordering</p>
+</li>
+<li>
+<p>What is false sharing?
+ → Hint: cache line fighting</p>
+</li>
+<li>
+<p>Why is CAS (compare-and-swap) important?
+ → Hint: lock-free decision making</p>
+</li>
+<li>
+<p>What is the ABA problem?
+ → Hint: looks same but changed</p>
+</li>
+<li>
+<p>How do Atomic classes solve the ABA problem?
+ → Hint: version stamps or careful loops</p>
+</li>
+<li>
+<p>Why does AtomicInteger use a CAS loop?
+ → Hint: retry until success</p>
+</li>
+<li>
+<p>What is a happens-before relationship?
+ → Hint: ordering rules for memory</p>
+</li>
+<li>
+<p>Why is the Java Memory Model needed?
+ → Hint: CPUs reorder stuff</p>
+</li>
+<li>
+<p>What is the difference between a thread and a task?
+ → Hint: worker vs job</p>
+</li>
+<li>
+<p>Why is creating many threads expensive?
+ → Hint: memory + context switching</p>
+</li>
+<li>
+<p>How does a thread pool improve performance?
+ → Hint: reuse workers</p>
+</li>
+<li>
+<p>What is the difference between fixed and cached thread pools?
+ → Hint: steady vs elastic</p>
+</li>
+<li>
+<p>Why is ForkJoinPool good for divide-and-conquer tasks?
+ → Hint: steal unused work</p>
+</li>
+<li>
+<p>What is work-stealing?
+ → Hint: idle worker grabs tasks from others</p>
+</li>
+<li>
+<p>Why does ExecutorService need shutdown()?
+ → Hint: threads keep running otherwise</p>
+</li>
+<li>
+<p>What is the difference between shutdown() and shutdownNow()?
+ → Hint: polite vs rude</p>
+</li>
+<li>
+<p>Why does Future.get block?
+ → Hint: waits for result</p>
+</li>
+<li>
+<p>What happens if you cancel a Future?
+ → Hint: may interrupt thread</p>
+</li>
+<li>
+<p>What is the purpose of Callable vs Runnable?
+ → Hint: return value + exceptions</p>
+</li>
+<li>
+<p>Why is CompletableFuture so powerful?
+ → Hint: chaining + async magic</p>
+</li>
+<li>
+<p>How does CompletableFuture support non-blocking execution?
+ → Hint: callback style</p>
+</li>
+<li>
+<p>What is a thread starvation problem?
+ → Hint: some never get CPU time</p>
+</li>
+<li>
+<p>Why is using synchronized + wait/notify tricky?
+ → Hint: easy to make mistakes</p>
+</li>
+<li>
+<p>What is spurious wakeup?
+ → Hint: wake without reason</p>
+</li>
+<li>
+<p>Why must wait() always be inside a loop?
+ → Hint: recheck condition</p>
+</li>
+<li>
+<p>What is a CountDownLatch used for?
+ → Hint: wait for group to finish</p>
+</li>
+<li>
+<p>Why can't a CountDownLatch be reused?
+ → Hint: hits zero once</p>
+</li>
+<li>
+<p>What is a CyclicBarrier used for?
+ → Hint: threads meet at checkpoints</p>
+</li>
+<li>
+<p>Why is CyclicBarrier reusable?
+ → Hint: reset after meeting</p>
+</li>
+<li>
+<p>What is a Semaphore used for?
+ → Hint: limit number of entries</p>
+</li>
+<li>
+<p>What is a fair semaphore?
+ → Hint: first-come-first-served</p>
+</li>
+<li>
+<p>What is a ReentrantLock used for?
+ → Hint: flexible alternative to synchronized</p>
+</li>
+<li>
+<p>Why use tryLock()?
+ → Hint: avoid waiting forever</p>
+</li>
+<li>
+<p>What is a read-write lock?
+ → Hint: many readers, one writer</p>
+</li>
+<li>
+<p>Why should you avoid holding locks during I/O?
+ → Hint: long blocking</p>
+</li>
+<li>
+<p>Why is double-checked locking used?
+ → Hint: reduce locking cost</p>
+</li>
+<li>
+<p>Why was double-checked locking broken before Java 5?
+ → Hint: memory model issues</p>
+</li>
+<li>
+<p>What is an executor rejection policy?
+ → Hint: what to do with extra tasks</p>
+</li>
+<li>
+<p>How does ThreadLocal maintain data?
+ → Hint: per-thread mini storage</p>
+</li>
+<li>
+<p>Why can ThreadLocal cause memory leaks?
+ → Hint: thread pools never die</p>
+</li>
+<li>
+<p>What is a daemon thread?
+ → Hint: helper that doesn’t block JVM exit</p>
+</li>
+<li>
+<p>Why should you avoid long operations in finalizers?
+ → Hint: GC delays</p>
+</li>
+<li>
+<p>What is a thread dump?
+ → Hint: snapshot of all threads</p>
+</li>
+<li>
+<p>What is a livelock?
+ → Hint: dancing but not progressing</p>
+</li>
+<li>
+<p>What is a deadlock?
+ → Hint: threads blocking each other forever</p>
+</li>
+<li>
+<p>Why are circular waits dangerous?
+ → Hint: deadlock ingredient</p>
+</li>
+<li>
+<p>How does timeout locking reduce deadlock chances?
+ → Hint: gives up eventually</p>
+</li>
+<li>
+<p>What is a memory fence?
+ → Hint: stop-reorder wall</p>
+</li>
+<li>
+<p>What is the difference between stack and heap for threads?
+ → Hint: each has stack, share heap</p>
+</li>
+<li>
+<p>Why are thread priorities unreliable?
+ → Hint: OS decides real scheduling</p>
+</li>
+<li>
+<p>What is fork/join recursive decomposition?
+ → Hint: split tasks into smaller tasks</p>
+</li>
+<li>
+<p>Why must fork/join tasks be small?
+ → Hint: overhead grows fast</p>
+</li>
+<li>
+<p>What is a Phaser used for?
+ → Hint: advanced barrier</p>
+</li>
+<li>
+<p>Why is interrupting a thread cooperative?
+ → Hint: thread must check flag</p>
+</li>
+<li>
+<p>How does Thread.interrupted differ from isInterrupted()?
+ → Hint: one clears flag</p>
+</li>
+<li>
+<p>Why should interrupts be handled promptly?
+ → Hint: responsive execution</p>
+</li>
+<li>
+<p>Why is busy-waiting bad?
+ → Hint: CPU spins for nothing</p>
+</li>
+<li>
+<p>What is a spinlock?
+ → Hint: waiting by spinning</p>
+</li>
+<li>
+<p>Why might spinning be faster sometimes?
+ → Hint: short waits only</p>
+</li>
+<li>
+<p>Why are concurrent collections better than synchronized wrappers?
+ → Hint: fine-grained locking</p>
+</li>
+<li>
+<p>What is LongAdder?
+ → Hint: counters without contention</p>
+</li>
+<li>
+<p>Why is LongAdder faster than AtomicLong under heavy load?
+ → Hint: striped counters</p>
+</li>
+<li>
+<p>How does Phaser handle dynamic thread registration?
+ → Hint: threads can join/leave</p>
+</li>
+<li>
+<p>What is barrierAction in CyclicBarrier?
+ → Hint: action after all arrive</p>
+</li>
+<li>
+<p>Why avoid nested locks?
+ → Hint: deadlock trap</p>
+</li>
+<li>
+<p>Why are futures not great for complex async flows?
+ → Hint: no chaining</p>
+</li>
+<li>
+<p>What is a bounded queue in executors for?
+ → Hint: control overload</p>
+</li>
+<li>
+<p>Why is SynchronousQueue special?
+ → Hint: zero capacity</p>
+</li>
+<li>
+<p>What is a thread-safe lazy initialization technique?
+ → Hint: holder pattern</p>
+</li>
+<li>
+<p>Why is Idle CPU time important in concurrency?
+ → Hint: prevents overheating + context thrash</p>
+</li>
+<li>
+<p>What is a striped lock?
+ → Hint: many small locks instead of one big</p>
+</li>
+<li>
+<p>Why use a countdown event before starting threads?
+ → Hint: synchronized start</p>
+</li>
+<li>
+<p>What is task stealing in ForkJoin?
+ → Hint: idle thread helps peers</p>
+</li>
+<li>
+<p>Why avoid blocking calls in parallel streams?
+ → Hint: ruins parallelism</p>
+</li>
+<li>
+<p>What is a non-blocking algorithm?
+ → Hint: no locks, retry loops</p>
+</li>
+<li>
+<p>Why does CAS rely on hardware?
+ → Hint: atomic primitives</p>
+</li>
+<li>
+<p>What is a memory visibility bug?
+ → Hint: updated value not seen</p>
+</li>
+<li>
+<p>Why must shared variables be guarded?
+ → Hint: avoid corruption</p>
+</li>
+<li>
+<p>What is a happens-before edge created by lock release?
+ → Hint: write-then-read guarantee</p>
+</li>
+<li>
+<p>Why should thread pools be sized based on CPUs?
+ → Hint: optimal use</p>
+</li>
+<li>
+<p>What is fork-join &quot;async mode&quot;?
+ → Hint: pushing tasks externally</p>
+</li>
+<li>
+<p>Why is fairness optional in locks?
+ → Hint: fairness slows things down</p>
+</li>
+<li>
+<p>Why is StampedLock faster than ReentrantReadWriteLock?
+ → Hint: optimistic reads</p>
+</li>
+<li>
+<p>How does optimistic read work?
+ → Hint: check stamp at end</p>
+</li>
+<li>
+<p>Why is unsafe used internally in concurrency utilities?
+ → Hint: low-level power</p>
+</li>
+<li>
+<p>Why should you not write your own lock algorithms?
+ → Hint: tricky and unsafe</p>
+</li>
+<li>
+<p>Why is ExecutorCompletionService useful?
+ → Hint: get tasks as they complete</p>
+</li>
+<li>
+<p>Why are blocking queues essential for producer-consumer?
+ → Hint: automatic waiting/waking</p>
+</li>
+<li>
+<p>What is the difference between fair and unfair locks?
+ → Hint: queue order vs speed</p>
+</li>
+<li>
+<p>Why should concurrent code prefer immutability?
+ → Hint: safe by default</p>
+</li>
+</ol>
+<hr>
+<h3 id="%E2%9C%94%EF%B8%8F-batch-3-completed">✔️ <strong>Batch 3 completed!</strong></h3>
+<hr>
+<h1 id="%E2%9C%85-batch-4--java-io-nio-serialization--networking-q301%E2%80%93q400">✅ <strong>Batch 4 — Java I/O, NIO, Serialization &amp; Networking (Q301–Q400)</strong></h1>
+<h3 id="one-line-hard-questions--tiny-hints"><strong>One-Line Hard Questions + Tiny Hints</strong></h3>
+<ol start="301">
+<li>
+<p>Why are streams in Java unidirectional?
+ → Hint: in or out, not both</p>
+</li>
+<li>
+<p>What is the difference between byte streams and character streams?
+ → Hint: raw data vs text-friendly</p>
+</li>
+<li>
+<p>Why does Reader/Writer use Unicode?
+ → Hint: world languages club</p>
+</li>
+<li>
+<p>What is buffering in I/O?
+ → Hint: take a bucket, not a spoon</p>
+</li>
+<li>
+<p>Why is BufferedReader faster than FileReader?
+ → Hint: reduces disk trips</p>
+</li>
+<li>
+<p>What makes FileInputStream slower compared to BufferedInputStream?
+ → Hint: tiny reads cost more</p>
+</li>
+<li>
+<p>What problem does Try-with-resources solve?
+ → Hint: no more forgetting to close</p>
+</li>
+<li>
+<p>Why does File class not represent actual files only?
+ → Hint: path info, not file data</p>
+</li>
+<li>
+<p>What is the difference between File and Path (NIO)?
+ → Hint: modern vs old school</p>
+</li>
+<li>
+<p>Why does NIO use Channels instead of Streams?
+ → Hint: bidirectional + faster</p>
+</li>
+<li>
+<p>What is a Buffer in NIO?
+ → Hint: container with position limits</p>
+</li>
+<li>
+<p>How does a Channel differ from a Stream?
+ → Hint: both-way street</p>
+</li>
+<li>
+<p>Why is NIO called non-blocking?
+ → Hint: thread doesn't sit idle</p>
+</li>
+<li>
+<p>What is the purpose of Selectors?
+ → Hint: watch many channels at once</p>
+</li>
+<li>
+<p>Why does ByteBuffer have direct and non-direct types?
+ → Hint: memory location differences</p>
+</li>
+<li>
+<p>Why are direct buffers faster?
+ → Hint: skip JVM heap copy</p>
+</li>
+<li>
+<p>Why are direct buffers slower to create?
+ → Hint: OS-level allocation</p>
+</li>
+<li>
+<p>What is scattering read?
+ → Hint: read → many buffers</p>
+</li>
+<li>
+<p>What is gathering write?
+ → Hint: write ← many buffers</p>
+</li>
+<li>
+<p>How do you flip a buffer?
+ → Hint: read mode switch</p>
+</li>
+<li>
+<p>What is the difference between position and limit?
+ → Hint: where you are vs where you stop</p>
+</li>
+<li>
+<p>Why is clear() not clearing data?
+ → Hint: resets pointers, not bytes</p>
+</li>
+<li>
+<p>What is memory-mapped file I/O?
+ → Hint: file meets RAM directly</p>
+</li>
+<li>
+<p>Why are memory-mapped files great for large files?
+ → Hint: OS paging magic</p>
+</li>
+<li>
+<p>What’s the risk with memory-mapped files?
+ → Hint: out-of-memory surprises</p>
+</li>
+<li>
+<p>What is a FileChannel used for?
+ → Hint: efficient file access</p>
+</li>
+<li>
+<p>Why does ObjectInputStream require serialVersionUID?
+ → Hint: version control</p>
+</li>
+<li>
+<p>What happens if serialVersionUID mismatches?
+ → Hint: boom — InvalidClassException</p>
+</li>
+<li>
+<p>Why is serialization dangerous?
+ → Hint: hidden code execution risks</p>
+</li>
+<li>
+<p>Why is transient keyword used?
+ → Hint: skip sensitive fields</p>
+</li>
+<li>
+<p>What is Externalizable used for?
+ → Hint: full control over serialization</p>
+</li>
+<li>
+<p>Why must Externalizable have a public no-arg constructor?
+ → Hint: object needs to be recreated</p>
+</li>
+<li>
+<p>Why is default Java serialization slow?
+ → Hint: reflection + metadata</p>
+</li>
+<li>
+<p>Why does serialization break encapsulation?
+ → Hint: private fields exposed</p>
+</li>
+<li>
+<p>Why should you avoid serializing large object graphs?
+ → Hint: deep and heavy</p>
+</li>
+<li>
+<p>What is object graph traversal in serialization?
+ → Hint: crawler visits all connected objects</p>
+</li>
+<li>
+<p>Why is writeReplace useful?
+ → Hint: swap objects before serialization</p>
+</li>
+<li>
+<p>Why is readResolve used?
+ → Hint: enforce singletons</p>
+</li>
+<li>
+<p>How does serialization handle cyclic references?
+ → Hint: keeps a reference table</p>
+</li>
+<li>
+<p>What is socket programming used for?
+ → Hint: chat between computers</p>
+</li>
+<li>
+<p>Difference between TCP and UDP?
+ → Hint: reliable vs speedy</p>
+</li>
+<li>
+<p>What is a port in networking?
+ → Hint: mailbox number</p>
+</li>
+<li>
+<p>Why is TCP connection-oriented?
+ → Hint: handshake first</p>
+</li>
+<li>
+<p>What is the purpose of the 3-way handshake?
+ → Hint: “you there?” → “yes!”*</p>
+</li>
+<li>
+<p>What is Nagle’s algorithm?
+ → Hint: bundle tiny packets</p>
+</li>
+<li>
+<p>Why is TCP slower than UDP?
+ → Hint: reliability comes at cost</p>
+</li>
+<li>
+<p>What is a datagram?
+ → Hint: tiny self-contained packet</p>
+</li>
+<li>
+<p>Why use DatagramSocket?
+ → Hint: lightweight communication</p>
+</li>
+<li>
+<p>What is a ServerSocket?
+ → Hint: gatekeeper for clients</p>
+</li>
+<li>
+<p>Why does accept() block?
+ → Hint: waits for a caller</p>
+</li>
+<li>
+<p>How do you make a socket timeout?
+ → Hint: setSoTimeout</p>
+</li>
+<li>
+<p>Why use socket keepalive?
+ → Hint: check if the peer is alive</p>
+</li>
+<li>
+<p>Why is buffering important in networking?
+ → Hint: control packet sizes</p>
+</li>
+<li>
+<p>What is the purpose of InputStream vs BufferedInputStream in networking sockets?
+ → Hint: raw vs buffered data</p>
+</li>
+<li>
+<p>Why is non-blocking NIO good for many connections?
+ → Hint: one thread watches all</p>
+</li>
+<li>
+<p>What is the difference between blocking and non-blocking socket modes?
+ → Hint: wait vs don’t wait</p>
+</li>
+<li>
+<p>Why does Selector work with channels only?
+ → Hint: streams can't register</p>
+</li>
+<li>
+<p>How does a SelectionKey work?
+ → Hint: tells what event happened</p>
+</li>
+<li>
+<p>Why are interest ops (OP_READ, OP_WRITE) important?
+ → Hint: monitor specific events</p>
+</li>
+<li>
+<p>Why is networking I/O usually slower than disk I/O?
+ → Hint: long travel distance</p>
+</li>
+<li>
+<p>How does URLConnection handle redirects?
+ → Hint: follows rules</p>
+</li>
+<li>
+<p>Why is HttpURLConnection old and awkward?
+ → Hint: early design</p>
+</li>
+<li>
+<p>Why is the Java HTTP Client (Java 11+) better?
+ → Hint: async + simpler</p>
+</li>
+<li>
+<p>How does chunked transfer work?
+ → Hint: send pieces without knowing final size</p>
+</li>
+<li>
+<p>Why does buffering reduce number of system calls?
+ → Hint: fewer trips</p>
+</li>
+<li>
+<p>Why are file descriptors limited?
+ → Hint: OS resource caps</p>
+</li>
+<li>
+<p>What is zero-copy I/O?
+ → Hint: skip copying between buffers</p>
+</li>
+<li>
+<p>How does <code>transferTo()</code> implement zero-copy?
+ → Hint: OS sends file directly</p>
+</li>
+<li>
+<p>Why is file locking needed?
+ → Hint: avoid two writers clashing</p>
+</li>
+<li>
+<p>What is the difference between shared and exclusive file locks?
+ → Hint: read together, write alone</p>
+</li>
+<li>
+<p>Why are file locks across processes tricky?
+ → Hint: OS differences</p>
+</li>
+<li>
+<p>Why should channels be closed explicitly?
+ → Hint: free file handles</p>
+</li>
+<li>
+<p>What is Path normalization?
+ → Hint: remove ../ and ./</p>
+</li>
+<li>
+<p>Why does Files.walk potentially cause memory issues?
+ → Hint: huge directory trees</p>
+</li>
+<li>
+<p>What is WatchService?
+ → Hint: file system change watcher</p>
+</li>
+<li>
+<p>Why does WatchService sometimes miss events?
+ → Hint: platform limits</p>
+</li>
+<li>
+<p>Why is asynchronous file I/O useful?
+ → Hint: thread doesn’t block</p>
+</li>
+<li>
+<p>What is AsynchronousChannelGroup?
+ → Hint: shared thread pool</p>
+</li>
+<li>
+<p>Why does FileStore not always report correct values?
+ → Hint: OS abstraction quirks</p>
+</li>
+<li>
+<p>Why is RandomAccessFile special?
+ → Hint: jump anywhere</p>
+</li>
+<li>
+<p>Difference between seek() and skip()?
+ → Hint: precise move vs relative hop</p>
+</li>
+<li>
+<p>Why is DataInputStream useful?
+ → Hint: read primitives easily</p>
+</li>
+<li>
+<p>Why are object streams sensitive to class changes?
+ → Hint: stored metadata</p>
+</li>
+<li>
+<p>Why are socket streams buffered by default?
+ → Hint: efficiency trick</p>
+</li>
+<li>
+<p>What is half-close in TCP?
+ → Hint: close write but keep read</p>
+</li>
+<li>
+<p>Why is socket linger dangerous?
+ → Hint: blocks close</p>
+</li>
+<li>
+<p>What is a DNS lookup?
+ → Hint: find server address</p>
+</li>
+<li>
+<p>Why does DNS caching matter?
+ → Hint: speed boost</p>
+</li>
+<li>
+<p>Why is hostname resolution slow sometimes?
+ → Hint: remote server lookup</p>
+</li>
+<li>
+<p>What is ICMP unreachable?
+ → Hint: target can’t be reached</p>
+</li>
+<li>
+<p>How does proxying work in HTTP?
+ → Hint: middleman server</p>
+</li>
+<li>
+<p>Why is SSL/TLS handshake expensive?
+ → Hint: cryptography setup</p>
+</li>
+<li>
+<p>What is certificate validation?
+ → Hint: is the site trustworthy?*</p>
+</li>
+<li>
+<p>Why must InputStreams be read until -1?
+ → Hint: -1 means “end”</p>
+</li>
+<li>
+<p>Why are file permissions OS-dependent?
+ → Hint: Java just reports them</p>
+</li>
+<li>
+<p>What is EOFException?
+ → Hint: no more data but still asked</p>
+</li>
+<li>
+<p>Why is streaming large files through sockets slow?
+ → Hint: network bottleneck</p>
+</li>
+<li>
+<p>Why does NIO perform better with selectors than with threads?
+ → Hint: fewer threads waiting</p>
+</li>
+<li>
+<p>What is a stale file handle?
+ → Hint: file vanished but handle still exists</p>
+</li>
+<li>
+<p>Why are directories sometimes treated like files in low-level I/O?
+ → Hint: OS treats everything as files</p>
+</li>
+</ol>
+<hr>
+<h3 id="%E2%9C%94%EF%B8%8F-batch-4-completed">✔️ <strong>Batch 4 completed!</strong></h3>
+<hr>
+<h1 id="%E2%9C%85-batch-5--jdbc-orm-jpa--hibernate-q401%E2%80%93q500">✅ <strong>Batch 5 — JDBC, ORM, JPA &amp; Hibernate (Q401–Q500)</strong></h1>
+<h3 id="one-line-hard-questions--tiny-hints"><strong>One-Line Hard Questions + Tiny Hints</strong></h3>
+<ol start="401">
+<li>
+<p>Why must JDBC connections always be closed?
+ → Hint: they’re like borrowed bikes</p>
+</li>
+<li>
+<p>What is the difference between Statement and PreparedStatement?
+ → Hint: plain vs pre-planned</p>
+</li>
+<li>
+<p>Why are PreparedStatements safer?
+ → Hint: SQL injection shield</p>
+</li>
+<li>
+<p>Why do PreparedStatements improve performance?
+ → Hint: server caches the plan</p>
+</li>
+<li>
+<p>What is a ResultSet cursor?
+ → Hint: tiny pointer on a table</p>
+</li>
+<li>
+<p>Why do some ResultSets become forward-only?
+ → Hint: driver limits</p>
+</li>
+<li>
+<p>Why do JDBC drivers vary in features?
+ → Hint: vendor choices</p>
+</li>
+<li>
+<p>What is connection pooling?
+ → Hint: reuse connections like shared taxis</p>
+</li>
+<li>
+<p>Why is connection pooling essential in production?
+ → Hint: opening connections is slow</p>
+</li>
+<li>
+<p>What is auto-commit mode?
+ → Hint: every query = instant commit</p>
+</li>
+<li>
+<p>Why should auto-commit often be disabled?
+ → Hint: control your transactions</p>
+</li>
+<li>
+<p>What does rollback actually do?
+ → Hint: undo changes before commit</p>
+</li>
+<li>
+<p>Why do long transactions harm performance?
+ → Hint: they block others</p>
+</li>
+<li>
+<p>What is batch processing in JDBC?
+ → Hint: send many queries at once</p>
+</li>
+<li>
+<p>Why are batches faster?
+ → Hint: fewer round trips</p>
+</li>
+<li>
+<p>What is the difference between JDBC driver types (1–4)?
+ → Hint: old to newest styles</p>
+</li>
+<li>
+<p>Why is the type 4 driver preferred?
+ → Hint: pure Java, no middleman</p>
+</li>
+<li>
+<p>What is metadata in JDBC?
+ → Hint: info about your tables</p>
+</li>
+<li>
+<p>What is DatabaseMetaData used for?
+ → Hint: learn about DB structure</p>
+</li>
+<li>
+<p>What is ResultSetMetaData used for?
+ → Hint: learn about query columns</p>
+</li>
+<li>
+<p>Why are savepoints helpful?
+ → Hint: mini checkpoints</p>
+</li>
+<li>
+<p>Why should you avoid SELECT *?
+ → Hint: too much baggage</p>
+</li>
+<li>
+<p>How does ORM remove boilerplate?
+ → Hint: maps objects to tables automatically</p>
+</li>
+<li>
+<p>What problem does ORM try to solve?
+ → Hint: mismatch between objects and tables</p>
+</li>
+<li>
+<p>What is the object-relational impedance mismatch?
+ → Hint: objects ≠ tables</p>
+</li>
+<li>
+<p>What is a JPA Entity?
+ → Hint: a class that maps to a DB table</p>
+</li>
+<li>
+<p>Why must entities have a no-arg constructor?
+ → Hint: frameworks need to build them</p>
+</li>
+<li>
+<p>What is @Id used for?
+ → Hint: choose the key field</p>
+</li>
+<li>
+<p>Why should primary keys never change?
+ → Hint: identity must stay fixed</p>
+</li>
+<li>
+<p>What is GenerationType.IDENTITY?
+ → Hint: DB decides the ID</p>
+</li>
+<li>
+<p>What is GenerationType.SEQUENCE?
+ → Hint: database counter</p>
+</li>
+<li>
+<p>Why use GenerationType.TABLE?
+ → Hint: universal fallback</p>
+</li>
+<li>
+<p>Why does @Column allow nullable, length, unique?
+ → Hint: fine-tune field rules</p>
+</li>
+<li>
+<p>What is an entity lifecycle?
+ → Hint: new → managed → detached → removed</p>
+</li>
+<li>
+<p>What is the managed state?
+ → Hint: entity under Hibernate’s watch</p>
+</li>
+<li>
+<p>Why are detached entities tricky?
+ → Hint: not tracked anymore</p>
+</li>
+<li>
+<p>What is merge() used for?
+ → Hint: reconnect lost entities</p>
+</li>
+<li>
+<p>Why is persist() different from merge()?
+ → Hint: persist = new child; merge = lost child returns</p>
+</li>
+<li>
+<p>What is the difference between flush() and commit()?
+ → Hint: send changes vs finish transaction</p>
+</li>
+<li>
+<p>Why doesn’t flush() save to the database permanently?
+ → Hint: commit decides the fate</p>
+</li>
+<li>
+<p>What is the persistence context?
+ → Hint: entity storage room</p>
+</li>
+<li>
+<p>Why does JPA use dirty checking?
+ → Hint: detect changes automatically</p>
+</li>
+<li>
+<p>What is lazy loading?
+ → Hint: fetch data only when needed</p>
+</li>
+<li>
+<p>Why is lazy loading dangerous outside a transaction?
+ → Hint: LazyInitializationException party</p>
+</li>
+<li>
+<p>What is eager loading?
+ → Hint: load everything upfront</p>
+</li>
+<li>
+<p>Why is eager loading risky?
+ → Hint: too much data too soon</p>
+</li>
+<li>
+<p>How do you map a one-to-one relation?
+ → Hint: @OneToOne</p>
+</li>
+<li>
+<p>How do you map a one-to-many relation?
+ → Hint: @OneToMany</p>
+</li>
+<li>
+<p>Why is the owning side important in relationships?
+ → Hint: it writes the foreign key</p>
+</li>
+<li>
+<p>What is mappedBy used for?
+ → Hint: specify the non-owning side</p>
+</li>
+<li>
+<p>Why do bidirectional mappings cause infinite loops in JSON?
+ → Hint: parent → child → parent → child…*</p>
+</li>
+<li>
+<p>Why use DTOs instead of entities for APIs?
+ → Hint: keep things clean and safe</p>
+</li>
+<li>
+<p>What is cascading?
+ → Hint: operations flow to child entities</p>
+</li>
+<li>
+<p>Why is CascadeType.ALL dangerous?
+ → Hint: deletes may spread everywhere</p>
+</li>
+<li>
+<p>What is orphanRemoval?
+ → Hint: delete lonely children</p>
+</li>
+<li>
+<p>Why is @Embeddable useful?
+ → Hint: reusable value objects</p>
+</li>
+<li>
+<p>What are entity listeners?
+ → Hint: lifecycle event hooks</p>
+</li>
+<li>
+<p>Why use @PrePersist or @PreUpdate?
+ → Hint: auto-set timestamps</p>
+</li>
+<li>
+<p>What is JPQL?
+ → Hint: SQL for entity objects</p>
+</li>
+<li>
+<p>Why can't JPQL query tables?
+ → Hint: it works with entity models</p>
+</li>
+<li>
+<p>What is Criteria API?
+ → Hint: type-safe queries</p>
+</li>
+<li>
+<p>Why is Criteria API verbose?
+ → Hint: lots of objects to build queries</p>
+</li>
+<li>
+<p>Why is native SQL sometimes required?
+ → Hint: complex or vendor-specific queries</p>
+</li>
+<li>
+<p>What is the N+1 select problem?
+ → Hint: one main query + many tiny queries</p>
+</li>
+<li>
+<p>Why is fetch join used?
+ → Hint: kill N+1 problem</p>
+</li>
+<li>
+<p>Why should fetch join be used carefully?
+ → Hint: can explode result size</p>
+</li>
+<li>
+<p>What is second-level cache?
+ → Hint: app-wide memory for entities</p>
+</li>
+<li>
+<p>Why does Hibernate offer query cache separately?
+ → Hint: store results, not entities</p>
+</li>
+<li>
+<p>Why can caching cause stale data?
+ → Hint: cache isn't always aware of DB changes</p>
+</li>
+<li>
+<p>What is a natural key vs surrogate key?
+ → Hint: business value vs generated value</p>
+</li>
+<li>
+<p>Why prefer surrogate keys?
+ → Hint: stable and simple</p>
+</li>
+<li>
+<p>What is optimistic locking?
+ → Hint: assume no conflict; verify with version</p>
+</li>
+<li>
+<p>Why does optimistic locking use @Version?
+ → Hint: check if data changed</p>
+</li>
+<li>
+<p>What is pessimistic locking?
+ → Hint: lock first, then update</p>
+</li>
+<li>
+<p>Why avoid pessimistic locking?
+ → Hint: blocks other users</p>
+</li>
+<li>
+<p>Why does Hibernate batch inserts?
+ → Hint: fewer DB trips = faster</p>
+</li>
+<li>
+<p>What is flush mode?
+ → Hint: controls when changes are synced</p>
+</li>
+<li>
+<p>Why is FlushMode.COMMIT faster?
+ → Hint: no mid-transaction updates</p>
+</li>
+<li>
+<p>What is @Transactional used for?
+ → Hint: define boundaries</p>
+</li>
+<li>
+<p>Why must @Transactional be on public methods?
+ → Hint: proxies wrap them</p>
+</li>
+<li>
+<p>Why doesn’t @Transactional work on internal method calls?
+ → Hint: self-calls skip proxies</p>
+</li>
+<li>
+<p>Why should transactions be short?
+ → Hint: frees locks sooner</p>
+</li>
+<li>
+<p>Why is isolation level important?
+ → Hint: controls read/write interference</p>
+</li>
+<li>
+<p>What is dirty read?
+ → Hint: reading uncommitted data</p>
+</li>
+<li>
+<p>What is non-repeatable read?
+ → Hint: value changes mid-read</p>
+</li>
+<li>
+<p>What is phantom read?
+ → Hint: new rows appear</p>
+</li>
+<li>
+<p>Why is READ_COMMITTED default in many databases?
+ → Hint: good balance</p>
+</li>
+<li>
+<p>What is ACID in transactions?
+ → Hint: safety rules</p>
+</li>
+<li>
+<p>Why does ORM struggle with bulk updates?
+ → Hint: bypasses entity lifecycle</p>
+</li>
+<li>
+<p>Why are bulk operations dangerous in ORM?
+ → Hint: persistence context becomes outdated</p>
+</li>
+<li>
+<p>Why prefer native SQL for large batch updates?
+ → Hint: ORM too slow for huge sets</p>
+</li>
+<li>
+<p>Why is flush() needed before bulk queries?
+ → Hint: avoid stale writes</p>
+</li>
+<li>
+<p>Why is clear() sometimes needed after batch writes?
+ → Hint: free memory + avoid inconsistencies</p>
+</li>
+<li>
+<p>Why does Hibernate sometimes trigger SELECT before UPDATE?
+ → Hint: dirty-checking needs comparison</p>
+</li>
+<li>
+<p>How does Hibernate detect changes in entities?
+ → Hint: snapshot comparison</p>
+</li>
+<li>
+<p>Why does join fetching override lazy loading?
+ → Hint: fetch join = must load</p>
+</li>
+<li>
+<p>Why does Hibernate sometimes reorder SQL statements?
+ → Hint: foreign key rules</p>
+</li>
+<li>
+<p>What is the difference between session and session factory?
+ → Hint: one is a machine, one is a product</p>
+</li>
+<li>
+<p>Why is SessionFactory thread-safe?
+ → Hint: shared by all</p>
+</li>
+<li>
+<p>Why must Session not be shared across threads?
+ → Hint: not thread-safe</p>
+</li>
+</ol>
+<hr>
+<h3 id="%E2%9C%94%EF%B8%8F-batch-5-completed">✔️ <strong>Batch 5 completed!</strong></h3>
+<hr>
+<h1 id="%E2%9C%85-batch-6--spring-core-di-ioc--aop-q501%E2%80%93q600">✅ <strong>Batch 6 — Spring Core, DI, IoC &amp; AOP (Q501–Q600)</strong></h1>
+<h3 id="one-line-hard-questions--tiny-hints"><strong>One-Line Hard Questions + Tiny Hints</strong></h3>
+<ol start="501">
+<li>
+<p>What problem does IoC fundamentally solve?
+ → Hint: objects stop babysitting their dependencies</p>
+</li>
+<li>
+<p>Why is dependency injection preferred over manual object creation?
+ → Hint: plug-and-play instead of DIY</p>
+</li>
+<li>
+<p>What is the difference between IoC and DI?
+ → Hint: DI is one way to achieve IoC</p>
+</li>
+<li>
+<p>Why is the Spring container called a “container”?
+ → Hint: holds and manages objects like a warehouse</p>
+</li>
+<li>
+<p>What is a Spring Bean?
+ → Hint: an object Spring babysits</p>
+</li>
+<li>
+<p>Why must beans have predictable constructors?
+ → Hint: container needs to create them easily</p>
+</li>
+<li>
+<p>What is a BeanFactory?
+ → Hint: basic bean maker</p>
+</li>
+<li>
+<p>How does ApplicationContext differ from BeanFactory?
+ → Hint: BeanFactory on steroids</p>
+</li>
+<li>
+<p>Why does ApplicationContext eagerly initialize beans?
+ → Hint: fewer surprises later</p>
+</li>
+<li>
+<p>What is lazy initialization of beans?
+ → Hint: make when needed</p>
+</li>
+<li>
+<p>Why is @Component used?
+ → Hint: tell Spring “this class is yours”</p>
+</li>
+<li>
+<p>Why are @Service and @Repository just stereotypes?
+ → Hint: same thing with better names</p>
+</li>
+<li>
+<p>What is classpath scanning?
+ → Hint: Spring hunts for beans</p>
+</li>
+<li>
+<p>Why use @Configuration?
+ → Hint: tells Spring “bean recipes here”</p>
+</li>
+<li>
+<p>What is @Bean used for?
+ → Hint: create bean manually</p>
+</li>
+<li>
+<p>Why is @Bean method preferred for external libraries?
+ → Hint: can’t annotate third-party classes</p>
+</li>
+<li>
+<p>Why is constructor injection recommended?
+ → Hint: avoids nulls and surprises</p>
+</li>
+<li>
+<p>Why avoid field injection?
+ → Hint: testing becomes painful</p>
+</li>
+<li>
+<p>Why does setter injection exist?
+ → Hint: optional dependencies</p>
+</li>
+<li>
+<p>What is circular dependency in Spring?
+ → Hint: A needs B, B needs A</p>
+</li>
+<li>
+<p>Why does Spring fail on constructor-based circular dependencies?
+ → Hint: can’t create either one first</p>
+</li>
+<li>
+<p>Why does Spring allow circular dependencies in setters?
+ → Hint: inject after creation</p>
+</li>
+<li>
+<p>Why is circular dependency a bad design smell?
+ → Hint: too much mutual hugging</p>
+</li>
+<li>
+<p>What is bean scope?
+ → Hint: how long a bean lives</p>
+</li>
+<li>
+<p>Why is singleton the default scope?
+ → Hint: memory-friendly and stable</p>
+</li>
+<li>
+<p>What is prototype scope for?
+ → Hint: fresh object every time</p>
+</li>
+<li>
+<p>Why avoid prototype beans in singleton beans?
+ → Hint: stale instances</p>
+</li>
+<li>
+<p>What is request scope?
+ → Hint: one bean per web request</p>
+</li>
+<li>
+<p>What is session scope?
+ → Hint: one bean per user session</p>
+</li>
+<li>
+<p>Why can’t prototype beans be auto-destroyed?
+ → Hint: container doesn't track them</p>
+</li>
+<li>
+<p>What is the bean lifecycle?
+ → Hint: create → populate → init → use → destroy</p>
+</li>
+<li>
+<p>Why use @PostConstruct?
+ → Hint: run code after setup</p>
+</li>
+<li>
+<p>Why use @PreDestroy?
+ → Hint: cleanup duty</p>
+</li>
+<li>
+<p>What are BeanPostProcessors?
+ → Hint: inspectors that modify beans</p>
+</li>
+<li>
+<p>What is the importance of the BeanFactoryPostProcessor?
+ → Hint: tweak bean definitions before creation</p>
+</li>
+<li>
+<p>Why is PropertySourcesPlaceholderConfigurer used?
+ → Hint: resolves ${variables}</p>
+</li>
+<li>
+<p>What is Environment abstraction?
+ → Hint: access properties safely</p>
+</li>
+<li>
+<p>What is the difference between @Value and @ConfigurationProperties?
+ → Hint: single value vs full mapping</p>
+</li>
+<li>
+<p>Why is @ConfigurationProperties preferred?
+ → Hint: cleaner and type-safe</p>
+</li>
+<li>
+<p>What is the purpose of @Profile?
+ → Hint: load beans conditionally</p>
+</li>
+<li>
+<p>Why use profiles in production?
+ → Hint: dev/stage/prod differences</p>
+</li>
+<li>
+<p>What is bean autowiring?
+ → Hint: automatic matching</p>
+</li>
+<li>
+<p>Why might autowiring fail?
+ → Hint: more than one candidate</p>
+</li>
+<li>
+<p>Why use @Qualifier?
+ → Hint: pick the right bean</p>
+</li>
+<li>
+<p>Why is component scanning sometimes dangerous?
+ → Hint: accidental beans everywhere</p>
+</li>
+<li>
+<p>Why is explicit configuration more predictable?
+ → Hint: you know what you get</p>
+</li>
+<li>
+<p>What is AOP in Spring?
+ → Hint: add extra behaviour without touching code</p>
+</li>
+<li>
+<p>What problem does AOP solve?
+ → Hint: remove cross-cutting clutter</p>
+</li>
+<li>
+<p>What is a join point?
+ → Hint: “where” advice can happen</p>
+</li>
+<li>
+<p>What is a pointcut?
+ → Hint: rule to choose join points</p>
+</li>
+<li>
+<p>What is advice?
+ → Hint: extra code you inject</p>
+</li>
+<li>
+<p>What are the types of advice?
+ → Hint: before, after, around</p>
+</li>
+<li>
+<p>Why is around advice the most powerful?
+ → Hint: you can run + skip + wrap</p>
+</li>
+<li>
+<p>What is a proxy in Spring AOP?
+ → Hint: a wrapper around your object</p>
+</li>
+<li>
+<p>Why does Spring AOP use proxies instead of bytecode weaving?
+ → Hint: simpler + runtime</p>
+</li>
+<li>
+<p>What is JDK dynamic proxy?
+ → Hint: proxy for interfaces</p>
+</li>
+<li>
+<p>When does Spring use CGLIB proxy?
+ → Hint: proxy for classes</p>
+</li>
+<li>
+<p>Why does AOP not work on private methods?
+ → Hint: proxy can’t see them</p>
+</li>
+<li>
+<p>Why does AOP not run on self-invocation?
+ → Hint: calling yourself bypasses proxy</p>
+</li>
+<li>
+<p>What is the concept of cross-cutting concerns?
+ → Hint: logic used everywhere</p>
+</li>
+<li>
+<p>Why is logging a cross-cutting concern?
+ → Hint: appears in all layers</p>
+</li>
+<li>
+<p>Why does AOP help reduce boilerplate?
+ → Hint: no repeated code</p>
+</li>
+<li>
+<p>What is advice ordering?
+ → Hint: which advice runs first</p>
+</li>
+<li>
+<p>Why is @Order used?
+ → Hint: tidy sequence of advice</p>
+</li>
+<li>
+<p>Why must aspects be Spring beans?
+ → Hint: container manages them</p>
+</li>
+<li>
+<p>What is JoinPoint.getArgs() used for?
+ → Hint: inspect method inputs</p>
+</li>
+<li>
+<p>What is ProceedingJoinPoint?
+ → Hint: lets around advice continue</p>
+</li>
+<li>
+<p>Why avoid heavy logic in aspects?
+ → Hint: they run everywhere</p>
+</li>
+<li>
+<p>Why can aspects hurt performance?
+ → Hint: proxy overhead</p>
+</li>
+<li>
+<p>What is aspect instantiation model?
+ → Hint: when aspect instances are created</p>
+</li>
+<li>
+<p>What is @EnableAspectJAutoProxy for?
+ → Hint: turn AOP switch on</p>
+</li>
+<li>
+<p>Why doesn't AOP work without this switch?
+ → Hint: proxies aren’t created</p>
+</li>
+<li>
+<p>What is the difference between compile-time and runtime weaving?
+ → Hint: build phase vs running phase</p>
+</li>
+<li>
+<p>Why is Spring AOP limited to method-level weaving?
+ → Hint: proxies only handle methods</p>
+</li>
+<li>
+<p>Why not use AOP for business logic?
+ → Hint: it’s for supportive tasks only</p>
+</li>
+<li>
+<p>Why do aspects sometimes cause circular dependencies?
+ → Hint: proxies wrapping proxies</p>
+</li>
+<li>
+<p>Why use annotation-based AOP?
+ → Hint: simple and readable</p>
+</li>
+<li>
+<p>Why does @Transactional rely on AOP?
+ → Hint: adds transactional behaviour</p>
+</li>
+<li>
+<p>Why doesn’t @Transactional work on final classes?
+ → Hint: CGLIB can’t subclass them</p>
+</li>
+<li>
+<p>Why avoid final methods with AOP?
+ → Hint: cannot intercept</p>
+</li>
+<li>
+<p>What is bean overriding?
+ → Hint: replace one bean with another</p>
+</li>
+<li>
+<p>Why is bean overriding often disabled?
+ → Hint: prevents surprise replacements</p>
+</li>
+<li>
+<p>What is ApplicationEventPublisher?
+ → Hint: send events</p>
+</li>
+<li>
+<p>Why use application events?
+ → Hint: decoupled communication</p>
+</li>
+<li>
+<p>What is @EventListener?
+ → Hint: catch events easily</p>
+</li>
+<li>
+<p>What is the purpose of ContextRefreshedEvent?
+ → Hint: container loaded</p>
+</li>
+<li>
+<p>Why does Spring separate core and context modules?
+ → Hint: modularity</p>
+</li>
+<li>
+<p>What is Resource abstraction?
+ → Hint: unified access to files, URLs, classpath</p>
+</li>
+<li>
+<p>Why use ClassPathResource?
+ → Hint: get files inside JAR</p>
+</li>
+<li>
+<p>Why use @Lazy?
+ → Hint: load bean only when needed</p>
+</li>
+<li>
+<p>Why does Spring prefer immutability?
+ → Hint: safer and predictable</p>
+</li>
+<li>
+<p>What is @Primary used for?
+ → Hint: default candidate</p>
+</li>
+<li>
+<p>Why do bean names matter?
+ → Hint: resolve conflicts</p>
+</li>
+<li>
+<p>Why is ApplicationContext closed explicitly sometimes?
+ → Hint: release resources</p>
+</li>
+<li>
+<p>What is BeanDefinition?
+ → Hint: blueprint for beans</p>
+</li>
+<li>
+<p>Why is bean wiring called “automatic”?
+ → Hint: container finds dependencies</p>
+</li>
+<li>
+<p>What does @DependsOn guarantee?
+ → Hint: initialization order</p>
+</li>
+<li>
+<p>Why use property files with Spring?
+ → Hint: external configuration</p>
+</li>
+<li>
+<p>What is the purpose of the Spring Expression Language?
+ → Hint: mini calculator inside Spring</p>
+</li>
+<li>
+<p>Why avoid overly complex SpEL expressions?
+ → Hint: unreadable and error-prone</p>
+</li>
+</ol>
+<hr>
+<h3 id="%E2%9C%94%EF%B8%8F-batch-6-complete">✔️ Batch 6 complete!</h3>
+<hr>
+<h1 id="%E2%9C%85-batch-7--spring-boot--rest-q601%E2%80%93q700">✅ <strong>Batch 7 — Spring Boot &amp; REST (Q601–Q700)</strong></h1>
+<h3 id="one-line-hard-questions--tiny-hints"><strong>One-Line Hard Questions + Tiny Hints</strong></h3>
+<ol start="601">
+<li>
+<p>What problem does Spring Boot mainly solve?
+ → Hint: stop wiring everything manually</p>
+</li>
+<li>
+<p>Why are starters used in Spring Boot?
+ → Hint: bundles of ready-made stuff</p>
+</li>
+<li>
+<p>Why does Spring Boot rely on auto-configuration?
+ → Hint: scans → guesses → configures</p>
+</li>
+<li>
+<p>Why must auto-configuration classes run last?
+ → Hint: let your configs win</p>
+</li>
+<li>
+<p>What is the purpose of @SpringBootApplication?
+ → Hint: three annotations packed into one</p>
+</li>
+<li>
+<p>Why should main class be in the root package?
+ → Hint: component scanning works outward</p>
+</li>
+<li>
+<p>How does Spring Boot detect missing beans?
+ → Hint: conditional magic</p>
+</li>
+<li>
+<p>What is @ConditionalOnMissingBean used for?
+ → Hint: only create if not present</p>
+</li>
+<li>
+<p>What is @ConditionalOnProperty used for?
+ → Hint: toggle features</p>
+</li>
+<li>
+<p>Why use externalized configuration?
+ → Hint: change settings without touching code</p>
+</li>
+<li>
+<p>What is application.properties?
+ → Hint: Boot’s favourite notebook</p>
+</li>
+<li>
+<p>Why support application.yml?
+ → Hint: cleaner structure</p>
+</li>
+<li>
+<p>Why use @ConfigurationProperties?
+ → Hint: map whole config sections</p>
+</li>
+<li>
+<p>Why does Boot support multiple property sources?
+ → Hint: override rules</p>
+</li>
+<li>
+<p>What is the order of config loading in Boot?
+ → Hint: file → env → args</p>
+</li>
+<li>
+<p>Why is actuator useful?
+ → Hint: health check superhero</p>
+</li>
+<li>
+<p>Why protect actuator endpoints?
+ → Hint: too much info to be public</p>
+</li>
+<li>
+<p>What is embedded Tomcat for?
+ → Hint: app carries its own server</p>
+</li>
+<li>
+<p>Why does embedded server simplify deployments?
+ → Hint: one jar to rule them all</p>
+</li>
+<li>
+<p>What is auto-configuration report?
+ → Hint: who configured what</p>
+</li>
+<li>
+<p>Why disable specific auto-configurations sometimes?
+ → Hint: avoid conflicts</p>
+</li>
+<li>
+<p>Why are @RestController and @Controller different?
+ → Hint: REST auto-adds @ResponseBody</p>
+</li>
+<li>
+<p>Why is @ResponseBody needed?
+ → Hint: output goes to JSON, not view</p>
+</li>
+<li>
+<p>Why use @GetMapping etc. instead of @RequestMapping?
+ → Hint: clearer and cleaner</p>
+</li>
+<li>
+<p>What is the importance of @PathVariable?
+ → Hint: extract ID from URL</p>
+</li>
+<li>
+<p>Why use @RequestParam?
+ → Hint: query parameters helper</p>
+</li>
+<li>
+<p>What is @RequestBody used for?
+ → Hint: read JSON payload</p>
+</li>
+<li>
+<p>Why is validation needed in REST?
+ → Hint: protect your API from weird inputs</p>
+</li>
+<li>
+<p>What is @Valid for?
+ → Hint: check incoming data</p>
+</li>
+<li>
+<p>Why does REST need proper HTTP status codes?
+ → Hint: universal language</p>
+</li>
+<li>
+<p>Why use ResponseEntity?
+ → Hint: full control of response</p>
+</li>
+<li>
+<p>Why do APIs need versioning?
+ → Hint: new changes shouldn’t break old users</p>
+</li>
+<li>
+<p>Why is REST stateless?
+ → Hint: each request stands alone</p>
+</li>
+<li>
+<p>Why is idempotency important?
+ → Hint: same call, same effect</p>
+</li>
+<li>
+<p>Why is PUT idempotent but POST not?
+ → Hint: replace vs create</p>
+</li>
+<li>
+<p>Why are REST APIs vulnerable to over-fetching?
+ → Hint: too much data sent</p>
+</li>
+<li>
+<p>Why are they vulnerable to under-fetching?
+ → Hint: missing needed data</p>
+</li>
+<li>
+<p>Why use DTO instead of entity for APIs?
+ → Hint: avoid exposing secrets</p>
+</li>
+<li>
+<p>Why do we need exception handlers?
+ → Hint: clean error messages</p>
+</li>
+<li>
+<p>What is @ControllerAdvice?
+ → Hint: central error hub</p>
+</li>
+<li>
+<p>Why do we use custom error responses?
+ → Hint: humans understand better</p>
+</li>
+<li>
+<p>Why enable CORS?
+ → Hint: browsers are strict guardians</p>
+</li>
+<li>
+<p>Why restrict CORS properly?
+ → Hint: safety first</p>
+</li>
+<li>
+<p>What is HATEOAS?
+ → Hint: links inside responses</p>
+</li>
+<li>
+<p>Why is HATEOAS rarely used?
+ → Hint: complex for most apps</p>
+</li>
+<li>
+<p>Why use content negotiation?
+ → Hint: JSON or XML? Your choice</p>
+</li>
+<li>
+<p>Why define produces/consumes attributes?
+ → Hint: control formats</p>
+</li>
+<li>
+<p>Why use interceptors in REST?
+ → Hint: pre/post processing</p>
+</li>
+<li>
+<p>Why prefer filters for request-wide logic?
+ → Hint: runs on every request</p>
+</li>
+<li>
+<p>Why are filters lower level than interceptors?
+ → Hint: servlet world vs Spring world</p>
+</li>
+<li>
+<p>What is the DispatcherServlet?
+ → Hint: the traffic police of Spring MVC</p>
+</li>
+<li>
+<p>Why is HandlerMapping important?
+ → Hint: decide which controller handles what</p>
+</li>
+<li>
+<p>Why disable default error page in Boot?
+ → Hint: show custom JSON errors</p>
+</li>
+<li>
+<p>Why is async request handling useful?
+ → Hint: free threads sooner</p>
+</li>
+<li>
+<p>What is DeferredResult used for?
+ → Hint: respond later</p>
+</li>
+<li>
+<p>Why use WebClient instead of RestTemplate?
+ → Hint: async + reactive</p>
+</li>
+<li>
+<p>Why is RestTemplate deprecated-ish?
+ → Hint: old style, no async superpowers</p>
+</li>
+<li>
+<p>Why does WebClient use reactive streams?
+ → Hint: handles many requests efficiently</p>
+</li>
+<li>
+<p>Why does Boot support multiple JSON libraries?
+ → Hint: flexibility</p>
+</li>
+<li>
+<p>Why is ObjectMapper expensive to create?
+ → Hint: lots of configuration</p>
+</li>
+<li>
+<p>Why re-use a single ObjectMapper bean?
+ → Hint: save performance</p>
+</li>
+<li>
+<p>Why use @JsonIgnore?
+ → Hint: hide unwanted fields</p>
+</li>
+<li>
+<p>Why is circular reference a problem in JSON?
+ → Hint: infinite loops</p>
+</li>
+<li>
+<p>Why use Spring Cache abstraction?
+ → Hint: speed up repeated calls</p>
+</li>
+<li>
+<p>Why is caching dangerous in REST?
+ → Hint: stale data</p>
+</li>
+<li>
+<p>What is key generation in caching?
+ → Hint: how results are remembered</p>
+</li>
+<li>
+<p>Why use async methods (@Async)?
+ → Hint: background tasks</p>
+</li>
+<li>
+<p>Why must @Async work on separate beans?
+ → Hint: proxy magic again</p>
+</li>
+<li>
+<p>Why does Boot provide metrics?
+ → Hint: see app health and performance</p>
+</li>
+<li>
+<p>Why expose health checks externally?
+ → Hint: load balancers need info</p>
+</li>
+<li>
+<p>Why secure health endpoints in production?
+ → Hint: avoid exposing secrets</p>
+</li>
+<li>
+<p>What is graceful shutdown?
+ → Hint: finish work before stopping</p>
+</li>
+<li>
+<p>Why use @EnableWebMvc carefully?
+ → Hint: overrides Boot defaults</p>
+</li>
+<li>
+<p>Why is server compression used?
+ → Hint: save bandwidth</p>
+</li>
+<li>
+<p>Why avoid large response bodies?
+ → Hint: slow clients, high memory</p>
+</li>
+<li>
+<p>Why rate-limit JSON parsing?
+ → Hint: protection from huge payloads</p>
+</li>
+<li>
+<p>Why do REST APIs need pagination?
+ → Hint: handle big data safely</p>
+</li>
+<li>
+<p>Why use Sort and Pageable interfaces?
+ → Hint: Spring-data magic</p>
+</li>
+<li>
+<p>Why use @RepositoryRestResource?
+ → Hint: auto-generate REST endpoints</p>
+</li>
+<li>
+<p>Why is it dangerous in production?
+ → Hint: too much is exposed</p>
+</li>
+<li>
+<p>Why use HAL browser?
+ → Hint: visualize API links</p>
+</li>
+<li>
+<p>Why use Sleuth with REST?
+ → Hint: trace requests across services</p>
+</li>
+<li>
+<p>Why is correlation ID important?
+ → Hint: find one request in logs</p>
+</li>
+<li>
+<p>Why secure REST with JWT?
+ → Hint: no server-side sessions</p>
+</li>
+<li>
+<p>Why is JWT stateless?
+ → Hint: token carries info</p>
+</li>
+<li>
+<p>Why can JWT be dangerous?
+ → Hint: stolen token = game over</p>
+</li>
+<li>
+<p>Why set JWT expiration times?
+ → Hint: safety timer</p>
+</li>
+<li>
+<p>Why refresh tokens exist?
+ → Hint: extend login without re-login</p>
+</li>
+<li>
+<p>Why is CSRF not required for JWT APIs?
+ → Hint: no cookies usually</p>
+</li>
+<li>
+<p>Why use API keys?
+ → Hint: simple authentication</p>
+</li>
+<li>
+<p>Why avoid storing API keys in code?
+ → Hint: secrets leak</p>
+</li>
+<li>
+<p>Why use rate limiting?
+ → Hint: keep API alive</p>
+</li>
+<li>
+<p>Why enable gzip in server?
+ → Hint: faster client experience</p>
+</li>
+<li>
+<p>Why return ETags?
+ → Hint: caching validation</p>
+</li>
+<li>
+<p>Why use If-Modified-Since?
+ → Hint: avoid sending large unchanged data</p>
+</li>
+<li>
+<p>Why log request/response bodies carefully?
+ → Hint: sensitive information</p>
+</li>
+<li>
+<p>Why prefer idempotent endpoints for retries?
+ → Hint: safe repeat</p>
+</li>
+<li>
+<p>Why validate path variables?
+ → Hint: never trust input</p>
+</li>
+<li>
+<p>Why monitor REST latency?
+ → Hint: detect slow endpoints</p>
+</li>
+<li>
+<p>Why avoid blocking calls inside REST endpoints?
+ → Hint: blocks threads → slow server</p>
+</li>
+</ol>
+<hr>
+<h3 id="%E2%9C%94%EF%B8%8F-batch-7-complete">✔️ Batch 7 complete!</h3>
+<hr>
+<h1 id="%E2%9C%85-batch-8--microservices-spring-cloud--distributed-systems-q701%E2%80%93q800">✅ <strong>Batch 8 — Microservices, Spring Cloud &amp; Distributed Systems (Q701–Q800)</strong></h1>
+<h3 id="one-line-hard-questions--tiny-hints"><strong>One-Line Hard Questions + Tiny Hints</strong></h3>
+<ol start="701">
+<li>
+<p>Why do microservices exist?
+ → Hint: break the giant into friendly bite-sized pieces</p>
+</li>
+<li>
+<p>Why must microservices be independently deployable?
+ → Hint: each kid should get ready without waiting for siblings</p>
+</li>
+<li>
+<p>Why do microservices need strong boundaries?
+ → Hint: no stepping into each other’s rooms</p>
+</li>
+<li>
+<p>Why is loose coupling essential?
+ → Hint: less drama between services</p>
+</li>
+<li>
+<p>Why is high cohesion needed?
+ → Hint: keep related stuff together</p>
+</li>
+<li>
+<p>Why does each microservice need its own database?
+ → Hint: no shared notebooks to fight over</p>
+</li>
+<li>
+<p>Why is synchronous communication risky?
+ → Hint: one slow friend delays everyone</p>
+</li>
+<li>
+<p>Why use asynchronous messaging?
+ → Hint: send and forget, like an email</p>
+</li>
+<li>
+<p>Why do microservices need an API gateway?
+ → Hint: one door for all services</p>
+</li>
+<li>
+<p>Why should APIs behind gateways stay hidden?
+ → Hint: keep internal rooms private</p>
+</li>
+<li>
+<p>Why use load balancing?
+ → Hint: share the workload nicely</p>
+</li>
+<li>
+<p>Why do we need service discovery?
+ → Hint: services must find each other like GPS</p>
+</li>
+<li>
+<p>What does Eureka provide?
+ → Hint: phonebook of services</p>
+</li>
+<li>
+<p>Why are heartbeats important in Eureka?
+ → Hint: check who’s still alive</p>
+</li>
+<li>
+<p>What is Ribbon used for?
+ → Hint: client-side load balancing</p>
+</li>
+<li>
+<p>Why is Feign easier than RestTemplate?
+ → Hint: write interfaces, not code</p>
+</li>
+<li>
+<p>Why use OpenFeign with Eureka?
+ → Hint: auto-find service URLs</p>
+</li>
+<li>
+<p>Why does Spring Cloud Gateway replace Zuul?
+ → Hint: reactive + faster</p>
+</li>
+<li>
+<p>Why use filters in Spring Cloud Gateway?
+ → Hint: tweak requests on the way</p>
+</li>
+<li>
+<p>Why centralize configuration?
+ → Hint: settings stored in one magic drawer</p>
+</li>
+<li>
+<p>Why use Spring Cloud Config Server?
+ → Hint: share config across services</p>
+</li>
+<li>
+<p>Why store config in Git?
+ → Hint: version control superpowers</p>
+</li>
+<li>
+<p>What is configuration refresh?
+ → Hint: update settings without restart</p>
+</li>
+<li>
+<p>Why avoid storing secrets in config files?
+ → Hint: nosy people exist</p>
+</li>
+<li>
+<p>Why use Vault or AWS Secrets Manager?
+ → Hint: safe secret vaults</p>
+</li>
+<li>
+<p>What is Hystrix for?
+ → Hint: stop cascading failures</p>
+</li>
+<li>
+<p>Why do we need circuit breakers?
+ → Hint: avoid asking a dead service again and again</p>
+</li>
+<li>
+<p>What is a fallback method?
+ → Hint: plan B</p>
+</li>
+<li>
+<p>Why is resilience key in microservices?
+ → Hint: failures happen often</p>
+</li>
+<li>
+<p>What is a retry mechanism?
+ → Hint: try again politely</p>
+</li>
+<li>
+<p>Why limit retries?
+ → Hint: don’t annoy the server</p>
+</li>
+<li>
+<p>Why implement rate limiting?
+ → Hint: don’t let users go wild</p>
+</li>
+<li>
+<p>Why use bulkheads?
+ → Hint: isolate failures like ship sections</p>
+</li>
+<li>
+<p>Why do microservices require distributed tracing?
+ → Hint: follow a request’s journey</p>
+</li>
+<li>
+<p>What does Sleuth do?
+ → Hint: adds tracking IDs</p>
+</li>
+<li>
+<p>What does Zipkin provide?
+ → Hint: visual trace system</p>
+</li>
+<li>
+<p>Why use correlation IDs?
+ → Hint: track one request across many stops</p>
+</li>
+<li>
+<p>Why is logging harder in microservices?
+ → Hint: logs scattered everywhere</p>
+</li>
+<li>
+<p>Why use centralized logging?
+ → Hint: one big searchable bucket</p>
+</li>
+<li>
+<p>Why use ELK stack or Loki?
+ → Hint: read logs like a pro</p>
+</li>
+<li>
+<p>Why is monitoring critical?
+ → Hint: know when things fall apart</p>
+</li>
+<li>
+<p>Why expose metrics?
+ → Hint: health check for services</p>
+</li>
+<li>
+<p>Why use Prometheus?
+ → Hint: scrapes metrics automatically</p>
+</li>
+<li>
+<p>Why pair Prometheus with Grafana?
+ → Hint: pretty dashboards</p>
+</li>
+<li>
+<p>Why are distributed systems hard?
+ → Hint: everything fails everywhere all the time</p>
+</li>
+<li>
+<p>What is network partition?
+ → Hint: some services can’t reach each other</p>
+</li>
+<li>
+<p>Why is CAP theorem important?
+ → Hint: choose what matters: consistency or availability</p>
+</li>
+<li>
+<p>What is eventual consistency?
+ → Hint: everything becomes correct… eventually</p>
+</li>
+<li>
+<p>Why avoid distributed transactions?
+ → Hint: slow + messy</p>
+</li>
+<li>
+<p>What is Saga pattern?
+ → Hint: split big transaction into small steps</p>
+</li>
+<li>
+<p>What is choreography in Saga?
+ → Hint: services coordinate themselves</p>
+</li>
+<li>
+<p>What is orchestration in Saga?
+ → Hint: central conductor</p>
+</li>
+<li>
+<p>Why use distributed locks carefully?
+ → Hint: easy to mess things up</p>
+</li>
+<li>
+<p>Why is idempotency crucial in microservices?
+ → Hint: safe to retry</p>
+</li>
+<li>
+<p>Why use message brokers?
+ → Hint: async communication highway</p>
+</li>
+<li>
+<p>Why choose Kafka?
+ → Hint: fast, scalable, durable</p>
+</li>
+<li>
+<p>Why choose RabbitMQ?
+ → Hint: flexible routing</p>
+</li>
+<li>
+<p>Why do messages need acknowledgment?
+ → Hint: avoid losing them</p>
+</li>
+<li>
+<p>Why must messages be durable?
+ → Hint: survive crashes</p>
+</li>
+<li>
+<p>Why avoid large messages in queues?
+ → Hint: slow and heavy</p>
+</li>
+<li>
+<p>Why use dead-letter queues?
+ → Hint: catch bad messages</p>
+</li>
+<li>
+<p>Why use event-driven architecture?
+ → Hint: react to things happening</p>
+</li>
+<li>
+<p>What is eventual consistency in event-driven systems?
+ → Hint: updates flow through events</p>
+</li>
+<li>
+<p>Why use event sourcing?
+ → Hint: store events, not just results</p>
+</li>
+<li>
+<p>Why is replaying events useful?
+ → Hint: rebuild past states</p>
+</li>
+<li>
+<p>Why must event payloads be versioned?
+ → Hint: old apps still exist</p>
+</li>
+<li>
+<p>Why do microservices need backward compatibility?
+ → Hint: older clients still call you</p>
+</li>
+<li>
+<p>Why do we need schema validation?
+ → Hint: avoid broken messages</p>
+</li>
+<li>
+<p>Why use schema registries?
+ → Hint: track message formats</p>
+</li>
+<li>
+<p>Why are synchronous microservices brittle?
+ → Hint: chain reaction of failures</p>
+</li>
+<li>
+<p>Why use timeout settings?
+ → Hint: don’t wait forever</p>
+</li>
+<li>
+<p>Why use bulkhead pattern?
+ → Hint: isolate different workloads</p>
+</li>
+<li>
+<p>Why use caching in microservices?
+ → Hint: lighten the load</p>
+</li>
+<li>
+<p>Why avoid excessive caching?
+ → Hint: stale data trouble</p>
+</li>
+<li>
+<p>Why use distributed cache?
+ → Hint: share common results</p>
+</li>
+<li>
+<p>Why use Redis for caching?
+ → Hint: super-fast memory store</p>
+</li>
+<li>
+<p>Why need cache eviction policies?
+ → Hint: memory isn’t infinite</p>
+</li>
+<li>
+<p>Why avoid sharing entity models between services?
+ → Hint: hidden coupling</p>
+</li>
+<li>
+<p>Why use API contracts?
+ → Hint: define clear expectations</p>
+</li>
+<li>
+<p>Why use OpenAPI/Swagger?
+ → Hint: auto-generate documentation</p>
+</li>
+<li>
+<p>Why need consumer-driven contracts?
+ → Hint: prevent breaking clients</p>
+</li>
+<li>
+<p>Why do microservices often adopt hexagonal architecture?
+ → Hint: separate business from tech bits</p>
+</li>
+<li>
+<p>Why is database migration tricky in microservices?
+ → Hint: many services, many schemas</p>
+</li>
+<li>
+<p>Why use Flyway/Liquibase?
+ → Hint: version your database</p>
+</li>
+<li>
+<p>Why prefer eventual consistency in distributed systems?
+ → Hint: perfect is too slow</p>
+</li>
+<li>
+<p>Why adopt CQRS?
+ → Hint: split reading and writing</p>
+</li>
+<li>
+<p>Why can CQRS be dangerous?
+ → Hint: double the complexity</p>
+</li>
+<li>
+<p>Why use distributed ID generators?
+ → Hint: avoid collisions</p>
+</li>
+<li>
+<p>Why use Snowflake ID pattern?
+ → Hint: unique IDs at scale</p>
+</li>
+<li>
+<p>Why is service mesh popular?
+ → Hint: sidecars manage traffic</p>
+</li>
+<li>
+<p>Why use Istio?
+ → Hint: traffic control for microservices</p>
+</li>
+<li>
+<p>Why use sidecar pattern?
+ → Hint: put helpers outside main app</p>
+</li>
+<li>
+<p>Why avoid too many microservices?
+ → Hint: mini mayhem</p>
+</li>
+<li>
+<p>Why use domain-driven design?
+ → Hint: build services around business area</p>
+</li>
+<li>
+<p>Why keep microservices small but not tiny?
+ → Hint: balance matters</p>
+</li>
+<li>
+<p>Why do microservices need strong observability?
+ → Hint: more parts = more blind spots</p>
+</li>
+<li>
+<p>Why choose gRPC over REST?
+ → Hint: faster + typed contracts</p>
+</li>
+<li>
+<p>Why avoid gRPC for public APIs?
+ → Hint: browsers don’t play well</p>
+</li>
+<li>
+<p>Why use API gateways for rate limiting and auth?
+ → Hint: keep services clean</p>
+</li>
+<li>
+<p>Why ensure microservices can scale independently?
+ → Hint: one hungry service shouldn’t drag others</p>
+</li>
+</ol>
+<hr>
+<h3 id="%E2%9C%94%EF%B8%8F-batch-8-complete">✔️ Batch 8 complete!</h3>
+<hr>
+<h1 id="%E2%9C%85-batch-9--advanced-java-javafx-caching-reactive-performance-q801%E2%80%93q900">✅ <strong>Batch 9 — Advanced Java, JavaFX, Caching, Reactive, Performance (Q801–Q900)</strong></h1>
+<h3 id="one-line-hard-questions--tiny-hints"><strong>One-Line Hard Questions + Tiny Hints</strong></h3>
+<ol start="801">
+<li>
+<p>Why is reflection powerful but dangerous?
+ → Hint: poking private stuff isn’t always safe</p>
+</li>
+<li>
+<p>Why does reflection slow applications?
+ → Hint: sneaking around takes extra time</p>
+</li>
+<li>
+<p>Why avoid reflection in performance-critical paths?
+ → Hint: speed bumps everywhere</p>
+</li>
+<li>
+<p>Why do frameworks like Spring depend on reflection?
+ → Hint: dynamic magic needs backstage access</p>
+</li>
+<li>
+<p>What are dynamic proxies used for?
+ → Hint: create fake helpers at runtime</p>
+</li>
+<li>
+<p>Why use InvocationHandler?
+ → Hint: intercept method calls like a spy</p>
+</li>
+<li>
+<p>Why can dynamic proxies only work with interfaces?
+ → Hint: they need a contract to imitate</p>
+</li>
+<li>
+<p>What problem does CGLIB solve?
+ → Hint: proxy even without interfaces</p>
+</li>
+<li>
+<p>Why must classes be non-final for CGLIB?
+ → Hint: can’t extend a sealed box</p>
+</li>
+<li>
+<p>Why is annotation processing used?
+ → Hint: generate code before the show starts</p>
+</li>
+<li>
+<p>Why choose compile-time annotation processing over runtime?
+ → Hint: faster and safer</p>
+</li>
+<li>
+<p>What is a marker annotation?
+ → Hint: a tag with no words</p>
+</li>
+<li>
+<p>Why use custom annotations?
+ → Hint: add mini-rules for your system</p>
+</li>
+<li>
+<p>Why can reflection break encapsulation?
+ → Hint: enters locked rooms without permission</p>
+</li>
+<li>
+<p>Why is JavaFX preferred over Swing in modern UI?
+ → Hint: newer, fresher, shinier</p>
+</li>
+<li>
+<p>Why does JavaFX support CSS styling?
+ → Hint: UI fashion matters</p>
+</li>
+<li>
+<p>Why use FXML for JavaFX layouts?
+ → Hint: build UI without touching code</p>
+</li>
+<li>
+<p>Why use Scene Builder?
+ → Hint: drag-and-drop happiness</p>
+</li>
+<li>
+<p>Why use property bindings in JavaFX?
+ → Hint: auto-update values like magic</p>
+</li>
+<li>
+<p>What is an observable list in JavaFX?
+ → Hint: tells you when something changes</p>
+</li>
+<li>
+<p>Why avoid heavy logic in JavaFX UI thread?
+ → Hint: don’t freeze the screen</p>
+</li>
+<li>
+<p>Why use Platform.runLater()?
+ → Hint: tell UI thread to update later</p>
+</li>
+<li>
+<p>Why use Worker and Task API?
+ → Hint: do background stuff peacefully</p>
+</li>
+<li>
+<p>Why is caching important in systems?
+ → Hint: save expensive trips</p>
+</li>
+<li>
+<p>Why is cache invalidation famously hard?
+ → Hint: when to throw old stuff away?*</p>
+</li>
+<li>
+<p>Why use LRU caching?
+ → Hint: drop the least-visited guest first</p>
+</li>
+<li>
+<p>Why avoid caching everything?
+ → Hint: fridge space is limited</p>
+</li>
+<li>
+<p>Why use Ehcache or Caffeine?
+ → Hint: fast and friendly caching helpers</p>
+</li>
+<li>
+<p>Why does Redis make a great distributed cache?
+ → Hint: everything sits in memory waiting for you</p>
+</li>
+<li>
+<p>Why choose Redis over Memcached?
+ → Hint: more features, less drama</p>
+</li>
+<li>
+<p>What is cache stampede?
+ → Hint: everyone asks at once</p>
+</li>
+<li>
+<p>How does cache pre-warming help?
+ → Hint: prepare food before guests arrive</p>
+</li>
+<li>
+<p>Why use write-through caching?
+ → Hint: update cache + DB together</p>
+</li>
+<li>
+<p>Why use write-behind caching?
+ → Hint: update DB quietly later</p>
+</li>
+<li>
+<p>Why does TTL matter for cache entries?
+ → Hint: stale food spoils</p>
+</li>
+<li>
+<p>What is reactive programming?
+ → Hint: respond to things, don’t wait</p>
+</li>
+<li>
+<p>Why does reactive avoid blocking?
+ → Hint: no waiting in long queues</p>
+</li>
+<li>
+<p>Why use Mono and Flux?
+ → Hint: 1 item vs many items pipelines</p>
+</li>
+<li>
+<p>Why does backpressure matter?
+ → Hint: stop the firehose!*</p>
+</li>
+<li>
+<p>Why is Reactor better for asynchronous flows?
+ → Hint: chains events like dominoes</p>
+</li>
+<li>
+<p>Why avoid mixing reactive and imperative code?
+ → Hint: oil + water</p>
+</li>
+<li>
+<p>What is a cold publisher?
+ → Hint: starts producing when subscribed</p>
+</li>
+<li>
+<p>What is a hot publisher?
+ → Hint: keeps emitting no matter what</p>
+</li>
+<li>
+<p>Why must reactive pipelines be immutable?
+ → Hint: assemble once, use safely</p>
+</li>
+<li>
+<p>What is flatMap used for in Reactor?
+ → Hint: explode things into more things</p>
+</li>
+<li>
+<p>What is concatMap used for?
+ → Hint: one after another, neatly</p>
+</li>
+<li>
+<p>What does publishOn do?
+ → Hint: change the execution chair</p>
+</li>
+<li>
+<p>What does subscribeOn do?
+ → Hint: change where subscription begins</p>
+</li>
+<li>
+<p>Why is debugging reactive code difficult?
+ → Hint: invisible threads everywhere</p>
+</li>
+<li>
+<p>Why enable Reactor debug mode?
+ → Hint: see the hidden paths</p>
+</li>
+<li>
+<p>Why is GC tuning important?
+ → Hint: trash collector must be efficient</p>
+</li>
+<li>
+<p>Why choose G1 GC?
+ → Hint: fewer pauses for big apps</p>
+</li>
+<li>
+<p>Why use ZGC?
+ → Hint: ultra-low pause times</p>
+</li>
+<li>
+<p>Why avoid excessive object creation?
+ → Hint: GC gets overwhelmed</p>
+</li>
+<li>
+<p>Why use JVM profiling tools?
+ → Hint: spot the troublemakers</p>
+</li>
+<li>
+<p>Why use JFR (Java Flight Recorder)?
+ → Hint: a black box for your app</p>
+</li>
+<li>
+<p>Why use VisualVM or JMC?
+ → Hint: watch memory + CPU live</p>
+</li>
+<li>
+<p>Why check thread dumps?
+ → Hint: catch deadlocks red-handed</p>
+</li>
+<li>
+<p>Why examine heap dumps?
+ → Hint: find memory leaks</p>
+</li>
+<li>
+<p>Why consider off-heap memory?
+ → Hint: reduce pressure on GC</p>
+</li>
+<li>
+<p>Why tune thread pools?
+ → Hint: too few = slow, too many = chaos</p>
+</li>
+<li>
+<p>Why avoid synchronized in high contention?
+ → Hint: traffic jam</p>
+</li>
+<li>
+<p>Why use locks sparingly?
+ → Hint: people hate queues</p>
+</li>
+<li>
+<p>Why use ReadWriteLock?
+ → Hint: many readers, few writers</p>
+</li>
+<li>
+<p>Why choose atomic classes?
+ → Hint: thread-safe counters</p>
+</li>
+<li>
+<p>Why monitor CPU utilization?
+ → Hint: don’t overcook the machine</p>
+</li>
+<li>
+<p>Why use connection pooling?
+ → Hint: reusing connections saves time</p>
+</li>
+<li>
+<p>Why test under realistic load?
+ → Hint: surprises are bad</p>
+</li>
+<li>
+<p>Why use JMH for microbenchmarks?
+ → Hint: precise performance tests</p>
+</li>
+<li>
+<p>Why avoid microbenchmarking naive code?
+ → Hint: JVM optimizes behind your back</p>
+</li>
+<li>
+<p>What is escape analysis?
+ → Hint: decides if object stays in stack</p>
+</li>
+<li>
+<p>What is inlining?
+ → Hint: remove method call overhead</p>
+</li>
+<li>
+<p>Why use -XX:+PrintCompilation?
+ → Hint: see JIT magic</p>
+</li>
+<li>
+<p>Why is false sharing harmful?
+ → Hint: cache-line fights</p>
+</li>
+<li>
+<p>How does @Contended help?
+ → Hint: prevent sharing memory lanes</p>
+</li>
+<li>
+<p>Why should buffers be reused?
+ → Hint: allocations are expensive</p>
+</li>
+<li>
+<p>Why is NUMA awareness important?
+ → Hint: memory islands matter</p>
+</li>
+<li>
+<p>Why use async database calls?
+ → Hint: don’t block your threads</p>
+</li>
+<li>
+<p>Why watch DB slow queries?
+ → Hint: they become bottlenecks</p>
+</li>
+<li>
+<p>Why index database fields carefully?
+ → Hint: too many or too few both hurt</p>
+</li>
+<li>
+<p>Why use query plans?
+ → Hint: see how DB thinks</p>
+</li>
+<li>
+<p>Why monitor thread contention?
+ → Hint: threads fighting = slow app</p>
+</li>
+<li>
+<p>Why choose proper data structures?
+ → Hint: wrong tools slow you down</p>
+</li>
+<li>
+<p>Why use StringBuilder for concatenation?
+ → Hint: mutable = faster</p>
+</li>
+<li>
+<p>Why avoid regex for simple parsing?
+ → Hint: regex is heavy</p>
+</li>
+<li>
+<p>Why pool expensive objects?
+ → Hint: reuse saves energy</p>
+</li>
+<li>
+<p>Why tune JVM heap size?
+ → Hint: too big pauses, too small crashes</p>
+</li>
+<li>
+<p>Why use async logging?
+ → Hint: don’t block app threads</p>
+</li>
+<li>
+<p>Why compress logs?
+ → Hint: logs grow like wild plants</p>
+</li>
+<li>
+<p>Why trace memory leaks early?
+ → Hint: long-running apps suffer most</p>
+</li>
+<li>
+<p>Why use defensive copies?
+ → Hint: protect your data</p>
+</li>
+<li>
+<p>Why avoid large synchronized blocks?
+ → Hint: make them tiny</p>
+</li>
+<li>
+<p>Why reuse thread-safe collections carefully?
+ → Hint: safety isn’t always speed</p>
+</li>
+<li>
+<p>Why profile before optimizing?
+ → Hint: guesswork is wrong</p>
+</li>
+<li>
+<p>Why monitor garbage collection pauses?
+ → Hint: lag spikes!*</p>
+</li>
+<li>
+<p>Why use batching for DB writes?
+ → Hint: one big trip instead of many small</p>
+</li>
+<li>
+<p>Why minimize serialization overhead?
+ → Hint: converting data is expensive</p>
+</li>
+<li>
+<p>Why prefer JSON over XML in most cases?
+ → Hint: lighter and faster</p>
+</li>
+<li>
+<p>Why consider binary serialization (like Kryo)?
+ → Hint: super-fast data transport</p>
+</li>
+<li>
+<p>Why test performance continuously?
+ → Hint: today’s fast can become tomorrow’s slow</p>
+</li>
+</ol>
+<hr>
+<h3 id="%E2%9C%94%EF%B8%8F-batch-9-complete">✔️ Batch 9 complete!</h3>
+<hr>
+<h1 id="%E2%9C%85-batch-10-q901%E2%80%93q1000-advanced-microservices-security-testing-devops-cloud--java-17">✅ <strong>Batch 10 (Q901–Q1000): Advanced Microservices, Security, Testing, DevOps, Cloud &amp; Java 17+</strong></h1>
+<h3 id="one-line-hard-questions--tiny-simple-slightly-funny-hints"><strong>One-Line Hard Questions + Tiny, Simple, Slightly Funny Hints</strong></h3>
+<ol start="901">
+<li>
+<p>Why is the Saga pattern essential for distributed transactions?
+ → Hint: many small dances instead of one big dangerous dance</p>
+</li>
+<li>
+<p>Why do Sagas avoid two-phase commit?
+ → Hint: 2PC is slow and cranky</p>
+</li>
+<li>
+<p>Why use CQRS in large systems?
+ → Hint: reading and writing don’t get along</p>
+</li>
+<li>
+<p>Why is event sourcing useful?
+ → Hint: remember every little thing</p>
+</li>
+<li>
+<p>Why is event replay powerful?
+ → Hint: rewind your system’s life</p>
+</li>
+<li>
+<p>Why must events be immutable?
+ → Hint: no editing history books</p>
+</li>
+<li>
+<p>Why use Outbox pattern?
+ → Hint: send events safely from DB</p>
+</li>
+<li>
+<p>Why use Change Data Capture?
+ → Hint: watch DB changes live</p>
+</li>
+<li>
+<p>Why does distributed tracing become critical at scale?
+ → Hint: too many places to hide bugs</p>
+</li>
+<li>
+<p>Why use correlation IDs in microservices?
+ → Hint: track a request’s journey</p>
+</li>
+<li>
+<p>Why implement API versioning?
+ → Hint: keep old clients happy</p>
+</li>
+<li>
+<p>Why choose backward compatibility?
+ → Hint: don’t break old apps</p>
+</li>
+<li>
+<p>Why adopt zero-downtime deployments?
+ → Hint: users hate outages</p>
+</li>
+<li>
+<p>Why use blue-green deployment?
+ → Hint: swap versions like flipping a switch</p>
+</li>
+<li>
+<p>Why use canary releases?
+ → Hint: test on a tiny audience first</p>
+</li>
+<li>
+<p>Why monitor release metrics?
+ → Hint: catch disasters early</p>
+</li>
+<li>
+<p>Why use distributed locks carefully?
+ → Hint: they cause more trouble than they solve</p>
+</li>
+<li>
+<p>Why avoid synchronous microservice chains?
+ → Hint: domino effect of sadness</p>
+</li>
+<li>
+<p>Why adopt asynchronous microservices?
+ → Hint: no waiting in long queues</p>
+</li>
+<li>
+<p>Why do microservices need strong observability?
+ → Hint: more pieces = more mysteries</p>
+</li>
+<li>
+<p>Why implement rate limiting in gateways?
+ → Hint: stop greedy clients</p>
+</li>
+<li>
+<p>Why use JWT for stateless auth?
+ → Hint: no server memory needed</p>
+</li>
+<li>
+<p>Why must JWT be short-lived?
+ → Hint: lost tokens = trouble</p>
+</li>
+<li>
+<p>Why store JWT secrets securely?
+ → Hint: protect your magic key</p>
+</li>
+<li>
+<p>Why validate JWT signature every time?
+ → Hint: check ID cards properly</p>
+</li>
+<li>
+<p>Why refresh tokens exist?
+ → Hint: longer access without risk</p>
+</li>
+<li>
+<p>Why does OAuth2 matter?
+ → Hint: let people log in with someone else’s trust</p>
+</li>
+<li>
+<p>Why use OAuth scopes?
+ → Hint: limit what apps can do</p>
+</li>
+<li>
+<p>Why use PKCE in OAuth2?
+ → Hint: protect mobile apps</p>
+</li>
+<li>
+<p>Why is SSO helpful?
+ → Hint: one login to rule them all</p>
+</li>
+<li>
+<p>Why must microservices handle CORS correctly?
+ → Hint: browsers get picky</p>
+</li>
+<li>
+<p>Why implement RBAC?
+ → Hint: roles reduce chaos</p>
+</li>
+<li>
+<p>Why use secrets vaults instead of environment variables?
+ → Hint: env vars leak too easily</p>
+</li>
+<li>
+<p>Why rotate secrets regularly?
+ → Hint: don’t trust old keys</p>
+</li>
+<li>
+<p>Why hash passwords instead of encrypting them?
+ → Hint: one-way door</p>
+</li>
+<li>
+<p>Why use bcrypt/argon2?
+ → Hint: slow is safer</p>
+</li>
+<li>
+<p>Why sanitize inputs?
+ → Hint: keep bad stuff out</p>
+</li>
+<li>
+<p>Why validate all external data?
+ → Hint: trust no one</p>
+</li>
+<li>
+<p>Why do Docker containers help consistency?
+ → Hint: same box everywhere</p>
+</li>
+<li>
+<p>Why use small Docker images?
+ → Hint: faster to ship</p>
+</li>
+<li>
+<p>Why use multi-stage Docker builds?
+ → Hint: slim and clean output</p>
+</li>
+<li>
+<p>Why avoid running containers as root?
+ → Hint: too much power</p>
+</li>
+<li>
+<p>Why use container health checks?
+ → Hint: see if the app is alive</p>
+</li>
+<li>
+<p>Why isolate containers with namespaces?
+ → Hint: separate playgrounds</p>
+</li>
+<li>
+<p>Why use Kubernetes for orchestration?
+ → Hint: babysits containers at scale</p>
+</li>
+<li>
+<p>Why use Deployments in Kubernetes?
+ → Hint: manage app versions</p>
+</li>
+<li>
+<p>Why use StatefulSets?
+ → Hint: keep order and identity</p>
+</li>
+<li>
+<p>Why use ConfigMaps?
+ → Hint: store non-secret settings</p>
+</li>
+<li>
+<p>Why use Secrets in Kubernetes?
+ → Hint: hide passwords from snoopers</p>
+</li>
+<li>
+<p>Why use Horizontal Pod Autoscaling?
+ → Hint: add more workers when busy</p>
+</li>
+<li>
+<p>Why use liveness and readiness probes?
+ → Hint: check health and preparedness</p>
+</li>
+<li>
+<p>Why adopt service mesh?
+ → Hint: automatic traffic magic</p>
+</li>
+<li>
+<p>Why use Istio sidecars?
+ → Hint: outsource networking chores</p>
+</li>
+<li>
+<p>Why monitor pod resource usage?
+ → Hint: avoid noisy neighbors</p>
+</li>
+<li>
+<p>Why limit CPU/memory per pod?
+ → Hint: stop greedy apps</p>
+</li>
+<li>
+<p>Why use Helm charts?
+ → Hint: reusable deployment recipes</p>
+</li>
+<li>
+<p>Why use CI/CD pipelines?
+ → Hint: automate everything</p>
+</li>
+<li>
+<p>Why run unit tests in CI?
+ → Hint: save yourself embarrassment</p>
+</li>
+<li>
+<p>Why run integration tests?
+ → Hint: check teamwork</p>
+</li>
+<li>
+<p>Why run contract tests in microservices?
+ → Hint: don’t break your clients</p>
+</li>
+<li>
+<p>Why run performance tests regularly?
+ → Hint: slow creeps in quietly</p>
+</li>
+<li>
+<p>Why use feature flags?
+ → Hint: turn features on/off easily</p>
+</li>
+<li>
+<p>Why prefer immutable infrastructure?
+ → Hint: no manual fiddling</p>
+</li>
+<li>
+<p>Why use Infrastructure as Code?
+ → Hint: treat servers like code</p>
+</li>
+<li>
+<p>Why adopt Terraform?
+ → Hint: declare cloud resources cleanly</p>
+</li>
+<li>
+<p>Why use AWS IAM carefully?
+ → Hint: permissions can cause disasters</p>
+</li>
+<li>
+<p>Why prefer least-privilege access?
+ → Hint: give tiny keys, not master keys</p>
+</li>
+<li>
+<p>Why use VPCs in cloud environments?
+ → Hint: private playground</p>
+</li>
+<li>
+<p>Why deploy across multiple AZs?
+ → Hint: avoid single-zone sadness</p>
+</li>
+<li>
+<p>Why replicate data across regions?
+ → Hint: global resilience</p>
+</li>
+<li>
+<p>Why use load balancers in cloud apps?
+ → Hint: distribute the party</p>
+</li>
+<li>
+<p>Why use autoscaling groups?
+ → Hint: add/remove servers automatically</p>
+</li>
+<li>
+<p>Why use CloudWatch/Stackdriver/Monitor?
+ → Hint: eyes on everything</p>
+</li>
+<li>
+<p>Why rely on SQS/Kinesis/PubSub?
+ → Hint: handle high-volume messages</p>
+</li>
+<li>
+<p>Why use CDN for static content?
+ → Hint: deliver from nearest place</p>
+</li>
+<li>
+<p>Why prefer object storage like S3?
+ → Hint: infinite and cheap</p>
+</li>
+<li>
+<p>Why encrypt data at rest?
+ → Hint: protect sleeping data</p>
+</li>
+<li>
+<p>Why encrypt data in transit?
+ → Hint: protect traveling data</p>
+</li>
+<li>
+<p>Why adopt multi-tenancy carefully?
+ → Hint: separate customers safely</p>
+</li>
+<li>
+<p>Why use sharding?
+ → Hint: split data like pizza slices</p>
+</li>
+<li>
+<p>Why use read replicas?
+ → Hint: handle heavy reading</p>
+</li>
+<li>
+<p>Why choose NoSQL for large-scale reads?
+ → Hint: flexible and fast</p>
+</li>
+<li>
+<p>Why choose SQL for strong consistency?
+ → Hint: strict rules, clean data</p>
+</li>
+<li>
+<p>Why use distributed caching like Redis cluster?
+ → Hint: don’t overload databases</p>
+</li>
+<li>
+<p>Why use message-driven APIs?
+ → Hint: asynchronous wins</p>
+</li>
+<li>
+<p>Why track API performance metrics?
+ → Hint: find slow endpoints</p>
+</li>
+<li>
+<p>Why version Docker images explicitly?
+ → Hint: “latest” is a liar</p>
+</li>
+<li>
+<p>Why regularly prune unused containers/images?
+ → Hint: don’t fill the house with junk</p>
+</li>
+<li>
+<p>Why keep JVM inside containers tuned?
+ → Hint: containers lie about memory</p>
+</li>
+<li>
+<p>Why use JDK Flight Recorder in production?
+ → Hint: low-overhead detective</p>
+</li>
+<li>
+<p>Why upgrade to Java 17+?
+ → Hint: faster, cleaner, safer</p>
+</li>
+<li>
+<p>Why use records in Java 17?
+ → Hint: tiny classes without boilerplate</p>
+</li>
+<li>
+<p>Why use sealed classes?
+ → Hint: limit who can inherit</p>
+</li>
+<li>
+<p>Why use pattern matching in Java 17?
+ → Hint: cleaner type checks</p>
+</li>
+<li>
+<p>Why use text blocks?
+ → Hint: write multiline strings peacefully</p>
+</li>
+<li>
+<p>Why prefer switch expressions?
+ → Hint: shorter and safer</p>
+</li>
+<li>
+<p>Why embrace ZGC/Shenandoah?
+ → Hint: ultra-low pauses</p>
+</li>
+<li>
+<p>Why use virtual threads (Project Loom)?
+ → Hint: millions of friendly threads</p>
+</li>
+<li>
+<p>Why adopt structured concurrency (Loom)?
+ → Hint: manage threads like a tidy parent</p>
+</li>
+<li>
+<p>Why does Java continue to evolve rapidly?
+→ Hint: staying cool in a fast world</p>
+</li>
+</ol>
+<hr>
+<h3 id="%F0%9F%8E%89-all-1000-questions-completed">🎉 All 1000 questions completed!</h3>
+
+<script src="_enhance.js"></script>
+</body>
+</html>

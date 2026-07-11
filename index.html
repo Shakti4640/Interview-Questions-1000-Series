@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview Questions — Home</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1f2328;
+    --muted: #57606a;
+    --card-bg: #ffffff;
+    --border: #d0d7de;
+    --accent: #0969da;
+    --accent-soft: #ddf4ff;
+    --bar-bg: #f6f8fa;
+    --shadow: rgba(27, 31, 36, 0.12);
+  }
+  html.dark {
+    --bg: #0d1117;
+    --fg: #e6edf3;
+    --muted: #9198a1;
+    --card-bg: #161b22;
+    --border: #30363d;
+    --accent: #58a6ff;
+    --accent-soft: #12283f;
+    --bar-bg: #161b22;
+    --shadow: rgba(0, 0, 0, 0.5);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Droid Sans", sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  /* top bar */
+  #topbar {
+    position: fixed; top: 0; left: 0; right: 0; height: 54px;
+    display: flex; align-items: center; gap: 12px; padding: 0 14px;
+    background: var(--bar-bg); border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 4px var(--shadow); z-index: 1000;
+  }
+  #title { flex: 1; font-size: 17px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .iconbtn {
+    width: 40px; height: 40px; flex: 0 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; line-height: 1; cursor: pointer;
+    border: 1px solid var(--border); border-radius: 8px;
+    background: var(--card-bg); color: var(--fg);
+    transition: background 0.15s ease, transform 0.1s ease;
+  }
+  .iconbtn:hover { background: var(--accent-soft); }
+  .iconbtn:active { transform: scale(0.94); }
+
+  /* tab strip */
+  #tabbar {
+    position: fixed; top: 54px; left: 0; right: 0;
+    display: flex; gap: 6px; padding: 8px 12px; overflow-x: auto;
+    background: var(--bg); border-bottom: 1px solid var(--border);
+    z-index: 999; scrollbar-width: thin;
+  }
+  #tabbar::-webkit-scrollbar { height: 8px; }
+  #tabbar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  .tab {
+    flex: 0 0 auto; max-width: 260px; padding: 7px 14px; font-size: 13.5px;
+    font-family: inherit; white-space: nowrap; cursor: pointer;
+    border: 1px solid var(--border); border-radius: 999px;
+    background: var(--card-bg); color: var(--muted); transition: all 0.15s ease;
+  }
+  .tab:hover { color: var(--fg); border-color: var(--accent); }
+  .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+
+  /* panels */
+  main { padding: 128px 24px 70px; max-width: 1100px; margin: 0 auto; }
+  .panel { display: none; animation: fade 0.25s ease; }
+  .panel.active { display: block; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .lead { color: var(--muted); font-size: 15px; margin: 0 0 20px; }
+  .panel h2 { margin: 4px 0 6px; font-size: 22px; border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
+
+  /* card grid */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .card {
+    display: flex; flex-direction: column; gap: 8px;
+    padding: 16px 18px; text-decoration: none; color: inherit;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-left: 4px solid var(--accent); border-radius: 12px;
+    box-shadow: 0 1px 3px var(--shadow); transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px var(--shadow); border-left-color: var(--accent); }
+  .card .emoji { font-size: 30px; }
+  .card .name { font-size: 16px; font-weight: 600; }
+  .card .desc { font-size: 13px; color: var(--muted); line-height: 1.4; }
+  .card .count { font-size: 12px; font-weight: 600; color: var(--accent); }
+
+  /* drawer */
+  #overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; z-index: 1001; }
+  #overlay.open { opacity: 1; visibility: visible; }
+  #drawer {
+    position: fixed; top: 0; left: 0; bottom: 0; width: 300px; max-width: 84vw;
+    background: var(--bg); border-right: 1px solid var(--border);
+    box-shadow: 2px 0 16px var(--shadow); transform: translateX(-105%);
+    transition: transform 0.22s ease; z-index: 1002; display: flex; flex-direction: column;
+  }
+  #drawer.open { transform: translateX(0); }
+  #drawer-head { padding: 16px 18px; font-size: 15px; font-weight: 600; border-bottom: 1px solid var(--border); }
+  #drawer-list { list-style: none; margin: 0; padding: 8px; overflow-y: auto; }
+  #drawer-list li { padding: 10px 14px; margin: 3px 0; border-radius: 8px; cursor: pointer; font-size: 14px; border: 1px solid transparent; }
+  #drawer-list li:hover { background: var(--accent-soft); }
+  #drawer-list li.active { background: var(--accent-soft); border-color: var(--accent); font-weight: 600; }
+  #drawer-list li .num { display: inline-block; min-width: 22px; color: var(--accent); font-weight: 700; }
+</style>
+</head>
+<body>
+<div id="topbar">
+  <button id="hamburger" class="iconbtn" aria-label="Open menu">&#9776;</button>
+  <div id="title">Interview Questions — Home</div>
+  <button id="theme" class="iconbtn" aria-label="Toggle dark mode">&#9789;</button>
+</div>
+<nav id="tabbar"></nav>
+<div id="overlay"></div>
+<aside id="drawer">
+  <div id="drawer-head">All Sections</div>
+  <ul id="drawer-list"></ul>
+</aside>
+<main id="panels"></main>
+<script>
+(function () {
+  // Every question set. "file" is the exact HTML file name in this folder.
+  var FILES = [
+    { file: "01 C_1000_Interview_Questions.html",                 emoji: "\uD83D\uDD27", name: "C",                 count: "1000 questions", desc: "Core C: syntax, memory, pointers, and the standard library.", tags: ["lang"] },
+    { file: "02 Cpp_1000_Interview_Questions.html",               emoji: "\u2795",       name: "C++",               count: "1000 questions", desc: "Classes, templates, the STL, and modern C++ features.", tags: ["lang"] },
+    { file: "03 Python_1000_Interview_Questions.html",            emoji: "\uD83D\uDC0D", name: "Python",            count: "1000 questions", desc: "Python from basics to advanced language features.", tags: ["lang"] },
+    { file: "04 Java_1000_Interview_Questions.html",              emoji: "\u2615",       name: "Java",              count: "1000 questions", desc: "Java core, collections, concurrency, and Spring.", tags: ["lang"] },
+    { file: "04A Java one-liner hard interview questions.html",   emoji: "\u26A1",       name: "Java One-Liners",   count: "1000 questions", desc: "Hard one-line Java questions with quick hints.", tags: ["lang"] },
+    { file: "06 Rust_1000_Interview_Questions.html",              emoji: "\uD83E\uDD80", name: "Rust",              count: "1000 questions", desc: "Ownership, borrowing, traits, and safe systems code.", tags: ["lang"] },
+    { file: "07 Go_1000_Interview_Questions.html",                emoji: "\uD83D\uDC39", name: "Go",                count: "1000 questions", desc: "Goroutines, channels, interfaces, and the Go toolchain.", tags: ["lang"] },
+    { file: "05 Python_Libraries_1000_Interview_Questions.html",  emoji: "\uD83D\uDCDA", name: "Python Libraries",  count: "Big set",        desc: "NumPy, Matplotlib, spaCy, XGBoost, and more workbooks.", tags: ["data"] },
+    { file: "09 Machine_Learning_1000_Interview_Questions.html",  emoji: "\uD83E\uDDE0", name: "Machine Learning",  count: "1000 questions", desc: "ML basics, deep learning, NLP, vision, and MLOps.", tags: ["data"] },
+    { file: "08 System_developer_1000_Interview_Questions.html",  emoji: "\uD83D\uDDA5\uFE0F", name: "Systems",     count: "1000 questions", desc: "Operating systems, processes, memory, and low-level work.", tags: ["sys"] },
+    { file: "10 GPU_1000_Interview_Questions.html",               emoji: "\uD83C\uDFAE", name: "GPU",               count: "1000 questions", desc: "GPU architecture, CUDA, kernels, and parallel work.", tags: ["sys"] },
+    { file: "11 Medium Hard SQL one Liner Questions.html",        emoji: "\uD83D\uDDC3\uFE0F", name: "SQL",         count: "250 questions",  desc: "Medium and hard SQL one-liners with hints.", tags: ["db"] }
+  ];
+
+  // The tabs. Each tab shows the files whose tag matches (or all).
+  var TABS = [
+    { label: "All Topics",          lead: "Every question set in one place. Pick one to start.",        match: function () { return true; } },
+    { label: "Languages",           lead: "Programming language questions.",                            match: function (f) { return f.tags.indexOf("lang") !== -1; } },
+    { label: "AI & Data",           lead: "Machine learning and data library questions.",               match: function (f) { return f.tags.indexOf("data") !== -1; } },
+    { label: "Systems & Hardware",  lead: "Operating systems, low-level, and GPU questions.",           match: function (f) { return f.tags.indexOf("sys") !== -1; } },
+    { label: "Databases",           lead: "SQL and query questions.",                                   match: function (f) { return f.tags.indexOf("db") !== -1; } }
+  ];
+
+  var docEl = document.documentElement;
+  try { if (localStorage.getItem("home-theme") === "dark") docEl.classList.add("dark"); } catch (e) {}
+
+  var tabbar = document.getElementById("tabbar");
+  var panels = document.getElementById("panels");
+  var drawerList = document.getElementById("drawer-list");
+  var drawer = document.getElementById("drawer");
+  var overlay = document.getElementById("overlay");
+  var burger = document.getElementById("hamburger");
+  var themeBtn = document.getElementById("theme");
+
+  var tabButtons = [], drawerItems = [];
+
+  function card(f) {
+    var a = document.createElement("a");
+    a.className = "card";
+    a.href = encodeURI(f.file);
+    a.innerHTML =
+      '<div class="emoji">' + f.emoji + '</div>' +
+      '<div class="name">' + f.name + '</div>' +
+      '<div class="desc">' + f.desc + '</div>' +
+      '<div class="count">' + f.count + '</div>';
+    return a;
+  }
+
+  TABS.forEach(function (t, idx) {
+    var panel = document.createElement("section");
+    panel.className = "panel";
+    var h2 = document.createElement("h2"); h2.textContent = t.label; panel.appendChild(h2);
+    var lead = document.createElement("p"); lead.className = "lead"; lead.textContent = t.lead; panel.appendChild(lead);
+    var grid = document.createElement("div"); grid.className = "grid";
+    FILES.filter(t.match).forEach(function (f) { grid.appendChild(card(f)); });
+    panel.appendChild(grid);
+    panels.appendChild(panel);
+
+    var btn = document.createElement("button");
+    btn.className = "tab"; btn.textContent = t.label; btn.title = t.label;
+    btn.addEventListener("click", function () { activate(idx); });
+    tabbar.appendChild(btn); tabButtons.push(btn);
+
+    var li = document.createElement("li");
+    var num = document.createElement("span"); num.className = "num"; num.textContent = (idx + 1);
+    li.appendChild(num); li.appendChild(document.createTextNode(t.label));
+    li.addEventListener("click", function () { activate(idx); closeDrawer(); });
+    drawerList.appendChild(li); drawerItems.push(li);
+  });
+
+  var activeIndex = 0;
+  function activate(i) {
+    if (i < 0) i = TABS.length - 1;
+    if (i >= TABS.length) i = 0;
+    activeIndex = i;
+    for (var k = 0; k < TABS.length; k++) {
+      var on = (k === i);
+      panels.children[k].classList.toggle("active", on);
+      tabButtons[k].classList.toggle("active", on);
+      drawerItems[k].classList.toggle("active", on);
+    }
+    var at = tabButtons[i];
+    if (at && at.scrollIntoView) at.scrollIntoView({ block: "nearest", inline: "center" });
+    window.scrollTo(0, 0);
+    try { localStorage.setItem("home-tab", String(i)); } catch (e) {}
+  }
+
+  function openDrawer() { drawer.classList.add("open"); overlay.classList.add("open"); burger.innerHTML = "&#10005;"; }
+  function closeDrawer() { drawer.classList.remove("open"); overlay.classList.remove("open"); burger.innerHTML = "&#9776;"; }
+  burger.addEventListener("click", function () { drawer.classList.contains("open") ? closeDrawer() : openDrawer(); });
+  overlay.addEventListener("click", closeDrawer);
+
+  function paintTheme() { themeBtn.innerHTML = docEl.classList.contains("dark") ? "&#9728;" : "&#9789;"; }
+  themeBtn.addEventListener("click", function () {
+    docEl.classList.toggle("dark");
+    try { localStorage.setItem("home-theme", docEl.classList.contains("dark") ? "dark" : "light"); } catch (e) {}
+    paintTheme();
+  });
+  paintTheme();
+
+  document.addEventListener("keydown", function (e) {
+    var t = e.target;
+    if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable)) return;
+    if (e.key === "Escape") { closeDrawer(); return; }
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.key === "ArrowRight") { activate(activeIndex + 1); e.preventDefault(); }
+    else if (e.key === "ArrowLeft") { activate(activeIndex - 1); e.preventDefault(); }
+  });
+
+  var start = 0;
+  try { var s = localStorage.getItem("home-tab"); if (s !== null && +s >= 0 && +s < TABS.length) start = +s; } catch (e) {}
+  activate(start);
+})();
+</script>
+</body>
+</html>

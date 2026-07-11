@@ -1,0 +1,4709 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>03 Python_1000_Interview_Questions.md</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+<link rel="stylesheet" href="_enhance.css">
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="python-programming-interview-questions"><strong>Python Programming Interview Questions</strong></h1>
+<h2>Jump to Batch</h2>
+<ul>
+  <li><a href="#batch-1-python-basics--core-programming-q1%E2%80%93q100">Batch 1: Python Basics & Core Programming (Q1-Q100)</a></li>
+  <li><a href="#batch-2-advanced-python-programming-q101%E2%80%93q200">Batch 2: Advanced Python Programming (Q101-Q200)</a></li>
+  <li><a href="#batch-3-python-standard-libraries--tools-q201%E2%80%93q300">Batch 3: Python Standard Libraries & Tools (Q201-Q300)</a></li>
+  <li><a href="#batch-4-numpy-fundamentals-q301%E2%80%93q400">Batch 4: NumPy Fundamentals (Q301-Q400)</a></li>
+  <li><a href="#batch-5-advanced-numpy--scientific-computing-q401%E2%80%93q500">Batch 5: Advanced NumPy & Scientific Computing (Q401-Q500)</a></li>
+  <li><a href="#batch-6-pandas-basics--data-manipulation-q501%E2%80%93q600">Batch 6: Pandas Basics & Data Manipulation (Q501-Q600)</a></li>
+  <li><a href="#batch-7-advanced-pandas--performance-q601%E2%80%93q700">Batch 7: Advanced Pandas & Performance (Q601-Q700)</a></li>
+  <li><a href="#batch-8-matplotlib--data-visualization-q701%E2%80%93q800">Batch 8: Matplotlib & Data Visualization (Q701-Q800)</a></li>
+  <li><a href="#batch-9-scipy--scientific-tools-q801%E2%80%93q900">Batch 9: SciPy & Scientific Tools (Q801-Q900)</a></li>
+  <li><a href="#batch-10-data-analysis-ecosystems--deployment-q901%E2%80%93q1000">Batch 10: Data Analysis Ecosystems & Deployment (Q901-Q1000)</a></li>
+</ul>
+
+<hr>
+<h3 id="batch-1-python-basics--core-programming-q1%E2%80%93q100"><strong>Batch 1: Python Basics &amp; Core Programming (Q1–Q100)</strong></h3>
+<h4 id="core-syntax--variables"><strong>Core Syntax &amp; Variables</strong></h4>
+<ol>
+<li>
+<p>What is Python, and how is it different from other programming languages?
+→ Python is a beginner-friendly language that focuses on readability and simplicity compared to many others.</p>
+</li>
+<li>
+<p>How do you declare a variable in Python?
+→ Just assign a value like <code>x = 5</code>—no type declaration needed.</p>
+</li>
+<li>
+<p>What are Python’s standard data types?
+→ Numbers, strings, lists, tuples, dictionaries, sets, and booleans.</p>
+</li>
+<li>
+<p>What is the difference between mutable and immutable types?
+→ Mutable types can change their contents, immutable ones cannot.</p>
+</li>
+<li>
+<p>Explain the difference between <code>is</code> and <code>==</code>.
+→ <code>==</code> checks value equality, while <code>is</code> checks if two things are the exact same object.</p>
+</li>
+<li>
+<p>What are Python’s basic arithmetic operators?
+→ <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>, <code>%</code>, and <code>**</code>.</p>
+</li>
+<li>
+<p>How does Python handle operator precedence?
+→ It follows a fixed priority order (like maths) to decide which operation runs first.</p>
+</li>
+<li>
+<p>What is the difference between <code>//</code> and <code>/</code>?
+→ <code>/</code> gives a float result, while <code>//</code> gives a floor (rounded-down) result.</p>
+</li>
+<li>
+<p>How do you swap two variables without a temporary variable?
+→ Use <code>a, b = b, a</code>.</p>
+</li>
+<li>
+<p>Explain the difference between <code>str()</code>, <code>repr()</code>, and <code>format()</code>.
+→ <code>str()</code> makes things user-friendly, <code>repr()</code> makes them unambiguous for developers, and <code>format()</code> lets you style the output.</p>
+</li>
+</ol>
+<h4 id="control-flow"><strong>Control Flow</strong></h4>
+<ol start="11">
+<li>
+<p>Explain the syntax of an <code>if-elif-else</code> statement.
+→ It checks conditions in order using <code>if</code>, then <code>elif</code> if needed, and <code>else</code> when nothing else matches.</p>
+</li>
+<li>
+<p>What is the difference between <code>while</code> and <code>for</code> loops?
+→ <code>while</code> repeats until a condition changes, while <code>for</code> repeats over items in a sequence.</p>
+</li>
+<li>
+<p>How do <code>break</code>, <code>continue</code>, and <code>pass</code> statements work?
+→ <code>break</code> stops the loop, <code>continue</code> skips to the next round, and <code>pass</code> does nothing at all.</p>
+</li>
+<li>
+<p>How do you loop over a dictionary?
+→ You loop using <code>for key, value in dict.items()</code>.</p>
+</li>
+<li>
+<p>How do you loop over a list with indexes?
+→ Use <code>for i in range(len(my_list))</code>.</p>
+</li>
+<li>
+<p>Explain Python’s <code>enumerate()</code> function.
+→ It gives you both the index and the value while looping.</p>
+</li>
+<li>
+<p>What is the purpose of the <code>else</code> clause in loops?
+→ It runs only if the loop finishes normally without a <code>break</code>.</p>
+</li>
+<li>
+<p>How do nested loops work in Python?
+→ One loop runs inside another so the inner loop repeats fully for each outer loop step.</p>
+</li>
+<li>
+<p>Explain the difference between <code>range()</code> and <code>xrange()</code> (Python 2 vs 3).
+→ <code>range()</code> makes a list in Python 2 but works like <code>xrange()</code> in Python 3, which generates values on the fly.</p>
+</li>
+<li>
+<p>How would you iterate over two lists simultaneously?
+→ Use <code>for a, b in zip(list1, list2)</code>.</p>
+</li>
+</ol>
+<h4 id="functions"><strong>Functions</strong></h4>
+<ol start="21">
+<li>
+<p>How do you define a function in Python?
+→ You create one with <code>def name():</code> like a tiny machine that runs when called.</p>
+</li>
+<li>
+<p>Explain positional vs keyword arguments.
+→ Positional go by order, keyword go by name—like calling someone by seat number vs calling them by name.</p>
+</li>
+<li>
+<p>What are default arguments in Python functions?
+→ They’re backup values the function uses if you don’t give your own.</p>
+</li>
+<li>
+<p>How do you define a function with variable arguments (<code>*args</code>, <code>**kwargs</code>)?
+→ Use <code>*args</code> for extra unnamed stuff and <code>**kwargs</code> for extra named stuff like a magical backpack of inputs.</p>
+</li>
+<li>
+<p>What is a lambda function?
+→ A teeny-tiny one-line function used when you’re in a hurry.</p>
+</li>
+<li>
+<p>How do you return multiple values from a function?
+→ Just separate them with commas and they come back as a tuple.</p>
+</li>
+<li>
+<p>What is recursion, and give an example?
+→ It’s when a function calls itself, like a mirror reflecting another mirror.</p>
+</li>
+<li>
+<p>Explain the difference between a function and a method.
+→ A method is just a function that lives inside an object and behaves politely about it.</p>
+</li>
+<li>
+<p>What are docstrings, and how are they used?
+→ They’re little notes inside triple quotes that explain what your function does.</p>
+</li>
+<li>
+<p>How do you import a function from another module?
+→ Use <code>from module import function</code> like borrowing a tool from a neighbor.</p>
+</li>
+</ol>
+<h4 id="data-structures-lists"><strong>Data Structures: Lists</strong></h4>
+<ol start="31">
+<li>
+<p>How do you create a list in Python?
+→ Put values inside brackets like <code>[1, 2, 3]</code>.</p>
+</li>
+<li>
+<p>How do you access elements in a list?
+→ Use indexes like <code>my_list[0]</code>.</p>
+</li>
+<li>
+<p>How do you slice a list?
+→ Use <code>my_list[start:end]</code> to grab a piece of it.</p>
+</li>
+<li>
+<p>How do you add an element to a list?
+→ Use <code>append()</code> or <code>insert()</code> depending on where you want it.</p>
+</li>
+<li>
+<p>How do you remove an element from a list?
+→ Use <code>remove()</code>, <code>pop()</code>, or <code>del</code> depending on your mood.</p>
+</li>
+<li>
+<p>How do you sort a list?
+→ Use <code>sort()</code> for in-place or <code>sorted()</code> for a fresh sorted copy.</p>
+</li>
+<li>
+<p>How do you reverse a list?
+→ Use <code>reverse()</code> or slice it like <code>my_list[::-1]</code>.</p>
+</li>
+<li>
+<p>What are list comprehensions, and give an example?
+→ They’re quick list-makers like <code>[x*2 for x in nums]</code>.</p>
+</li>
+<li>
+<p>How do you check if an element exists in a list?
+→ Use <code>if item in my_list</code>.</p>
+</li>
+<li>
+<p>How do you copy a list (shallow vs deep copy)?
+→ Shallow uses <code>list.copy()</code>; deep uses <code>copy.deepcopy()</code> for fully separate copies.</p>
+</li>
+</ol>
+<h4 id="data-structures-tuples"><strong>Data Structures: Tuples</strong></h4>
+<ol start="41">
+<li>
+<p>What is a tuple in Python?
+→ It’s an ordered collection that you can’t change once created.</p>
+</li>
+<li>
+<p>How is a tuple different from a list?
+→ A list can change, a tuple stays frozen.</p>
+</li>
+<li>
+<p>How do you access elements in a tuple?
+→ Use indexing like <code>t[0]</code>.</p>
+</li>
+<li>
+<p>Can you modify a tuple? Explain.
+→ Nope, it’s immutable so its contents are locked in.</p>
+</li>
+<li>
+<p>What are tuple packing and unpacking?
+→ Packing bundles values into a tuple, unpacking splits them back out into variables.</p>
+</li>
+<li>
+<p>How can tuples be used as dictionary keys?
+→ Because tuples never change, they work as stable keys.</p>
+</li>
+<li>
+<p>Explain nested tuples with an example.
+→ A tuple inside another like <code>(1, (2, 3))</code>.</p>
+</li>
+<li>
+<p>How do you iterate over a tuple?
+→ Use a simple <code>for item in tuple:</code> loop.</p>
+</li>
+<li>
+<p>What is the purpose of the <code>namedtuple</code> in <code>collections</code>?
+→ It gives tuples names for their fields so they behave like lightweight objects.</p>
+</li>
+<li>
+<p>How do you convert a tuple to a list and vice versa?
+→ Use <code>list()</code> to turn a tuple into a list and <code>tuple()</code> to turn a list into a tuple.</p>
+</li>
+</ol>
+<h4 id="data-structures-dictionaries"><strong>Data Structures: Dictionaries</strong></h4>
+<ol start="51">
+<li>
+<p>How do you create a dictionary?
+→ Use curly braces like <code>{&quot;a&quot;: 1, &quot;b&quot;: 2}</code>.</p>
+</li>
+<li>
+<p>How do you access values in a dictionary?
+→ Use the key like <code>my_dict[&quot;a&quot;]</code>.</p>
+</li>
+<li>
+<p>How do you add or update dictionary elements?
+→ Assign with <code>my_dict[key] = value</code>.</p>
+</li>
+<li>
+<p>How do you remove elements from a dictionary?
+→ Use <code>pop()</code>, <code>del</code>, or <code>popitem()</code>.</p>
+</li>
+<li>
+<p>How do you iterate over keys, values, and items?
+→ Use <code>dict.keys()</code>, <code>dict.values()</code>, and <code>dict.items()</code>.</p>
+</li>
+<li>
+<p>What is the purpose of <code>defaultdict</code>?
+→ It gives automatic default values so you don’t get key errors.</p>
+</li>
+<li>
+<p>How do you merge two dictionaries?
+→ Use <code>{**d1, **d2}</code> or <code>d1.update(d2)</code>.</p>
+</li>
+<li>
+<p>How do you sort a dictionary by keys or values?
+→ Use <code>sorted()</code> on <code>dict.items()</code> with a key function.</p>
+</li>
+<li>
+<p>Explain dictionary comprehension.
+→ It’s a quick way to build dictionaries like <code>{x: x*2 for x in nums}</code>.</p>
+</li>
+<li>
+<p>Can dictionary keys be mutable? Explain.
+→ No, keys must stay the same forever, so only immutable types qualify.</p>
+</li>
+</ol>
+<h4 id="data-structures-sets"><strong>Data Structures: Sets</strong></h4>
+<ol start="61">
+<li>
+<p>How do you create a set in Python?
+→ Use curly braces like <code>{1, 2, 3}</code> or <code>set()</code>.</p>
+</li>
+<li>
+<p>What are the main properties of sets?
+→ They’re unordered, unique, and super fast for membership checks.</p>
+</li>
+<li>
+<p>How do you add or remove elements in a set?
+→ Use <code>add()</code> to include and <code>remove()</code> or <code>discard()</code> to take away.</p>
+</li>
+<li>
+<p>What is the difference between <code>remove()</code> and <code>discard()</code>?
+→ <code>remove()</code> complains if the item’s missing, <code>discard()</code> stays chill.</p>
+</li>
+<li>
+<p>How do you perform union, intersection, and difference on sets?
+→ Use <code>|</code>, <code>&amp;</code>, and <code>-</code> or their method versions.</p>
+</li>
+<li>
+<p>How do you check if a set is a subset or superset of another set?
+→ Use <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code> or the <code>.issubset()</code> and <code>.issuperset()</code> methods.</p>
+</li>
+<li>
+<p>What is a frozenset?
+→ A set that can’t be changed, like a set in winter mode.</p>
+</li>
+<li>
+<p>How do you iterate over a set?
+→ Use a simple <code>for item in my_set:</code> loop.</p>
+</li>
+<li>
+<p>Can sets contain duplicate elements?
+→ No, they automatically toss out repeats.</p>
+</li>
+<li>
+<p>Explain practical use cases of sets.
+→ They’re perfect for removing duplicates, fast lookups, and comparing groups of things.</p>
+</li>
+</ol>
+<h4 id="exception-handling"><strong>Exception Handling</strong></h4>
+<ol start="71">
+<li>
+<p>What is exception handling in Python?
+→ It’s the way Python deals with errors without crashing your program.</p>
+</li>
+<li>
+<p>Explain <code>try</code>, <code>except</code>, <code>finally</code>, and <code>else</code> blocks.
+→ <code>try</code> tests code, <code>except</code> handles errors, <code>else</code> runs if no error happens, and <code>finally</code> always runs at the end.</p>
+</li>
+<li>
+<p>How do you raise an exception in Python?
+→ Use <code>raise SomeError(&quot;message&quot;)</code>.</p>
+</li>
+<li>
+<p>What are some common Python exceptions?
+→ <code>ValueError</code>, <code>TypeError</code>, <code>KeyError</code>, <code>IndexError</code>, <code>ZeroDivisionError</code>.</p>
+</li>
+<li>
+<p>How do you create a custom exception class?
+→ Make a class that inherits from <code>Exception</code>.</p>
+</li>
+<li>
+<p>What is the difference between <code>Exception</code> and <code>BaseException</code>?
+→ <code>BaseException</code> is the root of all errors, and <code>Exception</code> is the normal branch most errors use.</p>
+</li>
+<li>
+<p>How do you catch multiple exceptions in a single block?
+→ Put them in a tuple like <code>except (TypeError, ValueError):</code>.</p>
+</li>
+<li>
+<p>What is the use of <code>with</code> statement for exception handling?
+→ It safely manages resources so they close even if errors happen.</p>
+</li>
+<li>
+<p>Explain the difference between syntax errors and runtime errors.
+→ Syntax errors break the code before it runs; runtime errors happen while running.</p>
+</li>
+<li>
+<p>How do you log exceptions for debugging?
+→ Use the <code>logging</code> module and <code>logging.exception()</code> to record error details.</p>
+</li>
+</ol>
+<h4 id="file-io"><strong>File I/O</strong></h4>
+<ol start="81">
+<li>
+<p>How do you open and close a file in Python?
+→ Use <code>open()</code> to open and <code>close()</code> to shut it.</p>
+</li>
+<li>
+<p>What is the difference between text and binary files?
+→ Text stores characters, binary stores raw bytes.</p>
+</li>
+<li>
+<p>How do you read a file line by line?
+→ Loop over the file object directly.</p>
+</li>
+<li>
+<p>How do you write to a file?
+→ Open it in write mode and use <code>write()</code>.</p>
+</li>
+<li>
+<p>What is the difference between <code>read()</code>, <code>readline()</code>, and <code>readlines()</code>?
+→ <code>read()</code> gets everything, <code>readline()</code> gets one line, <code>readlines()</code> gets all lines in a list.</p>
+</li>
+<li>
+<p>How do you append to a file?
+→ Open it in <code>'a'</code> mode and use <code>write()</code>.</p>
+</li>
+<li>
+<p>What are file modes in Python (<code>r</code>, <code>w</code>, <code>a</code>, <code>b</code>)?
+→ <code>r</code> reads, <code>w</code> overwrites, <code>a</code> adds, <code>b</code> switches to binary.</p>
+</li>
+<li>
+<p>How do you use a context manager (<code>with</code>) for file handling?
+→ Wrap the file in <code>with</code> so it closes itself automatically.</p>
+</li>
+<li>
+<p>How do you check if a file exists before opening it?
+→ Use <code>os.path.exists()</code>.</p>
+</li>
+<li>
+<p>How do you handle file exceptions safely?
+→ Wrap file operations in <code>try-except</code> blocks.</p>
+</li>
+</ol>
+<h4 id="modules-packages--virtual-environments"><strong>Modules, Packages &amp; Virtual Environments</strong></h4>
+<ol start="91">
+<li>
+<p>What is a module in Python?
+→ It’s just a file full of Python code you can reuse.</p>
+</li>
+<li>
+<p>How do you import a module?
+→ Use <code>import module_name</code>.</p>
+</li>
+<li>
+<p>Explain the difference between <code>import module</code> and <code>from module import function</code>.
+→ One brings the whole toolbox, the other grabs just one tool.</p>
+</li>
+<li>
+<p>How do you create a package in Python?
+→ Put modules in a folder with an <code>__init__.py</code> file.</p>
+</li>
+<li>
+<p>What is the purpose of <code>__init__.py</code>?
+→ It tells Python, “Hey, this folder is a package!”</p>
+</li>
+<li>
+<p>How do you list installed packages?
+→ Run <code>pip list</code>.</p>
+</li>
+<li>
+<p>How do you install a package using <code>pip</code>?
+→ Use <code>pip install package_name</code>.</p>
+</li>
+<li>
+<p>How do you create a virtual environment?
+→ Run <code>python -m venv envname</code>.</p>
+</li>
+<li>
+<p>Why are virtual environments important?
+→ They keep your project’s packages nicely separated from others.</p>
+</li>
+<li>
+<p>How do you activate and deactivate a virtual environment?
+→ Activate with <code>source env/bin/activate</code> (or <code>Scripts\activate</code> on Windows) and deactivate with <code>deactivate</code>.</p>
+</li>
+</ol>
+<hr>
+<h3 id="batch-2-advanced-python-programming-q101%E2%80%93q200"><strong>Batch 2: Advanced Python Programming (Q101–Q200)</strong></h3>
+<h4 id="iterators--generators"><strong>Iterators &amp; Generators</strong></h4>
+<ol start="101">
+<li>
+<p>What is an iterator in Python?
+→ It’s something you can move through one item at a time.</p>
+</li>
+<li>
+<p>How does the <code>iter()</code> function work?
+→ It turns an iterable into an iterator.</p>
+</li>
+<li>
+<p>Explain the <code>next()</code> function.
+→ It gives you the next item from an iterator.</p>
+</li>
+<li>
+<p>How do you create a custom iterator class?
+→ Define <code>__iter__()</code> and <code>__next__()</code> inside a class.</p>
+</li>
+<li>
+<p>What is a generator in Python?
+→ It’s a special function that makes an iterator automatically.</p>
+</li>
+<li>
+<p>How does <code>yield</code> differ from <code>return</code>?
+→ <code>yield</code> pauses the function, <code>return</code> stops it for good.</p>
+</li>
+<li>
+<p>What are generator expressions?
+→ They’re tiny generators written like <code>(x*2 for x in nums)</code>.</p>
+</li>
+<li>
+<p>How do generators help with memory efficiency?
+→ They produce items only when needed instead of storing everything.</p>
+</li>
+<li>
+<p>Explain the difference between an iterator and an iterable.
+→ An iterable can give you an iterator; an iterator actually moves through items.</p>
+</li>
+<li>
+<p>How do you chain generators for complex pipelines?
+→ You stack them by feeding one generator’s output into the next.</p>
+</li>
+</ol>
+<h4 id="comprehensions"><strong>Comprehensions</strong></h4>
+<ol start="111">
+<li>
+<p>Explain list comprehensions with an example.
+→ They build lists fast, like <code>[x*x for x in nums]</code>.</p>
+</li>
+<li>
+<p>How do dictionary comprehensions work?
+→ They create key–value pairs quickly like <code>{x: x*x for x in nums}</code>.</p>
+</li>
+<li>
+<p>Explain set comprehensions.
+→ They make sets using a similar style like <code>{x*x for x in nums}</code>.</p>
+</li>
+<li>
+<p>How do you use nested comprehensions?
+→ Put one inside another like <code>[a+b for a in A for b in B]</code>.</p>
+</li>
+<li>
+<p>How can you add conditions to comprehensions?
+→ Add an <code>if</code> like <code>[x for x in nums if x%2==0]</code>.</p>
+</li>
+<li>
+<p>What is the difference between a comprehension and a generator expression?
+→ One builds the whole structure; the other makes items on demand.</p>
+</li>
+<li>
+<p>How do comprehensions improve code readability?
+→ They shrink big loops into neat one-liners.</p>
+</li>
+<li>
+<p>Can comprehensions replace loops entirely?
+→ Not always, but they handle many loop scenarios nicely.</p>
+</li>
+<li>
+<p>Explain the performance benefits of comprehensions.
+→ They run faster because they’re optimized inside Python.</p>
+</li>
+<li>
+<p>How do you handle exceptions in comprehensions?
+→ Wrap the whole comprehension in a <code>try-except</code> since you can’t catch inside it cleanly.</p>
+</li>
+</ol>
+<h4 id="object-oriented-programming-oop"><strong>Object-Oriented Programming (OOP)</strong></h4>
+<ol start="121">
+<li>
+<p>What is a class in Python?
+→ It’s a blueprint for creating objects.</p>
+</li>
+<li>
+<p>What is an object?
+→ It’s a thing made from a class with its own data and abilities.</p>
+</li>
+<li>
+<p>Explain the difference between instance, class, and static methods.
+→ Instance methods use <code>self</code>, class methods use <code>cls</code>, and static methods use neither.</p>
+</li>
+<li>
+<p>What is inheritance? Give an example.
+→ It lets one class get features from another, like <code>Dog(Animal)</code>.</p>
+</li>
+<li>
+<p>What is multiple inheritance, and how does Python handle it?
+→ A class can inherit from many parents, and Python uses MRO to decide who gets priority.</p>
+</li>
+<li>
+<p>What is polymorphism in Python?
+→ Different objects can use the same method name but behave differently.</p>
+</li>
+<li>
+<p>Explain encapsulation and how it is implemented.
+→ It hides internal details using naming conventions like <code>_name</code>.</p>
+</li>
+<li>
+<p>What are private, protected, and public attributes in Python?
+→ Public for everyone, protected with one underscore, private with two underscores.</p>
+</li>
+<li>
+<p>What is method overriding?
+→ A child class replaces a parent class’s method with its own version.</p>
+</li>
+<li>
+<p>Explain method overloading in Python.
+→ Python fakes it using default or variable arguments since it doesn’t support it directly.</p>
+</li>
+</ol>
+<h4 id="magic-methods--special-functions"><strong>Magic Methods &amp; Special Functions</strong></h4>
+<ol start="131">
+<li>
+<p>What are magic methods in Python?
+→ Special methods with double underscores that let objects behave in magical ways.</p>
+</li>
+<li>
+<p>Explain <code>__init__</code> and <code>__new__</code>.
+→ <code>__new__</code> makes the object, <code>__init__</code> sets it up.</p>
+</li>
+<li>
+<p>How do <code>__str__</code> and <code>__repr__</code> differ?
+→ <code>__str__</code> is friendly, <code>__repr__</code> is technical.</p>
+</li>
+<li>
+<p>What are <code>__call__</code> and <code>__getitem__</code> used for?
+→ <code>__call__</code> lets an object act like a function, <code>__getitem__</code> handles indexing.</p>
+</li>
+<li>
+<p>Explain <code>__len__</code>, <code>__iter__</code>, and <code>__next__</code>.
+→ They let objects act like sequences you can measure and loop through.</p>
+</li>
+<li>
+<p>How do <code>__enter__</code> and <code>__exit__</code> relate to context managers?
+→ They power the <code>with</code> statement by setting up and cleaning up.</p>
+</li>
+<li>
+<p>Explain operator overloading with <code>__add__</code> or <code>__mul__</code>.
+→ These methods let your objects respond to <code>+</code> and <code>*</code> in custom ways.</p>
+</li>
+<li>
+<p>What is <code>__dict__</code> used for?
+→ It stores an object’s attributes in a handy dictionary.</p>
+</li>
+<li>
+<p>How do you implement custom comparison operators?
+→ Define methods like <code>__lt__</code>, <code>__gt__</code>, <code>__eq__</code>, and friends.</p>
+</li>
+<li>
+<p>How can magic methods enhance code readability?
+→ They make objects act naturally so your code feels smooth and intuitive.</p>
+</li>
+</ol>
+<h4 id="properties-descriptors--metaclasses"><strong>Properties, Descriptors &amp; Metaclasses</strong></h4>
+<ol start="141">
+<li>
+<p>What is the <code>property()</code> function used for?
+→ It turns methods into managed attributes with built-in getters and setters.</p>
+</li>
+<li>
+<p>How do you define getter, setter, and deleter in Python?
+→ Use <code>@property</code>, <code>@attr.setter</code>, and <code>@attr.deleter</code> decorators.</p>
+</li>
+<li>
+<p>What is a descriptor?
+→ It’s an object that controls how attributes are accessed.</p>
+</li>
+<li>
+<p>How do you implement custom descriptors?
+→ Define a class with <code>__get__</code>, <code>__set__</code>, or <code>__delete__</code>.</p>
+</li>
+<li>
+<p>What are the use cases for descriptors?
+→ They’re great for validation, computed attributes, and shared behavior.</p>
+</li>
+<li>
+<p>What is a metaclass in Python?
+→ It’s a class that creates other classes.</p>
+</li>
+<li>
+<p>How do you create a custom metaclass?
+→ Inherit from <code>type</code> and override methods like <code>__new__</code> or <code>__init__</code>.</p>
+</li>
+<li>
+<p>Explain the role of <code>type()</code> in metaclasses.
+→ <code>type()</code> is the default metaclass that builds classes.</p>
+</li>
+<li>
+<p>How do metaclasses control class creation?
+→ They intercept the class-building process and can modify it.</p>
+</li>
+<li>
+<p>Give a practical example of using metaclasses.
+→ They can auto-add logging, enforce naming rules, or register classes automatically.</p>
+</li>
+</ol>
+<h4 id="functional-programming"><strong>Functional Programming</strong></h4>
+<ol start="151">
+<li>
+<p>What is functional programming?
+→ It’s a style where you build programs using functions without changing data.</p>
+</li>
+<li>
+<p>Explain the use of <code>map()</code> with an example.
+→ <code>map(f, items)</code> applies a function to each item, like <code>map(str.upper, words)</code>.</p>
+</li>
+<li>
+<p>How does <code>filter()</code> work in Python?
+→ It keeps only the items that pass a test function.</p>
+</li>
+<li>
+<p>Explain <code>reduce()</code> and where it is used.
+→ It combines items into one value, like adding everything up.</p>
+</li>
+<li>
+<p>What is <code>functools</code> in Python?
+→ A module full of handy functional tools.</p>
+</li>
+<li>
+<p>Explain <code>partial()</code> from <code>functools</code>.
+→ It pre-fills part of a function’s arguments to make a new function.</p>
+</li>
+<li>
+<p>How do higher-order functions work in Python?
+→ They accept functions as inputs or return them as outputs.</p>
+</li>
+<li>
+<p>What are pure functions?
+→ Functions that don’t change anything and always give the same output for the same input.</p>
+</li>
+<li>
+<p>Explain immutability in functional programming.
+→ It means data never changes, so you make new copies instead.</p>
+</li>
+<li>
+<p>How does Python support first-class functions?
+→ Functions can be stored, passed, returned, and treated like any other value.</p>
+</li>
+</ol>
+<h4 id="decorators"><strong>Decorators</strong></h4>
+<ol start="161">
+<li>
+<p>What is a decorator in Python?
+→ It’s a function that adds extra superpowers to another function.</p>
+</li>
+<li>
+<p>How do you create a simple decorator function?
+→ Make a wrapper inside a function and return that wrapper.</p>
+</li>
+<li>
+<p>Explain the difference between function decorators and class decorators.
+→ One decorates functions, the other decorates entire classes.</p>
+</li>
+<li>
+<p>How do you use <code>functools.wraps</code>?
+→ Put it on your wrapper so the original function’s name and docs stay intact.</p>
+</li>
+<li>
+<p>Can decorators accept arguments?
+→ Yep—just wrap another layer around the decorator.</p>
+</li>
+<li>
+<p>Explain chaining decorators.
+→ Stack them so a function passes through several decorators.</p>
+</li>
+<li>
+<p>How can decorators improve code reusability?
+→ They let you reuse behavior without rewriting it everywhere.</p>
+</li>
+<li>
+<p>Give a practical example of a logging decorator.
+→ A decorator that prints function name and arguments before running it.</p>
+</li>
+<li>
+<p>How do property decorators work?
+→ They turn methods into attribute-like access using <code>@property</code>.</p>
+</li>
+<li>
+<p>Explain the difference between <code>@staticmethod</code>, <code>@classmethod</code>, and <code>@property</code>.
+→ Static ignores the class, classmethod uses the class, property acts like a managed attribute.</p>
+</li>
+</ol>
+<h4 id="recursion"><strong>Recursion</strong></h4>
+<ol start="171">
+<li>
+<p>What is recursion, and when should it be used?
+→ It’s when a function calls itself, useful for problems that split into smaller versions of themselves.</p>
+</li>
+<li>
+<p>Explain base case and recursive case.
+→ The base case stops the recursion; the recursive case keeps it going.</p>
+</li>
+<li>
+<p>How do you prevent infinite recursion?
+→ Always include a base case that actually gets reached.</p>
+</li>
+<li>
+<p>Compare recursion with iteration.
+→ Recursion uses repeated self-calls, iteration uses loops.</p>
+</li>
+<li>
+<p>How do you calculate factorial using recursion?
+→ Define <code>n * factorial(n-1)</code> with a base case of <code>1</code>.</p>
+</li>
+<li>
+<p>How do you compute Fibonacci numbers using recursion?
+→ Return <code>fib(n-1) + fib(n-2)</code> with base cases <code>0</code> and <code>1</code>.</p>
+</li>
+<li>
+<p>What is tail recursion?
+→ A recursive call made as the final action in a function.</p>
+</li>
+<li>
+<p>Does Python optimize tail recursion?
+→ Nope, Python leaves it unoptimized.</p>
+</li>
+<li>
+<p>How can recursion affect memory (stack overflow)?
+→ Too many nested calls fill up the call stack.</p>
+</li>
+<li>
+<p>Give a real-world example of recursion.
+→ A folder containing folders inside folders.</p>
+</li>
+</ol>
+<h4 id="memory-management"><strong>Memory Management</strong></h4>
+<ol start="181">
+<li>
+<p>How does Python manage memory internally?
+→ It uses private heaps, reference counting, and a garbage collector.</p>
+</li>
+<li>
+<p>What is reference counting?
+→ A counter tracks how many things point to an object.</p>
+</li>
+<li>
+<p>How does Python’s garbage collector work?
+→ It cleans up leftover objects, especially those in cycles.</p>
+</li>
+<li>
+<p>What are circular references, and how are they handled?
+→ Objects that reference each other, handled by the cycle detector.</p>
+</li>
+<li>
+<p>Explain <code>__del__</code> method in Python.
+→ It runs when an object is about to be destroyed.</p>
+</li>
+<li>
+<p>How do <code>weakref</code> objects work?
+→ They let you reference objects without increasing their reference count.</p>
+</li>
+<li>
+<p>How do you manually trigger garbage collection?
+→ Call <code>gc.collect()</code>.</p>
+</li>
+<li>
+<p>What are memory leaks in Python?
+→ When objects never get freed because something still references them.</p>
+</li>
+<li>
+<p>How can you optimize memory usage in Python programs?
+→ Use generators, avoid unnecessary copies, and prefer lightweight structures.</p>
+</li>
+<li>
+<p>Explain the difference between shallow and deep copies.
+→ Shallow copies copy references; deep copies clone everything fully.</p>
+</li>
+</ol>
+<h4 id="advanced-python-concepts"><strong>Advanced Python Concepts</strong></h4>
+<ol start="191">
+<li>
+<p>What is duck typing in Python?
+→ If something behaves like the right type, Python treats it as that type.</p>
+</li>
+<li>
+<p>Explain EAFP vs LBYL programming styles.
+→ EAFP tries first and handles errors; LBYL checks everything before acting.</p>
+</li>
+<li>
+<p>What are Python’s built-in functions for introspection?
+→ <code>type()</code>, <code>id()</code>, <code>dir()</code>, <code>hasattr()</code>, <code>getattr()</code>, and friends.</p>
+</li>
+<li>
+<p>How do you dynamically import a module?
+→ Use <code>importlib.import_module()</code>.</p>
+</li>
+<li>
+<p>How do you check if an object has an attribute?
+→ Use <code>hasattr(obj, &quot;name&quot;)</code>.</p>
+</li>
+<li>
+<p>What is the Global Interpreter Lock (GIL)?
+→ A lock that allows only one thread to run Python code at a time.</p>
+</li>
+<li>
+<p>How does GIL affect multithreading in Python?
+→ CPU-heavy threads can’t run in true parallel.</p>
+</li>
+<li>
+<p>How do you bypass GIL limitations?
+→ Use multiprocessing or extension modules that release the GIL.</p>
+</li>
+<li>
+<p>Explain the difference between multithreading and multiprocessing.
+→ Threads share memory; processes run separately for real parallelism.</p>
+</li>
+<li>
+<p>How can Python’s <code>ctypes</code> or <code>cffi</code> improve performance?
+→ They let you call fast C code directly from Python.</p>
+</li>
+</ol>
+<hr>
+<h3 id="batch-3-python-standard-libraries--tools-q201%E2%80%93q300"><strong>Batch 3: Python Standard Libraries &amp; Tools (Q201–Q300)</strong></h3>
+<h4 id="built-in-libraries"><strong>Built-in Libraries</strong></h4>
+<ol start="201">
+<li>
+<p>What is the purpose of the <code>os</code> module?
+→ It lets Python talk to your operating system.</p>
+</li>
+<li>
+<p>How do you list all files in a directory using <code>os</code>?
+→ Use <code>os.listdir(path)</code>.</p>
+</li>
+<li>
+<p>How do you create, remove, and rename directories in Python?
+→ Use <code>os.mkdir()</code>, <code>os.rmdir()</code>, and <code>os.rename()</code>.</p>
+</li>
+<li>
+<p>What is <code>os.path</code> used for?
+→ Handling file paths safely and easily.</p>
+</li>
+<li>
+<p>How do you get the absolute path of a file?
+→ Use <code>os.path.abspath(filename)</code>.</p>
+</li>
+<li>
+<p>Explain <code>os.environ</code> and how to access environment variables.
+→ It’s a dictionary of system variables you read like <code>os.environ[&quot;KEY&quot;]</code>.</p>
+</li>
+<li>
+<p>What is the <code>sys</code> module used for?
+→ It gives Python insight into the interpreter and system details.</p>
+</li>
+<li>
+<p>How do you get command-line arguments using <code>sys.argv</code>?
+→ Read them from the <code>sys.argv</code> list.</p>
+</li>
+<li>
+<p>How can you exit a Python program using <code>sys</code>?
+→ Call <code>sys.exit()</code>.</p>
+</li>
+<li>
+<p>How do you check Python version using <code>sys</code>?
+→ Look at <code>sys.version</code> or <code>sys.version_info</code>.</p>
+</li>
+</ol>
+<h4 id="date-and-time"><strong>Date and Time</strong></h4>
+<ol start="211">
+<li>
+<p>How do you get the current date and time using <code>datetime</code>?
+→ Use <code>datetime.datetime.now()</code>.</p>
+</li>
+<li>
+<p>How do you format a datetime object as a string?
+→ Use <code>strftime()</code> with a format pattern.</p>
+</li>
+<li>
+<p>How do you parse a string into a datetime object?
+→ Use <code>strptime()</code> with the matching format.</p>
+</li>
+<li>
+<p>Explain the difference between <code>datetime</code>, <code>date</code>, and <code>time</code> objects.
+→ <code>date</code> stores only the day, <code>time</code> only the clock, <code>datetime</code> stores both.</p>
+</li>
+<li>
+<p>How do you calculate the difference between two dates?
+→ Subtract them to get a <code>timedelta</code>.</p>
+</li>
+<li>
+<p>What is <code>timedelta</code> used for?
+→ Representing time differences and doing date arithmetic.</p>
+</li>
+<li>
+<p>How do you get the current timestamp?
+→ Use <code>time.time()</code> or <code>datetime.now().timestamp()</code>.</p>
+</li>
+<li>
+<p>How do you convert between timestamp and datetime?
+→ Use <code>datetime.fromtimestamp()</code> and <code>.timestamp()</code>.</p>
+</li>
+<li>
+<p>Explain time zones handling in Python.
+→ Use <code>datetime</code> with <code>tzinfo</code> or the <code>zoneinfo</code> module.</p>
+</li>
+<li>
+<p>How do you measure execution time of code snippets using <code>time</code> module?
+→ Capture <code>time.time()</code> before and after, then subtract.</p>
+</li>
+</ol>
+<h4 id="mathematical-operations"><strong>Mathematical Operations</strong></h4>
+<ol start="221">
+<li>
+<p>What is the <code>math</code> module used for?
+→ It provides fast, accurate math functions.</p>
+</li>
+<li>
+<p>How do you calculate factorial and power using <code>math</code>?
+→ Use <code>math.factorial()</code> and <code>math.pow()</code>.</p>
+</li>
+<li>
+<p>Explain trigonometric functions in the <code>math</code> module.
+→ They include <code>sin</code>, <code>cos</code>, <code>tan</code>, and their inverses.</p>
+</li>
+<li>
+<p>How do you generate random numbers using <code>random</code> module?
+→ Use functions like <code>random.random()</code> or <code>random.randint()</code>.</p>
+</li>
+<li>
+<p>How do you select a random element from a list?
+→ Use <code>random.choice(list)</code>.</p>
+</li>
+<li>
+<p>How do you shuffle a list randomly?
+→ Use <code>random.shuffle(list)</code>.</p>
+</li>
+<li>
+<p>How do you generate random numbers within a range?
+→ Use <code>random.randint(a, b)</code> or <code>randrange()</code>.</p>
+</li>
+<li>
+<p>Explain probability distributions in the <code>random</code> module.
+→ It includes tools like <code>random.uniform()</code>, <code>random.gauss()</code>, and others.</p>
+</li>
+<li>
+<p>How do you calculate the greatest common divisor (GCD)?
+→ Use <code>math.gcd(a, b)</code>.</p>
+</li>
+<li>
+<p>How do you compute square roots and logarithms using <code>math</code>?
+→ Use <code>math.sqrt()</code> and <code>math.log()</code>.</p>
+</li>
+</ol>
+<h4 id="text-processing--regular-expressions"><strong>Text Processing &amp; Regular Expressions</strong></h4>
+<ol start="231">
+<li>
+<p>What is the <code>re</code> module used for?
+→ It handles pattern matching with regular expressions.</p>
+</li>
+<li>
+<p>How do you search for a pattern in a string?
+→ Use <code>re.search(pattern, text)</code>.</p>
+</li>
+<li>
+<p>How do you match a string exactly?
+→ Use <code>re.fullmatch(pattern, text)</code>.</p>
+</li>
+<li>
+<p>How do you extract all matches from a string?
+→ Use <code>re.findall(pattern, text)</code>.</p>
+</li>
+<li>
+<p>How do you replace text using regex?
+→ Use <code>re.sub(pattern, replacement, text)</code>.</p>
+</li>
+<li>
+<p>Explain regex groups and capturing groups.
+→ Groups capture parts of the match using parentheses.</p>
+</li>
+<li>
+<p>How do you split a string using a regex pattern?
+→ Use <code>re.split(pattern, text)</code>.</p>
+</li>
+<li>
+<p>What are raw strings (<code>r&quot;pattern&quot;</code>) used for in regex?
+→ They prevent Python from treating backslashes specially.</p>
+</li>
+<li>
+<p>How do you perform case-insensitive regex matching?
+→ Add the <code>re.IGNORECASE</code> flag.</p>
+</li>
+<li>
+<p>How do you compile a regex pattern for repeated use?
+→ Use <code>re.compile(pattern)</code> to reuse it efficiently.</p>
+</li>
+</ol>
+<h4 id="string-handling"><strong>String Handling</strong></h4>
+<ol start="241">
+<li>
+<p>How do you convert a string to uppercase or lowercase?
+→ Use <code>.upper()</code> or <code>.lower()</code>—like giving the string a mood change.</p>
+</li>
+<li>
+<p>How do you strip whitespace from a string?
+→ Use <code>.strip()</code> to sweep away the extra spaces.</p>
+</li>
+<li>
+<p>How do you split a string into a list?
+→ Use <code>.split()</code> to break it apart like cracking a cookie.</p>
+</li>
+<li>
+<p>How do you join a list of strings into a single string?
+→ Use <code>'separator'.join(list)</code> to glue them back together.</p>
+</li>
+<li>
+<p>Explain string formatting using <code>%</code>, <code>str.format()</code>, and f-strings.
+→ <code>%</code> is old-school, <code>.format()</code> is polite, f-strings are the cool modern shortcut.</p>
+</li>
+<li>
+<p>How do you check if a string starts or ends with a substring?
+→ Use <code>.startswith()</code> or <code>.endswith()</code> like checking the front door or back door.</p>
+</li>
+<li>
+<p>How do you find the index of a substring?
+→ Use <code>.find()</code> to locate it without throwing a tantrum.</p>
+</li>
+<li>
+<p>How do you replace substrings in a string?
+→ Use <code>.replace()</code> to swap the old with the new.</p>
+</li>
+<li>
+<p>How do you check if a string contains only digits or letters?
+→ Use <code>.isdigit()</code> or <code>.isalpha()</code>—like giving the string a quick identity check.</p>
+</li>
+<li>
+<p>How do you handle Unicode strings in Python?
+→ Just use normal strings; Python 3 treats them all as Unicode by default.</p>
+</li>
+</ol>
+<h4 id="collections"><strong>Collections</strong></h4>
+<ol start="251">
+<li>
+<p>What is the <code>collections</code> module used for?
+→ It offers special container types that act like upgraded data-structure tools.</p>
+</li>
+<li>
+<p>Explain the <code>deque</code> data structure.
+→ It’s a double-ended queue that lets you add or remove items super fast from both ends.</p>
+</li>
+<li>
+<p>How do you append and pop elements from both ends of a <code>deque</code>?
+→ Use <code>append()</code>, <code>appendleft()</code>, <code>pop()</code>, and <code>popleft()</code>—like doors on both sides.</p>
+</li>
+<li>
+<p>What is a <code>Counter</code>, and how is it used?
+→ It’s a tally machine that counts how many times each item appears.</p>
+</li>
+<li>
+<p>How do you count elements in a list using <code>Counter</code>?
+→ Just do <code>Counter(your_list)</code> and it counts everything for you.</p>
+</li>
+<li>
+<p>What is a <code>defaultdict</code>, and how is it different from a normal dict?
+→ It auto-creates default values instead of complaining about missing keys.</p>
+</li>
+<li>
+<p>How do you provide a default factory function for <code>defaultdict</code>?
+→ Pass a function like <code>int</code> or <code>list</code> when creating it: <code>defaultdict(list)</code>.</p>
+</li>
+<li>
+<p>Explain <code>OrderedDict</code> and its use cases.
+→ It remembers the order you insert items—handy when order matters.</p>
+</li>
+<li>
+<p>How is an <code>OrderedDict</code> different from a regular dictionary?
+→ Older Python relied on it for order; now it mainly adds extra ordering tricks.</p>
+</li>
+<li>
+<p>What are named tuples, and when would you use them?
+→ They’re lightweight, tuple-like objects with named fields—great for clean, readable data.</p>
+</li>
+</ol>
+<h4 id="logging"><strong>Logging</strong></h4>
+<ol start="261">
+<li>
+<p>What is the <code>logging</code> module used for?
+→ It lets you record what your program is doing, like keeping a diary for debugging.</p>
+</li>
+<li>
+<p>How do you create a basic logger?
+→ Use <code>logging.basicConfig()</code> and then call the logging functions.</p>
+</li>
+<li>
+<p>Explain logging levels (DEBUG, INFO, WARNING, ERROR, CRITICAL).
+→ They’re message seriousness levels, from tiny whispers to full-blown alarms.</p>
+</li>
+<li>
+<p>How do you log messages to a file?
+→ Use <code>basicConfig(filename='file.log')</code> to send logs straight into a file.</p>
+</li>
+<li>
+<p>How do you format log messages?
+→ Pass <code>format='...'</code> in <code>basicConfig()</code> to style your log messages.</p>
+</li>
+<li>
+<p>How do you create multiple loggers in a program?
+→ Use <code>logging.getLogger(name)</code> for each unique logger you want.</p>
+</li>
+<li>
+<p>What is the difference between <code>logging.debug()</code> and <code>logger.debug()</code>?
+→ The first uses the root logger; the second uses your custom logger.</p>
+</li>
+<li>
+<p>How do you disable logging in production code?
+→ Call <code>logging.disable(logging.CRITICAL)</code> to silence everything.</p>
+</li>
+<li>
+<p>How do you rotate log files automatically?
+→ Use <code>RotatingFileHandler</code> or <code>TimedRotatingFileHandler</code> to auto-manage file sizes or time.</p>
+</li>
+<li>
+<p>What is the difference between <code>StreamHandler</code> and <code>FileHandler</code>?
+→ One sends logs to the screen, the other writes them into a file notebook.</p>
+</li>
+</ol>
+<h4 id="command-line-argument-parsing"><strong>Command-Line Argument Parsing</strong></h4>
+<ol start="271">
+<li>
+<p>What is the <code>argparse</code> module used for?
+→ It helps you build user-friendly command-line interfaces.</p>
+</li>
+<li>
+<p>How do you define command-line arguments?
+→ Create a parser with <code>ArgumentParser()</code> and add arguments using <code>add_argument()</code>.</p>
+</li>
+<li>
+<p>How do you specify default values for arguments?
+→ Use the <code>default=</code> parameter in <code>add_argument()</code>.</p>
+</li>
+<li>
+<p>How do you make an argument required?
+→ Set <code>required=True</code> in <code>add_argument()</code>.</p>
+</li>
+<li>
+<p>How do you parse arguments from <code>sys.argv</code>?
+→ Call <code>parser.parse_args()</code> and it reads them automatically.</p>
+</li>
+<li>
+<p>How do you add help messages for arguments?
+→ Use the <code>help=</code> parameter in <code>add_argument()</code>.</p>
+</li>
+<li>
+<p>How do you handle optional flags in <code>argparse</code>?
+→ Use arguments starting with <code>--</code> and set <code>action='store_true'</code> or similar.</p>
+</li>
+<li>
+<p>How do you group arguments into mutually exclusive sets?
+→ Use <code>parser.add_mutually_exclusive_group()</code>.</p>
+</li>
+<li>
+<p>How do you access parsed arguments?
+→ Use dot notation like <code>args.name</code> after calling <code>parse_args()</code>.</p>
+</li>
+<li>
+<p>How do you handle subcommands in <code>argparse</code>?
+→ Create subparsers using <code>parser.add_subparsers()</code> and add commands to them.</p>
+</li>
+</ol>
+<h4 id="configuration-handling"><strong>Configuration Handling</strong></h4>
+<ol start="281">
+<li>
+<p>What is the <code>configparser</code> module used for?
+→ It reads and writes INI-style configuration files.</p>
+</li>
+<li>
+<p>How do you read an INI file using <code>configparser</code>?
+→ Create a <code>ConfigParser()</code> and call <code>read('file.ini')</code>.</p>
+</li>
+<li>
+<p>How do you write to an INI file?
+→ Modify the parser and save using <code>write()</code> on a file handle.</p>
+</li>
+<li>
+<p>How do you add sections and options programmatically?
+→ Use <code>add_section()</code> and then set values like a dictionary.</p>
+</li>
+<li>
+<p>How do you access configuration values safely?
+→ Use <code>.get()</code> to avoid errors when keys are missing.</p>
+</li>
+<li>
+<p>How do you set default values in <code>configparser</code>?
+→ Pass a <code>defaults=</code> dictionary when creating the parser.</p>
+</li>
+<li>
+<p>Can <code>configparser</code> handle data types other than strings?
+→ Yes, using <code>.getint()</code>, <code>.getfloat()</code>, or <code>.getboolean()</code>.</p>
+</li>
+<li>
+<p>How do you remove sections and options?
+→ Use <code>remove_section()</code> or <code>remove_option()</code>.</p>
+</li>
+<li>
+<p>How do you interpolate values from other sections?
+→ Enable interpolation with <code>ConfigParser(interpolation=...)</code>.</p>
+</li>
+<li>
+<p>What are the alternatives to <code>configparser</code> for configuration management?
+→ JSON, YAML, TOML, environment variables, or custom classes.</p>
+</li>
+</ol>
+<h4 id="unit-testing"><strong>Unit Testing</strong></h4>
+<ol start="291">
+<li>
+<p>What is unit testing, and why is it important?
+→ It checks small pieces of code alone to catch mistakes early.</p>
+</li>
+<li>
+<p>What is the <code>unittest</code> module?
+→ It’s Python’s built-in framework for writing and running tests.</p>
+</li>
+<li>
+<p>How do you define a test case using <code>unittest</code>?
+→ Make a class inheriting from <code>unittest.TestCase</code> and add methods starting with <code>test_</code>.</p>
+</li>
+<li>
+<p>How do you assert that two values are equal?
+→ Use <code>self.assertEqual(a, b)</code>.</p>
+</li>
+<li>
+<p>How do you assert that an exception is raised?
+→ Use <code>with self.assertRaises(ExceptionType):</code>.</p>
+</li>
+<li>
+<p>How do you run multiple test cases together?
+→ Put them in the same file or directory and run the test runner.</p>
+</li>
+<li>
+<p>What is <code>setUp()</code> and <code>tearDown()</code> in <code>unittest</code>?
+→ They prepare things before each test and clean up afterward.</p>
+</li>
+<li>
+<p>How do you skip a test case conditionally?
+→ Use <code>@unittest.skipIf(condition, reason)</code>.</p>
+</li>
+<li>
+<p>How do you use <code>pytest</code> as an alternative to <code>unittest</code>?
+→ Install it, write plain functions starting with <code>test_</code>, and run <code>pytest</code>.</p>
+</li>
+<li>
+<p>How do you mock external dependencies in tests?
+→ Use <code>unittest.mock</code> tools like <code>patch()</code> to replace real objects with fakes.</p>
+</li>
+</ol>
+<hr>
+<h3 id="batch-4-numpy-fundamentals-q301%E2%80%93q400"><strong>Batch 4: NumPy Fundamentals (Q301–Q400)</strong></h3>
+<h4 id="array-creation"><strong>Array Creation</strong></h4>
+<ol start="301">
+<li>
+<p>What is NumPy, and why is it used?
+→ It’s a fast math library that handles big arrays like a pro.</p>
+</li>
+<li>
+<p>How do you import NumPy in Python?
+→ Use <code>import numpy as np</code>.</p>
+</li>
+<li>
+<p>How do you create a 1D array using <code>np.array()</code>?
+→ Pass a list: <code>np.array([1, 2, 3])</code>.</p>
+</li>
+<li>
+<p>How do you create a 2D or 3D array?
+→ Use nested lists inside <code>np.array()</code>.</p>
+</li>
+<li>
+<p>How do you create an array of zeros?
+→ Use <code>np.zeros(shape)</code>.</p>
+</li>
+<li>
+<p>How do you create an array of ones?
+→ Use <code>np.ones(shape)</code>.</p>
+</li>
+<li>
+<p>How do you create an identity matrix?
+→ Use <code>np.eye(n)</code>.</p>
+</li>
+<li>
+<p>How do you create an array with a range of numbers?
+→ Use <code>np.arange(start, stop, step)</code>.</p>
+</li>
+<li>
+<p>How do you create a linearly spaced array using <code>linspace()</code>?
+→ Call <code>np.linspace(start, stop, count)</code>.</p>
+</li>
+<li>
+<p>How do you create a random array using <code>np.random</code>?
+→ Use functions like <code>np.random.rand()</code> or <code>np.random.randn()</code>.</p>
+</li>
+</ol>
+<h4 id="array-indexing--slicing"><strong>Array Indexing &amp; Slicing</strong></h4>
+<ol start="311">
+<li>
+<p>How do you access a single element in a NumPy array?
+→ Use square brackets like <code>arr[i]</code>.</p>
+</li>
+<li>
+<p>How do you access a row or column in a 2D array?
+→ Row: <code>arr[i]</code>, Column: <code>arr[:, j]</code>.</p>
+</li>
+<li>
+<p>How do you slice a 1D array?
+→ Use <code>arr[start:end]</code> like slicing a loaf of bread.</p>
+</li>
+<li>
+<p>How do you slice a 2D array?
+→ Use <code>arr[r1:r2, c1:c2]</code> to grab a block.</p>
+</li>
+<li>
+<p>What is fancy indexing in NumPy?
+→ Picking elements using lists of indices instead of single numbers.</p>
+</li>
+<li>
+<p>How do you use boolean indexing to filter arrays?
+→ Use a condition like <code>arr[arr &gt; 5]</code>.</p>
+</li>
+<li>
+<p>How do you assign values to specific indices using indexing?
+→ Just index and assign: <code>arr[i] = value</code>.</p>
+</li>
+<li>
+<p>How do you access elements using negative indices?
+→ Use <code>arr[-1]</code> etc. to reach from the end backward.</p>
+</li>
+<li>
+<p>How do you reshape an array without changing its data?
+→ Use <code>arr.reshape(new_shape)</code>.</p>
+</li>
+<li>
+<p>How do you flatten a multidimensional array?
+→ Use <code>arr.ravel()</code> or <code>arr.flatten()</code>.</p>
+</li>
+</ol>
+<h4 id="array-operations"><strong>Array Operations</strong></h4>
+<ol start="321">
+<li>
+<p>How do you perform element-wise addition, subtraction, multiplication, and division?
+→ Just use <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> directly on arrays.</p>
+</li>
+<li>
+<p>How do you compute the sum of all elements in an array?
+→ Call <code>arr.sum()</code>.</p>
+</li>
+<li>
+<p>How do you compute the mean, median, and standard deviation?
+→ Use <code>arr.mean()</code>, <code>np.median(arr)</code>, and <code>arr.std()</code>.</p>
+</li>
+<li>
+<p>How do you find the maximum and minimum values in an array?
+→ Use <code>arr.max()</code> and <code>arr.min()</code>.</p>
+</li>
+<li>
+<p>How do you perform cumulative sum and cumulative product?
+→ Use <code>arr.cumsum()</code> and <code>arr.cumprod()</code>.</p>
+</li>
+<li>
+<p>How do you compute dot product and matrix multiplication?
+→ Use <code>np.dot(a, b)</code> or <code>a @ b</code>.</p>
+</li>
+<li>
+<p>How do you perform broadcasting in NumPy?
+→ Let NumPy stretch smaller arrays to match shapes automatically.</p>
+</li>
+<li>
+<p>What is the difference between <code>*</code> and <code>np.dot()</code> for arrays?
+→ <code>*</code> is element-wise; <code>dot()</code> is matrix math.</p>
+</li>
+<li>
+<p>How do you compare two arrays element-wise?
+→ Use operators like <code>==</code>, <code>&gt;</code>, etc., on the arrays.</p>
+</li>
+<li>
+<p>How do you apply mathematical functions like <code>sin</code>, <code>cos</code>, <code>exp</code> on arrays?
+→ Use NumPy’s universal functions: <code>np.sin(arr)</code>, <code>np.cos(arr)</code>, <code>np.exp(arr)</code>.</p>
+</li>
+</ol>
+<h4 id="universal-functions-ufuncs"><strong>Universal Functions (ufuncs)</strong></h4>
+<ol start="331">
+<li>
+<p>What are universal functions in NumPy?
+→ They’re fast, element-wise functions built in C for arrays.</p>
+</li>
+<li>
+<p>Give examples of common ufuncs.
+→ <code>sin</code>, <code>cos</code>, <code>exp</code>, <code>sqrt</code>, <code>add</code>, <code>subtract</code>.</p>
+</li>
+<li>
+<p>How do ufuncs improve performance over Python loops?
+→ They run vectorized code under the hood instead of slow Python loops.</p>
+</li>
+<li>
+<p>What is the difference between <code>np.add</code> and <code>+</code> operator?
+→ They behave the same; <code>np.add</code> is just the ufunc version.</p>
+</li>
+<li>
+<p>How do you apply multiple ufuncs in a chain?
+→ Just stack them: <code>np.sqrt(np.exp(arr))</code>.</p>
+</li>
+<li>
+<p>How do you use <code>np.vectorize()</code> for custom functions?
+→ Wrap your function: <code>v = np.vectorize(func)</code> and call it on arrays.</p>
+</li>
+<li>
+<p>How do you compute element-wise comparisons using ufuncs?
+→ Use comparison ufuncs like <code>np.equal</code>, <code>np.less</code>, etc.</p>
+</li>
+<li>
+<p>How do you handle NaN values in ufunc operations?
+→ Use <code>np.nan*</code> versions like <code>np.nansum</code> or clean them beforehand.</p>
+</li>
+<li>
+<p>How do you reduce, accumulate, or outer-product using ufuncs?
+→ Use <code>ufunc.reduce()</code>, <code>ufunc.accumulate()</code>, and <code>ufunc.outer()</code>.</p>
+</li>
+<li>
+<p>Explain broadcasting rules with ufuncs.
+→ Smaller shapes stretch to match bigger ones if dimensions are 1 or missing.</p>
+</li>
+</ol>
+<h4 id="multidimensional-arrays"><strong>Multidimensional Arrays</strong></h4>
+<ol start="341">
+<li>
+<p>How do you create a 3D array?
+→ Use nested lists inside <code>np.array()</code> or use functions like <code>np.zeros((x,y,z))</code>.</p>
+</li>
+<li>
+<p>How do you access elements in a 3D array?
+→ Use three indices like <code>arr[i, j, k]</code>.</p>
+</li>
+<li>
+<p>How do you reshape, flatten, and transpose multidimensional arrays?
+→ Use <code>reshape()</code>, <code>ravel()/flatten()</code>, and <code>transpose()</code>.</p>
+</li>
+<li>
+<p>How do you swap axes of a multidimensional array?
+→ Use <code>np.swapaxes(arr, a, b)</code>.</p>
+</li>
+<li>
+<p>How do you concatenate arrays along different axes?
+→ Use <code>np.concatenate([...], axis=n)</code>.</p>
+</li>
+<li>
+<p>How do you split arrays into multiple sub-arrays?
+→ Use <code>np.split(arr, parts, axis=n)</code>.</p>
+</li>
+<li>
+<p>How do you stack arrays vertically and horizontally?
+→ Use <code>np.vstack()</code> and <code>np.hstack()</code>.</p>
+</li>
+<li>
+<p>How do you tile an array?
+→ Use <code>np.tile(arr, reps)</code>.</p>
+</li>
+<li>
+<p>How do you perform element-wise operations on multidimensional arrays?
+→ Just apply operators or ufuncs directly; NumPy handles the rest.</p>
+</li>
+<li>
+<p>How do you iterate efficiently over multidimensional arrays?
+→ Use <code>np.nditer()</code> for smooth, fast iteration.</p>
+</li>
+</ol>
+<h4 id="data-types"><strong>Data Types</strong></h4>
+<ol start="351">
+<li>
+<p>How do you check the data type of a NumPy array?
+→ Look at <code>arr.dtype</code> like checking its ID card.</p>
+</li>
+<li>
+<p>How do you change the data type of an array?
+→ Use <code>arr.astype(new_type)</code> to politely convert it.</p>
+</li>
+<li>
+<p>Explain the difference between <code>float32</code> and <code>float64</code>.
+→ <code>float64</code> is more precise and heavier; <code>float32</code> is lighter but less detailed.</p>
+</li>
+<li>
+<p>What are structured arrays in NumPy?
+→ Arrays that hold multiple named fields, like tiny spreadsheets.</p>
+</li>
+<li>
+<p>How do you create an array with complex numbers?
+→ Include complex values or use <code>dtype=complex</code>.</p>
+</li>
+<li>
+<p>How does NumPy handle type promotion during operations?
+→ It upgrades types automatically to avoid losing information.</p>
+</li>
+<li>
+<p>How do you store boolean values in a NumPy array?
+→ Use <code>dtype=bool</code> or let NumPy infer it.</p>
+</li>
+<li>
+<p>How do you store integer values with different precisions?
+→ Use types like <code>int8</code>, <code>int16</code>, <code>int32</code>, <code>int64</code>.</p>
+</li>
+<li>
+<p>How do you use the <code>dtype</code> parameter during array creation?
+→ Pass <code>dtype=...</code> in functions like <code>np.array()</code> or <code>np.zeros()</code>.</p>
+</li>
+<li>
+<p>What is the default data type of a NumPy array if not specified?
+→ Usually <code>float64</code>, the fancy full-precision default.</p>
+</li>
+</ol>
+<h4 id="memory-layout--performance"><strong>Memory Layout &amp; Performance</strong></h4>
+<ol start="361">
+<li>
+<p>How is memory organized in a NumPy array?
+→ In one continuous block with elements stored uniformly.</p>
+</li>
+<li>
+<p>What is the difference between C-contiguous and F-contiguous arrays?
+→ C stores rows first; F stores columns first.</p>
+</li>
+<li>
+<p>How do you check if an array is contiguous?
+→ Inspect <code>arr.flags</code>.</p>
+</li>
+<li>
+<p>What is a view vs a copy in NumPy arrays?
+→ A view shares data; a copy has its own data.</p>
+</li>
+<li>
+<p>How do slicing operations affect memory usage?
+→ They create views, so they avoid extra memory.</p>
+</li>
+<li>
+<p>How do you create a deep copy of an array?
+→ Use <code>arr.copy()</code>.</p>
+</li>
+<li>
+<p>How do you use <code>np.ascontiguousarray()</code> and <code>np.asfortranarray()</code>?
+→ They convert arrays into C- or Fortran-style layouts.</p>
+</li>
+<li>
+<p>How do you check the memory size of an array?
+→ Use <code>arr.nbytes</code>.</p>
+</li>
+<li>
+<p>How does broadcasting improve performance?
+→ It avoids duplicating data by reusing shapes cleverly.</p>
+</li>
+<li>
+<p>How can vectorized operations speed up computations compared to loops?
+→ They run fast compiled code instead of slow Python loops.</p>
+</li>
+</ol>
+<h4 id="linear-algebra-with-numpy"><strong>Linear Algebra with NumPy</strong></h4>
+<ol start="371">
+<li>
+<p>How do you compute the transpose of a matrix?
+→ Use <code>arr.T</code>.</p>
+</li>
+<li>
+<p>How do you compute the determinant of a matrix?
+→ Use <code>np.linalg.det(arr)</code>.</p>
+</li>
+<li>
+<p>How do you compute the inverse of a matrix?
+→ Use <code>np.linalg.inv(arr)</code>.</p>
+</li>
+<li>
+<p>How do you compute eigenvalues and eigenvectors?
+→ Use <code>np.linalg.eig(arr)</code>.</p>
+</li>
+<li>
+<p>How do you perform Singular Value Decomposition (SVD)?
+→ Use <code>np.linalg.svd(arr)</code>.</p>
+</li>
+<li>
+<p>How do you compute the trace of a matrix?
+→ Use <code>np.trace(arr)</code>.</p>
+</li>
+<li>
+<p>How do you solve linear systems using <code>np.linalg.solve()</code>?
+→ Call <code>np.linalg.solve(A, b)</code>.</p>
+</li>
+<li>
+<p>How do you compute the rank of a matrix?
+→ Use <code>np.linalg.matrix_rank(arr)</code>.</p>
+</li>
+<li>
+<p>How do you perform matrix multiplication using <code>@</code> operator?
+→ Just write <code>A @ B</code>.</p>
+</li>
+<li>
+<p>How do you check if a matrix is positive definite?
+→ Try <code>np.linalg.cholesky(arr)</code> and see if it succeeds.</p>
+</li>
+</ol>
+<h4 id="random-numbers"><strong>Random Numbers</strong></h4>
+<ol start="381">
+<li>
+<p>How do you generate uniform random numbers in NumPy?
+→ Use <code>np.random.rand()</code> or <code>np.random.uniform()</code>.</p>
+</li>
+<li>
+<p>How do you generate normal (Gaussian) distributed numbers?
+→ Use <code>np.random.randn()</code> or <code>np.random.normal()</code>.</p>
+</li>
+<li>
+<p>How do you set a random seed for reproducibility?
+→ Call <code>np.random.seed(value)</code>.</p>
+</li>
+<li>
+<p>How do you shuffle an array randomly?
+→ Use <code>np.random.shuffle(arr)</code>.</p>
+</li>
+<li>
+<p>How do you choose random samples from an array?
+→ Use <code>np.random.choice(arr)</code>.</p>
+</li>
+<li>
+<p>How do you generate integers randomly within a range?
+→ Use <code>np.random.randint(low, high)</code>.</p>
+</li>
+<li>
+<p>How do you simulate a random dice roll?
+→ Use <code>np.random.randint(1, 7)</code>.</p>
+</li>
+<li>
+<p>How do you sample without replacement?
+→ Use <code>np.random.choice(arr, size, replace=False)</code>.</p>
+</li>
+<li>
+<p>How do you sample with replacement?
+→ Use <code>np.random.choice(arr, size, replace=True)</code>.</p>
+</li>
+<li>
+<p>How do you generate random numbers for multidimensional arrays?
+→ Call functions like <code>np.random.rand(x, y, z)</code>.</p>
+</li>
+</ol>
+<h4 id="advanced-indexing--masking"><strong>Advanced Indexing &amp; Masking</strong></h4>
+<ol start="391">
+<li>
+<p>How do you use boolean masks to filter arrays?
+→ Create a condition and use it like <code>arr[arr &gt; 5]</code>.</p>
+</li>
+<li>
+<p>How do you assign values to elements using a mask?
+→ Do <code>arr[mask] = value</code>.</p>
+</li>
+<li>
+<p>How do you find indices where a condition is True?
+→ Use <code>np.where(condition)</code>.</p>
+</li>
+<li>
+<p>How do you use <code>np.where()</code> for conditional selection?
+→ Use <code>np.where(cond, x, y)</code> to pick between two choices.</p>
+</li>
+<li>
+<p>How do you perform element-wise selection using <code>np.choose()</code>?
+→ Give an index array and a list of options: <code>np.choose(idx, options)</code>.</p>
+</li>
+<li>
+<p>How do you use <code>np.take()</code> and <code>np.put()</code> for advanced indexing?
+→ <code>take()</code> extracts by indices; <code>put()</code> writes values at given indices.</p>
+</li>
+<li>
+<p>How do you index arrays with another array?
+→ Pass the index array directly: <code>arr[index_array]</code>.</p>
+</li>
+<li>
+<p>How do you combine multiple masks?
+→ Use <code>&amp;</code>, <code>|</code>, and <code>~</code> for AND, OR, NOT.</p>
+</li>
+<li>
+<p>How do you broadcast masks to multidimensional arrays?
+→ Shape them so NumPy can stretch them over axes automatically.</p>
+</li>
+<li>
+<p>How do you avoid copies when masking for performance?
+→ Use views or in-place updates instead of creating new masked arrays.</p>
+</li>
+</ol>
+<hr>
+<h3 id="batch-5-advanced-numpy--scientific-computing-q401%E2%80%93q500"><strong>Batch 5: Advanced NumPy &amp; Scientific Computing (Q401–Q500)</strong></h3>
+<h4 id="advanced-indexing"><strong>Advanced Indexing</strong></h4>
+<ol start="401">
+<li>
+<p>What is fancy indexing in NumPy?
+→ Selecting items using arrays/lists of indices instead of simple slices—like giving NumPy a shopping list.</p>
+</li>
+<li>
+<p>How do you select multiple non-contiguous elements using an array of indices?
+→ Pass a list/array of positions, and NumPy plucks them out one by one.</p>
+</li>
+<li>
+<p>How do you assign values using fancy indexing?
+→ Use the fancy index on the left side of <code>=</code> and NumPy fills those exact spots.</p>
+</li>
+<li>
+<p>What are the differences between basic slicing and advanced indexing?
+→ Slicing makes views (no copying), while advanced indexing makes fresh copies.</p>
+</li>
+<li>
+<p>How do you use boolean indexing for conditional assignment?
+→ Create a <code>True/False</code> mask and assign values only where the mask is <code>True</code>.</p>
+</li>
+<li>
+<p>How do you combine fancy and boolean indexing?
+→ Chain them: first filter with a mask, then pick specific positions from the filtered set.</p>
+</li>
+<li>
+<p>How do you select specific rows and columns simultaneously?
+→ Use a tuple like <code>arr[row_indices, col_indices]</code> to grab the exact intersections.</p>
+</li>
+<li>
+<p>What happens when you index with repeated values?
+→ NumPy returns duplicates because it follows the index list faithfully.</p>
+</li>
+<li>
+<p>How do you mask elements in multidimensional arrays efficiently?
+→ Build a boolean mask of matching shape and apply it directly to the whole array.</p>
+</li>
+<li>
+<p>How do you use <code>np.ix_()</code> for cross indexing?
+→ Feed it row and column index lists, and it builds a grid so you get all combinations cleanly.</p>
+</li>
+</ol>
+<h4 id="structured-arrays"><strong>Structured Arrays</strong></h4>
+<ol start="411">
+<li>
+<p>What is a structured array in NumPy?
+→ An array that stores mixed-type fields in each element, like tiny rows of a table.</p>
+</li>
+<li>
+<p>How do you define a structured array with multiple data types?
+→ Provide a <code>dtype</code> with named fields and their individual types.</p>
+</li>
+<li>
+<p>How do you access fields in a structured array?
+→ Use the field name like <code>arr['age']</code> or <code>arr['score']</code>.</p>
+</li>
+<li>
+<p>How do you perform computations on specific fields?
+→ Extract the field and operate on it just like a normal NumPy array.</p>
+</li>
+<li>
+<p>How do you sort structured arrays by a field?
+→ Call <code>np.sort</code> or <code>.sort()</code> with the <code>order='fieldname'</code> argument.</p>
+</li>
+<li>
+<p>How do you convert structured arrays to regular arrays?
+→ View or cast them with <code>.view()</code> or <code>arr.tolist()</code> depending on the needed format.</p>
+</li>
+<li>
+<p>How do you create a record array (<code>np.recarray</code>)?
+→ Use <code>np.rec.array()</code> or convert an existing structured array with <code>.view(np.recarray)</code>.</p>
+</li>
+<li>
+<p>How is a record array different from a structured array?
+→ Record arrays let you access fields as attributes (e.g., <code>arr.age</code>) instead of only by keys.</p>
+</li>
+<li>
+<p>How do you read structured arrays from files?
+→ Use <code>np.genfromtxt</code> or <code>np.loadtxt</code> with a structured <code>dtype</code>.</p>
+</li>
+<li>
+<p>How do you handle missing data in structured arrays?
+→ Use masked arrays, sentinel values (like <code>-1</code>), or <code>np.nan</code> for floating-point fields.</p>
+</li>
+</ol>
+<h4 id="linear-algebra"><strong>Linear Algebra</strong></h4>
+<ol start="421">
+<li>
+<p>How do you compute matrix multiplication using <code>np.matmul()</code>?
+→ Call <code>np.matmul(A, B)</code> and it multiplies them following classic matrix rules.</p>
+</li>
+<li>
+<p>What is the difference between <code>np.dot()</code> and <code>np.matmul()</code>?
+→ <code>matmul</code> is strictly matrix-style; <code>dot</code> mixes behaviors depending on shapes.</p>
+</li>
+<li>
+<p>How do you compute the determinant of a matrix?
+→ Use <code>np.linalg.det(matrix)</code> and it hands you the determinant.</p>
+</li>
+<li>
+<p>How do you compute the inverse of a matrix?
+→ Call <code>np.linalg.inv(matrix)</code> if the matrix isn’t singular.</p>
+</li>
+<li>
+<p>How do you compute eigenvalues and eigenvectors using <code>np.linalg.eig()</code>?
+→ Feed the matrix to <code>np.linalg.eig()</code> and it returns values and vectors side by side.</p>
+</li>
+<li>
+<p>How do you perform Singular Value Decomposition (SVD)?
+→ Use <code>np.linalg.svd(matrix)</code> and it breaks the matrix into U, S, and Vᵀ.</p>
+</li>
+<li>
+<p>How do you compute the pseudo-inverse of a matrix?
+→ Call <code>np.linalg.pinv(matrix)</code> for a Moore–Penrose pseudo-inverse.</p>
+</li>
+<li>
+<p>How do you solve linear equations with <code>np.linalg.solve()</code>?
+→ Provide the coefficient matrix and the result vector: <code>np.linalg.solve(A, b)</code>.</p>
+</li>
+<li>
+<p>How do you compute matrix norms?
+→ Use <code>np.linalg.norm(matrix, ord=...)</code> with the desired norm type.</p>
+</li>
+<li>
+<p>How do you check if a matrix is symmetric or positive definite?
+→ Symmetry: check <code>A == A.T</code>; positive definite: verify all eigenvalues are positive.</p>
+</li>
+</ol>
+<h4 id="random-sampling--distributions"><strong>Random Sampling &amp; Distributions</strong></h4>
+<ol start="431">
+<li>
+<p>How do you generate samples from a normal distribution?
+→ Use <code>np.random.normal(mean, std, size)</code> to get bell-curve numbers.</p>
+</li>
+<li>
+<p>How do you generate samples from a uniform distribution?
+→ Call <code>np.random.uniform(low, high, size)</code> for evenly spread values.</p>
+</li>
+<li>
+<p>How do you generate samples from a binomial distribution?
+→ Use <code>np.random.binomial(n, p, size)</code> to simulate success counts.</p>
+</li>
+<li>
+<p>How do you generate samples from a Poisson distribution?
+→ Call <code>np.random.poisson(lam, size)</code> for event-count samples.</p>
+</li>
+<li>
+<p>How do you generate samples from a custom probability distribution?
+→ Use <code>np.random.choice(values, size, p=probabilities)</code>.</p>
+</li>
+<li>
+<p>How do you set the seed for reproducibility?
+→ Run <code>np.random.seed(number)</code> before generating randomness.</p>
+</li>
+<li>
+<p>How do you shuffle an array randomly?
+→ Call <code>np.random.shuffle(arr)</code> to mix it in place.</p>
+</li>
+<li>
+<p>How do you select random samples without replacement?
+→ Use <code>np.random.choice(arr, size, replace=False)</code>.</p>
+</li>
+<li>
+<p>How do you select random samples with replacement?
+→ Same <code>np.random.choice</code>, but set <code>replace=True</code>.</p>
+</li>
+<li>
+<p>How do you generate multidimensional random arrays?
+→ Pass a tuple as <code>size</code>, like <code>np.random.randn(3, 4)</code> for 3×4 randoms.</p>
+</li>
+</ol>
+<h4 id="vectorized-operations"><strong>Vectorized Operations</strong></h4>
+<ol start="441">
+<li>
+<p>What is vectorization in NumPy?
+→ Doing operations on whole arrays at once instead of looping element by element.</p>
+</li>
+<li>
+<p>Why is vectorization faster than loops?
+→ Because NumPy runs optimized C-level operations under the hood.</p>
+</li>
+<li>
+<p>How do you apply arithmetic operations to entire arrays?
+→ Just use operators directly: <code>arr1 + arr2</code>, <code>arr * 5</code>, etc.</p>
+</li>
+<li>
+<p>How do you use <code>np.where()</code> for conditional operations?
+→ Provide a condition, a value-if-true, and value-if-false: <code>np.where(cond, a, b)</code>.</p>
+</li>
+<li>
+<p>How do you perform element-wise maximum or minimum?
+→ Use <code>np.maximum(a, b)</code> or <code>np.minimum(a, b)</code>.</p>
+</li>
+<li>
+<p>How do you compute cumulative sum and cumulative product efficiently?
+→ Call <code>np.cumsum(arr)</code> and <code>np.cumprod(arr)</code>.</p>
+</li>
+<li>
+<p>How do you apply a custom function to an array using <code>np.vectorize()</code>?
+→ Wrap your Python function with <code>np.vectorize(func)</code> and call it on the array.</p>
+</li>
+<li>
+<p>How do you combine multiple vectorized operations efficiently?
+→ Chain them together in one expression so NumPy optimizes the workflow.</p>
+</li>
+<li>
+<p>How do you avoid temporary arrays during computations?
+→ Use in-place ops like <code>arr += other</code> or specify <code>out=</code> in NumPy functions.</p>
+</li>
+<li>
+<p>How do broadcasting rules affect vectorized operations?
+→ They let arrays of different shapes interact by stretching smaller ones to match.</p>
+</li>
+</ol>
+<h4 id="fourier-transform--signal-processing-basics"><strong>Fourier Transform &amp; Signal Processing Basics</strong></h4>
+<ol start="451">
+<li>
+<p>How do you compute the Fast Fourier Transform (FFT) in NumPy?
+→ Use <code>np.fft.fft(signal)</code> to jump from time to frequency land.</p>
+</li>
+<li>
+<p>How do you compute the inverse FFT?
+→ Call <code>np.fft.ifft(freq_data)</code> to hop back to the time domain.</p>
+</li>
+<li>
+<p>How do you extract the real and imaginary parts of an FFT result?
+→ Use <code>.real</code> and <code>.imag</code> attributes on the complex array.</p>
+</li>
+<li>
+<p>How do you compute the magnitude spectrum from FFT?
+→ Take <code>np.abs(fft_result)</code> for the strength of each frequency.</p>
+</li>
+<li>
+<p>How do you perform FFT on multidimensional arrays?
+→ Use <code>np.fft.fftn(arr)</code> for N-D transforms.</p>
+</li>
+<li>
+<p>How do you apply a window function before FFT?
+→ Multiply the signal by a window (like Hanning) before calling FFT.</p>
+</li>
+<li>
+<p>How do you filter signals using frequency-domain techniques?
+→ FFT → zero/attenuate unwanted frequencies → inverse FFT.</p>
+</li>
+<li>
+<p>How do you compute the convolution of two signals?
+→ Use <code>np.convolve(a, b)</code> or FFT-based convolution.</p>
+</li>
+<li>
+<p>How do you compute the correlation of two signals?
+→ Use <code>np.correlate(a, b)</code> with the proper mode.</p>
+</li>
+<li>
+<p>How do you perform zero-padding for FFT?
+→ Pass a larger <code>n</code> to <code>np.fft.fft(signal, n)</code> to extend with zeros.</p>
+</li>
+</ol>
+<h4 id="sparse-data-handling"><strong>Sparse Data Handling</strong></h4>
+<ol start="461">
+<li>
+<p>How do you represent sparse matrices in Python?
+→ Use SciPy’s <code>scipy.sparse</code> module, which stores only the non-zero bits.</p>
+</li>
+<li>
+<p>What is the difference between dense and sparse matrices?
+→ Dense stores everything; sparse stores only the meaningful non-zero stuff.</p>
+</li>
+<li>
+<p>How do you convert a dense NumPy array to a sparse matrix?
+→ Wrap it with something like <code>csr_matrix(arr)</code>.</p>
+</li>
+<li>
+<p>How do you convert a sparse matrix to a dense array?
+→ Call <code>.toarray()</code> or <code>.todense()</code> on the sparse object.</p>
+</li>
+<li>
+<p>What are the common sparse formats (CSR, CSC, COO)?
+→ CSR = row-based, CSC = column-based, COO = simple coordinate list.</p>
+</li>
+<li>
+<p>How do you perform arithmetic operations on sparse matrices?
+→ Use normal operators (<code>+</code>, <code>-</code>, <code>*</code>) and SciPy handles the smart bookkeeping.</p>
+</li>
+<li>
+<p>How do you perform matrix multiplication with sparse matrices?
+→ Call <code>.dot()</code> or use <code>@</code> and let the sparse engine do the heavy lifting.</p>
+</li>
+<li>
+<p>How do you save and load sparse matrices efficiently?
+→ Use <code>scipy.sparse.save_npz()</code> and <code>load_npz()</code>.</p>
+</li>
+<li>
+<p>When is using sparse matrices beneficial?
+→ When most entries are zeros and memory shouldn’t be wasted.</p>
+</li>
+<li>
+<p>How do you apply element-wise functions on sparse matrices?
+→ Apply the function only to the <code>.data</code> array so you don’t blow up the sparsity.</p>
+</li>
+</ol>
+<h4 id="memory--performance-optimization"><strong>Memory &amp; Performance Optimization</strong></h4>
+<ol start="471">
+<li>
+<p>How do you profile memory usage in NumPy arrays?
+→ Check <code>arr.nbytes</code> or use tools like <code>sys.getsizeof()</code>.</p>
+</li>
+<li>
+<p>How do you reduce memory usage with <code>float32</code> instead of <code>float64</code>?
+→ Cast the array using <code>arr.astype('float32')</code>.</p>
+</li>
+<li>
+<p>How do views and copies affect memory efficiency?
+→ Views share memory; copies take fresh space.</p>
+</li>
+<li>
+<p>How do you avoid unnecessary copies during computations?
+→ Use in-place ops like <code>arr += x</code> or functions with <code>out=</code>.</p>
+</li>
+<li>
+<p>How do you use <code>np.memmap</code> for large datasets?
+→ Create a memory-mapped file so data loads in chunks instead of fully.</p>
+</li>
+<li>
+<p>How do you handle out-of-core computation with NumPy?
+→ Combine <code>memmap</code> with chunked processing or use tools like Dask.</p>
+</li>
+<li>
+<p>How does broadcasting reduce memory overhead?
+→ It fakes expansion without actually creating big duplicated arrays.</p>
+</li>
+<li>
+<p>How do you pre-allocate arrays for performance?
+→ Allocate once with <code>np.empty()</code> or <code>np.zeros()</code> and fill it later.</p>
+</li>
+<li>
+<p>How do you use <code>np.einsum()</code> for optimized operations?
+→ Provide Einstein notation to perform complex ops without extra temporaries.</p>
+</li>
+<li>
+<p>How do you parallelize NumPy computations (basic approaches)?
+→ Use libraries like Numba, multiprocessing, or vectorized BLAS under the hood.</p>
+</li>
+</ol>
+<h4 id="interfacing-numpy-with-cc"><strong>Interfacing NumPy with C/C++</strong></h4>
+<ol start="481">
+<li>
+<p>What is Cython, and how can it speed up NumPy operations?
+→ A Python-to-C compiler that speeds things up by adding static types and tight loops.</p>
+</li>
+<li>
+<p>How do you convert NumPy arrays to C arrays?
+→ Access the underlying buffer via <code>.ctypes</code> or obtain pointers using <code>arr.ctypes.data</code>.</p>
+</li>
+<li>
+<p>How do you use <code>ctypes</code> to pass NumPy arrays to C functions?
+→ Match the C signature, ensure contiguous memory, and pass <code>arr.ctypes.data_as(...)</code>.</p>
+</li>
+<li>
+<p>How do you use <code>cffi</code> with NumPy?
+→ Create a buffer interface and hand the array’s memory pointer to CFFI’s foreign functions.</p>
+</li>
+<li>
+<p>What is Numba, and how does it optimize NumPy code?
+→ A JIT compiler that turns Python+NumPy loops into fast machine code.</p>
+</li>
+<li>
+<p>How do you jit-compile a function using Numba?
+→ Decorate it with <code>@njit</code> and call it normally.</p>
+</li>
+<li>
+<p>How do you handle multidimensional arrays in C/C++ extensions?
+→ Use the NumPy C-API to read shape, strides, and data pointers safely.</p>
+</li>
+<li>
+<p>How do you avoid memory copying between NumPy and C/C++?
+→ Work directly with the NumPy buffer using contiguous arrays and pointer access.</p>
+</li>
+<li>
+<p>How do you benchmark Cython/Numba code against pure Python?
+→ Use <code>timeit</code> or <code>perf_counter</code> and compare runtimes across implementations.</p>
+</li>
+<li>
+<p>Give an example of a computationally heavy operation that benefits from C/C++ interfacing.
+→ Large nested loops like finite-difference simulations or particle-based physics updates.</p>
+</li>
+</ol>
+<h4 id="advanced-numpy-functions"><strong>Advanced NumPy Functions</strong></h4>
+<ol start="491">
+<li>
+<p>How do you compute the Kronecker product of two arrays?
+→ Use <code>np.kron(A, B)</code> to tile one array across the other.</p>
+</li>
+<li>
+<p>How do you perform matrix decomposition using NumPy?
+→ Call functions like <code>np.linalg.svd</code>, <code>np.linalg.qr</code>, or <code>np.linalg.cholesky</code>.</p>
+</li>
+<li>
+<p>How do you compute covariance and correlation matrices?
+→ Use <code>np.cov(data)</code> and <code>np.corrcoef(data)</code>.</p>
+</li>
+<li>
+<p>How do you compute eigenvalues of a covariance matrix?
+→ Feed it to <code>np.linalg.eig()</code>.</p>
+</li>
+<li>
+<p>How do you perform principal component analysis (PCA) using NumPy?
+→ Center data → compute covariance → eig-decompose → project onto top eigenvectors.</p>
+</li>
+<li>
+<p>How do you normalize arrays efficiently?
+→ Subtract mean and divide by standard deviation in vectorized form.</p>
+</li>
+<li>
+<p>How do you compute moving averages using NumPy?
+→ Use convolution: <code>np.convolve(arr, np.ones(n)/n, mode='valid')</code>.</p>
+</li>
+<li>
+<p>How do you handle missing values in NumPy arrays?
+→ Use masks, <code>np.nan*</code> functions, or replace with sentinel values.</p>
+</li>
+<li>
+<p>How do you perform interpolation with NumPy arrays?
+→ Use <code>np.interp(x, xp, fp)</code> for simple 1-D interpolation.</p>
+</li>
+<li>
+<p>How do you integrate NumPy with other scientific Python libraries efficiently?
+→ Share arrays directly since most libraries accept NumPy buffers natively.</p>
+</li>
+</ol>
+<hr>
+<h3 id="batch-6-pandas-basics--data-manipulation-q501%E2%80%93q600"><strong>Batch 6: Pandas Basics &amp; Data Manipulation (Q501–Q600)</strong></h3>
+<h4 id="introduction-to-pandas"><strong>Introduction to Pandas</strong></h4>
+<ol start="501">
+<li>
+<p>What is Pandas, and why is it used in Python?
+→ A data-handling library that makes working with tables super easy.</p>
+</li>
+<li>
+<p>How do you import Pandas?
+→ <code>import pandas as pd</code>.</p>
+</li>
+<li>
+<p>What are the main data structures in Pandas?
+→ Series (1-D) and DataFrame (2-D).</p>
+</li>
+<li>
+<p>What is the difference between a Series and a DataFrame?
+→ Series is a single labeled column; DataFrame is a whole table of them.</p>
+</li>
+<li>
+<p>How do you create a Series from a list, dictionary, or array?
+→ Pass the object to <code>pd.Series(...)</code>.</p>
+</li>
+<li>
+<p>How do you create a DataFrame from a dictionary of lists?
+→ Use <code>pd.DataFrame(your_dict)</code>.</p>
+</li>
+<li>
+<p>How do you create a DataFrame from a NumPy array?
+→ Feed the array into <code>pd.DataFrame(arr)</code> with optional column names.</p>
+</li>
+<li>
+<p>How do you view the first few rows of a DataFrame?
+→ Call <code>df.head()</code>.</p>
+</li>
+<li>
+<p>How do you view the last few rows of a DataFrame?
+→ Call <code>df.tail()</code>.</p>
+</li>
+<li>
+<p>How do you get basic information about a DataFrame using <code>.info()</code>?
+→ Run <code>df.info()</code> to see columns, types, and memory use.</p>
+</li>
+</ol>
+<h4 id="indexing--selection"><strong>Indexing &amp; Selection</strong></h4>
+<ol start="511">
+<li>
+<p>How do you access a single column in a DataFrame?
+→ Use <code>df['col']</code> or <code>df.col</code>.</p>
+</li>
+<li>
+<p>How do you access multiple columns?
+→ Pass a list like <code>df[['col1', 'col2']]</code>.</p>
+</li>
+<li>
+<p>How do you access a single row using <code>iloc</code>?
+→ Use <code>df.iloc[row_number]</code>.</p>
+</li>
+<li>
+<p>How do you access a single row using <code>loc</code>?
+→ Use <code>df.loc[row_label]</code>.</p>
+</li>
+<li>
+<p>How do you slice rows using <code>iloc</code>?
+→ Use numeric slices like <code>df.iloc[2:7]</code>.</p>
+</li>
+<li>
+<p>How do you slice rows using <code>loc</code>?
+→ Slice by labels like <code>df.loc['a':'d']</code>.</p>
+</li>
+<li>
+<p>How do you select specific rows and columns together?
+→ Use <code>df.loc[row_sel, col_sel]</code> or <code>df.iloc[row_sel, col_sel]</code>.</p>
+</li>
+<li>
+<p>How do you filter rows based on column values?
+→ Write a condition like <code>df[df['age'] &gt; 30]</code>.</p>
+</li>
+<li>
+<p>How do you use boolean indexing for filtering?
+→ Build a True/False mask and apply it directly: <code>df[mask]</code>.</p>
+</li>
+<li>
+<p>How do you reset and set index in a DataFrame?
+→ Use <code>df.reset_index()</code> and <code>df.set_index('col')</code>.</p>
+</li>
+</ol>
+<h4 id="data-cleaning"><strong>Data Cleaning</strong></h4>
+<ol start="521">
+<li>
+<p>How do you check for missing values in a DataFrame?
+→ Use <code>df.isna()</code> or <code>df.isnull()</code> to spot the sneaky blanks.</p>
+</li>
+<li>
+<p>How do you drop rows with missing values?
+→ <code>df.dropna()</code> tosses out any row with gaps.</p>
+</li>
+<li>
+<p>How do you drop columns with missing values?
+→ <code>df.dropna(axis=1)</code> wipes out whole columns full of emptiness.</p>
+</li>
+<li>
+<p>How do you fill missing values with a constant or computed value?
+→ <code>df.fillna(value)</code> pops in whatever you choose.</p>
+</li>
+<li>
+<p>How do you handle duplicate rows in a DataFrame?
+→ Use <code>df.duplicated()</code> to find them and <code>df.drop_duplicates()</code> to boot them out.</p>
+</li>
+<li>
+<p>How do you convert a column to a different data type?
+→ <code>df['col'] = df['col'].astype(new_type)</code> gives it a fresh identity.</p>
+</li>
+<li>
+<p>How do you rename columns and indices?
+→ <code>df.rename(columns=..., index=...)</code> swaps in new names neatly.</p>
+</li>
+<li>
+<p>How do you remove leading/trailing whitespace from column names?
+→ <code>df.columns = df.columns.str.strip()</code> gives them a tidy haircut.</p>
+</li>
+<li>
+<p>How do you detect and remove outliers?
+→ Compute limits (like z-scores or IQR) and filter anything that strays too far.</p>
+</li>
+<li>
+<p>How do you handle categorical data in Pandas?
+→ Convert with <code>astype('category')</code> to save memory and speed things up.</p>
+</li>
+</ol>
+<h4 id="merging-joining--concatenation"><strong>Merging, Joining &amp; Concatenation</strong></h4>
+<ol start="531">
+<li>
+<p>How do you concatenate two DataFrames vertically?
+→ Use <code>pd.concat([df1, df2], axis=0)</code> to stack them top to bottom.</p>
+</li>
+<li>
+<p>How do you concatenate two DataFrames horizontally?
+→ Use <code>pd.concat([df1, df2], axis=1)</code> to place them side by side.</p>
+</li>
+<li>
+<p>What is the difference between <code>concat()</code> and <code>append()</code>?
+→ <code>append()</code> is just a simpler, slower wrapper; <code>concat()</code> is the real flexible tool.</p>
+</li>
+<li>
+<p>How do you merge two DataFrames on a common column?
+→ Use <code>pd.merge(df1, df2, on='col')</code>.</p>
+</li>
+<li>
+<p>How do you perform an inner join using <code>merge()</code>?
+→ Add <code>how='inner'</code> in <code>pd.merge(...)</code>.</p>
+</li>
+<li>
+<p>How do you perform a left, right, and outer join?
+→ Set <code>how='left'</code>, <code>how='right'</code>, or <code>how='outer'</code> in <code>merge()</code>.</p>
+</li>
+<li>
+<p>How do you join DataFrames using indices instead of columns?
+→ Use <code>df1.join(df2)</code> or <code>merge(left_index=True, right_index=True)</code>.</p>
+</li>
+<li>
+<p>How do you handle overlapping column names while merging?
+→ Use <code>suffixes=('_x', '_y')</code> to keep them distinguishable.</p>
+</li>
+<li>
+<p>How do you merge multiple DataFrames at once?
+→ Chain <code>merge()</code> calls or fold them with a loop.</p>
+</li>
+<li>
+<p>How do you merge on multiple keys?
+→ Provide a list: <code>pd.merge(df1, df2, on=['key1', 'key2'])</code>.</p>
+</li>
+</ol>
+<h4 id="grouping--aggregation"><strong>Grouping &amp; Aggregation</strong></h4>
+<ol start="541">
+<li>
+<p>What is the purpose of <code>groupby()</code> in Pandas?
+→ It clusters rows into little buckets so you can summarize each group.</p>
+</li>
+<li>
+<p>How do you group data by a single column?
+→ Call <code>df.groupby('col')</code>.</p>
+</li>
+<li>
+<p>How do you group data by multiple columns?
+→ Pass a list: <code>df.groupby(['col1', 'col2'])</code>.</p>
+</li>
+<li>
+<p>How do you compute summary statistics after grouping?
+→ Chain <code>.mean()</code>, <code>.sum()</code>, <code>.count()</code>, or similar on the groupby object.</p>
+</li>
+<li>
+<p>How do you apply multiple aggregation functions to a group?
+→ Use <code>.agg(['mean', 'max', 'min'])</code> or any mix you like.</p>
+</li>
+<li>
+<p>How do you apply a custom aggregation function?
+→ Pass your own function inside <code>.agg(func)</code>.</p>
+</li>
+<li>
+<p>How do you filter groups based on a condition?
+→ Use <code>.filter(lambda g: condition)</code> to keep only the worthy groups.</p>
+</li>
+<li>
+<p>How do you iterate over groups?
+→ Loop with <code>for name, group in df.groupby(col): ...</code>.</p>
+</li>
+<li>
+<p>How do you transform groups without reducing the size?
+→ Use <code>.transform(func)</code>—it returns something the same length as the original.</p>
+</li>
+<li>
+<p>How do you unstack or pivot grouped data?
+→ Call <code>.unstack()</code> to turn grouped levels into columns.</p>
+</li>
+</ol>
+<h4 id="pivot-tables"><strong>Pivot Tables</strong></h4>
+<ol start="551">
+<li>
+<p>What is a pivot table in Pandas?
+→ A table that rearranges data by summarizing values across chosen rows and columns.</p>
+</li>
+<li>
+<p>How do you create a pivot table using <code>pivot_table()</code>?
+→ Use <code>pd.pivot_table(df, ...)</code> with your chosen settings.</p>
+</li>
+<li>
+<p>How do you specify index, columns, and values in a pivot table?
+→ Pass them as <code>index=</code>, <code>columns=</code>, and <code>values=</code> in <code>pivot_table()</code>.</p>
+</li>
+<li>
+<p>How do you aggregate data in a pivot table using different functions?
+→ Use <code>aggfunc=</code> with a function or list of functions.</p>
+</li>
+<li>
+<p>How do you handle missing values in pivot tables?
+→ Fill them using <code>fill_value=</code> inside <code>pivot_table()</code>.</p>
+</li>
+<li>
+<p>How do you normalize data in a pivot table?
+→ Divide by row or column totals after creation for scaled results.</p>
+</li>
+<li>
+<p>How do you group data and create pivot tables simultaneously?
+→ Group first, then pivot the grouped summary.</p>
+</li>
+<li>
+<p>How do you reshape a DataFrame using <code>melt()</code>?
+→ <code>pd.melt(df)</code> turns wide tables into long, tidy form.</p>
+</li>
+<li>
+<p>How do you convert long format to wide format using <code>pivot()</code>?
+→ Use <code>df.pivot(index, columns, values)</code> to spread values across columns.</p>
+</li>
+<li>
+<p>How do you combine pivot tables with <code>groupby()</code> results?
+→ Group, aggregate, then feed the aggregated result into a pivot or vice versa.</p>
+</li>
+</ol>
+<h4 id="reading--writing-data"><strong>Reading &amp; Writing Data</strong></h4>
+<ol start="561">
+<li>
+<p>How do you read a CSV file into a DataFrame?
+→ Use <code>pd.read_csv('file.csv')</code>.</p>
+</li>
+<li>
+<p>How do you write a DataFrame to a CSV file?
+→ <code>df.to_csv('file.csv', index=False)</code>.</p>
+</li>
+<li>
+<p>How do you read an Excel file into a DataFrame?
+→ Use <code>pd.read_excel('file.xlsx')</code>.</p>
+</li>
+<li>
+<p>How do you write a DataFrame to an Excel file?
+→ <code>df.to_excel('file.xlsx', index=False)</code>.</p>
+</li>
+<li>
+<p>How do you read a JSON file into a DataFrame?
+→ <code>pd.read_json('file.json')</code>.</p>
+</li>
+<li>
+<p>How do you write a DataFrame to a JSON file?
+→ <code>df.to_json('file.json')</code>.</p>
+</li>
+<li>
+<p>How do you read from SQL using Pandas?
+→ Use <code>pd.read_sql(query, connection)</code>.</p>
+</li>
+<li>
+<p>How do you write to SQL from a DataFrame?
+→ <code>df.to_sql('table', connection, if_exists='append')</code>.</p>
+</li>
+<li>
+<p>How do you handle different delimiters in CSV files?
+→ Pass <code>sep=';'</code> or another delimiter to <code>read_csv()</code>.</p>
+</li>
+<li>
+<p>How do you read only specific columns or rows from a file?
+→ Use <code>usecols=</code> for columns and <code>nrows=</code> or <code>skiprows=</code> for rows.</p>
+</li>
+</ol>
+<h4 id="indexing--selection-advanced"><strong>Indexing &amp; Selection (Advanced)</strong></h4>
+<ol start="571">
+<li>
+<p>How do you select rows based on multiple conditions?
+→ Combine conditions with <code>&amp;</code> and <code>|</code> inside <code>df[...]</code>.</p>
+</li>
+<li>
+<p>How do you use the <code>query()</code> method for filtering?
+→ Write conditions as strings: <code>df.query(&quot;age &gt; 30 and city == 'NY'&quot;)</code>.</p>
+</li>
+<li>
+<p>How do you select rows using <code>isin()</code>?
+→ <code>df[df['col'].isin([values])]</code>.</p>
+</li>
+<li>
+<p>How do you select rows using <code>between()</code>?
+→ <code>df[df['col'].between(a, b)]</code>.</p>
+</li>
+<li>
+<p>How do you use <code>str</code> methods on string columns?
+→ Call <code>df['col'].str.method()</code> like <code>str.contains()</code> or <code>str.upper()</code>.</p>
+</li>
+<li>
+<p>How do you use <code>dt</code> methods on datetime columns?
+→ Use <code>df['date'].dt.year</code>, <code>.dt.month</code>, <code>.dt.day</code>, etc.</p>
+</li>
+<li>
+<p>How do you sort a DataFrame by one or multiple columns?
+→ Use <code>df.sort_values(['col1', 'col2'])</code>.</p>
+</li>
+<li>
+<p>How do you sort a DataFrame by index?
+→ Call <code>df.sort_index()</code>.</p>
+</li>
+<li>
+<p>How do you rank data in a column?
+→ Use <code>df['col'].rank()</code>.</p>
+</li>
+<li>
+<p>How do you sample rows randomly from a DataFrame?
+→ <code>df.sample(n=...)</code> or <code>df.sample(frac=...)</code>.</p>
+</li>
+</ol>
+<h4 id="data-transformation"><strong>Data Transformation</strong></h4>
+<ol start="581">
+<li>
+<p>How do you add a new column based on existing columns?
+→ Create it directly: <code>df['new'] = df['a'] + df['b']</code>.</p>
+</li>
+<li>
+<p>How do you delete a column from a DataFrame?
+→ Use <code>df.drop('col', axis=1)</code>.</p>
+</li>
+<li>
+<p>How do you rename specific columns?
+→ Use <code>df.rename(columns={'old': 'new'})</code>.</p>
+</li>
+<li>
+<p>How do you apply a function to a column using <code>apply()</code>?
+→ <code>df['col'].apply(func)</code>.</p>
+</li>
+<li>
+<p>How do you apply a function to each element using <code>map()</code>?
+→ <code>df['col'].map(func_or_dict)</code>.</p>
+</li>
+<li>
+<p>How do you apply a function to multiple columns using <code>apply()</code>?
+→ <code>df[['a','b']].apply(func, axis=1)</code>.</p>
+</li>
+<li>
+<p>How do you replace values in a column?
+→ <code>df['col'].replace(old, new)</code>.</p>
+</li>
+<li>
+<p>How do you convert wide-format data to long format using <code>melt()</code>?
+→ Use <code>pd.melt(df, id_vars=..., value_vars=...)</code>.</p>
+</li>
+<li>
+<p>How do you normalize a column of numeric data?
+→ <code>(df['col'] - df['col'].mean()) / df['col'].std()</code>.</p>
+</li>
+<li>
+<p>How do you create dummy/indicator variables from categorical columns?
+→ Use <code>pd.get_dummies(df['col'])</code>.</p>
+</li>
+</ol>
+<h4 id="time-series-basics"><strong>Time Series Basics</strong></h4>
+<ol start="591">
+<li>
+<p>How do you convert a column to datetime format?
+→ Use <code>pd.to_datetime(df['col'])</code>.</p>
+</li>
+<li>
+<p>How do you set a datetime column as index?
+→ <code>df.set_index('date_col', inplace=True)</code>.</p>
+</li>
+<li>
+<p>How do you filter rows based on date ranges?
+→ Slice with <code>df.loc['2021-01':'2021-06']</code> or compare with conditions.</p>
+</li>
+<li>
+<p>How do you extract year, month, or day from datetime columns?
+→ Use <code>.dt.year</code>, <code>.dt.month</code>, <code>.dt.day</code>.</p>
+</li>
+<li>
+<p>How do you resample time series data to a different frequency?
+→ <code>df.resample('M').mean()</code> or another rule/function combo.</p>
+</li>
+<li>
+<p>How do you compute rolling averages?
+→ <code>df['col'].rolling(window).mean()</code>.</p>
+</li>
+<li>
+<p>How do you compute cumulative sums over time?
+→ <code>df['col'].cumsum()</code>.</p>
+</li>
+<li>
+<p>How do you shift and lag time series data?
+→ Use <code>df['col'].shift(n)</code>.</p>
+</li>
+<li>
+<p>How do you handle missing dates in a time series?
+→ Reindex with a full date range and fill missing values.</p>
+</li>
+<li>
+<p>How do you merge or join time series datasets effectively?
+→ Align on datetime indices using <code>merge</code>, <code>join</code>, or aligned reindexing.</p>
+</li>
+</ol>
+<hr>
+<h3 id="batch-7-advanced-pandas--performance-q601%E2%80%93q700"><strong>Batch 7: Advanced Pandas &amp; Performance (Q601–Q700)</strong></h3>
+<h4 id="multiindex--hierarchical-indexing"><strong>MultiIndex &amp; Hierarchical Indexing</strong></h4>
+<ol start="601">
+<li>
+<p>What is a MultiIndex in Pandas?
+→ A fancy “multi-level label system” that lets your rows or columns have more than one level of indexing.</p>
+</li>
+<li>
+<p>How do you create a MultiIndex DataFrame?
+→ Use lists/arrays of tuples or <code>pd.MultiIndex.from_product()</code>/<code>from_tuples()</code> to build the layered index.</p>
+</li>
+<li>
+<p>How do you set multiple columns as index?
+→ Call <code>df.set_index([&quot;col1&quot;, &quot;col2&quot;])</code>.</p>
+</li>
+<li>
+<p>How do you access data using a MultiIndex?
+→ Use <code>.loc[]</code> with tuples that match the index levels.</p>
+</li>
+<li>
+<p>How do you swap levels in a MultiIndex?
+→ Use <code>df.swaplevel()</code>.</p>
+</li>
+<li>
+<p>How do you sort a MultiIndex DataFrame?
+→ Use <code>df.sort_index()</code>.</p>
+</li>
+<li>
+<p>How do you reset a MultiIndex to columns?
+→ Use <code>df.reset_index()</code>.</p>
+</li>
+<li>
+<p>How do you slice data in a MultiIndex DataFrame?
+→ Use <code>pd.IndexSlice</code> with <code>.loc[]</code> for clean multi-level slicing.</p>
+</li>
+<li>
+<p>How do you select rows at a specific level of a MultiIndex?
+→ Use <code>.xs(value, level=&quot;level_name&quot;)</code>.</p>
+</li>
+<li>
+<p>How do you aggregate data over a specific level in MultiIndex?
+→ Use <code>.groupby(level=&quot;level_name&quot;).agg(...)</code>.</p>
+</li>
+</ol>
+<h4 id="reshaping--pivoting"><strong>Reshaping &amp; Pivoting</strong></h4>
+<ol start="611">
+<li>
+<p>How do you reshape a DataFrame from wide to long format?
+→ Use <code>melt()</code> to squeeze many columns into two tidy ones.</p>
+</li>
+<li>
+<p>How do you reshape a DataFrame from long to wide format?
+→ Use <code>pivot()</code> or <code>pivot_table()</code> to spread rows back into columns.</p>
+</li>
+<li>
+<p>How do you stack and unstack a DataFrame?
+→ <code>stack()</code> pushes columns into rows, <code>unstack()</code> pulls row levels into columns.</p>
+</li>
+<li>
+<p>How do you pivot a DataFrame with <code>pivot()</code>?
+→ Call <code>df.pivot(index=..., columns=..., values=...)</code> like assembling a tiny spreadsheet.</p>
+</li>
+<li>
+<p>How do you create pivot tables with <code>pivot_table()</code>?
+→ Use <code>pivot_table()</code> with an aggregation function for smarter summarising.</p>
+</li>
+<li>
+<p>How do you handle missing values during pivoting?
+→ Use <code>fill_value=</code> or clean with <code>dropna()</code> before or after the pivot.</p>
+</li>
+<li>
+<p>How do you merge reshaping and aggregation operations?
+→ Combine <code>groupby()</code> with <code>pivot_table()</code> or <code>agg()</code> in one tidy chain.</p>
+</li>
+<li>
+<p>How do you melt multiple columns simultaneously?
+→ Pass them in <code>value_vars</code> of <code>melt()</code> to melt a whole bunch at once.</p>
+</li>
+<li>
+<p>How do you reorder levels after unstacking?
+→ Call <code>reorder_levels()</code> or <code>swaplevel()</code> like rearranging index furniture.</p>
+</li>
+<li>
+<p>How do you combine stacked and unstacked operations efficiently?
+→ Chain <code>stack()</code> and <code>unstack()</code> with <code>sort_index()</code> for neat, speedy reshaping.</p>
+</li>
+</ol>
+<h4 id="time-series-analysis"><strong>Time Series Analysis</strong></h4>
+<ol start="621">
+<li>
+<p>How do you generate a date range in Pandas?
+→ Use <code>pd.date_range()</code> to pop out a neat sequence of dates like a date-making machine.</p>
+</li>
+<li>
+<p>How do you resample time series data?
+→ Use <code>.resample()</code> to squish or stretch your timeline into new time buckets.</p>
+</li>
+<li>
+<p>How do you perform rolling and expanding window calculations?
+→ Use <code>.rolling()</code> for sliding windows and <code>.expanding()</code> for ever-growing ones.</p>
+</li>
+<li>
+<p>How do you shift or lag a time series?
+→ Use <code>.shift()</code> to nudge data forward or backward in time.</p>
+</li>
+<li>
+<p>How do you handle time zones in a time series?
+→ Use <code>.tz_localize()</code> and <code>.tz_convert()</code> to assign or change time zones.</p>
+</li>
+<li>
+<p>How do you interpolate missing values in time series?
+→ Use <code>.interpolate()</code> to gently fill the gaps between timestamps.</p>
+</li>
+<li>
+<p>How do you compute cumulative statistics over time?
+→ Use <code>.cumsum()</code>, <code>.cumprod()</code>, or <code>.cummax()</code> like building stats layer by layer.</p>
+</li>
+<li>
+<p>How do you compute exponentially weighted moving averages?
+→ Use <code>.ewm().mean()</code> for a smooth average that “forgets” old stuff slowly.</p>
+</li>
+<li>
+<p>How do you handle irregularly spaced time series?
+→ Reindex or resample to regular intervals so your timeline stops being chaotic.</p>
+</li>
+<li>
+<p>How do you merge or join time series datasets effectively?
+→ Use <code>merge_asof()</code> to align them by nearest timestamps like a clever time-matching puzzle.</p>
+</li>
+</ol>
+<h4 id="memory-optimization"><strong>Memory Optimization</strong></h4>
+<ol start="631">
+<li>
+<p>How do you check the memory usage of a DataFrame?
+→ Use <code>df.memory_usage(deep=True)</code> to see where the bytes are hiding.</p>
+</li>
+<li>
+<p>How do you convert object columns to categorical to save memory?
+→ Use <code>df[&quot;col&quot;] = df[&quot;col&quot;].astype(&quot;category&quot;)</code>.</p>
+</li>
+<li>
+<p>How do you downcast numeric columns for memory efficiency?
+→ Use <code>pd.to_numeric(..., downcast=&quot;integer/float&quot;)</code>.</p>
+</li>
+<li>
+<p>How do you use sparse data structures in Pandas?
+→ Convert with <code>astype(&quot;Sparse[...]&quot;)</code> so zeros stop hogging space.</p>
+</li>
+<li>
+<p>How do you drop unused columns to optimize memory?
+→ Use <code>df.drop(columns=[...])</code> to toss out the dead weight.</p>
+</li>
+<li>
+<p>How do you optimize datetime columns for memory usage?
+→ Parse once with <code>to_datetime()</code> and avoid storing messy string versions.</p>
+</li>
+<li>
+<p>How do you handle large CSV files efficiently?
+→ Use <code>chunksize</code>, <code>dtype</code> hints, or compression to keep things manageable.</p>
+</li>
+<li>
+<p>How do you read a subset of columns to save memory?
+→ Use <code>usecols=</code> when reading so you skip the extra baggage.</p>
+</li>
+<li>
+<p>How do you use chunking while reading large datasets?
+→ Load in pieces with <code>pd.read_csv(..., chunksize=...)</code> like eating a big meal in small bites.</p>
+</li>
+<li>
+<p>How do you combine memory optimization with performance optimization?
+→ Pick efficient dtypes, drop junk early, and process in chunks for a smooth and speedy workflow.</p>
+</li>
+</ol>
+<h4 id="vectorized-operations"><strong>Vectorized Operations</strong></h4>
+<ol start="641">
+<li>
+<p>How do you perform element-wise operations on DataFrames?
+→ Use vectorized operators like <code>+</code>, <code>-</code>, <code>*</code>, or functions that act on whole arrays at once.</p>
+</li>
+<li>
+<p>How do you use <code>apply()</code> for row-wise or column-wise computations?
+→ Use <code>df.apply(func, axis=0/1)</code> to run your function across rows or columns.</p>
+</li>
+<li>
+<p>How do you use <code>map()</code> for Series transformations?
+→ Use <code>series.map(func_or_dict)</code> to transform each value one by one.</p>
+</li>
+<li>
+<p>How do you use <code>applymap()</code> for element-wise operations on DataFrames?
+→ Use <code>df.applymap(func)</code> to touch every single cell with your function.</p>
+</li>
+<li>
+<p>How do you replace loops with vectorized operations?
+→ Use NumPy-style operations that work on whole columns at once instead of slow Python loops.</p>
+</li>
+<li>
+<p>How do you perform conditional operations efficiently using <code>np.where()</code>?
+→ Use <code>np.where(condition, value1, value2)</code> for fast if-else logic.</p>
+</li>
+<li>
+<p>How do you compute cumulative statistics efficiently?
+→ Use built-ins like <code>.cumsum()</code>, <code>.cummax()</code>, <code>.cummin()</code>, or <code>.cumprod()</code>.</p>
+</li>
+<li>
+<p>How do you compute group-wise transformations using <code>transform()</code>?
+→ Use <code>groupby().transform()</code> to reshape values while keeping the original DataFrame shape.</p>
+</li>
+<li>
+<p>How do you combine vectorized operations with aggregation?
+→ Apply fast column operations first, then summarise with <code>groupby().agg()</code>.</p>
+</li>
+<li>
+<p>How do you handle missing values efficiently in vectorized operations?
+→ Use helpers like <code>.fillna()</code>, <code>.isna()</code>, or NumPy functions that naturally skip or handle NaNs.</p>
+</li>
+</ol>
+<h4 id="advanced-joins--merging"><strong>Advanced Joins &amp; Merging</strong></h4>
+<ol start="651">
+<li>
+<p>How do you perform many-to-many joins in Pandas?
+→ Use <code>merge()</code> on non-unique keys and Pandas will expand all matching combinations.</p>
+</li>
+<li>
+<p>How do you perform fuzzy matching while joining?
+→ Use libraries like <code>fuzzywuzzy</code>/<code>thefuzz</code> with <code>apply()</code> to match closest strings before merging.</p>
+</li>
+<li>
+<p>How do you merge DataFrames on multiple keys?
+→ Pass a list to <code>on=[...]</code> or <code>left_on</code>/<code>right_on</code>.</p>
+</li>
+<li>
+<p>How do you perform cross joins?
+→ Use <code>how=&quot;cross&quot;</code> in <code>merge()</code> for a full Cartesian product.</p>
+</li>
+<li>
+<p>How do you merge using indices instead of columns?
+→ Set <code>left_index=True</code> and/or <code>right_index=True</code>.</p>
+</li>
+<li>
+<p>How do you handle overlapping column names during merge?
+→ Use <code>suffixes=('_x', '_y')</code> or custom ones to keep things tidy.</p>
+</li>
+<li>
+<p>How do you merge with different join types (inner, outer, left, right)?
+→ Set <code>how=</code> to <code>&quot;inner&quot;</code>, <code>&quot;outer&quot;</code>, <code>&quot;left&quot;</code>, or <code>&quot;right&quot;</code>.</p>
+</li>
+<li>
+<p>How do you concatenate multiple DataFrames efficiently?
+→ Use <code>pd.concat([...])</code> and set <code>ignore_index=True</code> if you want a clean index.</p>
+</li>
+<li>
+<p>How do you join on datetime indices?
+→ Make sure both are datetime-indexed and then use <code>.join()</code> or <code>merge()</code> with index flags.</p>
+</li>
+<li>
+<p>How do you validate merge operations for consistency?
+→ Use the <code>validate=</code> parameter like <code>&quot;one_to_one&quot;</code> or <code>&quot;one_to_many&quot;</code> to catch mistakes early.</p>
+</li>
+</ol>
+<h4 id="advanced-aggregation--groupby"><strong>Advanced Aggregation &amp; GroupBy</strong></h4>
+<ol start="661">
+<li>
+<p>How do you apply multiple aggregation functions to a group?
+→ Use <code>groupby().agg({'col': ['sum','mean',...]})</code> to stack several stats at once.</p>
+</li>
+<li>
+<p>How do you apply custom aggregation functions?
+→ Pass your own function into <code>agg()</code> like <code>groupby().agg(my_func)</code>.</p>
+</li>
+<li>
+<p>How do you filter groups using <code>filter()</code>?
+→ Use <code>groupby().filter(lambda g: condition)</code> to keep only the groups you want.</p>
+</li>
+<li>
+<p>How do you transform groups without reducing size?
+→ Use <code>groupby().transform()</code> so the output matches the original shape.</p>
+</li>
+<li>
+<p>How do you rank items within groups?
+→ Use <code>groupby().rank()</code> to rank values independently inside each group.</p>
+</li>
+<li>
+<p>How do you compute rolling statistics within groups?
+→ Use <code>groupby().rolling(window).mean()</code> then reset the index if needed.</p>
+</li>
+<li>
+<p>How do you handle hierarchical indexes while aggregating?
+→ Aggregate first, then tidy with <code>reset_index()</code> or <code>reorder_levels()</code>.</p>
+</li>
+<li>
+<p>How do you pivot grouped data for analysis?
+→ Group, aggregate, then run <code>pivot()</code> or <code>pivot_table()</code> to reshape it.</p>
+</li>
+<li>
+<p>How do you compute weighted averages within groups?
+→ Use <code>groupby().apply(lambda g: np.average(g[col], weights=g[w]))</code>.</p>
+</li>
+<li>
+<p>How do you visualize group-wise statistics efficiently?
+→ Pre-aggregate with <code>groupby().agg()</code> and plot the clean result directly.</p>
+</li>
+</ol>
+<h4 id="categorical-data"><strong>Categorical Data</strong></h4>
+<ol start="671">
+<li>
+<p>How do you convert a column to categorical type?
+→ Use <code>df[&quot;col&quot;] = df[&quot;col&quot;].astype(&quot;category&quot;)</code>.</p>
+</li>
+<li>
+<p>How do you reorder categories in a categorical column?
+→ Use <code>.cat.reorder_categories([...], ordered=True)</code>.</p>
+</li>
+<li>
+<p>How do you add or remove categories?
+→ Use <code>.cat.add_categories()</code> or <code>.cat.remove_categories()</code>.</p>
+</li>
+<li>
+<p>How do you compute group statistics using categorical columns?
+→ Treat them like normal group keys with <code>groupby()</code>.</p>
+</li>
+<li>
+<p>How do you use categorical columns for performance optimization?
+→ Convert repetitive text to categories so lookups and comparisons get faster.</p>
+</li>
+<li>
+<p>How do you handle missing values in categorical columns?
+→ Use <code>.fillna()</code> or even create a “missing” category if it helps.</p>
+</li>
+<li>
+<p>How do you merge datasets with categorical columns efficiently?
+→ Ensure both sides share the same categories so matching is quick.</p>
+</li>
+<li>
+<p>How do you perform one-hot encoding with <code>get_dummies()</code>?
+→ Use <code>pd.get_dummies(df[&quot;col&quot;])</code> to explode categories into neat binary columns.</p>
+</li>
+<li>
+<p>How do you handle ordinal categorical variables?
+→ Create categories with <code>ordered=True</code> and a proper order list.</p>
+</li>
+<li>
+<p>How do categorical data types affect memory usage?
+→ They shrink repeated text into tiny numeric codes, saving loads of space.</p>
+</li>
+</ol>
+<h4 id="string-operations"><strong>String Operations</strong></h4>
+<ol start="681">
+<li>
+<p>How do you use vectorized string methods with <code>.str</code> accessor?
+→ Call things like <code>df[&quot;col&quot;].str.lower()</code> to process all strings at once.</p>
+</li>
+<li>
+<p>How do you extract substrings using <code>.str.extract()</code>?
+→ Use regex patterns inside <code>.str.extract(r&quot;...&quot;)</code> to pull out matching pieces.</p>
+</li>
+<li>
+<p>How do you replace patterns using <code>.str.replace()</code>?
+→ Use <code>.str.replace(old, new, regex=True)</code> for quick text swaps.</p>
+</li>
+<li>
+<p>How do you check for string presence with <code>.str.contains()</code>?
+→ Use <code>.str.contains(&quot;text&quot;)</code> to spot rows that include a pattern.</p>
+</li>
+<li>
+<p>How do you handle missing values in string columns?
+→ Use <code>.fillna(&quot;&quot;)</code> or skip them with <code>na=False</code> in string methods.</p>
+</li>
+<li>
+<p>How do you split strings into multiple columns?
+→ Use <code>.str.split(..., expand=True)</code> to break text into new columns.</p>
+</li>
+<li>
+<p>How do you join multiple string columns efficiently?
+→ Use <code>.str.cat([...], sep=&quot; &quot;)</code> to glue them together.</p>
+</li>
+<li>
+<p>How do you apply custom string functions to a column?
+→ Use <code>.apply(func)</code> when built-in <code>.str</code> tools aren’t enough.</p>
+</li>
+<li>
+<p>How do you remove unwanted characters from strings?
+→ Use <code>.str.replace(r&quot;[chars]&quot;, &quot;&quot;, regex=True)</code> to clean things up.</p>
+</li>
+<li>
+<p>How do you handle Unicode and encoding issues in strings?
+→ Decode early when reading data and use <code>.str.normalize()</code> to tidy Unicode.</p>
+</li>
+</ol>
+<h4 id="performance-optimization-techniques"><strong>Performance Optimization Techniques</strong></h4>
+<ol start="691">
+<li>
+<p>How do you profile Pandas code for performance bottlenecks?
+→ Use <code>%timeit</code>, <code>%prun</code>, or <code>cProfile</code> to spot slow sections.</p>
+</li>
+<li>
+<p>How do you optimize DataFrame operations with vectorization?
+→ Replace Python loops with NumPy-style whole-column operations.</p>
+</li>
+<li>
+<p>How do you use <code>eval()</code> and <code>query()</code> for faster computation?
+→ Use them to run expressions directly on columns with less overhead.</p>
+</li>
+<li>
+<p>How do you use <code>numba</code> to accelerate Pandas operations?
+→ Wrap custom numeric functions with <code>@numba.njit</code> for big speedups.</p>
+</li>
+<li>
+<p>How do you handle large datasets efficiently in memory?
+→ Load only what you need, downcast types, and process in chunks.</p>
+</li>
+<li>
+<p>How do you use categorical and sparse data types for performance?
+→ Convert repetitive or mostly-zero data to smaller, cheaper formats.</p>
+</li>
+<li>
+<p>How do you avoid chained indexing warnings and improve speed?
+→ Use <code>.loc[]</code> cleanly so Pandas knows exactly what you mean.</p>
+</li>
+<li>
+<p>How do you parallelize operations with Dask or multiprocessing?
+→ Break work into pieces and let multiple cores chew on them at once.</p>
+</li>
+<li>
+<p>How do you reduce computation time using chunked processing?
+→ Read and process data in bite-sized chunks instead of all at once.</p>
+</li>
+<li>
+<p>How do you combine performance optimization with maintainable code?
+→ Use clear pipelines, avoid clever-but-confusing tricks, and optimize only where it matters.</p>
+</li>
+</ol>
+<hr>
+<h3 id="batch-8-matplotlib--data-visualization-q701%E2%80%93q800"><strong>Batch 8: Matplotlib &amp; Data Visualization (Q701–Q800)</strong></h3>
+<h4 id="plotting-basics"><strong>Plotting Basics</strong></h4>
+<ol start="701">
+<li>
+<p>What is Matplotlib, and why is it used in Python?
+→ It’s a plotting library used to make graphs and visualisations of data.</p>
+</li>
+<li>
+<p>How do you import Matplotlib for plotting?
+→ Use <code>import matplotlib.pyplot as plt</code>.</p>
+</li>
+<li>
+<p>What is the difference between <code>pyplot</code> and the object-oriented interface?
+→ <code>pyplot</code> is quick and simple, while the OO style gives more control and structure.</p>
+</li>
+<li>
+<p>How do you create a simple line plot using <code>plt.plot()</code>?
+→ Call <code>plt.plot(x, y)</code> and then <code>plt.show()</code>.</p>
+</li>
+<li>
+<p>How do you create a scatter plot using <code>plt.scatter()</code>?
+→ Use <code>plt.scatter(x, y)</code>.</p>
+</li>
+<li>
+<p>How do you create a bar chart using <code>plt.bar()</code>?
+→ Use <code>plt.bar(categories, values)</code>.</p>
+</li>
+<li>
+<p>How do you create a histogram using <code>plt.hist()</code>?
+→ Use <code>plt.hist(data)</code>.</p>
+</li>
+<li>
+<p>How do you create a pie chart using <code>plt.pie()</code>?
+→ Use <code>plt.pie(values)</code>.</p>
+</li>
+<li>
+<p>How do you add labels to the x-axis and y-axis?
+→ Use <code>plt.xlabel(&quot;label&quot;)</code> and <code>plt.ylabel(&quot;label&quot;)</code>.</p>
+</li>
+<li>
+<p>How do you add a title to a plot?
+→ Use <code>plt.title(&quot;your title&quot;)</code>.</p>
+</li>
+</ol>
+<h4 id="customization-of-plots"><strong>Customization of Plots</strong></h4>
+<ol start="711">
+<li>
+<p>How do you change line styles and colors?
+→ Pass parameters like <code>linestyle=&quot;--&quot;</code> and <code>color=&quot;red&quot;</code> inside <code>plt.plot()</code>.</p>
+</li>
+<li>
+<p>How do you change marker styles and sizes?
+→ Use <code>marker=&quot;o&quot;</code> and <code>markersize=10</code> in your plotting call.</p>
+</li>
+<li>
+<p>How do you customize bar colors and widths?
+→ Add <code>color=&quot;…&quot; </code> and <code>width=…</code> inside <code>plt.bar()</code>.</p>
+</li>
+<li>
+<p>How do you add grid lines to a plot?
+→ Call <code>plt.grid(True)</code>.</p>
+</li>
+<li>
+<p>How do you add legends to plots?
+→ Include <code>label=&quot;…&quot; </code> in plot calls and then use <code>plt.legend()</code>.</p>
+</li>
+<li>
+<p>How do you set axis limits?
+→ Use <code>plt.xlim(min, max)</code> and <code>plt.ylim(min, max)</code>.</p>
+</li>
+<li>
+<p>How do you add annotations to specific points?
+→ Use <code>plt.annotate(&quot;text&quot;, xy=(x, y))</code>.</p>
+</li>
+<li>
+<p>How do you change font size and style for labels?
+→ Pass parameters like <code>fontsize=…</code> and <code>fontstyle=&quot;…&quot; </code> to label functions.</p>
+</li>
+<li>
+<p>How do you add multiple lines to a single plot?
+→ Call <code>plt.plot()</code> repeatedly before <code>plt.show()</code>.</p>
+</li>
+<li>
+<p>How do you save a plot to a file in PNG, PDF, or SVG format?
+→ Use <code>plt.savefig(&quot;filename.png&quot;)</code> (or <code>.pdf</code>, <code>.svg</code>).</p>
+</li>
+</ol>
+<h4 id="subplots-and-figure-management"><strong>Subplots and Figure Management</strong></h4>
+<ol start="721">
+<li>
+<p>How do you create multiple subplots using <code>plt.subplot()</code>?
+→ Call <code>plt.subplot(rows, cols, index)</code> before each plot.</p>
+</li>
+<li>
+<p>How do you use <code>plt.subplots()</code> for a grid of plots?
+→ Use <code>fig, axes = plt.subplots(r, c)</code> to get a figure and array of axes.</p>
+</li>
+<li>
+<p>How do you share axes between subplots?
+→ Pass <code>sharex=True</code> or <code>sharey=True</code> to <code>plt.subplots()</code>.</p>
+</li>
+<li>
+<p>How do you adjust spacing between subplots?
+→ Use <code>plt.tight_layout()</code> or <code>fig.subplots_adjust()</code>.</p>
+</li>
+<li>
+<p>How do you set figure size and resolution?
+→ Use <code>plt.figure(figsize=(w, h), dpi=resolution)</code>.</p>
+</li>
+<li>
+<p>How do you add titles to individual subplots?
+→ Use <code>ax.set_title(&quot;title&quot;)</code> on each subplot axis.</p>
+</li>
+<li>
+<p>How do you add a global title for the figure?
+→ Use <code>fig.suptitle(&quot;main title&quot;)</code>.</p>
+</li>
+<li>
+<p>How do you manage multiple figures simultaneously?
+→ Create and switch using <code>plt.figure(id)</code>.</p>
+</li>
+<li>
+<p>How do you save multiple subplots to a single file?
+→ Save the whole figure with <code>plt.savefig(&quot;file.png&quot;)</code>.</p>
+</li>
+<li>
+<p>How do you clear a figure using <code>plt.clf()</code> or <code>plt.close()</code>?
+→ <code>plt.clf()</code> clears the figure; <code>plt.close()</code> closes it completely.</p>
+</li>
+</ol>
+<h4 id="advanced-plots"><strong>Advanced Plots</strong></h4>
+<ol start="731">
+<li>
+<p>How do you create a stacked bar chart?
+→ Plot bars with the same x-values and use the <code>bottom=</code> parameter to stack them.</p>
+</li>
+<li>
+<p>How do you create a horizontal bar chart?
+→ Use <code>plt.barh()</code> instead of <code>plt.bar()</code>.</p>
+</li>
+<li>
+<p>How do you create a box plot using <code>plt.boxplot()</code>?
+→ Call <code>plt.boxplot(data)</code>.</p>
+</li>
+<li>
+<p>How do you create a violin plot?
+→ Use <code>plt.violinplot(data)</code>.</p>
+</li>
+<li>
+<p>How do you create an area plot?
+→ Use <code>plt.stackplot(x, y_values)</code>.</p>
+</li>
+<li>
+<p>How do you create an error bar plot?
+→ Use <code>plt.errorbar(x, y, yerr=errors)</code>.</p>
+</li>
+<li>
+<p>How do you create a scatter plot with varying sizes and colors?
+→ Use <code>plt.scatter(x, y, s=sizes, c=colors)</code>.</p>
+</li>
+<li>
+<p>How do you create a heatmap using Matplotlib?
+→ Use <code>plt.imshow(data, aspect=&quot;auto&quot;)</code>.</p>
+</li>
+<li>
+<p>How do you create a contour plot using <code>plt.contour()</code>?
+→ Call <code>plt.contour(X, Y, Z)</code>.</p>
+</li>
+<li>
+<p>How do you create 3D plots using <code>mpl_toolkits.mplot3d</code>?
+→ Create an Axes3D object and use functions like <code>ax.plot3D()</code> or <code>ax.scatter3D()</code>.</p>
+</li>
+</ol>
+<h4 id="figure-and-axes-manipulation"><strong>Figure and Axes Manipulation</strong></h4>
+<ol start="741">
+<li>
+<p>How do you access the figure and axes objects in a plot?
+→ Use <code>fig, ax = plt.subplots()</code> to get them directly.</p>
+</li>
+<li>
+<p>How do you modify axes limits and scales?
+→ Use <code>ax.set_xlim()</code>, <code>ax.set_ylim()</code>, or <code>ax.set_xscale()</code> / <code>ax.set_yscale()</code>.</p>
+</li>
+<li>
+<p>How do you add secondary axes to a plot?
+→ Use <code>ax.secondary_xaxis()</code> or <code>ax.secondary_yaxis()</code>.</p>
+</li>
+<li>
+<p>How do you set logarithmic scale for an axis?
+→ Call <code>plt.xscale(&quot;log&quot;)</code> or <code>plt.yscale(&quot;log&quot;)</code>.</p>
+</li>
+<li>
+<p>How do you customize tick labels and positions?
+→ Use <code>ax.set_xticks()</code> and <code>ax.set_xticklabels()</code> (same for y).</p>
+</li>
+<li>
+<p>How do you rotate tick labels for readability?
+→ Use <code>plt.xticks(rotation=angle)</code>.</p>
+</li>
+<li>
+<p>How do you hide or remove axes and spines?
+→ Use <code>ax.spines[...] .set_visible(False)</code> or <code>plt.axis(&quot;off&quot;)</code>.</p>
+</li>
+<li>
+<p>How do you add text and annotations using axes coordinates?
+→ Use <code>ax.text(x, y, &quot;text&quot;, transform=ax.transAxes)</code>.</p>
+</li>
+<li>
+<p>How do you draw lines, rectangles, and circles manually?
+→ Use patches like <code>Line2D</code>, <code>Rectangle</code>, or <code>Circle</code> and add with <code>ax.add_patch()</code>.</p>
+</li>
+<li>
+<p>How do you layer multiple plots on the same axes?
+→ Just call multiple plotting functions on the same <code>ax</code> object.</p>
+</li>
+</ol>
+<h4 id="plot-styling--themes"><strong>Plot Styling &amp; Themes</strong></h4>
+<ol start="751">
+<li>
+<p>How do you use Matplotlib styles (<code>plt.style.use()</code>)?
+→ Call <code>plt.style.use(&quot;stylename&quot;)</code> to switch the whole plot’s look.</p>
+</li>
+<li>
+<p>How do you customize the color cycle for lines?
+→ Set <code>ax.set_prop_cycle(color=[...])</code> with your chosen list.</p>
+</li>
+<li>
+<p>How do you use Seaborn styles with Matplotlib?
+→ Import Seaborn and call <code>sns.set_theme()</code> or <code>sns.set_style()</code>.</p>
+</li>
+<li>
+<p>How do you create transparent plots?
+→ Use <code>plt.plot(..., alpha=value)</code> or save with <code>plt.savefig(..., transparent=True)</code>.</p>
+</li>
+<li>
+<p>How do you control alpha transparency in plots?
+→ Add <code>alpha=0.0–1.0</code> to any plotting call.</p>
+</li>
+<li>
+<p>How do you apply custom colormaps?
+→ Pass <code>cmap=&quot;colormap_name&quot;</code> to functions that support it.</p>
+</li>
+<li>
+<p>How do you create visually appealing color palettes?
+→ Use palettes from Seaborn or <code>plt.cm</code> colormap families.</p>
+</li>
+<li>
+<p>How do you control linewidth and marker edge color?
+→ Use <code>linewidth=...</code> and <code>markeredgecolor=&quot;...&quot;</code> in your plot call.</p>
+</li>
+<li>
+<p>How do you use LaTeX formatting for labels?
+→ Wrap text in <code>$...$</code> and ensure <code>plt.rcParams[&quot;text.usetex&quot;]=True</code>.</p>
+</li>
+<li>
+<p>How do you globally set figure parameters using <code>rcParams</code>?
+→ Modify values in <code>plt.rcParams[...]</code> before plotting.</p>
+</li>
+</ol>
+<h4 id="interactive-visualizations"><strong>Interactive Visualizations</strong></h4>
+<ol start="761">
+<li>
+<p>How do you create interactive plots in Jupyter notebooks?
+→ Use <code>%matplotlib notebook</code> or <code>%matplotlib widget</code>.</p>
+</li>
+<li>
+<p>How do you zoom, pan, and update plots interactively?
+→ Use the toolbar that appears with interactive backends.</p>
+</li>
+<li>
+<p>How do you use <code>plt.ion()</code> and <code>plt.ioff()</code> for interactive mode?
+→ <code>plt.ion()</code> turns interactive updates on, <code>plt.ioff()</code> turns them off.</p>
+</li>
+<li>
+<p>How do you update plots dynamically with live data?
+→ Modify the data on an existing artist and call <code>plt.draw()</code> or <code>fig.canvas.draw()</code>.</p>
+</li>
+<li>
+<p>How do you capture click events on a plot?
+→ Connect to <code>fig.canvas.mpl_connect(&quot;button_press_event&quot;, handler)</code>.</p>
+</li>
+<li>
+<p>How do you capture hover events on a plot?
+→ Use <code>mpl_connect(&quot;motion_notify_event&quot;, handler)</code>.</p>
+</li>
+<li>
+<p>How do you use sliders to adjust plot parameters interactively?
+→ Use <code>matplotlib.widgets.Slider</code> and update the plot inside its callback.</p>
+</li>
+<li>
+<p>How do you use buttons and widgets with Matplotlib?
+→ Use widgets like <code>Button</code>, <code>CheckButtons</code>, and bind callback functions.</p>
+</li>
+<li>
+<p>How do you embed Matplotlib plots in GUIs?
+→ Use backends for Tkinter, PyQt, or wxPython with their canvas widgets.</p>
+</li>
+<li>
+<p>How do you create animations using <code>FuncAnimation</code>?
+→ Use <code>FuncAnimation(fig, update_function, frames=...)</code> to redraw frames.</p>
+</li>
+</ol>
+<h4 id="3d-plots--advanced-3d-techniques"><strong>3D Plots &amp; Advanced 3D Techniques</strong></h4>
+<ol start="771">
+<li>
+<p>How do you create a 3D scatter plot?
+→ Use <code>ax.scatter3D(x, y, z)</code> on a 3D axis.</p>
+</li>
+<li>
+<p>How do you create a 3D line plot?
+→ Use <code>ax.plot3D(x, y, z)</code>.</p>
+</li>
+<li>
+<p>How do you create a 3D surface plot?
+→ Use <code>ax.plot_surface(X, Y, Z)</code>.</p>
+</li>
+<li>
+<p>How do you create a 3D wireframe plot?
+→ Use <code>ax.plot_wireframe(X, Y, Z)</code>.</p>
+</li>
+<li>
+<p>How do you rotate and view 3D plots from different angles?
+→ Call <code>ax.view_init(elev, azim)</code>.</p>
+</li>
+<li>
+<p>How do you color 3D surfaces based on height or values?
+→ Pass <code>cmap=&quot;…&quot; </code> to <code>plot_surface()</code>.</p>
+</li>
+<li>
+<p>How do you add contours to a 3D surface plot?
+→ Use <code>ax.contour3D(X, Y, Z)</code>.</p>
+</li>
+<li>
+<p>How do you combine multiple 3D plots in one figure?
+→ Create multiple 3D subplots with <code>fig.add_subplot(..., projection=&quot;3d&quot;)</code>.</p>
+</li>
+<li>
+<p>How do you add annotations to 3D points?
+→ Use <code>ax.text(x, y, z, &quot;label&quot;)</code>.</p>
+</li>
+<li>
+<p>How do you optimize 3D plot rendering performance?
+→ Use fewer points or lighter methods like wireframes instead of full surfaces.</p>
+</li>
+</ol>
+<h4 id="heatmaps--contour-plots"><strong>Heatmaps &amp; Contour Plots</strong></h4>
+<ol start="781">
+<li>
+<p>How do you create a basic heatmap using <code>imshow()</code>?
+→ Use <code>plt.imshow(data, aspect=&quot;auto&quot;)</code>.</p>
+</li>
+<li>
+<p>How do you adjust color limits for heatmaps?
+→ Use <code>plt.clim(min, max)</code>.</p>
+</li>
+<li>
+<p>How do you add a color bar to a heatmap?
+→ Call <code>plt.colorbar()</code>.</p>
+</li>
+<li>
+<p>How do you overlay data points on a heatmap?
+→ Plot with <code>plt.scatter()</code> on top of <code>imshow()</code>.</p>
+</li>
+<li>
+<p>How do you create filled contour plots?
+→ Use <code>plt.contourf(X, Y, Z)</code>.</p>
+</li>
+<li>
+<p>How do you create contour lines without filling?
+→ Use <code>plt.contour(X, Y, Z)</code>.</p>
+</li>
+<li>
+<p>How do you label contour lines with values?
+→ Use <code>plt.clabel(contour_obj)</code>.</p>
+</li>
+<li>
+<p>How do you combine contour plots with heatmaps?
+→ Draw <code>imshow()</code> first, then overlay <code>contour()</code>.</p>
+</li>
+<li>
+<p>How do you plot gradients or vector fields?
+→ Use <code>plt.quiver(U, V)</code> or <code>plt.streamplot()</code>.</p>
+</li>
+<li>
+<p>How do you use custom color maps for contour and heatmap plots?
+→ Pass <code>cmap=&quot;your_colormap&quot;</code> to <code>imshow()</code> or <code>contour()</code>.</p>
+</li>
+</ol>
+<h4 id="saving--exporting-plots"><strong>Saving &amp; Exporting Plots</strong></h4>
+<ol start="791">
+<li>
+<p>How do you save a figure in PNG, JPEG, PDF, or SVG format?
+→ Use <code>plt.savefig(&quot;name.png&quot;)</code> (or <code>.jpg</code>, <code>.pdf</code>, <code>.svg</code>).</p>
+</li>
+<li>
+<p>How do you save high-resolution figures using <code>dpi</code>?
+→ Add <code>dpi=300</code> inside <code>plt.savefig()</code>.</p>
+</li>
+<li>
+<p>How do you save figures with transparent backgrounds?
+→ Use <code>plt.savefig(&quot;file.png&quot;, transparent=True)</code>.</p>
+</li>
+<li>
+<p>How do you save multiple figures programmatically?
+→ Loop over figure creation and call <code>plt.savefig()</code> each time.</p>
+</li>
+<li>
+<p>How do you export plots for publication quality?
+→ Use high DPI, vector formats, and clean styling before saving.</p>
+</li>
+<li>
+<p>How do you save interactive plots as HTML?
+→ Use interactive backends like Plotly or mpld3 to export HTML.</p>
+</li>
+<li>
+<p>How do you embed figures in Jupyter notebooks?
+→ Use <code>%matplotlib inline</code> or <code>%matplotlib widget</code>.</p>
+</li>
+<li>
+<p>How do you include vector graphics instead of raster images?
+→ Save as <code>.svg</code> or <code>.pdf</code>.</p>
+</li>
+<li>
+<p>How do you export multiple subplots to a single file?
+→ Save the entire figure with <code>plt.savefig()</code>.</p>
+</li>
+<li>
+<p>How do you automate figure generation for reports?
+→ Write scripts that loop through data and save each plot automatically.</p>
+</li>
+</ol>
+<hr>
+<h3 id="batch-9-scipy--scientific-tools-q801%E2%80%93q900"><strong>Batch 9: SciPy &amp; Scientific Tools (Q801–Q900)</strong></h3>
+<h4 id="introduction-to-scipy"><strong>Introduction to SciPy</strong></h4>
+<ol start="801">
+<li>
+<p>What is SciPy, and how does it complement NumPy?
+→ It adds advanced scientific functions on top of NumPy’s basic array tools.</p>
+</li>
+<li>
+<p>How do you install and import SciPy?
+→ Install with <code>pip install scipy</code> and import using <code>import scipy</code>.</p>
+</li>
+<li>
+<p>What are the main submodules of SciPy?
+→ Key ones include <code>linalg</code>, <code>optimize</code>, <code>integrate</code>, <code>stats</code>, <code>interpolate</code>, and <code>sparse</code>.</p>
+</li>
+<li>
+<p>How is SciPy used for scientific and engineering computations?
+→ It provides ready-made algorithms for solving math, science, and engineering problems.</p>
+</li>
+<li>
+<p>How do you access linear algebra functions in SciPy?
+→ Use <code>scipy.linalg</code> for matrix decompositions and solvers.</p>
+</li>
+<li>
+<p>How do you use optimization tools in SciPy?
+→ Call functions from <code>scipy.optimize</code> like <code>minimize()</code>.</p>
+</li>
+<li>
+<p>How do you perform interpolation using SciPy?
+→ Use <code>scipy.interpolate</code> with tools like <code>interp1d()</code>.</p>
+</li>
+<li>
+<p>How do you use SciPy for numerical integration?
+→ Use <code>scipy.integrate</code> with functions like <code>quad()</code> or <code>odeint()</code>.</p>
+</li>
+<li>
+<p>How do you handle sparse matrices in SciPy?
+→ Use <code>scipy.sparse</code> for creating and manipulating sparse matrix types.</p>
+</li>
+<li>
+<p>How do you perform statistical analysis using SciPy?
+→ Use <code>scipy.stats</code> for distributions, tests, and probability functions.</p>
+</li>
+</ol>
+<h4 id="linear-algebra"><strong>Linear Algebra</strong></h4>
+<ol start="811">
+<li>
+<p>How do you compute eigenvalues and eigenvectors using <code>scipy.linalg</code>?
+→ Use <code>scipy.linalg.eig(A)</code>.</p>
+</li>
+<li>
+<p>How do you perform LU decomposition?
+→ Call <code>scipy.linalg.lu(A)</code>.</p>
+</li>
+<li>
+<p>How do you perform QR decomposition?
+→ Use <code>scipy.linalg.qr(A)</code>.</p>
+</li>
+<li>
+<p>How do you perform Cholesky decomposition?
+→ Use <code>scipy.linalg.cholesky(A)</code>.</p>
+</li>
+<li>
+<p>How do you solve linear systems with <code>scipy.linalg.solve()</code>?
+→ Call <code>solve(A, b)</code>.</p>
+</li>
+<li>
+<p>How do you compute the determinant using SciPy?
+→ Use <code>scipy.linalg.det(A)</code>.</p>
+</li>
+<li>
+<p>How do you compute the inverse of a matrix?
+→ Use <code>scipy.linalg.inv(A)</code>.</p>
+</li>
+<li>
+<p>How do you compute matrix norms?
+→ Use <code>scipy.linalg.norm(A)</code>.</p>
+</li>
+<li>
+<p>How do you perform singular value decomposition (SVD)?
+→ Use <code>scipy.linalg.svd(A)</code>.</p>
+</li>
+<li>
+<p>How do SciPy linear algebra functions differ from NumPy’s?
+→ SciPy’s versions are more robust, optimized, and feature richer algorithms.</p>
+</li>
+</ol>
+<h4 id="optimization"><strong>Optimization</strong></h4>
+<ol start="821">
+<li>
+<p>What is the <code>scipy.optimize</code> module used for?
+→ It helps you find optimal values that make functions as small, large, or accurate as possible.</p>
+</li>
+<li>
+<p>How do you minimize a scalar function?
+→ Use <code>scipy.optimize.minimize()</code> with your function and starting point.</p>
+</li>
+<li>
+<p>How do you solve multivariable optimization problems?
+→ Pass a multivariable function and an initial guess to <code>minimize()</code>.</p>
+</li>
+<li>
+<p>How do you apply constraints in optimization problems?
+→ Supply <code>constraints=</code> with dictionaries defining equality or inequality rules.</p>
+</li>
+<li>
+<p>How do you use bounds in optimization?
+→ Add <code>bounds=</code> in <code>minimize()</code> to restrict variable ranges.</p>
+</li>
+<li>
+<p>How do you use <code>minimize_scalar()</code> for single-variable optimization?
+→ Call <code>minimize_scalar(func)</code> optionally with a bracket or bounds.</p>
+</li>
+<li>
+<p>How do you solve linear programming problems?
+→ Use <code>scipy.optimize.linprog()</code> with objective coefficients, constraints, and bounds.</p>
+</li>
+<li>
+<p>How do you solve nonlinear equations using <code>fsolve()</code>?
+→ Provide the function and an initial guess to <code>fsolve()</code> to find roots.</p>
+</li>
+<li>
+<p>How do you perform curve fitting with <code>curve_fit()</code>?
+→ Give a model function and data to <code>curve_fit()</code> to estimate best-fit parameters.</p>
+</li>
+<li>
+<p>How do you select the best optimization algorithm for a problem?
+→ Match the algorithm to your function’s smoothness, dimensionality, constraints, and performance needs.</p>
+</li>
+</ol>
+<h4 id="interpolation"><strong>Interpolation</strong></h4>
+<ol start="831">
+<li>
+<p>What is interpolation, and why is it used?
+→ It’s a way to estimate missing values between known data points to make data smoother or more complete.</p>
+</li>
+<li>
+<p>How do you perform 1D interpolation using <code>interp1d()</code>?
+→ Create an <code>interp1d(x, y)</code> function and call it with new x-values.</p>
+</li>
+<li>
+<p>How do you perform 2D interpolation using <code>griddata()</code>?
+→ Provide points, values, and a grid to <code>griddata()</code> to fill in the missing spots.</p>
+</li>
+<li>
+<p>How do you choose between linear, cubic, and nearest interpolation?
+→ Pick linear for balance, cubic for smooth curves, and nearest for rough or categorical data.</p>
+</li>
+<li>
+<p>How do you extrapolate values outside the data range?
+→ Enable <code>fill_value=&quot;extrapolate&quot;</code> in <code>interp1d()</code>.</p>
+</li>
+<li>
+<p>How do you interpolate irregularly spaced data?
+→ Use <code>griddata()</code> or spline tools that accept scattered points.</p>
+</li>
+<li>
+<p>How do you handle multidimensional interpolation?
+→ Use methods like <code>griddata()</code> or multivariate splines designed for many dimensions.</p>
+</li>
+<li>
+<p>How do you perform spline interpolation using <code>UnivariateSpline</code>?
+→ Fit <code>UnivariateSpline(x, y)</code> and call it like a function.</p>
+</li>
+<li>
+<p>How do you compute derivatives from interpolated functions?
+→ Use the spline’s <code>.derivative()</code> method or differentiate the interpolation function if supported.</p>
+</li>
+<li>
+<p>How do you evaluate interpolation performance?
+→ Compare predicted values with known ones using error metrics like MSE or RMSE.</p>
+</li>
+</ol>
+<h4 id="numerical-integration"><strong>Numerical Integration</strong></h4>
+<ol start="841">
+<li>
+<p>How do you integrate a function numerically using <code>quad()</code>?
+→ Pass the function and limits to <code>quad(func, a, b)</code> to get the integral.</p>
+</li>
+<li>
+<p>How do you perform double or triple integrals using <code>dblquad()</code> and <code>tplquad()</code>?
+→ Provide nested limit functions and the main function to <code>dblquad()</code> or <code>tplquad()</code>.</p>
+</li>
+<li>
+<p>How do you integrate over arrays using <code>simps()</code>?
+→ Use <code>simps(y, x)</code> to apply Simpson’s rule on array data.</p>
+</li>
+<li>
+<p>How do you use the trapezoidal rule for integration?
+→ Call <code>numpy.trapz(y, x)</code> to apply the trapezoid method.</p>
+</li>
+<li>
+<p>How do you handle improper integrals?
+→ Let <code>quad()</code> handle infinite limits by passing <code>np.inf</code> or <code>-np.inf</code>.</p>
+</li>
+<li>
+<p>How do you integrate functions with singularities?
+→ Split the interval around the singularity or rely on <code>quad()</code>’s adaptive handling.</p>
+</li>
+<li>
+<p>How do you perform adaptive integration?
+→ Use <code>quad()</code> since it automatically adapts step sizes.</p>
+</li>
+<li>
+<p>How do you integrate functions defined as discrete data points?
+→ Use <code>trapz()</code> or <code>simps()</code> on the sampled arrays.</p>
+</li>
+<li>
+<p>How do you use cumulative integration (<code>cumtrapz</code>)?
+→ Call <code>cumtrapz(y, x)</code> to get running trapezoidal integrals.</p>
+</li>
+<li>
+<p>How do you evaluate integration accuracy?
+→ Compare numerical results to known values or check error estimates returned by the method.</p>
+</li>
+</ol>
+<h4 id="signal-processing"><strong>Signal Processing</strong></h4>
+<ol start="851">
+<li>
+<p>What is the <code>scipy.signal</code> module used for?
+→ It’s the toolbox for cleaning, transforming, and analyzing signals so they behave nicely instead of wobbling everywhere.</p>
+</li>
+<li>
+<p>How do you design FIR and IIR filters?
+→ Use functions like <code>firwin()</code> for FIR and <code>iirfilter()</code> or <code>butter()</code> for IIR to shape your filter.</p>
+</li>
+<li>
+<p>How do you apply a digital filter to a signal?
+→ Feed the signal into <code>lfilter()</code> or <code>filtfilt()</code> to smooth or modify it.</p>
+</li>
+<li>
+<p>How do you compute the Fourier Transform of a signal?
+→ Call <code>fft()</code> to turn your time-based signal into frequency goodies.</p>
+</li>
+<li>
+<p>How do you compute the inverse Fourier Transform?
+→ Use <code>ifft()</code> to convert frequency data back to the time domain.</p>
+</li>
+<li>
+<p>How do you perform convolution of two signals?
+→ Use <code>convolve()</code> to mix the two signals together mathematically.</p>
+</li>
+<li>
+<p>How do you perform correlation of two signals?
+→ Use <code>correlate()</code> to see how similar they are when shifted around.</p>
+</li>
+<li>
+<p>How do you perform decimation and resampling?
+→ Use <code>decimate()</code> or <code>resample()</code> to shrink or reshape the number of samples.</p>
+</li>
+<li>
+<p>How do you detect peaks in a signal?
+→ Run <code>find_peaks()</code> to spot the high points like a tiny mountain detector.</p>
+</li>
+<li>
+<p>How do you perform windowing for spectral analysis?
+→ Multiply your signal by a window from <code>scipy.signal.windows</code> to reduce edge jumpiness.</p>
+</li>
+</ol>
+<h4 id="sparse-matrices"><strong>Sparse Matrices</strong></h4>
+<ol start="861">
+<li>
+<p>What are sparse matrices, and why are they used?
+→ They’re matrices mostly filled with zeros, used to save memory and speed up calculations.</p>
+</li>
+<li>
+<p>How do you create a CSR (Compressed Sparse Row) matrix?
+→ Use <code>csr_matrix((data, indices, indptr))</code> or convert with <code>.tocsr()</code>.</p>
+</li>
+<li>
+<p>How do you create a CSC (Compressed Sparse Column) matrix?
+→ Use <code>csc_matrix((data, indices, indptr))</code> or convert with <code>.tocsc()</code>.</p>
+</li>
+<li>
+<p>How do you create a COO (Coordinate) sparse matrix?
+→ Use <code>coo_matrix((data, (row, col)))</code>.</p>
+</li>
+<li>
+<p>How do you convert between sparse and dense matrices?
+→ Call <code>.toarray()</code> or <code>.A</code> for dense, or use <code>.tocsr()</code>, <code>.tocsc()</code>, <code>.coo()</code> for sparse formats.</p>
+</li>
+<li>
+<p>How do you perform arithmetic operations on sparse matrices?
+→ Use normal operators like <code>+</code>, <code>-</code>, <code>*</code> which work efficiently in sparse format.</p>
+</li>
+<li>
+<p>How do you perform matrix multiplication with sparse matrices?
+→ Use the <code>@</code> operator or <code>.dot()</code>.</p>
+</li>
+<li>
+<p>How do you solve linear systems with sparse matrices?
+→ Apply <code>spsolve()</code> or iterative methods like <code>cg()</code>.</p>
+</li>
+<li>
+<p>How do you store sparse matrices efficiently?
+→ Pick formats like CSR or CSC that compress zeros and keep structure compact.</p>
+</li>
+<li>
+<p>How do sparse matrices improve computational performance?
+→ They reduce memory use and skip needless operations on zeros, making everything faster.</p>
+</li>
+</ol>
+<h4 id="statistical-analysis"><strong>Statistical Analysis</strong></h4>
+<ol start="871">
+<li>
+<p>How do you compute descriptive statistics using <code>scipy.stats</code>?
+→ Use functions like <code>describe()</code> to get a bundle of summary stats in one go.</p>
+</li>
+<li>
+<p>How do you compute mean, median, and variance?
+→ Call <code>stats.tmean()</code>, <code>stats.tmedian()</code>, or <code>stats.tvar()</code>.</p>
+</li>
+<li>
+<p>How do you compute skewness and kurtosis?
+→ Use <code>skew()</code> and <code>kurtosis()</code> for shape-related measures.</p>
+</li>
+<li>
+<p>How do you perform hypothesis testing using <code>ttest_ind()</code>?
+→ Provide two independent samples to <code>ttest_ind(sample1, sample2)</code>.</p>
+</li>
+<li>
+<p>How do you perform paired t-tests using <code>ttest_rel()</code>?
+→ Pass two related samples to <code>ttest_rel(a, b)</code>.</p>
+</li>
+<li>
+<p>How do you perform ANOVA using <code>f_oneway()</code>?
+→ Give your groups to <code>f_oneway(group1, group2, ...)</code>.</p>
+</li>
+<li>
+<p>How do you compute correlation coefficients?
+→ Use <code>pearsonr()</code>, <code>spearmanr()</code>, or <code>kendalltau()</code> depending on the type.</p>
+</li>
+<li>
+<p>How do you compute ranks and rank correlations?
+→ Use <code>rankdata()</code> for ranks and <code>spearmanr()</code> or <code>kendalltau()</code> for correlation.</p>
+</li>
+<li>
+<p>How do you generate random samples from distributions?
+→ Call distribution methods like <code>stats.norm.rvs(size=n)</code>.</p>
+</li>
+<li>
+<p>How do you test for normality in data?
+→ Use tests like <code>shapiro()</code> or <code>normaltest()</code> to check distribution shape.</p>
+</li>
+</ol>
+<h4 id="probability-distributions"><strong>Probability Distributions</strong></h4>
+<ol start="881">
+<li>
+<p>How do you use continuous probability distributions in SciPy?
+→ Call distributions like <code>stats.norm</code>, then use their methods such as <code>pdf</code>, <code>cdf</code>, or <code>rvs</code>.</p>
+</li>
+<li>
+<p>How do you use discrete probability distributions?
+→ Use classes like <code>stats.binom</code> or <code>stats.poisson</code> with the same method pattern.</p>
+</li>
+<li>
+<p>How do you compute PDF and CDF values?
+→ Use <code>.pdf(x)</code> for density and <code>.cdf(x)</code> for cumulative probability.</p>
+</li>
+<li>
+<p>How do you compute percent point function (PPF)?
+→ Call <code>.ppf(q)</code> to get the value at a given percentile.</p>
+</li>
+<li>
+<p>How do you compute survival functions (SF)?
+→ Use <code>.sf(x)</code> to get the probability of being above x.</p>
+</li>
+<li>
+<p>How do you generate random samples from a given distribution?
+→ Call <code>.rvs(size=n)</code> on the distribution object.</p>
+</li>
+<li>
+<p>How do you fit a distribution to data?
+→ Use <code>.fit(data)</code> to estimate parameters.</p>
+</li>
+<li>
+<p>How do you compute moments of a distribution?
+→ Call methods like <code>.moment(k)</code> or use <code>.mean()</code>, <code>.var()</code>, <code>.skew()</code>, <code>.kurt()</code>.</p>
+</li>
+<li>
+<p>How do you perform statistical tests for distribution fit?
+→ Use tests like <code>kstest()</code> or <code>chisquare()</code>.</p>
+</li>
+<li>
+<p>How do you compare two distributions statistically?
+→ Apply tests such as <code>ks_2samp()</code> or <code>mannwhitneyu()</code>.</p>
+</li>
+</ol>
+<h4 id="curve-fitting--regression"><strong>Curve Fitting &amp; Regression</strong></h4>
+<ol start="891">
+<li>
+<p>How do you fit a curve using <code>curve_fit()</code>?
+→ Provide a model function and data to <code>curve_fit()</code> to get best-fit parameters.</p>
+</li>
+<li>
+<p>How do you choose a fitting function?
+→ Pick a formula that reflects the pattern you expect in the data.</p>
+</li>
+<li>
+<p>How do you extract optimal parameters and covariance?
+→ <code>curve_fit()</code> returns <code>popt</code> for parameters and <code>pcov</code> for their covariance.</p>
+</li>
+<li>
+<p>How do you handle nonlinear curve fitting?
+→ Use a nonlinear model and let <code>curve_fit()</code> iterate from an initial guess.</p>
+</li>
+<li>
+<p>How do you perform weighted curve fitting?
+→ Pass <code>sigma=</code> to <code>curve_fit()</code> so points with lower variance count more.</p>
+</li>
+<li>
+<p>How do you evaluate goodness of fit?
+→ Check residuals, R², or compare errors between model and actual data.</p>
+</li>
+<li>
+<p>How do you handle outliers in curve fitting?
+→ Filter them, use robust methods, or down-weight them with larger <code>sigma</code>.</p>
+</li>
+<li>
+<p>How do you fit multiple datasets simultaneously?
+→ Combine them into one objective function or merge arrays before fitting.</p>
+</li>
+<li>
+<p>How do you use polynomial fitting with SciPy?
+→ Use <code>numpy.polyfit()</code> or wrap a polynomial model for <code>curve_fit()</code>.</p>
+</li>
+<li>
+<p>How do you visualize fitted curves alongside data?
+→ Plot raw points and overlay the model’s predicted curve.</p>
+</li>
+</ol>
+<hr>
+<h3 id="batch-10-data-analysis-ecosystems--deployment-q901%E2%80%93q1000"><strong>Batch 10: Data Analysis Ecosystems &amp; Deployment (Q901–Q1000)</strong></h3>
+<h4 id="data-wrangling-pipelines"><strong>Data Wrangling Pipelines</strong></h4>
+<ol start="901">
+<li>
+<p>How do you combine Pandas and NumPy efficiently in a data pipeline?
+→ Use Pandas for structure and NumPy for fast math, swapping between them with <code>.values</code> or <code>to_numpy()</code>.</p>
+</li>
+<li>
+<p>How do you handle missing data in a pipeline workflow?
+→ Apply <code>fillna()</code>, <code>dropna()</code>, or interpolation early in the chain.</p>
+</li>
+<li>
+<p>How do you chain multiple transformations using method chaining?
+→ Link operations with dots and wrap steps in parentheses for clarity.</p>
+</li>
+<li>
+<p>How do you perform feature engineering in a data pipeline?
+→ Create new columns using vectorized NumPy or Pandas expressions.</p>
+</li>
+<li>
+<p>How do you normalize or scale features in a pipeline?
+→ Apply operations like <code>(col - col.mean()) / col.std()</code> or use sklearn scalers if needed.</p>
+</li>
+<li>
+<p>How do you apply custom functions in a pipeline?
+→ Use <code>.apply()</code>, <code>.assign()</code>, or vectorized NumPy functions.</p>
+</li>
+<li>
+<p>How do you handle categorical variables in a pipeline?
+→ Convert them using <code>get_dummies()</code> or Pandas categoricals.</p>
+</li>
+<li>
+<p>How do you merge multiple datasets in a pipeline?
+→ Use <code>merge()</code>, <code>concat()</code>, or <code>join()</code> in the flow.</p>
+</li>
+<li>
+<p>How do you filter and select relevant columns efficiently?
+→ Use boolean indexing, column lists, or <code>filter()</code>.</p>
+</li>
+<li>
+<p>How do you maintain reproducibility in a data pipeline?
+→ Fix random seeds, version data sources, and store transformation steps clearly.</p>
+</li>
+</ol>
+<h4 id="visualization-integration"><strong>Visualization Integration</strong></h4>
+<ol start="911">
+<li>
+<p>How do you integrate Matplotlib plots with Pandas data?
+→ Call <code>.plot()</code> directly on DataFrames since they hook into Matplotlib automatically.</p>
+</li>
+<li>
+<p>How do you use Seaborn with Pandas DataFrames?
+→ Pass column names directly to Seaborn functions because they read DataFrames natively.</p>
+</li>
+<li>
+<p>How do you use Plotly for interactive visualizations with Pandas?
+→ Feed DataFrames into Plotly Express functions like <code>px.line(df, x, y)</code>.</p>
+</li>
+<li>
+<p>How do you combine multiple visualizations in a single workflow?
+→ Create several plots step-by-step and stack or sequence them in one script or notebook cell.</p>
+</li>
+<li>
+<p>How do you create dashboards with Python visualization libraries?
+→ Use tools like Plotly Dash or Streamlit to assemble plots into interactive layouts.</p>
+</li>
+<li>
+<p>How do you update visualizations dynamically in a notebook?
+→ Re-run the cell or use widgets like ipywidgets to refresh plots on the fly.</p>
+</li>
+<li>
+<p>How do you export visualizations for reporting?
+→ Save them using <code>.savefig()</code> or Plotly’s export functions.</p>
+</li>
+<li>
+<p>How do you overlay multiple plot types in one figure?
+→ Plot them on the same axes or add layers before showing the figure.</p>
+</li>
+<li>
+<p>How do you customize color palettes for integrated visualizations?
+→ Pick palettes from Seaborn or define custom lists and pass them into plotting functions.</p>
+</li>
+<li>
+<p>How do you visualize grouped or aggregated data effectively?
+→ Group with Pandas, then chart the results using bars, lines, or boxplots.</p>
+</li>
+</ol>
+<h4 id="workflow-tools"><strong>Workflow Tools</strong></h4>
+<ol start="921">
+<li>
+<p>What is Jupyter Notebook, and why is it used for data analysis?
+→ It’s an interactive workspace where you mix code, text, and visuals to explore data easily.</p>
+</li>
+<li>
+<p>How do you install and launch Jupyter Notebook?
+→ Install via pip or Anaconda and run <code>jupyter notebook</code> in a terminal.</p>
+</li>
+<li>
+<p>How do you create and run cells in Jupyter Notebook?
+→ Add cells with the toolbar and run them using Shift+Enter.</p>
+</li>
+<li>
+<p>How do you use Markdown and code cells effectively?
+→ Use code cells for execution and Markdown cells for explanations, headings, and notes.</p>
+</li>
+<li>
+<p>How do you use IPython magic commands for workflow efficiency?
+→ Prefix commands with <code>%</code> or <code>%%</code> to access shortcuts like <code>%ls</code>, <code>%timeit</code>, or <code>%%bash</code>.</p>
+</li>
+<li>
+<p>How do you profile code execution in Jupyter using <code>%timeit</code>?
+→ Write <code>%timeit your_code</code> to get fast performance estimates.</p>
+</li>
+<li>
+<p>How do you export notebooks to HTML or PDF?
+→ Use <code>File → Download as</code> or run <code>jupyter nbconvert</code>.</p>
+</li>
+<li>
+<p>How do you organize large projects using notebooks?
+→ Split work into separate notebooks and keep them in tidy folders.</p>
+</li>
+<li>
+<p>How do you use Jupyter Lab for advanced workflows?
+→ Launch it with <code>jupyter lab</code> to get tabs, split views, and better file management.</p>
+</li>
+<li>
+<p>How do you integrate notebooks with version control systems?
+→ Store <code>.ipynb</code> files in Git and use tools like <code>nbdime</code> for cleaner diffs.</p>
+</li>
+</ol>
+<h4 id="deployment--automation"><strong>Deployment &amp; Automation</strong></h4>
+<ol start="931">
+<li>
+<p>How do you convert a Python script into a scheduled task?
+→ Use system schedulers like cron or Task Scheduler to run your script at set times.</p>
+</li>
+<li>
+<p>How do you use cron jobs to automate Python scripts?
+→ Add a line in <code>crontab -e</code> specifying the schedule and Python command.</p>
+</li>
+<li>
+<p>How do you use Windows Task Scheduler for Python scripts?
+→ Create a new task, point it to your Python executable and script, and set a trigger.</p>
+</li>
+<li>
+<p>How do you automate data ingestion pipelines?
+→ Chain scripts or tools that fetch, clean, and store data on a schedule.</p>
+</li>
+<li>
+<p>How do you deploy Python scripts as web services?
+→ Wrap them with frameworks like Flask or FastAPI and run on a server.</p>
+</li>
+<li>
+<p>How do you use Airflow for workflow scheduling and orchestration?
+→ Define tasks as DAGs and let Airflow manage dependencies and timing.</p>
+</li>
+<li>
+<p>How do you monitor deployed pipelines for failures?
+→ Use logs, alerts, and monitoring tools to catch issues early.</p>
+</li>
+<li>
+<p>How do you handle logging and error reporting in deployed scripts?
+→ Use Python’s <code>logging</code> module and send errors to files or alert systems.</p>
+</li>
+<li>
+<p>How do you create reusable scripts for different datasets?
+→ Parameterize file paths and settings so the same script adapts easily.</p>
+</li>
+<li>
+<p>How do you manage dependencies in deployed environments?
+→ Use virtual environments or tools like <code>requirements.txt</code> to lock versions.</p>
+</li>
+</ol>
+<h4 id="performance-tuning"><strong>Performance Tuning</strong></h4>
+<ol start="941">
+<li>
+<p>How do you profile Python code to find bottlenecks?
+→ Use profiling tools to spot slow lines or functions in your code.</p>
+</li>
+<li>
+<p>How do you use <code>cProfile</code> for performance profiling?
+→ Run <code>python -m cProfile script.py</code> or import it and profile specific functions.</p>
+</li>
+<li>
+<p>How do you optimize loops with vectorized operations?
+→ Replace Python loops with NumPy operations that run in optimized C code.</p>
+</li>
+<li>
+<p>How do you reduce memory usage with appropriate data types?
+→ Pick smaller dtypes like <code>float32</code> or <code>int16</code> when precision allows.</p>
+</li>
+<li>
+<p>How do you optimize Pandas and NumPy operations for large datasets?
+→ Use vectorization, avoid Python loops, and work in chunks if needed.</p>
+</li>
+<li>
+<p>How do you parallelize computations using <code>multiprocessing</code>?
+→ Spawn multiple processes with <code>Pool</code> or <code>Process</code> to split heavy work.</p>
+</li>
+<li>
+<p>How do you use Dask for out-of-core and parallel computing?
+→ Replace NumPy or Pandas with Dask equivalents and let Dask schedule tasks.</p>
+</li>
+<li>
+<p>How do you balance memory and CPU performance in pipelines?
+→ Tune batch sizes, pick efficient dtypes, and avoid unnecessary copies.</p>
+</li>
+<li>
+<p>How do you cache intermediate results for efficiency?
+→ Save results to disk or memory so repeated steps don’t recompute.</p>
+</li>
+<li>
+<p>How do you benchmark code before and after optimizations?
+→ Time sections with <code>%timeit</code> or <code>time</code> to compare improvements.</p>
+</li>
+</ol>
+<h4 id="advanced-data-handling"><strong>Advanced Data Handling</strong></h4>
+<ol start="951">
+<li>
+<p>How do you handle large CSV files efficiently?
+→ Read in chunks, use efficient dtypes, or switch to faster formats.</p>
+</li>
+<li>
+<p>How do you read and write Parquet files with Pandas?
+→ Use <code>read_parquet()</code> and <code>to_parquet()</code> for fast, compressed columnar storage.</p>
+</li>
+<li>
+<p>How do you use HDF5 files for large datasets?
+→ Store and access data with <code>HDFStore</code> for quick, structured retrieval.</p>
+</li>
+<li>
+<p>How do you integrate SQL databases with Pandas?
+→ Use <code>read_sql()</code> and <code>to_sql()</code> with a database connection.</p>
+</li>
+<li>
+<p>How do you optimize database queries for Pandas workflows?
+→ Filter, aggregate, and limit data inside SQL before loading it.</p>
+</li>
+<li>
+<p>How do you handle streaming data in Python pipelines?
+→ Process data as it arrives using generators or streaming libraries.</p>
+</li>
+<li>
+<p>How do you combine batch and streaming data processing?
+→ Merge periodic batch loads with real-time event streams in the same pipeline.</p>
+</li>
+<li>
+<p>How do you manage versioning of large datasets?
+→ Use tools like DVC or store timestamped snapshots.</p>
+</li>
+<li>
+<p>How do you perform incremental updates to large datasets?
+→ Append only new records and track offsets or timestamps.</p>
+</li>
+<li>
+<p>How do you maintain data integrity across multiple sources?
+→ Validate schemas, enforce constraints, and cross-check data during ingestion.</p>
+</li>
+</ol>
+<h4 id="visualization--reporting"><strong>Visualization &amp; Reporting</strong></h4>
+<ol start="961">
+<li>
+<p>How do you create automated reports using Python scripts?
+→ Generate text, tables, and plots in scripts and export them as files like HTML or PDF.</p>
+</li>
+<li>
+<p>How do you export Pandas DataFrames as tables in reports?
+→ Convert them to HTML, LaTeX, or images and embed them in the report.</p>
+</li>
+<li>
+<p>How do you embed interactive visualizations in reports?
+→ Use Plotly or Bokeh and export the interactive HTML.</p>
+</li>
+<li>
+<p>How do you schedule report generation automatically?
+→ Trigger the script with cron or Task Scheduler at regular intervals.</p>
+</li>
+<li>
+<p>How do you format visualizations for presentation?
+→ Clean up labels, titles, and layouts so the plots look polished.</p>
+</li>
+<li>
+<p>How do you integrate Matplotlib, Seaborn, and Plotly for consistent reports?
+→ Use shared color themes and styles across all three libraries.</p>
+</li>
+<li>
+<p>How do you create summary dashboards using Python?
+→ Build dashboards with libraries like Dash or Streamlit.</p>
+</li>
+<li>
+<p>How do you visualize time series trends over long periods?
+→ Plot smoothed lines, rolling stats, or zoomable interactive charts.</p>
+</li>
+<li>
+<p>How do you create comparative visualizations for multiple datasets?
+→ Overlay or arrange plots side-by-side to show differences clearly.</p>
+</li>
+<li>
+<p>How do you ensure reproducibility of visual reports?
+→ Fix random seeds, version data, and keep scripts consistent.</p>
+</li>
+</ol>
+<h4 id="parallelization--scalability"><strong>Parallelization &amp; Scalability</strong></h4>
+<ol start="971">
+<li>
+<p>How do you use <code>joblib</code> for parallel computing in Python?
+→ Use <code>Parallel</code> and <code>delayed()</code> to run loops across multiple cores.</p>
+</li>
+<li>
+<p>How do you use <code>concurrent.futures</code> for parallel tasks?
+→ Create a <code>ThreadPoolExecutor</code> or <code>ProcessPoolExecutor</code> and submit tasks.</p>
+</li>
+<li>
+<p>How do you distribute computations across multiple cores?
+→ Use multiprocessing, joblib, or Dask to split work into parallel chunks.</p>
+</li>
+<li>
+<p>How do you handle large datasets with limited memory?
+→ Stream, chunk, or process data lazily instead of loading it all at once.</p>
+</li>
+<li>
+<p>How do you process data in chunks to improve scalability?
+→ Read or compute in fixed-size blocks and handle each block independently.</p>
+</li>
+<li>
+<p>How do you use Dask DataFrames for parallel Pandas workflows?
+→ Replace Pandas with Dask DataFrames and let Dask split work across cores.</p>
+</li>
+<li>
+<p>How do you balance CPU and memory usage in scalable pipelines?
+→ Tune chunk sizes, limit parallelism, and pick efficient data types.</p>
+</li>
+<li>
+<p>How do you avoid race conditions in parallel processing?
+→ Use locks, queues, or avoid shared mutable state entirely.</p>
+</li>
+<li>
+<p>How do you profile parallel workflows for efficiency?
+→ Measure task times, worker usage, and bottlenecks with profiling tools.</p>
+</li>
+<li>
+<p>How do you monitor distributed computations in Python?
+→ Use Dask’s dashboard or logging from your parallel framework.</p>
+</li>
+</ol>
+<h4 id="data-validation--quality"><strong>Data Validation &amp; Quality</strong></h4>
+<ol start="981">
+<li>
+<p>How do you validate input data in pipelines?
+→ Apply checks on types, ranges, and formats before processing.</p>
+</li>
+<li>
+<p>How do you check for missing or null values?
+→ Use <code>isnull()</code> or <code>isna()</code> and count or filter them.</p>
+</li>
+<li>
+<p>How do you enforce data type consistency?
+→ Convert columns with <code>astype()</code> or schema rules.</p>
+</li>
+<li>
+<p>How do you detect duplicates in large datasets?
+→ Use <code>duplicated()</code> and filter or drop them.</p>
+</li>
+<li>
+<p>How do you handle inconsistent categorical values?
+→ Normalize them with mapping, cleaning, or category lists.</p>
+</li>
+<li>
+<p>How do you validate ranges and limits of numerical data?
+→ Check with boolean conditions like <code>(col &gt;= low) &amp; (col &lt;= high)</code>.</p>
+</li>
+<li>
+<p>How do you log validation errors efficiently?
+→ Write issues to structured logs or error files as they appear.</p>
+</li>
+<li>
+<p>How do you perform automated sanity checks on datasets?
+→ Run predefined rules that confirm shape, ranges, and distribution patterns.</p>
+</li>
+<li>
+<p>How do you generate reports on data quality?
+→ Summarize validation results into tables or dashboards.</p>
+</li>
+<li>
+<p>How do you integrate data validation with deployment pipelines?
+→ Make validation a required step before running main tasks.</p>
+</li>
+</ol>
+<h4 id="scripting--automation-best-practices"><strong>Scripting &amp; Automation Best Practices</strong></h4>
+<ol start="991">
+<li>
+<p>How do you structure Python scripts for reusability?
+→ Break logic into functions and keep reusable parts in separate modules.</p>
+</li>
+<li>
+<p>How do you modularize code for readability?
+→ Group related functions into files and keep each module focused.</p>
+</li>
+<li>
+<p>How do you use configuration files to manage parameters?
+→ Store settings in YAML/JSON/INI and load them at runtime.</p>
+</li>
+<li>
+<p>How do you handle logging and exception handling in scripts?
+→ Use the <code>logging</code> module and wrap risky code in try–except blocks.</p>
+</li>
+<li>
+<p>How do you create command-line interfaces for scripts?
+→ Use <code>argparse</code> to parse options and arguments.</p>
+</li>
+<li>
+<p>How do you test scripts before deployment?
+→ Write unit tests and run them with tools like pytest.</p>
+</li>
+<li>
+<p>How do you automate repetitive data tasks efficiently?
+→ Wrap tasks in functions and run them on schedules or loops.</p>
+</li>
+<li>
+<p>How do you integrate version control in deployed scripts?
+→ Track scripts with Git and tag stable releases.</p>
+</li>
+<li>
+<p>How do you schedule scripts for batch processing?
+→ Use cron, Task Scheduler, or workflow tools to run them periodically.</p>
+</li>
+<li>
+<p>How do you ensure maintainability and scalability of data pipelines?
+→ Keep code clean, document flows, and split big tasks into modular stages.</p>
+</li>
+</ol>
+<hr>
+
+<script src="_enhance.js"></script>
+</body>
+</html>

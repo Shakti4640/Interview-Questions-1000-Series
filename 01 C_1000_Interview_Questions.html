@@ -1,0 +1,4630 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>01 C_1000_Interview_Questions.md</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+<link rel="stylesheet" href="_enhance.css">
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="c-programming-interview-questions"><strong>C Programming Interview Questions</strong></h1>
+<h2>Jump to Batch</h2>
+<ul>
+  <li><a href="#%F0%9F%A7%A9-batch-1-c-basics--syntax-q1-%E2%80%93-q100">🧩 Batch 1: C Basics & Syntax (Q1 - Q100)</a></li>
+  <li><a href="#%F0%9F%A7%A0-batch-2-memory-management--pointers-q101%E2%80%93q200">🧠 Batch 2: Memory Management & Pointers (Q101-Q200)</a></li>
+  <li><a href="#%E2%9A%99%EF%B8%8F-batch-3-advanced-c-features-q201%E2%80%93q300">⚙️ Batch 3: Advanced C Features (Q201-Q300)</a></li>
+  <li><a href="#%F0%9F%93%9A-batch-4-c-standard-library--io-q301%E2%80%93q400">📚 Batch 4: C Standard Library & I/O (Q301-Q400)</a></li>
+  <li><a href="#%F0%9F%A7%AE-batch-5-data-structures-in-c-q401%E2%80%93q500">🧮 Batch 5: Data Structures in C (Q401-Q500)</a></li>
+  <li><a href="#%F0%9F%97%83%EF%B8%8F-batch-6-file-handling--data-processing-q501%E2%80%93q600">🗃️ Batch 6: File Handling & Data Processing (Q501-Q600)</a></li>
+  <li><a href="#%F0%9F%A7%AE-batch-7-numerical-computing--algorithms-q601%E2%80%93q700">🧮 Batch 7: Numerical Computing & Algorithms (Q601-Q700)</a></li>
+  <li><a href="#%E2%9A%99%EF%B8%8F-batch-8-scientific-computing-with-c-q701%E2%80%93q800">⚙️ Batch 8: Scientific Computing with C (Q701-Q800)</a></li>
+  <li><a href="#%F0%9F%8E%A8-batch-9-visualization--output-in-c-q801%E2%80%93q900">🎨 Batch 9: Visualization & Output in C (Q801-Q900)</a></li>
+  <li><a href="#%F0%9F%8F%97%EF%B8%8F-batch-10-data-analysis-pipelines--build-systems-q901%E2%80%93q1000">🏗️ Batch 10: Data Analysis Pipelines & Build Systems (Q901-Q1000)</a></li>
+</ul>
+<hr>
+<h2 id="%F0%9F%A7%A9-batch-1-c-basics--syntax-q1-%E2%80%93-q100">🧩 <strong>Batch 1: C Basics &amp; Syntax (Q1 – Q100)</strong></h2>
+<h3 id="general-basics"><strong>General Basics</strong></h3>
+<ol>
+<li>
+<p>What is the C programming language and who developed it?
+→ A fast, low-level programming language created by Dennis Ritchie.</p>
+</li>
+<li>
+<p>Explain the difference between compiler and interpreter.
+→ A compiler translates everything at once, an interpreter reads and runs line by line like a slow but careful reader.</p>
+</li>
+<li>
+<p>What are the major features that distinguish C from assembly language?
+→ C is more human-friendly and less machine-specific, like moving from caveman grunts to actual words.</p>
+</li>
+<li>
+<p>What does portability mean in the context of C programs?
+→ It means your code can run on many machines without rewriting it—like wearing “one-size-fits-all” clothes.</p>
+</li>
+<li>
+<p>What is the role of the <code>main()</code> function in a C program?
+→ It’s the program’s official starting point, like the front door everyone must enter through.</p>
+</li>
+<li>
+<p>Can a C program have more than one <code>main()</code> function? Explain.
+→ No, because the program wouldn’t know which front door to walk through.</p>
+</li>
+<li>
+<p>What is the return type of <code>main()</code> and why?
+→ Usually <code>int</code>, so it can politely report success or failure to the operating system.</p>
+</li>
+<li>
+<p>Why do we include <code>stdio.h</code> in most programs?
+→ Because it gives us the tools for input and output, like handing us a keyboard and a megaphone.</p>
+</li>
+<li>
+<p>What is the significance of the semicolon (<code>;</code>) in C?
+→ It ends statements, just like a period ends a sentence before things get confusing.</p>
+</li>
+<li>
+<p>Explain what a token is in C.
+→ It’s the smallest meaningful piece of code, like the tiny Lego brick that helps build the whole structure.</p>
+</li>
+</ol>
+<h3 id="variables-and-data-types"><strong>Variables and Data Types</strong></h3>
+<ol start="11">
+<li>
+<p>What are the basic data types supported by C?
+→ <code>int</code>, <code>float</code>, <code>double</code>, <code>char</code>, and <code>void</code>—the starter pack of data types.</p>
+</li>
+<li>
+<p>What is the difference between <code>int</code>, <code>short</code>, <code>long</code>, and <code>long long</code>?
+→ They’re all integers but with different storage sizes, like small, medium, large, and extra-large T-shirts.</p>
+</li>
+<li>
+<p>What is the difference between <code>float</code> and <code>double</code>?
+→ A <code>double</code> holds numbers with more precision, like zooming in with a better camera lens.</p>
+</li>
+<li>
+<p>What does <code>unsigned</code> mean in variable declaration?
+→ It tells the variable to store only non-negative values, giving it extra room for bigger positives.</p>
+</li>
+<li>
+<p>Can a variable name start with a number?
+→ No, C won’t allow it—names must start with letters or underscores.</p>
+</li>
+<li>
+<p>What is the scope of a variable?
+→ It’s the region of the program where the variable can be used, like its personal “operating zone.”</p>
+</li>
+<li>
+<p>What is the lifetime of a variable?
+→ It’s how long the variable exists in memory, from birth to garbage time.</p>
+</li>
+<li>
+<p>What are global, local, and static variables?
+→ Global live everywhere, local live only inside their block, static live long but stay private.</p>
+</li>
+<li>
+<p>What are lvalues and rvalues?
+→ lvalues refer to memory locations, rvalues refer to actual values—like an address vs the letter you receive.</p>
+</li>
+<li>
+<p>What is the size of an <code>int</code> on a 32-bit vs 64-bit system?
+→ Typically 4 bytes on both, like a classic that rarely changes size.</p>
+</li>
+</ol>
+<h3 id="operators"><strong>Operators</strong></h3>
+<ol start="21">
+<li>
+<p>What are the different types of operators in C?
+→ Arithmetic, relational, logical, bitwise, assignment, and a few fancy ones like the ternary operator.</p>
+</li>
+<li>
+<p>Explain the difference between <code>=</code> and <code>==</code>.
+→ <code>=</code> assigns a value, <code>==</code> checks a value—one gives, the other questions.</p>
+</li>
+<li>
+<p>What is the modulus operator used for?
+→ It gives the remainder, like checking what’s left after sharing candies evenly.</p>
+</li>
+<li>
+<p>Explain the difference between prefix and postfix increment operators.
+→ Prefix increases first, postfix increases later—like grabbing a snack before vs after a walk.</p>
+</li>
+<li>
+<p>What is the order of precedence among arithmetic operators?
+→ Multiplication, division, and modulus come first, then addition and subtraction—like VIPs entering before regular guests.</p>
+</li>
+<li>
+<p>How does the logical AND (<code>&amp;&amp;</code>) operator differ from bitwise AND (<code>&amp;</code>)?
+→ <code>&amp;&amp;</code> works on true/false, <code>&amp;</code> works on bits—one judges logic, the other judges binary fashion.</p>
+</li>
+<li>
+<p>What is a ternary operator? Give an example.
+→ A mini if-else in one line: <code>x = (a &gt; b) ? a : b;</code></p>
+</li>
+<li>
+<p>How does operator associativity affect expression evaluation?
+→ It decides which direction operations happen—left-to-right or right-to-left, like reading styles.</p>
+</li>
+<li>
+<p>What is the result of integer division in C?
+→ It drops the decimal part, giving you the whole-number chunk only.</p>
+</li>
+<li>
+<p>What happens if you divide an integer by zero in C?
+→ The program crashes or behaves wildly—like trying to split food by zero people.</p>
+</li>
+</ol>
+<h3 id="control-flow"><strong>Control Flow</strong></h3>
+<ol start="31">
+<li>
+<p>What are conditional statements in C?
+→ They let the program make decisions, like tiny traffic lights for your code.</p>
+</li>
+<li>
+<p>Explain how <code>if</code>, <code>else if</code>, and <code>else</code> work.
+→ They check conditions in order and run the first matching block, like a queue of “if not this, try that.”</p>
+</li>
+<li>
+<p>What is the difference between <code>switch</code> and <code>if</code> statements?
+→ <code>switch</code> handles many fixed values neatly, while <code>if</code> handles all kinds of conditions.</p>
+</li>
+<li>
+<p>Can a <code>switch</code> statement work with floating-point numbers?
+→ No, it only plays nicely with integers and characters.</p>
+</li>
+<li>
+<p>What is the purpose of the <code>break</code> statement?
+→ It stops loops or switch cases immediately, like pulling the emergency brake.</p>
+</li>
+<li>
+<p>How is the <code>continue</code> statement used in loops?
+→ It skips the current iteration and jumps to the next loop cycle, like saying “next!” quickly.</p>
+</li>
+<li>
+<p>What is an infinite loop? Give an example.
+→ A loop that never ends, like <code>while(1){}</code>.</p>
+</li>
+<li>
+<p>What are the three types of loops in C?
+→ <code>for</code>, <code>while</code>, and <code>do-while</code>—the looping trio.</p>
+</li>
+<li>
+<p>How does a <code>for</code> loop differ from a <code>while</code> loop?
+→ A <code>for</code> loop packs setup, condition, and update in one line; a <code>while</code> keeps them separate.</p>
+</li>
+<li>
+<p>Can a <code>for</code> loop run indefinitely? How?
+→ Yes, by leaving out the condition: <code>for(;;){}</code>.</p>
+</li>
+</ol>
+<h3 id="functions"><strong>Functions</strong></h3>
+<ol start="41">
+<li>
+<p>What is a function in C?
+→ A reusable block of code that performs a task, like a mini-machine you can call anytime.</p>
+</li>
+<li>
+<p>How do you declare and define a function?
+→ Declare by stating its name, return type, and parameters; define by adding the actual code body.</p>
+</li>
+<li>
+<p>What is the difference between a function declaration and a definition?
+→ A declaration introduces it; a definition does the real work.</p>
+</li>
+<li>
+<p>What is a function prototype and why is it important?
+→ It tells the compiler what the function looks like before it’s used, preventing confusion.</p>
+</li>
+<li>
+<p>How does recursion work in C?
+→ A function calls itself until a stopping condition is met, like a mirror reflecting another mirror.</p>
+</li>
+<li>
+<p>What are inline functions and when are they used?
+→ They ask the compiler to insert code directly to avoid call overhead, good for tiny, speedy tasks.</p>
+</li>
+<li>
+<p>What is the purpose of the <code>return</code> statement?
+→ It sends back a value and ends the function’s execution.</p>
+</li>
+<li>
+<p>Can a function return more than one value?
+→ Not directly, but you can use pointers, structs, or arrays to sneak in multiple results.</p>
+</li>
+<li>
+<p>How do you pass an array to a function?
+→ By passing the array’s name, which acts like a pointer to its first element.</p>
+</li>
+<li>
+<p>What is call by value vs call by reference?
+→ Call by value sends a copy; call by reference sends the real address like handing over the actual key.</p>
+</li>
+</ol>
+<h3 id="preprocessor-directives"><strong>Preprocessor Directives</strong></h3>
+<ol start="51">
+<li>
+<p>What is a preprocessor in C?
+→ A tool that prepares your code before compilation, like a chef chopping veggies before cooking.</p>
+</li>
+<li>
+<p>Explain the purpose of the <code>#include</code> directive.
+→ It pulls in external code or libraries so you don’t reinvent the wheel.</p>
+</li>
+<li>
+<p>What does <code>#define</code> do?
+→ It creates a macro—basically a shortcut or nickname for something.</p>
+</li>
+<li>
+<p>How do you write a multi-line macro?
+→ By ending each line with a backslash <code>\</code> so it continues smoothly.</p>
+</li>
+<li>
+<p>What is conditional compilation?
+→ It allows code to compile only if certain conditions are met, like selective VIP entry.</p>
+</li>
+<li>
+<p>What is the difference between <code>#ifdef</code>, <code>#ifndef</code>, and <code>#if</code>?
+→ <code>#ifdef</code> checks if defined, <code>#ifndef</code> checks if not defined, and <code>#if</code> checks a condition.</p>
+</li>
+<li>
+<p>Can macros take arguments?
+→ Yes, they can act like mini-functions without the rules.</p>
+</li>
+<li>
+<p>What is the use of <code>#undef</code>?
+→ It removes a macro definition, basically “forget this ever existed.”</p>
+</li>
+<li>
+<p>How is <code>#pragma</code> used?
+→ It gives special instructions to the compiler, like passing secret notes.</p>
+</li>
+<li>
+<p>What happens during macro expansion?
+→ The macro gets replaced with its actual content, like unfolding a shortcut into full text.</p>
+</li>
+</ol>
+<h3 id="pointers-introduction"><strong>Pointers (Introduction)</strong></h3>
+<ol start="61">
+<li>
+<p>What is a pointer in C?
+→ A variable that stores a memory address instead of a regular value.</p>
+</li>
+<li>
+<p>How do you declare a pointer variable?
+→ By using <code>*</code>, like <code>int *p;</code>.</p>
+</li>
+<li>
+<p>What does the <code>*</code> operator mean when used with pointers?
+→ It dereferences the pointer to access the value it points to.</p>
+</li>
+<li>
+<p>What does the <code>&amp;</code> operator do?
+→ It gives you the memory address of a variable.</p>
+</li>
+<li>
+<p>What is the value of a null pointer?
+→ It holds zero as an address, meaning it points nowhere.</p>
+</li>
+<li>
+<p>How do you assign the address of a variable to a pointer?
+→ Use <code>&amp;</code>, like <code>p = &amp;x;</code>.</p>
+</li>
+<li>
+<p>What is pointer arithmetic?
+→ Doing math on pointers to move through memory step by step.</p>
+</li>
+<li>
+<p>How do you increment a pointer?
+→ By doing <code>p++</code>, which moves it to the next element type-sized slot.</p>
+</li>
+<li>
+<p>What is a void pointer and when would you use it?
+→ A pointer with no type, useful for generic data handling.</p>
+</li>
+<li>
+<p>What are function pointers?
+→ Pointers that store the address of a function so you can call it indirectly.</p>
+</li>
+</ol>
+<h3 id="arrays-and-strings"><strong>Arrays and Strings</strong></h3>
+<ol start="71">
+<li>
+<p>How do you declare an array in C?
+→ By specifying type and size, like <code>int a[5];</code>.</p>
+</li>
+<li>
+<p>What is the difference between an array and a pointer?
+→ An array is a fixed block of memory; a pointer just points to a memory location.</p>
+</li>
+<li>
+<p>How do you initialize an array during declaration?
+→ By listing values in braces, like <code>int a[3] = {1, 2, 3};</code>.</p>
+</li>
+<li>
+<p>What happens if you access an array out of bounds?
+→ You get unpredictable behavior, like wandering into someone else’s backyard.</p>
+</li>
+<li>
+<p>How do you find the length of an array?
+→ Using <code>sizeof(a) / sizeof(a[0])</code> for static arrays.</p>
+</li>
+<li>
+<p>How are multidimensional arrays represented in memory?
+→ In row-major order, one row after another in a long line.</p>
+</li>
+<li>
+<p>What is a string in C?
+→ A character array ending with a special zero byte.</p>
+</li>
+<li>
+<p>How do you declare and initialize a string?
+→ Like <code>char s[] = &quot;Hello&quot;;</code>.</p>
+</li>
+<li>
+<p>What is the difference between a string literal and a character array?
+→ A literal lives in read-only memory; a char array is writable.</p>
+</li>
+<li>
+<p>How are strings terminated in C?
+→ With a null character <code>'\0'</code>, like a tiny end-of-message flag.</p>
+</li>
+</ol>
+<h3 id="string-handling"><strong>String Handling</strong></h3>
+<ol start="81">
+<li>
+<p>What does the function <code>strlen()</code> do?
+→ It counts the number of characters in a string before the <code>'\0'</code>.</p>
+</li>
+<li>
+<p>How does <code>strcpy()</code> differ from <code>strncpy()</code>?
+→ <code>strcpy()</code> copies fully; <code>strncpy()</code> copies only up to a limit.</p>
+</li>
+<li>
+<p>What is the purpose of <code>strcmp()</code>?
+→ It compares two strings and tells whether one is smaller, equal, or bigger.</p>
+</li>
+<li>
+<p>What happens if you pass overlapping strings to <code>strcpy()</code>?
+→ You get undefined behavior, like writing while erasing your own notes.</p>
+</li>
+<li>
+<p>How do you concatenate two strings in C?
+→ Use <code>strcat()</code> or <code>strncat()</code> to glue them together.</p>
+</li>
+<li>
+<p>How do you safely copy strings to avoid buffer overflow?
+→ Use <code>strncpy()</code> or check lengths manually like a careful guardian.</p>
+</li>
+<li>
+<p>What is the difference between <code>memcpy()</code> and <code>strcpy()</code>?
+→ <code>memcpy()</code> copies raw bytes; <code>strcpy()</code> copies characters until <code>'\0'</code>.</p>
+</li>
+<li>
+<p>What is the purpose of the null terminator <code>'\0'</code>?
+→ It marks the end of a string so functions know when to stop.</p>
+</li>
+<li>
+<p>How does <code>printf(&quot;%s&quot;, str)</code> know where to stop printing?
+→ It stops when it reaches the <code>'\0'</code> terminator.</p>
+</li>
+<li>
+<p>What is the difference between single quotes (<code>'a'</code>) and double quotes (<code>&quot;a&quot;</code>) in C?
+→ Single quotes hold one character; double quotes hold a full string.</p>
+</li>
+</ol>
+<h3 id="miscellaneous--edge-cases"><strong>Miscellaneous / Edge Cases</strong></h3>
+<ol start="91">
+<li>
+<p>Can you have a function inside another function in C?
+→ No, C doesn’t allow nested functions.</p>
+</li>
+<li>
+<p>What are header files and why are they important?
+→ They contain declarations and help share code across files.</p>
+</li>
+<li>
+<p>What is the use of the <code>const</code> keyword?
+→ It protects a value from being changed.</p>
+</li>
+<li>
+<p>What is the difference between <code>const int *p</code> and <code>int * const p</code>?
+→ The first forbids changing the value, the second forbids changing the pointer.</p>
+</li>
+<li>
+<p>Can you modify a string literal in C?
+→ No, doing so causes undefined behavior.</p>
+</li>
+<li>
+<p>What is the difference between compile-time and runtime errors?
+→ Compile-time errors happen before running; runtime errors happen while running.</p>
+</li>
+<li>
+<p>What are implicit and explicit type conversions?
+→ Implicit happens automatically; explicit happens with a cast.</p>
+</li>
+<li>
+<p>What is the use of the <code>sizeof</code> operator?
+→ It tells you how much memory a type or variable occupies.</p>
+</li>
+<li>
+<p>What is the purpose of the <code>volatile</code> keyword?
+→ It tells the compiler a value may change unexpectedly.</p>
+</li>
+<li>
+<p>What does “undefined behavior” mean in C? Give examples.
+→ It means anything can happen; examples include dividing by zero or accessing out-of-bounds memory.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%A7%A0-batch-2-memory-management--pointers-q101%E2%80%93q200">🧠 <strong>Batch 2: Memory Management &amp; Pointers (Q101–Q200)</strong></h2>
+<h3 id="stack-vs-heap-basics"><strong>Stack vs Heap Basics</strong></h3>
+<ol start="101">
+<li>
+<p>What is the difference between stack memory and heap memory?
+→ Stack is tiny, automatic, and fast; heap is big, manual, and slower.</p>
+</li>
+<li>
+<p>Where are local variables stored in memory?
+→ They live on the stack like guests who don’t stay long.</p>
+</li>
+<li>
+<p>What happens when you exceed the stack size?
+→ The program crashes with a dramatic “stack overflow” moment.</p>
+</li>
+<li>
+<p>How is heap memory allocated in C?
+→ By asking the system nicely using functions like <code>malloc()</code>.</p>
+</li>
+<li>
+<p>What is the role of <code>malloc()</code> in dynamic memory management?
+→ It grabs a chunk of memory for you from the heap.</p>
+</li>
+<li>
+<p>How is memory allocated differently with <code>calloc()</code> compared to <code>malloc()</code>?
+→ <code>calloc()</code> gives you clean, zero-filled memory while <code>malloc()</code> hands you whatever is lying around.</p>
+</li>
+<li>
+<p>What is the purpose of <code>realloc()</code>?
+→ It resizes an already allocated memory block when you change your mind.</p>
+</li>
+<li>
+<p>What happens if you <code>free()</code> the same memory twice?
+→ Your program may behave wildly, like a confused magician repeating the same trick.</p>
+</li>
+<li>
+<p>How do you check if <code>malloc()</code> failed?
+→ You see if it returned <code>NULL</code>, the universal sign of “no memory left.”</p>
+</li>
+<li>
+<p>What is a memory leak?
+→ It’s when memory is allocated but never freed, like forgetting to turn off a tap.</p>
+</li>
+</ol>
+<h3 id="dynamic-memory-operations"><strong>Dynamic Memory Operations</strong></h3>
+<ol start="111">
+<li>
+<p>How do you release dynamically allocated memory?
+→ You call <code>free()</code> to politely return the memory back to the system.</p>
+</li>
+<li>
+<p>What happens if you forget to call <code>free()</code>?
+→ The memory just sits there forever like a guest who never leaves.</p>
+</li>
+<li>
+<p>Can you free memory not allocated by <code>malloc()</code>?
+→ No, doing that is like returning an item you never bought.</p>
+</li>
+<li>
+<p>What is the difference between static and dynamic allocation?
+→ Static is fixed at compile time, dynamic changes at runtime like a flexible plan.</p>
+</li>
+<li>
+<p>What is meant by &quot;dangling pointer&quot;?
+→ It’s a pointer pointing to memory that’s gone—like holding an address to a demolished house.</p>
+</li>
+<li>
+<p>How can dangling pointers be prevented?
+→ Set pointers to <code>NULL</code> after freeing them so they don’t wander off.</p>
+</li>
+<li>
+<p>What does “heap corruption” mean?
+→ It means your program accidentally messed up heap memory, like scribbling on the wrong notebook.</p>
+</li>
+<li>
+<p>What is fragmentation in heap memory?
+→ It’s when free memory gets scattered into tiny pieces that don’t fit your needs well.</p>
+</li>
+<li>
+<p>What are best practices to avoid memory leaks in C?
+→ Always free what you allocate and keep track of every pointer like a responsible babysitter.</p>
+</li>
+<li>
+<p>How can tools like <code>valgrind</code> help with memory debugging?
+→ They spot memory leaks and errors like a detective with x-ray glasses.</p>
+</li>
+</ol>
+<h3 id="pointer-fundamentals-deeper-concepts"><strong>Pointer Fundamentals (Deeper Concepts)</strong></h3>
+<ol start="121">
+<li>
+<p>What is pointer arithmetic?
+→ It’s doing math on pointers to move through memory like stepping stones.</p>
+</li>
+<li>
+<p>How does pointer arithmetic depend on the type of the pointer?
+→ Each step jumps by the size of the pointed-to type, not just one byte.</p>
+</li>
+<li>
+<p>How do you compute the difference between two pointers?
+→ Subtract them to get how many elements lie between them.</p>
+</li>
+<li>
+<p>Can you perform arithmetic on <code>void*</code> pointers?
+→ No, because <code>void*</code> doesn’t know what size to step by.</p>
+</li>
+<li>
+<p>What is a null pointer constant?
+→ It’s a special value that means “points nowhere at all.”</p>
+</li>
+<li>
+<p>Why is <code>NULL</code> defined as <code>((void *)0)</code>?
+→ To clearly mark it as a pointer that leads absolutely nowhere.</p>
+</li>
+<li>
+<p>How do you test if a pointer is valid?
+→ You check if it’s not <code>NULL</code>, though that only weeds out the obviously bad ones.</p>
+</li>
+<li>
+<p>What does dereferencing a null pointer cause?
+→ An instant crash—like trying to open a door that isn’t there.</p>
+</li>
+<li>
+<p>Can two pointers point to the same memory?
+→ Yes, they can share the same spot like roommates.</p>
+</li>
+<li>
+<p>What happens if you increment a pointer beyond an array’s limit?
+→ You wander into forbidden territory, risking wild and unpredictable behavior.</p>
+</li>
+</ol>
+<h3 id="pointer-to-pointer-and-multi-level-pointers"><strong>Pointer-to-Pointer and Multi-level Pointers</strong></h3>
+<ol start="131">
+<li>
+<p>What is a pointer to a pointer?
+→ It’s a pointer that stores the address of another pointer, like a mailbox for a mailbox.</p>
+</li>
+<li>
+<p>How do you declare a pointer to a pointer?
+→ You write something like <code>int **p</code>, adding an extra star for extra depth.</p>
+</li>
+<li>
+<p>What does <code>int **p</code> mean?
+→ It’s a pointer that ultimately leads to an <code>int</code>, just with two hops.</p>
+</li>
+<li>
+<p>How do you dynamically allocate a 2D array using pointers?
+→ First allocate an array of pointers, then allocate rows for each pointer.</p>
+</li>
+<li>
+<p>How do you access elements in a dynamically allocated 2D array?
+→ Use <code>arr[i][j]</code> once everything is properly allocated.</p>
+</li>
+<li>
+<p>What are triple pointers and when are they used?
+→ They’re pointers to double pointers, used when you need to modify a pointer-to-pointer inside a function.</p>
+</li>
+<li>
+<p>How do you free a dynamically allocated 2D array?
+→ Free each row first, then free the array of pointers.</p>
+</li>
+<li>
+<p>Can you return a pointer from a function?
+→ Yes, as long as what it points to still exists afterward.</p>
+</li>
+<li>
+<p>Why can returning the address of a local variable be dangerous?
+→ Because the variable disappears when the function ends, leaving a pointer to nothingness.</p>
+</li>
+<li>
+<p>How do you return dynamically allocated memory from a function safely?
+→ Allocate it on the heap and return the pointer so it stays alive outside the function.</p>
+</li>
+</ol>
+<h3 id="array-and-pointer-duality"><strong>Array and Pointer Duality</strong></h3>
+<ol start="141">
+<li>
+<p>What is the relationship between arrays and pointers in C?
+→ An array is a contiguous block of elements; its name usually <em>decays</em> to a pointer to the first element, so pointers can be used to iterate the array.</p>
+</li>
+<li>
+<p>How does <code>arr[i]</code> relate to pointer arithmetic?
+→ <code>arr[i]</code> is exactly the same as <code>*(arr + i)</code> — move <code>i</code> elements from the start and dereference.</p>
+</li>
+<li>
+<p>Is <code>&amp;arr[0]</code> the same as <code>arr</code>?
+→ Yes: both refer to the address of the first element (they evaluate to the same address in most expressions).</p>
+</li>
+<li>
+<p>Is <code>arr</code> a pointer? Explain carefully.
+→ Not strictly: <code>arr</code> is an array object, not a pointer, but in most expressions it <em>decays</em> to a pointer to its first element.</p>
+</li>
+<li>
+<p>How do you pass an array to a function using pointers?
+→ Pass a pointer to its first element (e.g. <code>void f(int *a, size_t n)</code> and call <code>f(arr, n)</code>).</p>
+</li>
+<li>
+<p>How is <code>sizeof(arr)</code> different from <code>sizeof(ptr)</code>?
+→ <code>sizeof(arr)</code> gives the total bytes of the whole array; <code>sizeof(ptr)</code> gives the size of the pointer itself (typically 4 or 8 bytes).</p>
+</li>
+<li>
+<p>How do you access multidimensional arrays with pointers?
+→ Use row pointers or double dereference, e.g. <code>a[i][j]</code> or <code>*(*(a + i) + j)</code>, or <code>int (*p)[N] = a; p[i][j]</code>.</p>
+</li>
+<li>
+<p>What is a pointer to an array?
+→ It’s a pointer whose target is an entire array (e.g. <code>int (*p)[10]</code> points to an <code>int[10]</code>).</p>
+</li>
+<li>
+<p>What does the declaration <code>int (*p)[10]</code> mean?
+→ <code>p</code> is a pointer to an array of 10 <code>int</code>s.</p>
+</li>
+<li>
+<p>How does <code>p[i][j]</code> work internally in memory?
+→ It computes the <code>i</code>-th row pointer <code>p + i</code>, then the <code>j</code>-th element in that row: <code>*(*(p + i) + j)</code>.</p>
+</li>
+</ol>
+<h3 id="const-volatile-and-restrict"><strong>Const, Volatile, and Restrict</strong></h3>
+<ol start="151">
+<li>
+<p>What does the <code>const</code> qualifier mean when applied to pointers?
+→ It marks something as unchangeable, either the pointer, the data, or both.</p>
+</li>
+<li>
+<p>Differentiate between <code>const int *p</code>, <code>int * const p</code>, and <code>const int * const p</code>.
+→ First: data is constant; second: pointer is constant; third: both are constant.</p>
+</li>
+<li>
+<p>What is the meaning of the <code>volatile</code> keyword?
+→ It tells the compiler the value may change unexpectedly, so don’t optimize it away.</p>
+</li>
+<li>
+<p>When is <code>volatile</code> typically used?
+→ With hardware registers, shared-memory variables, and interrupt-modified data.</p>
+</li>
+<li>
+<p>What happens if you remove <code>volatile</code> from a hardware register variable?
+→ The compiler may assume it never changes and produce dangerously wrong code.</p>
+</li>
+<li>
+<p>What does the <code>restrict</code> keyword do in C99?
+→ It promises that a pointer is the only way to access its pointed-to data.</p>
+</li>
+<li>
+<p>How does <code>restrict</code> help with compiler optimizations?
+→ It lets the compiler rearrange and speed up code because it knows there’s no aliasing.</p>
+</li>
+<li>
+<p>Can <code>restrict</code> be used with multiple pointers to the same memory?
+→ No, that breaks the promise and leads to undefined behavior.</p>
+</li>
+<li>
+<p>Can you cast away <code>const</code> or <code>volatile</code>? What are the dangers?
+→ You can, but using the result to modify forbidden data can cause crashes or undefined behavior.</p>
+</li>
+<li>
+<p>Why should you avoid modifying data declared as <code>const</code>?
+→ Because the program never guaranteed it was writable, so changing it can go badly wrong.</p>
+</li>
+</ol>
+<h3 id="dynamic-data-structures"><strong>Dynamic Data Structures</strong></h3>
+<ol start="161">
+<li>
+<p>How do you create a linked list using dynamic memory allocation?
+→ You keep using <code>malloc()</code> to create new nodes and link them one after another.</p>
+</li>
+<li>
+<p>How do you delete nodes from a linked list in C?
+→ You unlink a node, free it, and carefully move to the next so nothing gets lost.</p>
+</li>
+<li>
+<p>What is a memory pool (custom allocator)?
+→ It’s a pre-allocated chunk of memory you manage yourself like your own mini-heap.</p>
+</li>
+<li>
+<p>How does a simple memory allocator work internally?
+→ It splits big memory blocks into smaller ones and keeps track of who’s using what.</p>
+</li>
+<li>
+<p>How can you use <code>malloc()</code> efficiently in large data structures?
+→ By allocating bigger chunks less often instead of calling <code>malloc()</code> for every tiny piece.</p>
+</li>
+<li>
+<p>What happens if you forget to free a node in a linked list?
+→ That memory stays stuck forever like a book you never returned.</p>
+</li>
+<li>
+<p>How do you implement a stack using dynamic memory?
+→ Treat each node as a box and push or pop by adding or removing from the top.</p>
+</li>
+<li>
+<p>How do you detect a memory leak in a data structure?
+→ Use tools or count allocations and frees to see if something didn’t come back.</p>
+</li>
+<li>
+<p>How do you deep-copy a dynamically allocated structure?
+→ You allocate new memory and copy every nested piece instead of just copying pointers.</p>
+</li>
+<li>
+<p>What is the difference between shallow and deep copy?
+→ Shallow copy copies pointers only; deep copy makes full, independent duplicates.</p>
+</li>
+</ol>
+<h3 id="alignment-and-padding"><strong>Alignment and Padding</strong></h3>
+<ol start="171">
+<li>
+<p>What is data alignment in C?
+→ It means placing data at memory addresses that match the CPU’s preferred boundaries.</p>
+</li>
+<li>
+<p>Why does alignment matter for performance?
+→ Because aligned data lets the CPU grab it faster without extra work.</p>
+</li>
+<li>
+<p>What is structure padding?
+→ It’s the filler bytes the compiler adds so each field sits nicely aligned.</p>
+</li>
+<li>
+<p>How does the compiler decide padding bytes in a struct?
+→ It aligns each member based on its type and adds gaps where needed.</p>
+</li>
+<li>
+<p>How can you minimize padding in a structure?
+→ Arrange members from largest to smallest so fewer gaps appear.</p>
+</li>
+<li>
+<p>What does the <code>#pragma pack</code> directive do?
+→ It forces the compiler to shrink alignment, reducing or removing padding.</p>
+</li>
+<li>
+<p>How can misaligned memory access cause performance issues?
+→ The CPU has to do extra fetching gymnastics to read the data.</p>
+</li>
+<li>
+<p>Can unaligned access cause program crashes?
+→ Yes—some architectures throw a fit and stop the program.</p>
+</li>
+<li>
+<p>How can you check the alignment of a variable?
+→ Use <code>sizeof</code>, <code>_Alignof</code>, or print its address and see how it lines up.</p>
+</li>
+<li>
+<p>What are the typical alignment requirements for 32-bit and 64-bit architectures?
+→ Usually 4-byte alignment on 32-bit systems and 8-byte alignment on 64-bit ones.</p>
+</li>
+</ol>
+<h3 id="memory-safety--debugging"><strong>Memory Safety &amp; Debugging</strong></h3>
+<ol start="181">
+<li>
+<p>What is buffer overflow?
+→ It’s when you stuff more data into a buffer than it can hold, spilling into places it shouldn’t.</p>
+</li>
+<li>
+<p>How can you prevent buffer overflow in C?
+→ Always check sizes and never trust input to behave itself.</p>
+</li>
+<li>
+<p>What is stack smashing?
+→ It’s a stack overflow that overwrites important data and causes chaos.</p>
+</li>
+<li>
+<p>How does Address Space Layout Randomization (ASLR) improve safety?
+→ It scrambles memory locations so attackers can’t guess where anything is.</p>
+</li>
+<li>
+<p>How does <code>gets()</code> lead to memory corruption?
+→ It reads endlessly without limits, like a kid grabbing candy with no bowl.</p>
+</li>
+<li>
+<p>What safer alternative should be used instead of <code>gets()</code>?
+→ Use <code>fgets()</code> because it actually respects buffer size.</p>
+</li>
+<li>
+<p>What is the role of <code>memset()</code> in memory initialization?
+→ It fills memory with a specific value so everything starts clean.</p>
+</li>
+<li>
+<p>How does <code>memmove()</code> differ from <code>memcpy()</code>?
+→ <code>memmove()</code> safely handles overlapping regions; <code>memcpy()</code> doesn’t.</p>
+</li>
+<li>
+<p>What is the use of <code>calloc()</code> zero-initialization?
+→ It gives you fresh memory already wiped to zero.</p>
+</li>
+<li>
+<p>What is a segmentation fault and when does it occur?
+→ It’s a crash that happens when you poke memory you’re not allowed to touch.</p>
+</li>
+</ol>
+<h3 id="advanced-memory-topics"><strong>Advanced Memory Topics</strong></h3>
+<ol start="191">
+<li>
+<p>What is memory mapping (<code>mmap</code>) and how is it used in C?
+→ It maps files or anonymous memory directly into your address space for fast access.</p>
+</li>
+<li>
+<p>What are memory pages?
+→ They’re fixed-size chunks of memory the OS manages like book pages.</p>
+</li>
+<li>
+<p>What happens when you allocate a large block of memory (e.g., &gt;1GB)?
+→ The OS often hands you virtual space first and commits real memory only when touched.</p>
+</li>
+<li>
+<p>How can memory fragmentation affect long-running programs?
+→ Free space gets chopped into useless tiny bits, slowing or blocking future allocations.</p>
+</li>
+<li>
+<p>How do memory allocators like <code>glibc malloc</code> handle large allocations?
+→ They bypass the normal heap and request big chunks directly from the OS with <code>mmap()</code>.</p>
+</li>
+<li>
+<p>What are garbage collectors, and why doesn’t C have one?
+→ They’re automatic cleanup systems, but C leaves memory control to the programmer.</p>
+</li>
+<li>
+<p>How do tools like <code>valgrind</code> or <code>AddressSanitizer</code> detect memory issues?
+→ They watch every access and shout when you do anything suspicious.</p>
+</li>
+<li>
+<p>What is “use after free”?
+→ It’s using a pointer to memory that’s already been returned to the system.</p>
+</li>
+<li>
+<p>How do you guard against use-after-free errors?
+→ Free carefully and set pointers to <code>NULL</code> so they can’t bite back.</p>
+</li>
+<li>
+<p>How can you write memory-safe C code for embedded systems?
+→ Keep allocations predictable, avoid dynamic tricks, and check every access like a hawk.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%E2%9A%99%EF%B8%8F-batch-3-advanced-c-features-q201%E2%80%93q300">⚙️ <strong>Batch 3: Advanced C Features (Q201–Q300)</strong></h2>
+<h3 id="structures-and-unions"><strong>Structures and Unions</strong></h3>
+<ol start="201">
+<li>
+<p>What is a structure in C?
+A user-defined data type that groups different data items under one name.</p>
+</li>
+<li>
+<p>How do you declare and define a structure?
+By using the <code>struct</code> keyword followed by its members inside braces.</p>
+</li>
+<li>
+<p>How can you initialize a structure at declaration?
+By assigning values in braces in the same order as the members.</p>
+</li>
+<li>
+<p>How do you access members of a structure using pointers?
+By using the arrow operator (<code>-&gt;</code>).</p>
+</li>
+<li>
+<p>What is the size of a structure in memory?
+It is the sum of member sizes plus any padding added by the compiler.</p>
+</li>
+<li>
+<p>How does padding affect the size of a structure?
+It increases the structure’s size to maintain proper data alignment.</p>
+</li>
+<li>
+<p>How can you minimize padding in structures?
+By ordering members from largest to smallest data type.</p>
+</li>
+<li>
+<p>What is the <code>typedef</code> keyword used for with structures?
+It creates an alias name so the structure can be used without <code>struct</code>.</p>
+</li>
+<li>
+<p>What are anonymous structures and when are they used?
+Structures without a name, used for quick one-off groupings of data.</p>
+</li>
+<li>
+<p>How do you copy one structure to another?
+By using simple assignment (<code>struct1 = struct2</code>).</p>
+</li>
+<li>
+<p>What are bit-fields in C?
+Special structure members that allow storing values using a specific number of bits.</p>
+</li>
+<li>
+<p>How are bit-fields declared inside a struct?
+By specifying a type, a member name, and a colon followed by the bit width.</p>
+</li>
+<li>
+<p>What is the maximum width of a bit-field?
+It cannot exceed the number of bits in the underlying type.</p>
+</li>
+<li>
+<p>What are the advantages of using bit-fields?
+They save memory and simplify handling of tightly packed data.</p>
+</li>
+<li>
+<p>What are the pitfalls of using bit-fields for hardware registers?
+Their layout and behavior vary by compiler, making them unreliable for hardware mapping.</p>
+</li>
+<li>
+<p>Can you take the address of a bit-field?
+No, because bit-fields do not occupy addressable storage.</p>
+</li>
+<li>
+<p>What happens if you assign a value larger than the bit-field width?
+It gets truncated to fit the defined number of bits.</p>
+</li>
+<li>
+<p>How is bit-field ordering determined?
+By the compiler’s implementation, which chooses how bits are arranged.</p>
+</li>
+<li>
+<p>What are implementation-defined behaviors in bit-fields?
+Ordering, alignment, padding, and underlying type usage may vary across compilers.</p>
+</li>
+<li>
+<p>Can bit-fields be unsigned?
+Yes, using an unsigned integer type.</p>
+</li>
+<li>
+<p>What is a union in C?
+A data type where all members share the same memory space.</p>
+</li>
+<li>
+<p>How does memory layout differ between structs and unions?
+A struct allocates space for all members, while a union allocates space only for its largest member.</p>
+</li>
+<li>
+<p>How do you initialize a union?
+By specifying the value for its first member or using designated initializers.</p>
+</li>
+<li>
+<p>What happens when you assign to one member of a union and read from another?
+You get undefined behavior unless the types share a common representation.</p>
+</li>
+<li>
+<p>What are some real-world uses of unions?
+Memory-efficient variant data storage, protocol parsing, and type reinterpretation.</p>
+</li>
+<li>
+<p>Can a union contain structures?
+Yes, structures can be members of a union.</p>
+</li>
+<li>
+<p>Can a structure contain a union?
+Yes, unions can be included as structure members.</p>
+</li>
+<li>
+<p>How is the size of a union determined?
+By the size of its largest member, plus any alignment padding.</p>
+</li>
+<li>
+<p>What is a tagged union (discriminated union)?
+A pattern where a value is paired with a tag indicating which variant is active.</p>
+</li>
+<li>
+<p>How can you emulate a tagged union pattern in C?
+By combining a union with an enum tag inside a struct.</p>
+</li>
+<li>
+<p>What are flexible array members?
+Struct members declared as arrays without a fixed size for variable-length data.</p>
+</li>
+<li>
+<p>When were flexible array members introduced (which C standard)?
+They were introduced in C99.</p>
+</li>
+<li>
+<p>How do you allocate and use a structure with a flexible array member?
+Allocate enough memory for the struct plus the required extra array bytes.</p>
+</li>
+<li>
+<p>Why must flexible array members be the last element in a struct?
+Because their size isn’t fixed and would disrupt memory layout if placed earlier.</p>
+</li>
+<li>
+<p>How do you calculate total size of a structure with a flexible array?
+Add <code>sizeof(struct)</code> and the needed length of the flexible array.</p>
+</li>
+<li>
+<p>Can a flexible array member be used in a union?
+No, flexible arrays are not allowed inside unions.</p>
+</li>
+<li>
+<p>What are some use cases of flexible array members?
+Variable-length buffers, packets, strings, and dynamic data blocks.</p>
+</li>
+<li>
+<p>What are potential risks of using them incorrectly?
+Incorrect sizing can cause memory overruns or undefined behavior.</p>
+</li>
+<li>
+<p>How do you free a structure containing a flexible array safely?
+Free the single allocated block with <code>free()</code>.</p>
+</li>
+<li>
+<p>How does the compiler handle flexible array layout internally?
+It reserves space only for the struct header and treats the array as trailing storage.</p>
+</li>
+</ol>
+<hr>
+<h3 id="function-pointers-and-callbacks"><strong>Function Pointers and Callbacks</strong></h3>
+<ol start="241">
+<li>
+<p>What is a function pointer?
+A variable that stores the address of a function.</p>
+</li>
+<li>
+<p>How do you declare a pointer to a function returning <code>int</code> and taking <code>float</code> as argument?
+<code>int (*ptr)(float);</code></p>
+</li>
+<li>
+<p>How do you call a function through its pointer?
+By using <code>ptr(arg)</code> just like a normal function call.</p>
+</li>
+<li>
+<p>What are some real-world uses of function pointers?
+They enable dynamic behavior like callbacks, drivers, and plugin systems.</p>
+</li>
+<li>
+<p>How can function pointers be stored in arrays?
+By declaring an array where each element is a function pointer.</p>
+</li>
+<li>
+<p>What is a callback function?
+A function passed as an argument for later execution.</p>
+</li>
+<li>
+<p>How are callbacks implemented in C?
+By passing function pointers into other functions.</p>
+</li>
+<li>
+<p>How does <code>qsort()</code> use function pointers?
+It accepts a comparison function pointer to decide element ordering.</p>
+</li>
+<li>
+<p>How does <code>bsearch()</code> use function pointers?
+It uses a comparator function pointer to match the search key with array elements.</p>
+</li>
+<li>
+<p>What are the advantages and disadvantages of using function pointers?
+They offer flexibility but can reduce clarity and complicate debugging.</p>
+</li>
+<li>
+<p>How can function pointers be used to implement polymorphism in C?
+By assigning different function implementations to pointers and calling them through a common interface.</p>
+</li>
+<li>
+<p>What is a function pointer table (jump table)?
+A collection of function pointers used to dispatch actions quickly.</p>
+</li>
+<li>
+<p>How does a virtual table (vtable) concept from C++ relate to C?
+C simulates it by placing function pointers inside structures.</p>
+</li>
+<li>
+<p>How do you implement an event-driven system with function pointers?
+By registering callback pointers that fire when events occur.</p>
+</li>
+<li>
+<p>How can function pointers be used to replace switch statements?
+By indexing into an array of function pointers instead of branching.</p>
+</li>
+<li>
+<p>What is the syntax for a function returning a function pointer?
+Use parentheses: <code>int (*func(void))(float);</code></p>
+</li>
+<li>
+<p>What is the syntax for a function pointer returning another function pointer?
+Nest the pointer syntax: <code>int (*(*ptr)(void))(float);</code></p>
+</li>
+<li>
+<p>How do you define and use function pointers inside a struct?
+Declare pointer members and call them via <code>struct_instance.ptr()</code>.</p>
+</li>
+<li>
+<p>How do you cast a function pointer to a <code>void *</code>?
+You technically can with a cast, but it's not guaranteed portable.</p>
+</li>
+<li>
+<p>What are the risks of calling a function through a mismatched pointer type?
+It can cause undefined behavior due to incompatible calling conventions.</p>
+</li>
+</ol>
+<hr>
+<h3 id="storage-classes"><strong>Storage Classes</strong></h3>
+<ol start="261">
+<li>
+<p>What are the four main storage classes in C?
+<code>auto</code>, <code>register</code>, <code>static</code>, and <code>extern</code>.</p>
+</li>
+<li>
+<p>What does the <code>auto</code> storage class mean?
+It declares a local variable with automatic storage duration (default for locals).</p>
+</li>
+<li>
+<p>What is the purpose of the <code>register</code> keyword?
+It hints the compiler to store the variable in a CPU register for faster access.</p>
+</li>
+<li>
+<p>Can you take the address of a <code>register</code> variable?
+No, taking its address is not allowed.</p>
+</li>
+<li>
+<p>What does the <code>static</code> keyword mean inside a function?
+The variable retains its value between function calls.</p>
+</li>
+<li>
+<p>How does <code>static</code> change variable lifetime and linkage?
+It gives a variable permanent lifetime and restricts scope to the file or block.</p>
+</li>
+<li>
+<p>What does <code>static</code> mean when used with a global variable?
+It limits the variable’s visibility to the file in which it is declared.</p>
+</li>
+<li>
+<p>How does <code>static</code> affect function scope?
+It makes the function visible only within its defining file (internal linkage).</p>
+</li>
+<li>
+<p>What is the difference between internal and external linkage?
+Internal linkage restricts access to a single file; external linkage allows access across files.</p>
+</li>
+<li>
+<p>What does the <code>extern</code> keyword do?
+It declares a variable or function defined in another file.</p>
+</li>
+<li>
+<p>Can <code>extern</code> variables be initialized in multiple files?
+No, they should be defined and initialized in only one file; other files just declare them.</p>
+</li>
+<li>
+<p>How do you share variables between multiple source files?
+Define the variable in one file and declare it with <code>extern</code> in others.</p>
+</li>
+<li>
+<p>What happens if two globals with the same name exist in different translation units?
+If both have internal linkage (<code>static</code>), they are separate; otherwise, it causes a linkage conflict.</p>
+</li>
+<li>
+<p>What is the default storage class of global variables?
+<code>extern</code> (external linkage) by default.</p>
+</li>
+<li>
+<p>What is the lifetime of static local variables?
+They exist for the entire program execution.</p>
+</li>
+<li>
+<p>How does <code>static</code> affect recursion in a function?
+Static local variables retain values across recursive calls.</p>
+</li>
+<li>
+<p>What is the difference between <code>auto</code> and <code>static</code> storage duration?
+<code>auto</code> variables exist only during function execution; <code>static</code> persist for the program’s lifetime.</p>
+</li>
+<li>
+<p>What happens to uninitialized global variables?
+They are zero-initialized automatically.</p>
+</li>
+<li>
+<p>What does zero-initialization mean in C?
+Memory is set to all-bits-zero, resulting in numeric <code>0</code>, null pointers, or zeroed structs.</p>
+</li>
+<li>
+<p>How are variables stored in different segments (stack, heap, BSS, data)?
+Local variables → stack, dynamic → heap, uninitialized globals → BSS, initialized globals → data segment.</p>
+</li>
+</ol>
+<hr>
+<h3 id="variadic-functions"><strong>Variadic Functions</strong></h3>
+<ol start="281">
+<li>
+<p>What is a variadic function in C?
+A function that accepts a variable number of arguments.</p>
+</li>
+<li>
+<p>Give an example of a standard variadic function.
+<code>printf()</code>.</p>
+</li>
+<li>
+<p>What library provides macros for handling variable arguments?
+<code>&lt;stdarg.h&gt;</code>.</p>
+</li>
+<li>
+<p>What is the type of <code>va_list</code>?
+It is an implementation-defined type used to traverse arguments.</p>
+</li>
+<li>
+<p>What do the macros <code>va_start</code>, <code>va_arg</code>, and <code>va_end</code> do?
+<code>va_start</code> initializes, <code>va_arg</code> retrieves, and <code>va_end</code> cleans up the argument list.</p>
+</li>
+<li>
+<p>Why must the last named argument be passed to <code>va_start</code>?
+It tells the macro where the variable arguments begin.</p>
+</li>
+<li>
+<p>How do you create your own variadic function?
+Use <code>...</code> in the parameter list and <code>&lt;stdarg.h&gt;</code> macros to access arguments.</p>
+</li>
+<li>
+<p>What are common pitfalls with variadic functions?
+Type mismatches, forgetting to end <code>va_list</code>, and lack of argument count checking.</p>
+</li>
+<li>
+<p>How does a variadic function know when to stop reading arguments?
+By using a sentinel value or an explicit argument count.</p>
+</li>
+<li>
+<p>Why are variadic functions considered unsafe in modern C?
+They bypass type checking, risking undefined behavior if used incorrectly.</p>
+</li>
+<li>
+<p>How is type safety violated in variadic functions?
+The compiler cannot check that the argument types match the function’s expectations.</p>
+</li>
+<li>
+<p>How does <code>printf()</code> handle different argument types?
+It relies on the format string to interpret each argument correctly.</p>
+</li>
+<li>
+<p>What happens if the format string in <code>printf()</code> mismatches the arguments?
+It can produce incorrect output or cause undefined behavior.</p>
+</li>
+<li>
+<p>How can you implement type-safe variadic functions using macros?
+By wrapping calls in macros that enforce type checks before passing arguments.</p>
+</li>
+<li>
+<p>How can you use sentinel values in variadic functions?
+Pass a special value to signal the end of the variable arguments list.</p>
+</li>
+<li>
+<p>How are variadic arguments passed at the ABI (machine) level?
+Typically via the stack or registers, depending on the calling convention.</p>
+</li>
+<li>
+<p>What are some platform-dependent differences in variadic function handling?
+Argument alignment, promotion rules, and register usage can vary by architecture.</p>
+</li>
+<li>
+<p>How do you forward variadic arguments to another function?
+Use <code>va_list</code> with <code>va_start</code>, then pass it to a <code>v*</code> function like <code>vprintf</code>.</p>
+</li>
+<li>
+<p>How do variadic macros differ from variadic functions?
+They operate at preprocessor level and accept arguments before compilation.</p>
+</li>
+<li>
+<p>What are the benefits and drawbacks of variadic macros in C?
+Benefits: convenience and flexibility; drawbacks: harder to debug and limited type checking.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%93%9A-batch-4-c-standard-library--io-q301%E2%80%93q400">📚 <strong>Batch 4: C Standard Library &amp; I/O (Q301–Q400)</strong></h2>
+<h3 id="stdioh-%E2%80%93-inputoutput-fundamentals"><strong>stdio.h – Input/Output Fundamentals</strong></h3>
+<ol start="301">
+<li>
+<p>What header file is required for standard I/O in C?
+<code>#include &lt;stdio.h&gt;</code></p>
+</li>
+<li>
+<p>What is the type of standard I/O streams (<code>stdin</code>, <code>stdout</code>, <code>stderr</code>)?
+<code>FILE *</code></p>
+</li>
+<li>
+<p>How do you open a file for reading in C?
+<code>fopen(&quot;filename&quot;, &quot;r&quot;)</code></p>
+</li>
+<li>
+<p>What are the possible modes in <code>fopen()</code>?
+<code>&quot;r&quot;</code>, <code>&quot;w&quot;</code>, <code>&quot;a&quot;</code>, <code>&quot;r+&quot;</code>, <code>&quot;w+&quot;</code>, <code>&quot;a+&quot;</code>, and binary versions <code>&quot;rb&quot;</code>, <code>&quot;wb&quot;</code>, <code>&quot;ab&quot;</code>, etc.</p>
+</li>
+<li>
+<p>What happens if <code>fopen()</code> fails?
+It returns <code>NULL</code>.</p>
+</li>
+<li>
+<p>How do you close a file in C?
+<code>fclose(filePointer)</code></p>
+</li>
+<li>
+<p>What does <code>fclose()</code> return?
+<code>0</code> on success, <code>EOF</code> on error.</p>
+</li>
+<li>
+<p>How do you read a single character from a file?
+<code>fgetc(filePointer)</code></p>
+</li>
+<li>
+<p>How do you write a single character to a file?
+<code>fputc(character, filePointer)</code></p>
+</li>
+<li>
+<p>How do you read a line from a file using standard functions?
+<code>fgets(buffer, size, filePointer)</code></p>
+</li>
+<li>
+<p>What is the difference between <code>getc()</code> and <code>fgetc()</code>?
+Functionally the same; <code>getc()</code> may be implemented as a macro.</p>
+</li>
+<li>
+<p>What is the difference between <code>putc()</code> and <code>fputc()</code>?
+Functionally the same; <code>putc()</code> may be implemented as a macro.</p>
+</li>
+<li>
+<p>How does <code>feof()</code> work?
+Returns nonzero when end-of-file has been reached on a stream.</p>
+</li>
+<li>
+<p>How do you rewind a file pointer?
+<code>rewind(filePointer)</code></p>
+</li>
+<li>
+<p>What does <code>fseek()</code> do?
+Moves the file pointer to a specified location.</p>
+</li>
+<li>
+<p>What is the difference between <code>fseek()</code> and <code>ftell()</code>?
+<code>fseek()</code> sets the position; <code>ftell()</code> tells the current position.</p>
+</li>
+<li>
+<p>How can you determine file size using <code>fseek()</code> and <code>ftell()</code>?
+Seek to end with <code>fseek(file, 0, SEEK_END)</code> then use <code>ftell(file)</code>.</p>
+</li>
+<li>
+<p>What is binary mode (<code>&quot;rb&quot;</code>, <code>&quot;wb&quot;</code>) and when is it used?
+Reads/writes raw bytes without newline translation; used for non-text files.</p>
+</li>
+<li>
+<p>How do you flush a file’s buffer manually?
+<code>fflush(filePointer)</code></p>
+</li>
+<li>
+<p>What is the difference between <code>fflush(stdout)</code> and <code>fflush(stdin)</code>?
+<code>stdout</code> flushes output; <code>fflush(stdin)</code> is undefined on most systems.</p>
+</li>
+<li>
+<p>What is buffering in I/O?
+Temporary storage of data in memory before reading/writing to a file.</p>
+</li>
+<li>
+<p>What are the three types of buffering in C?
+Unbuffered, line buffered, fully buffered.</p>
+</li>
+<li>
+<p>How can you disable buffering for a file stream?
+<code>setvbuf(file, NULL, _IONBF, 0)</code></p>
+</li>
+<li>
+<p>What is the purpose of <code>setvbuf()</code>?
+To control buffering mode and buffer size for a file stream.</p>
+</li>
+<li>
+<p>How can buffering improve performance?
+Reduces number of slow system calls by handling data in memory.</p>
+</li>
+<li>
+<p>How does the system handle buffered writes when a program crashes?
+Unflushed buffers are lost, so data may not be written to file.</p>
+</li>
+<li>
+<p>How does line buffering differ from full buffering?
+Line buffering flushes on newline; full buffering flushes when buffer is full.</p>
+</li>
+<li>
+<p>When is unbuffered I/O useful?
+When immediate input/output is required, e.g., interactive programs.</p>
+</li>
+<li>
+<p>How can you redirect <code>stdout</code> to a file?
+<code>freopen(&quot;file.txt&quot;, &quot;w&quot;, stdout)</code></p>
+</li>
+<li>
+<p>What is the standard error stream used for?
+Displaying error messages, usually <code>stderr</code>.</p>
+</li>
+</ol>
+<hr>
+<h3 id="formatted-io"><strong>Formatted I/O</strong></h3>
+<ol start="331">
+<li>
+<p>What is formatted I/O in C?
+Input/output using specific formats, e.g., <code>printf()</code> and <code>scanf()</code>.</p>
+</li>
+<li>
+<p>How does <code>printf()</code> handle variable arguments?
+Uses a format string to determine types and number of arguments at runtime.</p>
+</li>
+<li>
+<p>What are format specifiers in <code>printf()</code>?
+Placeholders like <code>%d</code>, <code>%f</code>, <code>%s</code> that define how data is printed.</p>
+</li>
+<li>
+<p>What does <code>%d</code>, <code>%u</code>, <code>%f</code>, <code>%p</code>, <code>%s</code>, and <code>%c</code> mean?
+<code>%d</code>=signed int, <code>%u</code>=unsigned int, <code>%f</code>=float, <code>%p</code>=pointer, <code>%s</code>=string, <code>%c</code>=char.</p>
+</li>
+<li>
+<p>What is the difference between <code>%f</code> and <code>%lf</code>?
+In <code>printf()</code> they are the same; in <code>scanf()</code>, <code>%f</code>=float, <code>%lf</code>=double.</p>
+</li>
+<li>
+<p>How can you print hexadecimal and octal numbers?
+Hex: <code>%x</code> or <code>%X</code>; Octal: <code>%o</code>.</p>
+</li>
+<li>
+<p>How do you print leading zeros or specific field widths?
+Use width and <code>0</code> flag, e.g., <code>%05d</code> for 5 digits with leading zeros.</p>
+</li>
+<li>
+<p>What is precision in format specifiers?
+Specifies digits after decimal for floats or max chars for strings.</p>
+</li>
+<li>
+<p>What happens if you mismatch format specifiers with argument types?
+Undefined behavior; may print garbage or crash.</p>
+</li>
+<li>
+<p>What are format string vulnerabilities?
+Security flaws when user input is used directly as format string.</p>
+</li>
+<li>
+<p>What is the difference between <code>scanf()</code> and <code>fscanf()</code>?
+<code>scanf()</code> reads from <code>stdin</code>; <code>fscanf()</code> reads from a file stream.</p>
+</li>
+<li>
+<p>How does <code>scanf()</code> store input values into variables?
+Stores values via pointers provided as arguments.</p>
+</li>
+<li>
+<p>What is the meaning of the <code>&amp;</code> operator in <code>scanf()</code> calls?
+Passes the address of the variable to store input.</p>
+</li>
+<li>
+<p>What are common pitfalls when using <code>scanf()</code>?
+Buffer overflow, leftover newlines, mismatched types.</p>
+</li>
+<li>
+<p>How can you safely read strings using <code>scanf()</code>?
+Limit input length: <code>scanf(&quot;%99s&quot;, buffer)</code>.</p>
+</li>
+<li>
+<p>What is the purpose of <code>gets()</code> and why is it unsafe?
+Reads a string without length check; can cause buffer overflow.</p>
+</li>
+<li>
+<p>What function replaced <code>gets()</code> in C11?
+<code>fgets()</code></p>
+</li>
+<li>
+<p>What is the difference between <code>fgets()</code> and <code>gets()</code>?
+<code>fgets()</code> limits input size and keeps newline; <code>gets()</code> does not.</p>
+</li>
+<li>
+<p>How do you parse integers and floats from strings safely?
+Use <code>sscanf()</code>, <code>strtol()</code>, <code>strtof()</code>, or <code>strtod()</code>.</p>
+</li>
+<li>
+<p>What happens if input doesn’t match the format in <code>scanf()</code>?
+<code>scanf()</code> stops reading; variables not matching remain unchanged.</p>
+</li>
+</ol>
+<hr>
+<h3 id="binary-io"><strong>Binary I/O</strong></h3>
+<ol start="351">
+<li>
+<p>What is binary I/O?
+Reading and writing raw bytes directly to/from files.</p>
+</li>
+<li>
+<p>How does binary I/O differ from text I/O?
+Binary I/O handles data as-is; text I/O may translate newlines or encode characters.</p>
+</li>
+<li>
+<p>What is the function of <code>fread()</code>?
+Reads a block of data from a file into memory.</p>
+</li>
+<li>
+<p>How does <code>fwrite()</code> work?
+Writes a block of data from memory to a file.</p>
+</li>
+<li>
+<p>How do you determine the number of items read or written by <code>fread()</code>/<code>fwrite()</code>?
+They return the count of items successfully read or written.</p>
+</li>
+<li>
+<p>Why should you not use <code>sizeof(pointer)</code> when writing structures to files?
+<code>sizeof(pointer)</code> gives pointer size, not the size of the actual structure.</p>
+</li>
+<li>
+<p>How can you ensure endianness consistency in binary files?
+Use a fixed byte order and convert with functions like <code>htonl()</code>/<code>ntohl()</code>.</p>
+</li>
+<li>
+<p>What is a data serialization format?
+A standardized way to convert data structures into a storable/transmittable byte sequence.</p>
+</li>
+<li>
+<p>How do you handle partial reads or writes?
+Check the return value and loop until the total intended data is processed.</p>
+</li>
+<li>
+<p>What is the role of <code>fflush()</code> in binary I/O?
+Ensures all buffered data is written to the file immediately.</p>
+</li>
+</ol>
+<hr>
+<h3 id="stdlibh-%E2%80%93-standard-utilities"><strong>stdlib.h – Standard Utilities</strong></h3>
+<ol start="361">
+<li>
+<p>What is the purpose of the <code>stdlib.h</code> library?
+Provides general utility functions: memory management, conversions, random numbers, and process control.</p>
+</li>
+<li>
+<p>What does <code>atoi()</code> do?
+Converts a string to an <code>int</code>.</p>
+</li>
+<li>
+<p>How does <code>strtol()</code> differ from <code>atoi()</code>?
+<code>strtol()</code> handles errors, supports different bases, and provides end-pointer info.</p>
+</li>
+<li>
+<p>How do you convert a string to a double?
+Use <code>atof()</code> or <code>strtod()</code>.</p>
+</li>
+<li>
+<p>What does <code>rand()</code> return?
+A pseudo-random integer between 0 and <code>RAND_MAX</code>.</p>
+</li>
+<li>
+<p>How can you generate random numbers in a specific range?
+<code>rand() % (max - min + 1) + min</code></p>
+</li>
+<li>
+<p>Why is <code>rand()</code> considered weak for cryptography?
+It is predictable and not secure for cryptographic purposes.</p>
+</li>
+<li>
+<p>What function seeds the random number generator?
+<code>srand(seed)</code></p>
+</li>
+<li>
+<p>How can you implement a better RNG in C?
+Use <code>rand_s()</code>, <code>arc4random()</code>, or cryptographic libraries.</p>
+</li>
+<li>
+<p>What does <code>system()</code> do, and why is it risky?
+Executes a shell command; risky due to command injection vulnerabilities.</p>
+</li>
+<li>
+<p>What is the purpose of <code>exit()</code> and <code>_Exit()</code>?
+Terminate a program; <code>exit()</code> calls cleanup functions, <code>_Exit()</code> does not.</p>
+</li>
+<li>
+<p>What happens if <code>main()</code> returns without calling <code>exit()</code>?
+<code>exit()</code> is called implicitly, performing normal termination.</p>
+</li>
+<li>
+<p>How can you register cleanup functions at program exit?
+Using <code>atexit(functionPointer)</code>.</p>
+</li>
+<li>
+<p>What is the role of <code>atexit()</code>?
+Registers functions to run automatically when the program terminates.</p>
+</li>
+<li>
+<p>What does <code>qsort()</code> do?
+Sorts an array using a quicksort algorithm.</p>
+</li>
+<li>
+<p>How does <code>qsort()</code> compare elements?
+Through a user-provided comparator function.</p>
+</li>
+<li>
+<p>What is the function signature of a <code>qsort()</code> comparator?
+<code>int comparator(const void *a, const void *b)</code></p>
+</li>
+<li>
+<p>How can you use <code>bsearch()</code> to find elements in sorted data?
+Provide the key, array, number of elements, size, and comparator function.</p>
+</li>
+<li>
+<p>How do you handle binary search on custom structures?
+Define a comparator that compares the relevant structure field(s).</p>
+</li>
+<li>
+<p>What happens if <code>bsearch()</code> fails to find a match?
+It returns <code>NULL</code>.</p>
+</li>
+</ol>
+<hr>
+<h3 id="stringh-%E2%80%93-string-and-memory-utilities"><strong>string.h – String and Memory Utilities</strong></h3>
+<ol start="381">
+<li>
+<p>What is the role of the <code>string.h</code> library?
+Provides functions for string and memory manipulation.</p>
+</li>
+<li>
+<p>What does <code>strlen()</code> return?
+The number of characters in a string excluding the null terminator.</p>
+</li>
+<li>
+<p>What is the difference between <code>strcpy()</code> and <code>strncpy()</code>?
+<code>strcpy()</code> copies until null; <code>strncpy()</code> copies up to a specified length and may not null-terminate.</p>
+</li>
+<li>
+<p>How does <code>strcmp()</code> compare strings?
+Returns 0 if equal, negative if first &lt; second, positive if first &gt; second.</p>
+</li>
+<li>
+<p>How does <code>strcat()</code> work internally?
+Finds the null terminator of the first string and appends the second string starting there.</p>
+</li>
+<li>
+<p>What does <code>strchr()</code> do?
+Finds the first occurrence of a character in a string.</p>
+</li>
+<li>
+<p>What is the difference between <code>strstr()</code> and <code>strchr()</code>?
+<code>strstr()</code> searches for a substring; <code>strchr()</code> searches for a single character.</p>
+</li>
+<li>
+<p>How does <code>memcpy()</code> differ from <code>memmove()</code>?
+<code>memcpy()</code> assumes non-overlapping memory; <code>memmove()</code> handles overlap safely.</p>
+</li>
+<li>
+<p>How does <code>memcmp()</code> work?
+Compares two memory blocks byte by byte; returns 0 if equal, otherwise difference of first mismatched byte.</p>
+</li>
+<li>
+<p>What does <code>memset()</code> do?
+Fills a block of memory with a specified value.</p>
+</li>
+<li>
+<p>What are the dangers of using <code>strcpy()</code> and <code>strcat()</code>?
+Buffer overflows if destination is too small.</p>
+</li>
+<li>
+<p>What safer alternatives exist for string copying and concatenation?
+<code>strncpy()</code>, <code>strncat()</code>, <code>snprintf()</code>, or <code>strcpy_s</code>/<code>strcat_s</code>.</p>
+</li>
+<li>
+<p>How can you implement your own <code>strlen()</code> function?
+Loop through characters until null terminator and count them.</p>
+</li>
+<li>
+<p>What is the purpose of <code>strtok()</code>?
+Tokenizes a string using specified delimiters.</p>
+</li>
+<li>
+<p>What are the drawbacks of <code>strtok()</code> in multithreaded programs?
+It uses static internal state, so not thread-safe.</p>
+</li>
+<li>
+<p>What function can you use instead of <code>strtok()</code> for thread safety?
+<code>strtok_r()</code></p>
+</li>
+<li>
+<p>How does <code>strerror()</code> work?
+Returns a string describing an error code.</p>
+</li>
+<li>
+<p>How can you compare strings case-insensitively?
+Use <code>strcasecmp()</code> or <code>stricmp()</code> depending on platform.</p>
+</li>
+<li>
+<p>How do you reverse a string in C?
+Swap characters from start and end moving towards the center.</p>
+</li>
+<li>
+<p>How do you safely manipulate overlapping memory regions?
+Use <code>memmove()</code> instead of <code>memcpy()</code>.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%A7%AE-batch-5-data-structures-in-c-q401%E2%80%93q500">🧮 <strong>Batch 5: Data Structures in C (Q401–Q500)</strong></h2>
+<h3 id="arrays"><strong>Arrays</strong></h3>
+<ol start="401">
+<li>
+<p>What is an array in C?
+An array is a collection of elements of the same type stored in contiguous memory locations.</p>
+</li>
+<li>
+<p>How do arrays differ from pointers?
+Arrays have fixed size and name represents the base address, whereas pointers can be reassigned and support arithmetic.</p>
+</li>
+<li>
+<p>How do you declare an array of 10 integers?
+<code>int arr[10];</code></p>
+</li>
+<li>
+<p>What is the memory layout of a one-dimensional array?
+Elements are stored consecutively in memory, one after the other.</p>
+</li>
+<li>
+<p>How do you pass an array to a function?
+By passing its name, which decays into a pointer to the first element.</p>
+</li>
+<li>
+<p>How do you return an array from a function?
+You cannot return an array directly; return a pointer to a statically or dynamically allocated array.</p>
+</li>
+<li>
+<p>What happens if you access an element beyond array bounds?
+It causes undefined behavior; could read garbage or crash the program.</p>
+</li>
+<li>
+<p>How do you find the length of a static array?
+<code>sizeof(arr)/sizeof(arr[0])</code></p>
+</li>
+<li>
+<p>What is a variable-length array (VLA)?
+An array whose size is determined at runtime rather than compile-time.</p>
+</li>
+<li>
+<p>When were VLAs introduced into the C standard?
+C99 standard.</p>
+</li>
+<li>
+<p>How do you declare and initialize a multidimensional array?
+<code>int arr[2][3] = {{1,2,3},{4,5,6}};</code></p>
+</li>
+<li>
+<p>How is a two-dimensional array stored in memory?
+In row-major order, meaning rows are stored consecutively.</p>
+</li>
+<li>
+<p>What is the difference between row-major and column-major order?
+Row-major stores rows consecutively; column-major stores columns consecutively.</p>
+</li>
+<li>
+<p>How can you flatten a 2D array into a 1D array?
+Iterate over rows and columns and copy elements sequentially into a 1D array.</p>
+</li>
+<li>
+<p>How do you pass a 2D array to a function?
+Specify all dimensions except the first: <code>void func(int arr[][3], int rows)</code></p>
+</li>
+<li>
+<p>What are the drawbacks of VLAs?
+They consume stack memory, cannot have <code>sizeof</code> at compile-time, and are optional in C11.</p>
+</li>
+<li>
+<p>Can you allocate a multidimensional array dynamically?
+Yes, using <code>malloc</code> for arrays of pointers or contiguous memory blocks.</p>
+</li>
+<li>
+<p>How do you free a dynamically allocated 2D array?
+Free each row individually if allocated separately, then free the array of pointers.</p>
+</li>
+<li>
+<p>What are jagged arrays and how are they represented in C?
+Arrays of arrays where inner arrays can have different lengths, represented using pointers to pointers.</p>
+</li>
+<li>
+<p>What are common pitfalls in array-pointer arithmetic?
+Accessing out-of-bounds memory, confusing element size with pointer arithmetic, and misaligned indexing.</p>
+</li>
+</ol>
+<hr>
+<h3 id="linked-lists"><strong>Linked Lists</strong></h3>
+<ol start="421">
+<li>
+<p>What is a linked list?
+A linked list is a collection of nodes where each node contains data and a pointer to the next node.</p>
+</li>
+<li>
+<p>What is the main advantage of linked lists over arrays?
+Dynamic size and efficient insertion/deletion without shifting elements.</p>
+</li>
+<li>
+<p>How do you define a node in a singly linked list?</p>
+</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> {</span> <span class="hljs-keyword">int</span> data; <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span>* <span class="hljs-title">next</span>;</span> };
+</div></code></pre>
+<ol start="424">
+<li>
+<p>How do you add a new node to the head of a list?
+Create a new node, set its <code>next</code> to current head, and update head to new node.</p>
+</li>
+<li>
+<p>How do you add a node at the end of a list?
+Traverse to the last node and set its <code>next</code> to the new node.</p>
+</li>
+<li>
+<p>How do you delete a node from a linked list?
+Adjust the <code>next</code> pointer of the previous node to skip the target node and free it.</p>
+</li>
+<li>
+<p>How do you search for a value in a linked list?
+Traverse nodes sequentially and compare each node's data with the target value.</p>
+</li>
+<li>
+<p>How do you reverse a linked list?
+Iteratively change each node’s <code>next</code> to point to the previous node.</p>
+</li>
+<li>
+<p>How can you detect a cycle in a linked list?
+Use a slow and fast pointer; if they meet, a cycle exists.</p>
+</li>
+<li>
+<p>What is Floyd’s cycle detection algorithm (tortoise and hare)?
+Two pointers move at different speeds; a meeting indicates a cycle.</p>
+</li>
+<li>
+<p>What is a doubly linked list?
+A list where each node has pointers to both the previous and next nodes.</p>
+</li>
+<li>
+<p>What are its advantages over singly linked lists?
+Allows backward traversal and easier deletion of a node given only the node pointer.</p>
+</li>
+<li>
+<p>How do you insert a node in a doubly linked list?
+Adjust the <code>prev</code> and <code>next</code> pointers of neighboring nodes to include the new node.</p>
+</li>
+<li>
+<p>How do you delete a node in a doubly linked list?
+Update the <code>next</code> of the previous node and <code>prev</code> of the next node, then free the target node.</p>
+</li>
+<li>
+<p>What are circular linked lists?
+A list where the last node points back to the first node, forming a loop.</p>
+</li>
+<li>
+<p>How do you implement a circular linked list?
+Set the <code>next</code> pointer of the last node to point to the head node.</p>
+</li>
+<li>
+<p>How do you detect if a list is circular?
+Traverse nodes; if you reach the head again or meet a repeated node, it’s circular.</p>
+</li>
+<li>
+<p>How do you merge two sorted linked lists?
+Compare the heads and sequentially attach the smaller node to a new list until both are exhausted.</p>
+</li>
+<li>
+<p>What is the time complexity of linked list insertion?
+O(1) at head, O(n) at a given position or end.</p>
+</li>
+<li>
+<p>What is the time complexity of searching a linked list?
+O(n), since you may need to traverse the entire list.</p>
+</li>
+</ol>
+<hr>
+<h3 id="stacks"><strong>Stacks</strong></h3>
+<ol start="441">
+<li>
+<p>What is a stack data structure?
+A stack is a collection of elements that follows Last-In-First-Out (LIFO) order.</p>
+</li>
+<li>
+<p>What are typical stack operations?
+Push (add), Pop (remove), Peek/Top (view top element), IsEmpty, IsFull.</p>
+</li>
+<li>
+<p>How do you implement a stack using an array?
+Use an array with an integer top index to track the last element.</p>
+</li>
+<li>
+<p>How do you implement a stack using a linked list?
+Use the head of the list as the top; push adds a node at head, pop removes head.</p>
+</li>
+<li>
+<p>What is stack overflow in this context?
+When pushing an element exceeds the stack’s allocated capacity.</p>
+</li>
+<li>
+<p>How do you check if the stack is empty or full?
+Empty: <code>top == -1</code>; Full (array): <code>top == capacity - 1</code>.</p>
+</li>
+<li>
+<p>What is the use of a stack in recursion?
+It stores function calls, local variables, and return addresses.</p>
+</li>
+<li>
+<p>How do you reverse a string using a stack?
+Push each character, then pop them sequentially to build the reversed string.</p>
+</li>
+<li>
+<p>How do you evaluate a postfix expression using a stack?
+Push operands; when an operator appears, pop operands, compute, push result.</p>
+</li>
+<li>
+<p>How do you convert infix to postfix using a stack?
+Use a stack for operators; output operands immediately; pop operators by precedence.</p>
+</li>
+<li>
+<p>What are real-world applications of stacks?
+Expression evaluation, undo mechanisms, backtracking, parsing, function calls.</p>
+</li>
+<li>
+<p>How does the call stack differ from a data structure stack?
+Call stack manages function calls automatically; data structure stack is manually controlled.</p>
+</li>
+<li>
+<p>How can stack operations be implemented in C macros?
+Define macros for push, pop, peek, using an array and top index.</p>
+</li>
+<li>
+<p>What is the typical complexity of push and pop?
+O(1) for both operations.</p>
+</li>
+<li>
+<p>How do you handle stack resizing in a dynamic stack?
+Allocate a larger array and copy elements when the current array is full.</p>
+</li>
+<li>
+<p>How do you debug stack overflows in C?
+Check recursion depth, array bounds, and use tools like <code>gdb</code> or address sanitizers.</p>
+</li>
+<li>
+<p>What is a segmentation fault in stack operations?
+Accessing memory outside the allocated stack region, like out-of-bounds or invalid pointer.</p>
+</li>
+<li>
+<p>How can you implement undo functionality using stacks?
+Push each action on a stack; pop and reverse actions to undo.</p>
+</li>
+<li>
+<p>How does a stack-based memory allocator work?
+Allocates memory linearly in LIFO order; deallocation rolls back to a previous pointer.</p>
+</li>
+<li>
+<p>How does recursion depth affect stack memory usage?
+Each recursive call consumes stack space; deeper recursion increases memory usage linearly.</p>
+</li>
+</ol>
+<hr>
+<h3 id="queues"><strong>Queues</strong></h3>
+<ol start="461">
+<li>
+<p>What is a queue?
+A queue is a collection of elements that follows First-In-First-Out (FIFO) order.</p>
+</li>
+<li>
+<p>How does a queue differ from a stack?
+Queue removes elements in the order they were added (FIFO), stack uses LIFO.</p>
+</li>
+<li>
+<p>What are enqueue and dequeue operations?
+Enqueue adds an element to the rear; dequeue removes an element from the front.</p>
+</li>
+<li>
+<p>How do you implement a queue using an array?
+Use front and rear indices to track positions; increment indices modulo array size for wrap-around.</p>
+</li>
+<li>
+<p>What is a circular queue?
+A queue where the last position wraps around to the first, optimizing space.</p>
+</li>
+<li>
+<p>How do you detect queue full/empty conditions in circular queues?
+Empty: <code>front == -1</code>; Full: <code>(rear + 1) % size == front</code>.</p>
+</li>
+<li>
+<p>How do you implement a queue using linked lists?
+Use head as front and tail as rear; enqueue adds at tail, dequeue removes from head.</p>
+</li>
+<li>
+<p>What is the time complexity of queue operations?
+O(1) for enqueue and dequeue.</p>
+</li>
+<li>
+<p>What are real-world examples of queue usage?
+Print jobs, CPU scheduling, BFS traversal, customer service lines.</p>
+</li>
+<li>
+<p>How do you implement multiple queues in one array?
+Partition the array logically or use a single array with tracking indices for each queue.</p>
+</li>
+<li>
+<p>What is a priority queue?
+A queue where each element has a priority; higher priority elements are dequeued first.</p>
+</li>
+<li>
+<p>How do you implement a priority queue in C?
+Using a heap, sorted array, or linked list to maintain element priorities.</p>
+</li>
+<li>
+<p>What data structure is typically used for efficient priority queues?
+Heap (binary heap is most common).</p>
+</li>
+<li>
+<p>How does a heap differ from a queue?
+Heap is a tree-based structure maintaining order by priority, not strictly FIFO.</p>
+</li>
+<li>
+<p>What is the difference between min-heap and max-heap?
+Min-heap: parent ≤ children; Max-heap: parent ≥ children.</p>
+</li>
+<li>
+<p>How do you insert an element into a heap?
+Add at the end and “heapify up” to maintain heap property.</p>
+</li>
+<li>
+<p>How do you remove the top element from a heap?
+Swap with last element, remove it, and “heapify down” from root.</p>
+</li>
+<li>
+<p>How do you build a heap from an array?
+Use the heapify process from the last non-leaf node up to the root.</p>
+</li>
+<li>
+<p>What is the time complexity of heap operations?
+Insert/delete: O(log n); Build heap: O(n).</p>
+</li>
+<li>
+<p>How do you implement a simple job scheduler using a priority queue?
+Store jobs with priorities in a heap; always dequeue the highest-priority job next.</p>
+</li>
+</ol>
+<hr>
+<h3 id="trees"><strong>Trees</strong></h3>
+<ol start="481">
+<li>
+<p>What is a tree data structure?
+A tree is a hierarchical structure consisting of nodes, with a single root and child nodes forming branches.</p>
+</li>
+<li>
+<p>What is a binary tree?
+A tree where each node has at most two children, typically called left and right.</p>
+</li>
+<li>
+<p>What are leaf and internal nodes?
+Leaf nodes have no children; internal nodes have at least one child.</p>
+</li>
+<li>
+<p>How do you represent a binary tree in C?</p>
+</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> {</span> <span class="hljs-keyword">int</span> data; <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span>* <span class="hljs-title">left</span>;</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span>* <span class="hljs-title">right</span>;</span> };
+</div></code></pre>
+<ol start="485">
+<li>
+<p>How do you perform inorder traversal recursively?
+Visit left subtree, node, then right subtree.</p>
+</li>
+<li>
+<p>How do you perform preorder and postorder traversal?
+Preorder: node, left, right; Postorder: left, right, node.</p>
+</li>
+<li>
+<p>How do you perform iterative tree traversals?
+Use a stack for DFS (inorder/preorder/postorder) or a queue for BFS.</p>
+</li>
+<li>
+<p>How do you count the number of nodes in a tree?
+Recursively: <code>1 + count(left) + count(right)</code>.</p>
+</li>
+<li>
+<p>How do you compute the height of a binary tree?
+Recursively: <code>1 + max(height(left), height(right))</code>.</p>
+</li>
+<li>
+<p>How do you find the maximum element in a binary tree?
+Traverse all nodes and keep track of the largest value.</p>
+</li>
+<li>
+<p>What is a binary search tree (BST)?
+A binary tree where left child &lt; node &lt; right child for all nodes.</p>
+</li>
+<li>
+<p>How does a BST differ from a binary tree?
+BST enforces ordering for efficient search; a binary tree has no ordering constraints.</p>
+</li>
+<li>
+<p>How do you insert a node in a BST?
+Traverse according to value and insert at the appropriate leaf position.</p>
+</li>
+<li>
+<p>How do you delete a node from a BST?
+Replace with in-order predecessor or successor if it has two children; otherwise, adjust child pointer.</p>
+</li>
+<li>
+<p>How do you search for a value in a BST?
+Start at root and move left or right depending on comparisons until found or null.</p>
+</li>
+<li>
+<p>How do you find the minimum and maximum in a BST?
+Minimum: leftmost node; Maximum: rightmost node.</p>
+</li>
+<li>
+<p>What are the average and worst-case complexities of BST operations?
+Average: O(log n); Worst-case (unbalanced): O(n).</p>
+</li>
+<li>
+<p>How do you balance a binary search tree?
+Use self-balancing trees like AVL or Red-Black trees, or rebuild from sorted elements.</p>
+</li>
+<li>
+<p>What are AVL and Red-Black trees?
+Self-balancing BSTs; AVL maintains strict height balance, Red-Black uses color rules for balance.</p>
+</li>
+<li>
+<p>What are common applications of tree data structures in system programming?
+File systems, databases, memory allocation, compiler syntax trees, and indexing.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%97%83%EF%B8%8F-batch-6-file-handling--data-processing-q501%E2%80%93q600">🗃️ <strong>Batch 6: File Handling &amp; Data Processing (Q501–Q600)</strong></h2>
+<h3 id="basic-file-handling"><strong>Basic File Handling</strong></h3>
+<ol start="501">
+<li>
+<p>What are the standard functions for file handling in C?
+<code>fopen()</code>, <code>fclose()</code>, <code>fread()</code>, <code>fwrite()</code>, <code>fprintf()</code>, <code>fscanf()</code>, <code>fseek()</code>, <code>ftell()</code>, <code>rewind()</code>, <code>feof()</code>, <code>remove()</code>, <code>rename()</code>.</p>
+</li>
+<li>
+<p>What are the different file opening modes supported by <code>fopen()</code>?
+<code>&quot;r&quot;</code>, <code>&quot;w&quot;</code>, <code>&quot;a&quot;</code>, <code>&quot;r+&quot;</code>, <code>&quot;w+&quot;</code>, <code>&quot;a+&quot;</code>, <code>&quot;rb&quot;</code>, <code>&quot;wb&quot;</code>, <code>&quot;ab&quot;</code>, <code>&quot;rb+&quot;</code>, <code>&quot;wb+&quot;</code>, <code>&quot;ab+&quot;</code>.</p>
+</li>
+<li>
+<p>What is the difference between <code>&quot;r+&quot;</code> and <code>&quot;w+&quot;</code> modes?
+<code>&quot;r+&quot;</code> opens an existing file for reading and writing, <code>&quot;w+&quot;</code> creates a new file or truncates an existing one.</p>
+</li>
+<li>
+<p>What happens if you open a file in <code>&quot;w&quot;</code> mode that already exists?
+The file is truncated to zero length, erasing its contents.</p>
+</li>
+<li>
+<p>What does <code>fclose()</code> return on success and failure?
+Returns <code>0</code> on success, <code>EOF</code> on failure.</p>
+</li>
+<li>
+<p>How do you check if a file pointer is valid?
+Check if the pointer is not <code>NULL</code>.</p>
+</li>
+<li>
+<p>What happens if you use a NULL <code>FILE*</code>?
+Operations on it will fail and may cause undefined behavior.</p>
+</li>
+<li>
+<p>What does <code>feof()</code> check for?
+Whether the end-of-file indicator for a file has been reached.</p>
+</li>
+<li>
+<p>How can you determine whether a file exists before opening it?
+Try opening it in <code>&quot;r&quot;</code> mode; if <code>fopen()</code> returns <code>NULL</code>, it doesn’t exist.</p>
+</li>
+<li>
+<p>What is the difference between text and binary files?
+Text files store readable characters with newline conversions; binary files store raw bytes.</p>
+</li>
+<li>
+<p>How do you read a text file line by line?
+Use <code>fgets()</code> in a loop until <code>NULL</code> is returned.</p>
+</li>
+<li>
+<p>What function is best suited for reading entire lines from a file?
+<code>fgets()</code>.</p>
+</li>
+<li>
+<p>How do you count the number of lines in a file?
+Read the file line by line and increment a counter for each line.</p>
+</li>
+<li>
+<p>How can you read a file character by character?
+Use <code>fgetc()</code> in a loop until <code>EOF</code>.</p>
+</li>
+<li>
+<p>How can you handle end-of-line differences between Windows and Linux?
+Use text mode for reading/writing; C automatically translates <code>\n</code> and <code>\r\n</code>.</p>
+</li>
+<li>
+<p>What does the newline character represent in text files?
+A line break; <code>\n</code> in Unix/Linux, <code>\r\n</code> in Windows.</p>
+</li>
+<li>
+<p>How can you handle files with very long lines safely?
+Read in chunks or use dynamic memory allocation with <code>fgets()</code> or <code>getline()</code>.</p>
+</li>
+<li>
+<p>What happens when you read past EOF?
+Functions return <code>EOF</code> and no more data is read.</p>
+</li>
+<li>
+<p>What function is used to reposition the file pointer?
+<code>fseek()</code>.</p>
+</li>
+<li>
+<p>What is the use of <code>rewind()</code>?
+Resets the file pointer to the beginning of the file.</p>
+</li>
+</ol>
+<hr>
+<h3 id="binary-file-operations"><strong>Binary File Operations</strong></h3>
+<ol start="521">
+<li>
+<p>How do you write a structure to a binary file?
+Use <code>fwrite(&amp;structVar, sizeof(structVar), 1, filePtr)</code>.</p>
+</li>
+<li>
+<p>What are the dangers of directly writing structs to binary files?
+Padding, alignment, and system-specific layout can make files non-portable.</p>
+</li>
+<li>
+<p>How do you read a structure back from a binary file?
+Use <code>fread(&amp;structVar, sizeof(structVar), 1, filePtr)</code>.</p>
+</li>
+<li>
+<p>How can you ensure consistent struct layout across systems?
+Use <code>#pragma pack</code> or manually serialize fields in a defined order.</p>
+</li>
+<li>
+<p>What is endianness and how does it affect binary files?
+Endianness is byte order; mismatched endianness can corrupt multi-byte values.</p>
+</li>
+<li>
+<p>How can you detect the endianness of the current system in C?
+Check memory representation of an integer using a pointer.</p>
+</li>
+<li>
+<p>What are “little-endian” and “big-endian” byte orders?
+Little-endian stores LSB first; big-endian stores MSB first.</p>
+</li>
+<li>
+<p>How can you swap byte order for multi-byte integers?
+Use bitwise shifts and masks or functions like <code>htonl()</code>/<code>ntohl()</code>.</p>
+</li>
+<li>
+<p>What is struct serialization?
+Converting a struct into a format that can be saved or transmitted.</p>
+</li>
+<li>
+<p>What are portable ways to serialize data structures?
+Use text formats (JSON, XML) or define custom byte sequences.</p>
+</li>
+<li>
+<p>What does <code>fread()</code> return if the read count is smaller than expected?
+Returns the number of elements actually read.</p>
+</li>
+<li>
+<p>What does <code>fwrite()</code> return on success and failure?
+Returns the number of elements successfully written; less than requested on failure.</p>
+</li>
+<li>
+<p>How do you ensure atomic writes in a binary file?
+Write to a temporary file and rename it after completion.</p>
+</li>
+<li>
+<p>What happens if your program terminates during a file write?
+Data may be partially written, causing corruption.</p>
+</li>
+<li>
+<p>How do you flush a file stream explicitly?
+Use <code>fflush(filePtr)</code>.</p>
+</li>
+<li>
+<p>What is buffering and how does it affect file writes?
+Data is stored in memory temporarily; improves performance but risks loss on crash.</p>
+</li>
+<li>
+<p>What is memory mapping (mmap) and when would you use it?
+Maps a file to memory for direct access; used for large files or performance.</p>
+</li>
+<li>
+<p>How does <code>mmap()</code> differ from <code>fread()</code> and <code>fwrite()</code>?
+<code>mmap()</code> maps the file into memory, bypassing explicit read/write calls.</p>
+</li>
+<li>
+<p>What is the difference between direct and buffered I/O?
+Direct I/O writes/reads immediately to disk; buffered I/O uses memory first.</p>
+</li>
+<li>
+<p>What are potential drawbacks of using <code>mmap()</code>?
+High memory usage, complex synchronization, and platform-specific behavior.</p>
+</li>
+</ol>
+<hr>
+<h3 id="text-data-processing"><strong>Text Data Processing</strong></h3>
+<ol start="541">
+<li>
+<p>How can you read a CSV file in C?
+Open the file with <code>fopen()</code> and read line by line using <code>fgets()</code>.</p>
+</li>
+<li>
+<p>What standard function can split strings by delimiters?
+<code>strtok()</code>.</p>
+</li>
+<li>
+<p>What is the purpose of <code>strtok()</code>?
+To tokenize a string into substrings based on delimiters.</p>
+</li>
+<li>
+<p>Why is <code>strtok()</code> unsafe in multi-threaded programs?
+It uses static internal state, making it non-reentrant.</p>
+</li>
+<li>
+<p>What is a safer alternative to <code>strtok()</code>?
+<code>strtok_r()</code>.</p>
+</li>
+<li>
+<p>How can you parse a CSV line manually?
+Scan the line character by character, handling commas and quotes.</p>
+</li>
+<li>
+<p>What function can convert strings to integers safely?
+<code>strtol()</code>.</p>
+</li>
+<li>
+<p>How do you parse floating-point numbers from text?
+Use <code>strtod()</code> or <code>sscanf()</code>.</p>
+</li>
+<li>
+<p>What is <code>sscanf()</code> and how does it work?
+It reads formatted input from a string into variables.</p>
+</li>
+<li>
+<p>How do you handle malformed input using <code>sscanf()</code>?
+Check its return value to see how many fields were successfully parsed.</p>
+</li>
+<li>
+<p>How do you trim whitespace from strings in C?
+Manually remove leading and trailing spaces using loops or helper functions.</p>
+</li>
+<li>
+<p>How can you detect and handle invalid UTF-8 sequences?
+Validate each byte sequence according to UTF-8 rules before processing.</p>
+</li>
+<li>
+<p>How do you handle quoted fields in CSV parsing?
+Treat text inside quotes as a single field, ignoring internal commas.</p>
+</li>
+<li>
+<p>What are state machines in the context of parsing?
+Models that track current parsing state and transition based on input characters.</p>
+</li>
+<li>
+<p>How can a state machine parser be implemented in C?
+Use enums for states and a switch-case or if-else structure to handle transitions.</p>
+</li>
+<li>
+<p>How can you read and process large files efficiently?
+Read in chunks or use memory-mapped I/O instead of line-by-line.</p>
+</li>
+<li>
+<p>How does buffering improve performance in file reading?
+Reduces the number of system calls by storing data in memory before processing.</p>
+</li>
+<li>
+<p>What is the advantage of reading files in chunks?
+Minimizes memory overhead and improves throughput for large files.</p>
+</li>
+<li>
+<p>How do you detect file encoding?
+Check BOM (Byte Order Mark) or use heuristics based on byte patterns.</p>
+</li>
+<li>
+<p>How can you validate data as it is read from a file?
+Check format, range, and type of each value immediately after reading.</p>
+</li>
+</ol>
+<hr>
+<h3 id="large-file-processing"><strong>Large File Processing</strong></h3>
+<ol start="561">
+<li>
+<p>What is a “large file” in C context?
+A file typically larger than 2GB or exceeding the limits of 32-bit file APIs.</p>
+</li>
+<li>
+<p>What are common issues with handling very large files?
+Integer overflow, memory exhaustion, slow I/O, and platform-specific limits.</p>
+</li>
+<li>
+<p>How can you determine file size efficiently?
+Use <code>fseek()</code> to the end and <code>ftell()</code>, or <code>stat()</code> system call.</p>
+</li>
+<li>
+<p>What are 64-bit file APIs used for large file handling?
+Functions like <code>fseeko()</code>, <code>ftello()</code>, and <code>fopen64()</code>.</p>
+</li>
+<li>
+<p>How can you use <code>fseek()</code> and <code>ftell()</code> for files over 2GB?
+Use <code>fseeko()</code> and <code>ftello()</code> which support <code>off_t</code> 64-bit offsets.</p>
+</li>
+<li>
+<p>How do you process large files without loading them entirely into memory?
+Read and process the file in small chunks or line by line.</p>
+</li>
+<li>
+<p>What is the use of buffered chunk reading?
+Reduces system calls and memory usage while maintaining efficiency.</p>
+</li>
+<li>
+<p>How do you implement a progress indicator for large file processing?
+Track bytes read versus total size and display percentage completed.</p>
+</li>
+<li>
+<p>What is memory-mapped I/O and why is it efficient for large data?
+Maps file into memory, allowing direct access without repeated read/write calls.</p>
+</li>
+<li>
+<p>How can you iterate over files in a directory in C?
+Use <code>opendir()</code>, <code>readdir()</code>, and <code>closedir()</code>.</p>
+</li>
+<li>
+<p>How do you detect whether a path points to a directory or file?
+Use <code>stat()</code> and check <code>S_ISDIR()</code> or <code>S_ISREG()</code>.</p>
+</li>
+<li>
+<p>What standard functions are used for directory traversal on Linux?
+<code>opendir()</code>, <code>readdir()</code>, <code>closedir()</code>.</p>
+</li>
+<li>
+<p>How do you read binary blobs safely?
+Use <code>fread()</code> with proper size and check return value for actual bytes read.</p>
+</li>
+<li>
+<p>What are partial I/O operations and how should they be handled?
+Reads or writes that transfer fewer bytes than requested; loop until complete.</p>
+</li>
+<li>
+<p>How do you resume a file read operation after interruption?
+Use <code>fseek()</code> or <code>lseek()</code> to move back to the last successfully read position.</p>
+</li>
+<li>
+<p>What is the role of <code>errno</code> in file handling errors?
+Stores the error code of the last failed system or library call.</p>
+</li>
+<li>
+<p>How do you check what error occurred after a failed file operation?
+Examine the value of <code>errno</code>.</p>
+</li>
+<li>
+<p>What does <code>perror()</code> print?
+A human-readable description of the last error in <code>errno</code>.</p>
+</li>
+<li>
+<p>What is the purpose of <code>strerror()</code>?
+Returns a string describing the error number passed to it.</p>
+</li>
+<li>
+<p>How do you recover from file-related errors gracefully?
+Check return values, handle errors with retries or fallbacks, and close resources properly.</p>
+</li>
+</ol>
+<hr>
+<h3 id="data-validation--robust-parsing"><strong>Data Validation &amp; Robust Parsing</strong></h3>
+<ol start="581">
+<li>
+<p>Why is error checking essential after every I/O operation?
+To detect and handle failures, preventing data corruption or crashes.</p>
+</li>
+<li>
+<p>How do you check for partial writes in <code>fwrite()</code>?
+Compare the return value with the number of elements intended to be written.</p>
+</li>
+<li>
+<p>What is the importance of validating user-provided file names?
+Prevents security risks, invalid paths, and unintended file access.</p>
+</li>
+<li>
+<p>How can you prevent path traversal vulnerabilities?
+Sanitize paths, disallow <code>..</code>, and restrict access to specific directories.</p>
+</li>
+<li>
+<p>How do you handle unexpected EOFs gracefully?
+Check <code>feof()</code> and handle incomplete data without crashing.</p>
+</li>
+<li>
+<p>How can you ensure correct data type conversion during parsing?
+Use safe conversion functions like <code>strtol()</code>, <code>strtod()</code> and validate ranges.</p>
+</li>
+<li>
+<p>What is defensive programming in data parsing?
+Writing code that anticipates and safely handles incorrect or unexpected input.</p>
+</li>
+<li>
+<p>How can you handle corrupted or truncated input files?
+Detect anomalies, skip invalid sections, and alert the user.</p>
+</li>
+<li>
+<p>What is the difference between soft and hard error handling?
+Soft errors are recoverable and allow continuation; hard errors stop execution.</p>
+</li>
+<li>
+<p>What strategies can prevent data loss during file writes?
+Use temporary files, atomic writes, backups, and flush buffers reliably.</p>
+</li>
+</ol>
+<hr>
+<h3 id="command-line-arguments"><strong>Command-Line Arguments</strong></h3>
+<ol start="591">
+<li>
+<p>What are <code>argc</code> and <code>argv</code> in <code>main()</code>?
+<code>argc</code> is the argument count; <code>argv</code> is an array of strings containing command-line arguments.</p>
+</li>
+<li>
+<p>How can you print all command-line arguments?
+Loop through <code>argv</code> from <code>0</code> to <code>argc-1</code> and print each string.</p>
+</li>
+<li>
+<p>How do you process flags like <code>-v</code> or <code>--help</code>?
+Check each <code>argv</code> string and match it against expected flag patterns.</p>
+</li>
+<li>
+<p>What is <code>getopt()</code> and where is it defined?
+A function for parsing command-line options; defined in <code>&lt;unistd.h&gt;</code>.</p>
+</li>
+<li>
+<p>How does <code>getopt()</code> simplify command-line parsing?
+Automatically handles short options, arguments, and error reporting.</p>
+</li>
+<li>
+<p>How do you handle long options in command-line utilities?
+Use <code>getopt_long()</code> from <code>&lt;getopt.h&gt;</code>.</p>
+</li>
+<li>
+<p>What happens if the user provides invalid arguments?
+<code>getopt()</code> returns <code>?</code> or you can print usage and exit.</p>
+</li>
+<li>
+<p>How do you combine command-line arguments with file I/O operations?
+Use <code>argv</code> values as filenames and open them with <code>fopen()</code> or related functions.</p>
+</li>
+<li>
+<p>How can you implement a mini file reader utility using <code>argc/argv</code>?
+Take filename from <code>argv[1]</code>, open it, read line by line with <code>fgets()</code>, and print.</p>
+</li>
+<li>
+<p>What are common design practices for robust CLI tools in C?
+Validate arguments, handle errors gracefully, provide help/usage messages, and clean up resources.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%A7%AE-batch-7-numerical-computing--algorithms-q601%E2%80%93q700">🧮 <strong>Batch 7: Numerical Computing &amp; Algorithms (Q601–Q700)</strong></h2>
+<h3 id="floating-point-arithmetic"><strong>Floating-Point Arithmetic</strong></h3>
+<ol start="601">
+<li>
+<p>What is floating-point representation in C?
+It’s a way to store real numbers approximately using a sign, exponent, and mantissa.</p>
+</li>
+<li>
+<p>What standard defines floating-point behavior?
+The IEEE 754 standard.</p>
+</li>
+<li>
+<p>What is the IEEE 754 standard?
+It specifies formats and rules for floating-point arithmetic in computers.</p>
+</li>
+<li>
+<p>How are floats and doubles represented in memory?
+As a sign bit, exponent bits, and fraction (mantissa) bits.</p>
+</li>
+<li>
+<p>What is the difference between single precision and double precision?
+Single uses 32 bits, double uses 64 bits, giving double higher precision and range.</p>
+</li>
+<li>
+<p>What does the <code>float</code> keyword represent in C?
+A 32-bit single-precision floating-point number.</p>
+</li>
+<li>
+<p>What is machine epsilon?
+The smallest difference between 1 and the next representable float.</p>
+</li>
+<li>
+<p>What causes floating-point rounding errors?
+Limited precision and binary approximation of decimal numbers.</p>
+</li>
+<li>
+<p>How do you compare two floating-point numbers safely?
+Check if their difference is less than a small epsilon value.</p>
+</li>
+<li>
+<p>What is a NaN (Not a Number)?
+A special value representing undefined or unrepresentable results.</p>
+</li>
+<li>
+<p>How can you check for NaN in C?
+Use the <code>isnan()</code> function from <code>&lt;math.h&gt;</code>.</p>
+</li>
+<li>
+<p>What is positive and negative infinity in floating-point?
+Special values representing overflow beyond the largest representable number.</p>
+</li>
+<li>
+<p>How can you detect overflow and underflow?
+By checking if results are <code>inf</code>, <code>-inf</code>, or subnormal/zero values.</p>
+</li>
+<li>
+<p>What is denormalized (subnormal) number representation?
+Numbers too small for normal format, represented with leading zeros in exponent.</p>
+</li>
+<li>
+<p>Why are floating-point computations non-associative?
+Because rounding errors make <code>(a + b) + c</code> differ from <code>a + (b + c)</code>.</p>
+</li>
+<li>
+<p>How can compiler optimizations change floating-point results?
+Reordering operations can alter rounding and precision outcomes.</p>
+</li>
+<li>
+<p>What does the <code>fabs()</code> function do?
+Returns the absolute value of a floating-point number.</p>
+</li>
+<li>
+<p>What is the difference between truncation and rounding?
+Truncation chops off decimals; rounding moves to the nearest integer.</p>
+</li>
+<li>
+<p>What happens when dividing by zero in floating-point arithmetic?
+Results in <code>+inf</code>, <code>-inf</code>, or NaN depending on the numerator.</p>
+</li>
+<li>
+<p>How does floating-point precision differ between CPUs?
+Different CPU architectures may use different internal representations and rounding rules.</p>
+</li>
+</ol>
+<hr>
+<h3 id="fixed-point-arithmetic"><strong>Fixed-Point Arithmetic</strong></h3>
+<ol start="621">
+<li>
+<p>What is fixed-point arithmetic?
+A method of representing numbers with a fixed number of digits after the decimal point.</p>
+</li>
+<li>
+<p>When is fixed-point preferred over floating-point?
+In systems with no FPU, limited memory, or real-time constraints.</p>
+</li>
+<li>
+<p>How can you emulate fixed-point numbers in C?
+By using integers and scaling values to represent fractions.</p>
+</li>
+<li>
+<p>What is the trade-off between speed and precision?
+Higher precision often requires more computation, slowing performance.</p>
+</li>
+<li>
+<p>How do you represent fixed-point numbers using integers?
+Multiply the real number by a scaling factor and store as an integer.</p>
+</li>
+<li>
+<p>What is scaling in fixed-point math?
+Adjusting values by a constant factor to maintain fractional precision.</p>
+</li>
+<li>
+<p>How do you prevent overflow in fixed-point arithmetic?
+Use wider integer types or check bounds before operations.</p>
+</li>
+<li>
+<p>What is saturation arithmetic?
+Clipping results to the maximum or minimum representable value instead of overflowing.</p>
+</li>
+<li>
+<p>How can you implement saturation behavior manually?
+Check the result of an operation and set it to max/min if it exceeds limits.</p>
+</li>
+<li>
+<p>What are real-world uses of fixed-point arithmetic?
+Embedded systems, DSPs, audio processing, and microcontrollers.</p>
+</li>
+</ol>
+<hr>
+<h3 id="integer-arithmetic--overflow"><strong>Integer Arithmetic &amp; Overflow</strong></h3>
+<ol start="631">
+<li>
+<p>What happens when an integer overflows in C?
+For unsigned integers, it wraps around; for signed integers, behavior is undefined.</p>
+</li>
+<li>
+<p>What is the difference between signed and unsigned overflow?
+Unsigned wraps modulo <code>2^n</code>; signed overflow can produce unpredictable results.</p>
+</li>
+<li>
+<p>Why is signed integer overflow undefined in C?
+To allow compiler optimizations without forcing a specific wraparound behavior.</p>
+</li>
+<li>
+<p>How can you detect overflow in arithmetic operations?
+Check results against max/min values or use compiler built-in functions like <code>__builtin_add_overflow()</code>.</p>
+</li>
+<li>
+<p>How can you prevent integer overflow in safe code?
+Use wider types, check bounds before operations, or use safe math libraries.</p>
+</li>
+<li>
+<p>What is integer promotion?
+Converting smaller integer types to a larger standard type for arithmetic operations.</p>
+</li>
+<li>
+<p>What are the usual arithmetic conversions in C?
+Rules that convert operands to a common type for consistent computation.</p>
+</li>
+<li>
+<p>What happens if you divide by zero using integers?
+It causes undefined behavior, usually a runtime crash or exception.</p>
+</li>
+<li>
+<p>How do you perform modular arithmetic in C?
+Use the <code>%</code> operator for modulus.</p>
+</li>
+<li>
+<p>How can you perform exponentiation efficiently using integers?
+Use exponentiation by squaring to reduce the number of multiplications.</p>
+</li>
+</ol>
+<hr>
+<h3 id="numerical-methods"><strong>Numerical Methods</strong></h3>
+<ol start="641">
+<li>
+<p>What is a numerical method?
+A technique to approximate solutions of mathematical problems using algorithms.</p>
+</li>
+<li>
+<p>How do you compute square roots without using <code>sqrt()</code>?
+Use iterative methods like Newton-Raphson or binary search.</p>
+</li>
+<li>
+<p>How can you approximate π using a series expansion?
+Use infinite series like the Leibniz or Nilakantha series.</p>
+</li>
+<li>
+<p>What is Newton-Raphson method used for?
+Finding roots of equations iteratively.</p>
+</li>
+<li>
+<p>How do you implement Newton’s method in C?
+Iterate <code>x = x - f(x)/f'(x)</code> until convergence.</p>
+</li>
+<li>
+<p>How can you perform numerical differentiation?
+Use finite difference approximations like <code>(f(x+h)-f(x))/h</code>.</p>
+</li>
+<li>
+<p>What is numerical integration?
+Approximating the integral of a function using discrete sums.</p>
+</li>
+<li>
+<p>What is Simpson’s rule?
+A numerical method using quadratic polynomials to approximate integrals.</p>
+</li>
+<li>
+<p>How do you compute definite integrals numerically?
+Use methods like Trapezoidal rule, Simpson’s rule, or Gaussian quadrature.</p>
+</li>
+<li>
+<p>How do you detect convergence in iterative numerical methods?
+Check if the change between iterations is below a small threshold.</p>
+</li>
+<li>
+<p>What is interpolation?
+Estimating values between known data points.</p>
+</li>
+<li>
+<p>What is linear interpolation?
+Connecting two points with a straight line to estimate intermediate values.</p>
+</li>
+<li>
+<p>How can you implement linear interpolation in C?
+Use <code>y = y0 + (x - x0)*(y1 - y0)/(x1 - x0)</code>.</p>
+</li>
+<li>
+<p>What are spline interpolations?
+Piecewise polynomial functions that provide smooth curves through data points.</p>
+</li>
+<li>
+<p>How can rounding errors accumulate in numerical methods?
+Repeated operations magnify small errors, leading to significant deviation.</p>
+</li>
+<li>
+<p>What is numerical stability?
+A property where errors do not grow uncontrollably during computations.</p>
+</li>
+<li>
+<p>What are condition numbers in numerical computation?
+A measure of sensitivity of a function’s output to input changes.</p>
+</li>
+<li>
+<p>What causes catastrophic cancellation?
+Subtracting nearly equal numbers, causing loss of significant digits.</p>
+</li>
+<li>
+<p>How can you mitigate floating-point error propagation?
+Use higher precision, reformulate algorithms, and avoid subtracting close numbers.</p>
+</li>
+<li>
+<p>What is precision loss, and how do you quantify it?
+Loss of significant digits; quantified using relative or absolute error.</p>
+</li>
+</ol>
+<hr>
+<h3 id="sorting-algorithms"><strong>Sorting Algorithms</strong></h3>
+<ol start="661">
+<li>
+<p>What is a sorting algorithm?
+A method to arrange elements of a list in a specific order.</p>
+</li>
+<li>
+<p>What are common sorting algorithms in C?
+Bubble sort, selection sort, insertion sort, merge sort, quicksort, heap sort.</p>
+</li>
+<li>
+<p>How does the <code>qsort()</code> function perform sorting?
+It sorts an array using a comparison function provided by the user.</p>
+</li>
+<li>
+<p>What sorting algorithm does <code>qsort()</code> typically use?
+Quicksort or a hybrid of quicksort and insertion sort.</p>
+</li>
+<li>
+<p>How do you implement bubble sort?
+Repeatedly swap adjacent elements if they are in the wrong order.</p>
+</li>
+<li>
+<p>How do you implement selection sort?
+Repeatedly select the minimum element and move it to the sorted portion.</p>
+</li>
+<li>
+<p>How do you implement insertion sort?
+Insert each element into its correct position in the already sorted part.</p>
+</li>
+<li>
+<p>How does merge sort work?
+Divide the array, recursively sort halves, and merge them.</p>
+</li>
+<li>
+<p>How does quicksort partition data?
+Choose a pivot and reorder elements so smaller go left and larger go right.</p>
+</li>
+<li>
+<p>What is the average complexity of quicksort?
+O(n log n).</p>
+</li>
+<li>
+<p>What is the worst-case complexity of quicksort?
+O(n²).</p>
+</li>
+<li>
+<p>How can you improve quicksort’s worst case?
+Use random pivots or median-of-three pivot selection.</p>
+</li>
+<li>
+<p>What is heap sort and how does it work?
+Build a heap from the array and repeatedly extract the max to sort.</p>
+</li>
+<li>
+<p>What is the difference between stable and unstable sorting algorithms?
+Stable preserves the relative order of equal elements; unstable may not.</p>
+</li>
+<li>
+<p>How can you make quicksort stable?
+Use extra memory to preserve order when partitioning.</p>
+</li>
+<li>
+<p>What are adaptive sorting algorithms?
+Algorithms that take advantage of existing order to run faster.</p>
+</li>
+<li>
+<p>How can you sort linked lists efficiently?
+Use merge sort, which works well with linked structures.</p>
+</li>
+<li>
+<p>What sorting algorithm works best for nearly sorted data?
+Insertion sort.</p>
+</li>
+<li>
+<p>How does radix sort differ from comparison-based sorts?
+It sorts digits or characters directly without comparing elements.</p>
+</li>
+<li>
+<p>What is counting sort and when is it efficient?
+Sorts integers by counting occurrences; efficient for small ranges of integers.</p>
+</li>
+</ol>
+<hr>
+<h3 id="searching-algorithms"><strong>Searching Algorithms</strong></h3>
+<ol start="681">
+<li>
+<p>What is a search algorithm?
+A method to find a specific element in a data structure.</p>
+</li>
+<li>
+<p>How do you perform linear search in an array?
+Check each element sequentially until the target is found.</p>
+</li>
+<li>
+<p>What is binary search?
+A divide-and-conquer method that repeatedly halves a sorted array to find a target.</p>
+</li>
+<li>
+<p>What is the time complexity of binary search?
+O(log n).</p>
+</li>
+<li>
+<p>What are the prerequisites for binary search?
+The array must be sorted.</p>
+</li>
+<li>
+<p>How can you implement binary search iteratively?
+Use a loop with low, high, and mid indices, updating bounds each iteration.</p>
+</li>
+<li>
+<p>How can you implement binary search recursively?
+Call the function on the left or right half depending on comparison with mid.</p>
+</li>
+<li>
+<p>How do you search in a linked list?
+Traverse nodes sequentially until the target is found.</p>
+</li>
+<li>
+<p>How can you search in a binary search tree?
+Compare the target with the current node and go left or right recursively.</p>
+</li>
+<li>
+<p>What is the complexity of BST search operations?
+O(h), where h is the tree height; O(log n) for balanced trees, O(n) worst case.</p>
+</li>
+<li>
+<p>What are hash-based lookup methods?
+Techniques that use a hash function to map keys to indices for fast access.</p>
+</li>
+<li>
+<p>How does a hash function work?
+It transforms a key into an index in a hash table.</p>
+</li>
+<li>
+<p>What is a good hash function?
+One that distributes keys uniformly and minimizes collisions.</p>
+</li>
+<li>
+<p>What is open addressing in hashing?
+A collision resolution method that finds another slot in the table using probing.</p>
+</li>
+<li>
+<p>What is separate chaining in hash tables?
+A collision resolution method that stores multiple keys in a linked list at the same index.</p>
+</li>
+<li>
+<p>How do you resolve hash collisions?
+Use open addressing, separate chaining, or double hashing.</p>
+</li>
+<li>
+<p>How do you resize a hash table dynamically?
+Create a larger table and reinsert all existing keys.</p>
+</li>
+<li>
+<p>How do you measure the load factor in a hash table?
+Load factor = number of elements ÷ table size.</p>
+</li>
+<li>
+<p>What is rehashing?
+Recomputing and reinserting keys into a new table after resizing.</p>
+</li>
+<li>
+<p>What are typical applications of hash-based searching in C?
+Dictionaries, caches, symbol tables, and fast membership checks.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%E2%9A%99%EF%B8%8F-batch-8-scientific-computing-with-c-q701%E2%80%93q800">⚙️ <strong>Batch 8: Scientific Computing with C (Q701–Q800)</strong></h2>
+<h3 id="matrix-operations"><strong>Matrix Operations</strong></h3>
+<ol start="701">
+<li>
+<p>What is a matrix in programming terms?
+A matrix is a two-dimensional array of numbers arranged in rows and columns.</p>
+</li>
+<li>
+<p>How can you represent a 2D matrix using arrays in C?
+Using a 2D array like <code>int matrix[rows][cols];</code>.</p>
+</li>
+<li>
+<p>How can you dynamically allocate a matrix?
+By allocating an array of pointers for rows, then allocating each row separately with <code>malloc</code>.</p>
+</li>
+<li>
+<p>How do you free a dynamically allocated matrix?
+Free each row first, then free the array of pointers.</p>
+</li>
+<li>
+<p>How do you add two matrices in C?
+By looping through each element and summing corresponding elements.</p>
+</li>
+<li>
+<p>How do you subtract two matrices?
+By looping through each element and subtracting corresponding elements.</p>
+</li>
+<li>
+<p>How do you perform matrix multiplication?
+Use three nested loops: iterate over rows of the first matrix, columns of the second, and sum products.</p>
+</li>
+<li>
+<p>How can you optimize matrix multiplication for cache performance?
+By using block (tile) multiplication to improve spatial locality.</p>
+</li>
+<li>
+<p>How do you compute the transpose of a matrix?
+Swap rows and columns, so <code>transpose[i][j] = matrix[j][i]</code>.</p>
+</li>
+<li>
+<p>How do you check whether a matrix is symmetric?
+Compare each element <code>matrix[i][j]</code> with <code>matrix[j][i]</code>.</p>
+</li>
+<li>
+<p>How do you calculate the trace of a square matrix?
+Sum all diagonal elements: <code>trace = sum(matrix[i][i])</code>.</p>
+</li>
+<li>
+<p>How do you compute the determinant of a matrix?
+Use recursive expansion by minors or LU decomposition for larger matrices.</p>
+</li>
+<li>
+<p>What is the computational complexity of determinant calculation?
+<code>O(n!)</code> for recursive method, <code>O(n³)</code> using LU decomposition.</p>
+</li>
+<li>
+<p>How can you compute the inverse of a matrix?
+Use Gaussian elimination, adjoint method, or LU decomposition.</p>
+</li>
+<li>
+<p>What are the conditions for matrix invertibility?
+The matrix must be square and have a non-zero determinant.</p>
+</li>
+<li>
+<p>What is a singular matrix?
+A square matrix with determinant zero, which is non-invertible.</p>
+</li>
+<li>
+<p>What is LU decomposition?
+Factorizing a matrix into a lower triangular matrix (L) and an upper triangular matrix (U).</p>
+</li>
+<li>
+<p>How is LU decomposition useful for solving linear systems?
+It allows solving <code>Ax = b</code> by solving <code>Ly = b</code> then <code>Ux = y</code> efficiently.</p>
+</li>
+<li>
+<p>How do you implement LU decomposition in C?
+Use nested loops to compute L and U using Doolittle or Crout method.</p>
+</li>
+<li>
+<p>How can you verify the correctness of LU decomposition?
+Multiply <code>L</code> and <code>U</code> and check if the product equals the original matrix.</p>
+</li>
+</ol>
+<hr>
+<h3 id="linear-algebra--systems-of-equations"><strong>Linear Algebra &amp; Systems of Equations</strong></h3>
+<ol start="721">
+<li>
+<p>How do you represent linear equations in matrix form?
+As <code>Ax = b</code>, where <code>A</code> is the coefficient matrix, <code>x</code> is the variable vector, and <code>b</code> is the constants vector.</p>
+</li>
+<li>
+<p>How do you solve <code>Ax = b</code> using Gaussian elimination?
+Transform <code>A</code> to upper triangular form, then use backward substitution to find <code>x</code>.</p>
+</li>
+<li>
+<p>What are pivoting and partial pivoting in Gaussian elimination?
+Pivoting swaps rows to place the largest element in the pivot position to improve stability; partial pivoting swaps only rows.</p>
+</li>
+<li>
+<p>How can you reduce round-off error during elimination?
+Use partial or full pivoting and scale rows to minimize numerical errors.</p>
+</li>
+<li>
+<p>What is forward and backward substitution?
+Forward substitution solves <code>Ly = b</code> for lower triangular <code>L</code>; backward substitution solves <code>Ux = y</code> for upper triangular <code>U</code>.</p>
+</li>
+<li>
+<p>How does LU decomposition improve computational efficiency?
+It allows solving multiple <code>Ax = b</code> systems without recomputing the decomposition each time.</p>
+</li>
+<li>
+<p>What is Cholesky decomposition and when is it used?
+It factors a symmetric positive definite matrix as <code>A = LLᵀ</code>; used in efficient solutions for such matrices.</p>
+</li>
+<li>
+<p>How do you detect if a matrix is positive definite?
+Check if all eigenvalues are positive or use leading principal minors test.</p>
+</li>
+<li>
+<p>How can you compute eigenvalues numerically?
+Use iterative methods like the power method, QR algorithm, or Jacobi method.</p>
+</li>
+<li>
+<p>How can you normalize an eigenvector?
+Divide the eigenvector by its magnitude so its length becomes 1.</p>
+</li>
+<li>
+<p>How can you compute matrix norms (L1, L2, Frobenius)?
+L1: max column sum; L2: largest singular value; Frobenius: sqrt(sum of squares of all elements).</p>
+</li>
+<li>
+<p>How can you implement matrix-vector multiplication efficiently?
+Use row-wise traversal and exploit memory locality or parallelize loops.</p>
+</li>
+<li>
+<p>What is sparse matrix representation?
+A matrix mostly filled with zeros, stored efficiently by only saving non-zero elements.</p>
+</li>
+<li>
+<p>How can you store a sparse matrix compactly?
+Use formats like CSR (Compressed Sparse Row), CSC, or coordinate list (COO).</p>
+</li>
+<li>
+<p>What is Compressed Sparse Row (CSR) format?
+Stores non-zero values, column indices, and row pointers to save memory.</p>
+</li>
+<li>
+<p>How do you perform sparse matrix-vector multiplication?
+Multiply only non-zero elements using CSR arrays to access values and indices.</p>
+</li>
+<li>
+<p>What is the advantage of sparse representations?
+Reduced memory usage and faster computations for matrices with many zeros.</p>
+</li>
+<li>
+<p>What are common applications of linear algebra in scientific computing?
+Solving PDEs, simulations, optimization, machine learning, graphics, and control systems.</p>
+</li>
+<li>
+<p>How can parallelization improve matrix computations?
+Distributes work across multiple cores or GPUs to perform operations faster.</p>
+</li>
+<li>
+<p>What are BLAS and LAPACK libraries?
+BLAS: basic linear algebra routines; LAPACK: higher-level routines for solving linear systems, eigenvalues, and decompositions.</p>
+</li>
+</ol>
+<hr>
+<h3 id="statistical-computations"><strong>Statistical Computations</strong></h3>
+<ol start="741">
+<li>
+<p>How can you compute the mean of an array of values?
+Sum all elements and divide by the number of elements.</p>
+</li>
+<li>
+<p>How do you calculate the median in C?
+Sort the array and pick the middle element (or average the two middle elements if even).</p>
+</li>
+<li>
+<p>How can you compute the mode of a dataset?
+Count the frequency of each value and choose the one with the highest count.</p>
+</li>
+<li>
+<p>How do you compute the variance of a dataset?
+Calculate the average of squared differences from the mean.</p>
+</li>
+<li>
+<p>How do you compute the standard deviation?
+Take the square root of the variance.</p>
+</li>
+<li>
+<p>What is the difference between sample and population variance?
+Sample variance divides by <code>n-1</code>, population variance divides by <code>n</code>.</p>
+</li>
+<li>
+<p>How do you compute covariance between two variables?
+Average the product of their deviations from their respective means.</p>
+</li>
+<li>
+<p>How do you compute correlation coefficients?
+Divide covariance by the product of standard deviations of the two variables.</p>
+</li>
+<li>
+<p>What is Pearson’s correlation?
+A measure of linear correlation between two variables ranging from -1 to 1.</p>
+</li>
+<li>
+<p>What is Spearman’s rank correlation?
+A non-parametric measure based on ranks of data rather than raw values.</p>
+</li>
+<li>
+<p>How do you compute a histogram of data in C?
+Count occurrences of values in defined bins and store the counts in an array.</p>
+</li>
+<li>
+<p>How can you perform z-score normalization?
+Subtract the mean and divide by the standard deviation for each value.</p>
+</li>
+<li>
+<p>How do you detect outliers in a dataset?
+Identify values that lie beyond a threshold (e.g., 3 standard deviations from mean).</p>
+</li>
+<li>
+<p>How can you implement a moving average filter?
+Average a fixed-size sliding window of consecutive elements.</p>
+</li>
+<li>
+<p>What is exponential moving average (EMA)?
+A weighted moving average where recent values get higher weights.</p>
+</li>
+<li>
+<p>How can you compute weighted averages?
+Multiply each value by its weight, sum the products, and divide by the sum of weights.</p>
+</li>
+<li>
+<p>How can you sort and rank data efficiently?
+Use quicksort, mergesort, or heap sort, then assign ranks based on sorted positions.</p>
+</li>
+<li>
+<p>How can you perform a linear regression fit in C?
+Compute slope and intercept using formulas from least squares.</p>
+</li>
+<li>
+<p>What is the least squares method?
+Minimizing the sum of squared differences between observed and predicted values.</p>
+</li>
+<li>
+<p>How can you measure the goodness of fit (R²)?
+Compute <code>1 - (SS_res / SS_tot)</code> where <code>SS_res</code> is residual sum of squares and <code>SS_tot</code> is total sum of squares.</p>
+</li>
+</ol>
+<hr>
+<h3 id="signal-processing-basics"><strong>Signal Processing Basics</strong></h3>
+<ol start="761">
+<li>
+<p>What is a signal in digital signal processing (DSP)?
+A signal is a sequence of numbers representing a physical quantity over time.</p>
+</li>
+<li>
+<p>How are signals represented in C?
+As arrays of <code>float</code> or <code>double</code> values storing sampled data points.</p>
+</li>
+<li>
+<p>What is sampling frequency?
+The number of samples taken per second from a continuous signal.</p>
+</li>
+<li>
+<p>What is aliasing in signal processing?
+When high-frequency components appear as lower frequencies due to insufficient sampling.</p>
+</li>
+<li>
+<p>How do you implement a low-pass filter in C?
+Use a weighted average of current and past samples (FIR) or recursive formula (IIR).</p>
+</li>
+<li>
+<p>What is a moving window filter?
+A filter that averages or processes data over a sliding window of consecutive samples.</p>
+</li>
+<li>
+<p>How can you compute a convolution of two sequences?
+Multiply and sum overlapping elements of the sequences for each shift position.</p>
+</li>
+<li>
+<p>What is correlation between signals?
+A measure of similarity between two signals as one is shifted over the other.</p>
+</li>
+<li>
+<p>How can you perform autocorrelation?
+Correlate a signal with itself at different time lags.</p>
+</li>
+<li>
+<p>What is the difference between convolution and correlation?
+Convolution flips one sequence before shifting; correlation does not.</p>
+</li>
+<li>
+<p>What is the Discrete Fourier Transform (DFT)?
+Transforms a discrete-time signal into its frequency components.</p>
+</li>
+<li>
+<p>How do you compute DFT using C loops?
+Use nested loops to sum <code>x[n] * exp(-j*2π*k*n/N)</code> for each frequency <code>k</code>.</p>
+</li>
+<li>
+<p>What is the computational complexity of DFT?
+O(N²) for direct computation.</p>
+</li>
+<li>
+<p>What is the Fast Fourier Transform (FFT)?
+An efficient algorithm to compute the DFT in O(N log N) time.</p>
+</li>
+<li>
+<p>How is FFT different from DFT?
+FFT is a faster, optimized method to compute the same result as DFT.</p>
+</li>
+<li>
+<p>What is the typical library used for FFT in C?
+FFTW (Fastest Fourier Transform in the West).</p>
+</li>
+<li>
+<p>How do you use the FFTW library for Fourier transforms?
+Plan the transform, execute it on the data array, then retrieve results.</p>
+</li>
+<li>
+<p>What are the main steps in using FFTW?
+Allocate input/output arrays, create a plan, execute the plan, and clean up.</p>
+</li>
+<li>
+<p>What is windowing in signal processing?
+Multiplying a signal by a window function to reduce spectral leakage.</p>
+</li>
+<li>
+<p>How can you remove noise from a signal using FFT?
+Transform to frequency domain, zero out unwanted frequencies, then inverse FFT.</p>
+</li>
+</ol>
+<hr>
+<h3 id="random-number-generation"><strong>Random Number Generation</strong></h3>
+<ol start="781">
+<li>
+<p>How are random numbers generated in C?
+Using pseudo-random number generators like <code>rand()</code> or library functions.</p>
+</li>
+<li>
+<p>What does <code>rand()</code> return?
+An integer between 0 and <code>RAND_MAX</code>.</p>
+</li>
+<li>
+<p>How can you generate a random number in a specific range?
+Use <code>rand() % (max - min + 1) + min</code>.</p>
+</li>
+<li>
+<p>Why is <code>rand()</code> not suitable for high-quality simulations?
+It has limited randomness, short period, and predictable sequences.</p>
+</li>
+<li>
+<p>What is the difference between <code>rand()</code> and <code>random()</code>?
+<code>random()</code> often has better randomness and a longer period; <code>rand()</code> is simpler and more standard.</p>
+</li>
+<li>
+<p>What is a random seed, and why is it needed?
+A starting value for the generator to produce a reproducible sequence of numbers.</p>
+</li>
+<li>
+<p>How do you seed the random number generator?
+Use <code>srand(seed);</code> where <code>seed</code> is typically time-based.</p>
+</li>
+<li>
+<p>What happens if you use the same seed repeatedly?
+The same sequence of random numbers is produced each time.</p>
+</li>
+<li>
+<p>How can you generate random floating-point numbers between 0 and 1?
+Use <code>rand() / (double)RAND_MAX</code>.</p>
+</li>
+<li>
+<p>How can you generate normally distributed random numbers?
+Use the Box-Muller transform or other normal distribution algorithms.</p>
+</li>
+<li>
+<p>What is the Box-Muller transform?
+A method to convert two uniform random numbers into two independent standard normal numbers.</p>
+</li>
+<li>
+<p>How do you implement Box-Muller in C?
+Generate two uniform numbers <code>u1</code>, <code>u2</code> and compute <code>sqrt(-2*ln(u1))*cos(2π*u2)</code> (and sin for second).</p>
+</li>
+<li>
+<p>What is a pseudo-random number generator (PRNG)?
+An algorithm that produces a deterministic sequence of numbers approximating randomness.</p>
+</li>
+<li>
+<p>What is the difference between pseudo-random and true random?
+Pseudo-random is deterministic and repeatable; true random comes from physical processes and is non-deterministic.</p>
+</li>
+<li>
+<p>What is the Mersenne Twister algorithm?
+A PRNG with a very long period and high-quality randomness.</p>
+</li>
+<li>
+<p>Why is Mersenne Twister popular for simulations?
+It has a very long period, good statistical properties, and fast generation.</p>
+</li>
+<li>
+<p>What is the period of the Mersenne Twister?
+2¹⁹⁹³⁷−1.</p>
+</li>
+<li>
+<p>How do you use the MT19937 generator in C?
+Initialize with a seed, then call <code>genrand_int32()</code> or equivalent to generate numbers.</p>
+</li>
+<li>
+<p>How do you test the quality of a PRNG?
+Use statistical tests like DIEHARD or TestU01 to check uniformity and independence.</p>
+</li>
+<li>
+<p>What are common pitfalls in using random numbers for simulations?
+Using the same seed unintentionally, poor PRNG choice, and ignoring distribution properties.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%8E%A8-batch-9-visualization--output-in-c-q801%E2%80%93q900">🎨 <strong>Batch 9: Visualization &amp; Output in C (Q801–Q900)</strong></h2>
+<h3 id="ascii-art--terminal-visualization"><strong>ASCII Art &amp; Terminal Visualization</strong></h3>
+<ol start="801">
+<li>
+<p>What is ASCII art, and how can it be generated programmatically?
+ASCII art is creating pictures using text characters; programmatically, you map pixels or values to characters.</p>
+</li>
+<li>
+<p>How can you print a simple horizontal bar chart in the terminal?
+Use loops to print repeated characters proportionally to data values.</p>
+</li>
+<li>
+<p>How do you use characters like <code>#</code> or <code>*</code> to represent magnitudes?
+Multiply the character by a value scaled to the data magnitude.</p>
+</li>
+<li>
+<p>How do you normalize data for ASCII plotting?
+Scale all values relative to the maximum so they fit the display width.</p>
+</li>
+<li>
+<p>How can you print a histogram from numerical data?
+Count occurrences per bin and print a row of characters for each bin.</p>
+</li>
+<li>
+<p>What terminal escape codes can control colors?
+ANSI escape codes like <code>\033[31m</code> for red or <code>\033[0m</code> to reset.</p>
+</li>
+<li>
+<p>How do you print colored text in ANSI-compatible terminals?
+Prefix text with ANSI color codes and reset after printing.</p>
+</li>
+<li>
+<p>How can you move the cursor to a specific position in terminal output?
+Use escape sequences like <code>\033[&lt;row&gt;;&lt;col&gt;H</code>.</p>
+</li>
+<li>
+<p>What are escape sequences like <code>\r</code>, <code>\n</code>, and <code>\t</code> used for?
+<code>\n</code> = new line, <code>\r</code> = carriage return, <code>\t</code> = horizontal tab.</p>
+</li>
+<li>
+<p>How can you clear or redraw the terminal screen from C?
+Use <code>system(&quot;clear&quot;)</code> on Unix or <code>system(&quot;cls&quot;)</code> on Windows, or ANSI codes.</p>
+</li>
+<li>
+<p>How can you draw simple shapes (lines, boxes) using ASCII?
+Print repeated characters (<code>-</code>, <code>|</code>, <code>+</code>) arranged to form shapes.</p>
+</li>
+<li>
+<p>How can you represent coordinate systems in ASCII output?
+Label axes and plot points using characters at scaled positions.</p>
+</li>
+<li>
+<p>How can you simulate animation in a terminal?
+Redraw frames with cursor movement and delays between updates.</p>
+</li>
+<li>
+<p>How can you print formatted tables in ASCII?
+Use consistent column widths and separators like <code>|</code> and <code>-</code>.</p>
+</li>
+<li>
+<p>How do you adjust output width dynamically based on data?
+Measure the longest value and set column widths accordingly.</p>
+</li>
+<li>
+<p>How can you align numerical data in output neatly?
+Use printf width specifiers to pad and align numbers.</p>
+</li>
+<li>
+<p>What is the purpose of field width and precision specifiers in <code>printf()</code>?
+They control the space reserved for output and decimal accuracy.</p>
+</li>
+<li>
+<p>How do you print floating-point numbers with controlled precision?
+Use <code>%.nf</code> in printf, where <code>n</code> is the number of decimals.</p>
+</li>
+<li>
+<p>How do you format integers with leading zeros or spaces?
+Use <code>%0nd</code> for zeros or <code>%nd</code> for spaces in printf.</p>
+</li>
+<li>
+<p>How can you right-align or left-align data in printf formatting?
+Right-align by default, left-align using <code>%-nd</code> in printf.</p>
+</li>
+</ol>
+<hr>
+<h3 id="generating-plot-data"><strong>Generating Plot Data</strong></h3>
+<ol start="821">
+<li>
+<p>How can you write numerical data to a CSV file for plotting?
+Open a file in write mode and write values separated by commas, one row per line.</p>
+</li>
+<li>
+<p>How can you save data as tab-separated text?
+Use tabs (<code>\t</code>) instead of commas between values when writing each line.</p>
+</li>
+<li>
+<p>How do you control numeric precision when writing data files?
+Format numbers with a specific number of decimal places using printf or string formatting.</p>
+</li>
+<li>
+<p>What are common formats for plot data (CSV, TSV, JSON)?
+CSV, TSV, and JSON are widely used for structured numeric or tabular data.</p>
+</li>
+<li>
+<p>How can you generate an x–y data table for plotting functions?
+Loop over x-values, compute y-values, and write pairs to a file.</p>
+</li>
+<li>
+<p>How do you output function values for plotting sin(x) or exp(x)?
+Evaluate the function for each x and save the x,y pair to a file.</p>
+</li>
+<li>
+<p>How do you generate a histogram as numeric output?
+Count values per bin and write bin edges and counts to a file.</p>
+</li>
+<li>
+<p>What is the purpose of column headers in output files?
+They label the data columns, making the file self-describing and readable.</p>
+</li>
+<li>
+<p>How do you ensure consistent floating-point formatting across locales?
+Force a standard decimal point (e.g., <code>.</code>) and fixed precision, ignoring locale settings.</p>
+</li>
+<li>
+<p>How can you compress data before saving (e.g., gzip integration)?
+Write to a gzip-compressed file using libraries like <code>zlib</code> or <code>gzip</code>.</p>
+</li>
+<li>
+<p>How do you separate data for multiple series in output?
+Use separate columns or separate files for each data series.</p>
+</li>
+<li>
+<p>How do you append data to an existing file without overwriting it?
+Open the file in append mode (<code>&quot;a&quot;</code> or <code>&quot;a+&quot;</code>) instead of write mode.</p>
+</li>
+<li>
+<p>How can you mark missing values in data files?
+Use placeholders like <code>NaN</code>, <code>null</code>, or an empty field.</p>
+</li>
+<li>
+<p>What is the advantage of using CSV over binary output?
+CSV is human-readable, easy to edit, and widely compatible with tools.</p>
+</li>
+<li>
+<p>What are disadvantages of plain-text data for large datasets?
+Larger file size, slower reading/writing, and less efficient storage than binary.</p>
+</li>
+<li>
+<p>How can you verify data integrity after writing to a file?
+Check row counts, compute checksums, or compare hashes of the file contents.</p>
+</li>
+<li>
+<p>How do you timestamp output data automatically?
+Include current date and time using system functions when writing each row.</p>
+</li>
+<li>
+<p>How can you add metadata headers to CSV files?
+Insert commented lines (e.g., starting with <code>#</code>) at the top before the data.</p>
+</li>
+<li>
+<p>How do you control scientific notation output in printf?
+Use <code>%e</code> or <code>%E</code> with a precision specifier to format numbers in scientific notation.</p>
+</li>
+<li>
+<p>How can you handle localization differences in numeric output?
+Explicitly set locale-independent formats or override locale settings in code.</p>
+</li>
+</ol>
+<hr>
+<h3 id="image--graphics-output-pgmppmsvg"><strong>Image &amp; Graphics Output (PGM/PPM/SVG)</strong></h3>
+<ol start="841">
+<li>
+<p>What is the PGM (Portable GrayMap) image format?
+A simple grayscale image format storing pixel intensity values, either in ASCII or binary.</p>
+</li>
+<li>
+<p>What is the PPM (Portable PixMap) format?
+A simple RGB image format storing red, green, and blue values for each pixel.</p>
+</li>
+<li>
+<p>How do you save grayscale image data in PGM format?
+Write a PGM header followed by pixel values (0–255) in ASCII or binary.</p>
+</li>
+<li>
+<p>How do you save RGB image data in PPM format?
+Write a PPM header followed by sequences of red, green, blue values for each pixel.</p>
+</li>
+<li>
+<p>What is the difference between ASCII (plain) and binary PPM formats?
+ASCII stores pixel values as readable text; binary stores them as raw bytes, more compact and faster.</p>
+</li>
+<li>
+<p>How do you compute pixel intensity from data values?
+Map your data range to 0–255 using linear scaling or normalization.</p>
+</li>
+<li>
+<p>How can you scale data values into an image intensity range (0–255)?
+Use <code>scaled = (value - min) * 255 / (max - min)</code> for each pixel.</p>
+</li>
+<li>
+<p>How can you write a simple image header in C?
+Use <code>fprintf</code> to output the magic number, width, height, and max pixel value.</p>
+</li>
+<li>
+<p>What file extension is typically used for PPM images?
+<code>.ppm</code></p>
+</li>
+<li>
+<p>How can you visualize matrices as images?
+Map matrix values to pixel intensities for grayscale or RGB images.</p>
+</li>
+<li>
+<p>What is SVG (Scalable Vector Graphics)?
+An XML-based format for vector graphics that can scale without losing quality.</p>
+</li>
+<li>
+<p>How can you generate simple SVG graphics using text output?
+Write XML tags for shapes (<code>&lt;rect&gt;</code>, <code>&lt;circle&gt;</code>, <code>&lt;line&gt;</code>) to a <code>.svg</code> file.</p>
+</li>
+<li>
+<p>How do you draw lines and circles in SVG?
+Use <code>&lt;line x1=&quot;...&quot; y1=&quot;...&quot; x2=&quot;...&quot; y2=&quot;...&quot;/&gt;</code> and <code>&lt;circle cx=&quot;...&quot; cy=&quot;...&quot; r=&quot;...&quot;/&gt;</code>.</p>
+</li>
+<li>
+<p>How can you embed data-driven shapes in SVG output?
+Compute coordinates from data values and generate corresponding SVG elements dynamically.</p>
+</li>
+<li>
+<p>What are the advantages of SVG over raster formats?
+Scalable without quality loss, smaller file size for simple graphics, easy to edit and style.</p>
+</li>
+<li>
+<p>How can you plot data as a line graph in SVG?
+Convert data points to coordinates and connect them using <code>&lt;polyline&gt;</code> or <code>&lt;path&gt;</code> tags.</p>
+</li>
+<li>
+<p>How do you color-code data points in an SVG plot?
+Assign <code>fill</code> or <code>stroke</code> attributes based on data values.</p>
+</li>
+<li>
+<p>How can you add text labels in an SVG image?
+Use <code>&lt;text x=&quot;...&quot; y=&quot;...&quot;&gt;Label&lt;/text&gt;</code> with positioning attributes.</p>
+</li>
+<li>
+<p>How do you export a C-generated SVG to a web browser?
+Write the SVG file and serve it via HTTP or open it directly in a browser.</p>
+</li>
+<li>
+<p>What libraries exist for generating PNG or BMP from C?
+Libraries like <code>libpng</code>, <code>stb_image_write</code>, and <code>FreeImage</code> can generate PNG/BMP.</p>
+</li>
+</ol>
+<hr>
+<h3 id="external-visualization-tools"><strong>External Visualization Tools</strong></h3>
+<ol start="861">
+<li>
+<p>How can you automate data plotting using Gnuplot?
+Write Gnuplot commands in a script or send them from a program to generate plots automatically.</p>
+</li>
+<li>
+<p>How can you invoke Gnuplot from C using the <code>system()</code> function?
+Call <code>system(&quot;gnuplot script.gp&quot;)</code> to execute a Gnuplot script from C.</p>
+</li>
+<li>
+<p>What is a pipe (<code>popen()</code>) in C?
+A pipe allows a program to read from or write to another process as if it were a file.</p>
+</li>
+<li>
+<p>How do you send data to Gnuplot via a pipe?
+Use <code>popen(&quot;gnuplot&quot;, &quot;w&quot;)</code> and <code>fprintf</code> Gnuplot commands to the pipe.</p>
+</li>
+<li>
+<p>What are the advantages of pipe-based visualization?
+No intermediate files are needed, and communication with Gnuplot is real-time.</p>
+</li>
+<li>
+<p>How do you ensure the Gnuplot process terminates cleanly?
+Close the pipe using <code>pclose()</code> after sending all commands.</p>
+</li>
+<li>
+<p>How can you generate plots without writing intermediate files?
+Send data directly to Gnuplot via pipes or inline <code>plot '-'</code> commands.</p>
+</li>
+<li>
+<p>How do you plot multiple series using Gnuplot from C?
+Send multiple <code>plot</code> or <code>splot</code> commands with separate data streams to Gnuplot.</p>
+</li>
+<li>
+<p>How can you set Gnuplot styles (lines, points, color) via commands?
+Use commands like <code>set style line</code>, <code>with linespoints</code>, and <code>linecolor</code> in Gnuplot input.</p>
+</li>
+<li>
+<p>What are risks of using <code>system()</code> for invoking shell commands?
+Potential security risks, lack of error handling, and portability issues.</p>
+</li>
+<li>
+<p>How can you make portable plotting utilities in C?
+Use standard libraries, pipes, or external tools with minimal OS-specific assumptions.</p>
+</li>
+<li>
+<p>What is the difference between synchronous and asynchronous plotting?
+Synchronous waits for the plot to finish; asynchronous lets the program continue while plotting.</p>
+</li>
+<li>
+<p>How can you measure plotting time for performance analysis?
+Use timers like <code>clock()</code> or <code>gettimeofday()</code> around plotting commands.</p>
+</li>
+<li>
+<p>How can you embed Gnuplot commands within a C program dynamically?
+Generate Gnuplot commands as strings and send them via <code>fprintf</code> to a pipe.</p>
+</li>
+<li>
+<p>What other tools besides Gnuplot can visualize numeric data?
+Matplotlib, Plotly, R, MATLAB, and GNU Octave are common alternatives.</p>
+</li>
+<li>
+<p>How can you integrate C with Python plotting via files or sockets?
+Write data to files or communicate over sockets and let Python read and plot it.</p>
+</li>
+<li>
+<p>What is an external data pipeline?
+A series of programs connected so one’s output becomes the next’s input.</p>
+</li>
+<li>
+<p>How can you chain output of one program to another using pipes?
+Use the pipe operator <code>|</code> in the shell or <code>popen()</code> in C to connect processes.</p>
+</li>
+<li>
+<p>What is standard output redirection?
+Sending a program’s normal output (<code>stdout</code>) to a file or another process.</p>
+</li>
+<li>
+<p>How can you redirect program output to a file from C code?
+Use <code>freopen(&quot;file.txt&quot;, &quot;w&quot;, stdout)</code> to send <code>printf</code> output to a file.</p>
+</li>
+</ol>
+<hr>
+<h3 id="logging--debug-output"><strong>Logging &amp; Debug Output</strong></h3>
+<ol start="881">
+<li>
+<p>What is logging in system software?
+Recording runtime events, messages, or errors for debugging and monitoring purposes.</p>
+</li>
+<li>
+<p>Why is structured logging preferable to simple print statements?
+It organizes logs consistently, making them easier to filter, parse, and analyze.</p>
+</li>
+<li>
+<p>How do you log debug information to a file?
+Open a file in write or append mode and write log messages using <code>fprintf</code> or a logging function.</p>
+</li>
+<li>
+<p>How do you timestamp log entries?
+Include the current date and time using <code>time()</code> or <code>strftime()</code> when writing each log message.</p>
+</li>
+<li>
+<p>What are logging levels (info, warn, error)?
+Categories to indicate the importance or severity of log messages.</p>
+</li>
+<li>
+<p>How can you define log levels using macros?
+Use <code>#define LOG_INFO 1</code>, <code>#define LOG_WARN 2</code>, etc., and conditional checks in logging functions.</p>
+</li>
+<li>
+<p>How do you print messages conditionally based on log level?
+Compare the message’s level to a configured threshold before writing it.</p>
+</li>
+<li>
+<p>How can you include file name and line number in log messages?
+Use the <code>__FILE__</code> and <code>__LINE__</code> macros in the logging function.</p>
+</li>
+<li>
+<p>What is the <code>__FILE__</code> and <code>__LINE__</code> macro used for?
+They provide the current source file name and line number for debugging.</p>
+</li>
+<li>
+<p>How do you rotate logs when they become large?
+Rename or archive the current log file and start a new one once it exceeds a size limit.</p>
+</li>
+<li>
+<p>How can you implement a simple ring buffer logger?
+Store log entries in a fixed-size buffer that overwrites oldest messages when full.</p>
+</li>
+<li>
+<p>How do you limit log file size dynamically?
+Check file size before writing and rotate or truncate logs as needed.</p>
+</li>
+<li>
+<p>How do you write logs to stderr instead of stdout?
+Use <code>fprintf(stderr, ...)</code> or configure the logger to target <code>stderr</code>.</p>
+</li>
+<li>
+<p>What is the difference between stderr and stdout buffering?
+<code>stdout</code> is usually line-buffered or fully buffered; <code>stderr</code> is unbuffered by default.</p>
+</li>
+<li>
+<p>How do you synchronize log writes across threads?
+Use mutexes or locks to ensure only one thread writes at a time.</p>
+</li>
+<li>
+<p>What is <code>fflush()</code> used for in logging?
+It forces buffered log data to be written immediately to the output file or stream.</p>
+</li>
+<li>
+<p>How do you create color-coded logs in the terminal?
+Embed ANSI escape codes (like <code>\033[31m</code>) in log messages for color.</p>
+</li>
+<li>
+<p>How can you include memory usage statistics in logs?
+Query memory info via system calls (<code>getrusage</code>, <code>/proc</code> on Linux) and log the values.</p>
+</li>
+<li>
+<p>How can you format logs as JSON or CSV for analysis?
+Output log entries using structured formats like <code>{&quot;time&quot;: &quot;...&quot;, &quot;level&quot;: &quot;...&quot;, &quot;msg&quot;: &quot;...&quot;}</code> or comma-separated fields.</p>
+</li>
+<li>
+<p>How can you disable or enable logging at compile time?
+Use preprocessor macros like <code>#ifdef DEBUG</code> to include or exclude logging code.</p>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%8F%97%EF%B8%8F-batch-10-data-analysis-pipelines--build-systems-q901%E2%80%93q1000">🏗️ <strong>Batch 10: Data Analysis Pipelines &amp; Build Systems (Q901–Q1000)</strong></h2>
+<h3 id="build-automation--tools"><strong>Build Automation &amp; Tools</strong></h3>
+<ol start="901">
+<li>
+<p>What is the purpose of a build system?
+To automate compilation, linking, and other repetitive development tasks efficiently.</p>
+</li>
+<li>
+<p>What are common build automation tools for C projects?
+Make, CMake, Ninja, and Meson.</p>
+</li>
+<li>
+<p>What is a Makefile?
+A file containing rules that tell <code>make</code> how to build a project.</p>
+</li>
+<li>
+<p>How do you define a target and dependencies in a Makefile?
+<code>target: dependencies</code> followed by commands to build it.</p>
+</li>
+<li>
+<p>What is the difference between explicit and implicit rules in Makefiles?
+Explicit rules are manually defined; implicit rules are built-in patterns <code>make</code> can infer.</p>
+</li>
+<li>
+<p>What is the role of variables in Makefiles?
+To store values like compiler options or file lists for reuse.</p>
+</li>
+<li>
+<p>How do you write a simple Makefile to compile multiple <code>.c</code> files?
+List <code>.c</code> files as dependencies and use a rule to compile them into <code>.o</code> and link.</p>
+</li>
+<li>
+<p>What is a “phony target” in Makefiles?
+A target that doesn’t correspond to a real file, like <code>clean</code>.</p>
+</li>
+<li>
+<p>What is the purpose of the <code>clean</code> target?
+To remove compiled files and reset the build environment.</p>
+</li>
+<li>
+<p>How do you use wildcards in Makefiles?
+Use <code>%</code> in pattern rules or <code>*</code> in file lists.</p>
+</li>
+<li>
+<p>What is <code>CFLAGS</code> in Makefiles?
+A variable for compiler options for C source files.</p>
+</li>
+<li>
+<p>What does the <code>-Wall</code> flag do?
+Enables all common compiler warnings.</p>
+</li>
+<li>
+<p>How do you enable optimization flags (<code>-O1</code>, <code>-O2</code>, <code>-O3</code>)?
+Add <code>-O1</code>, <code>-O2</code>, or <code>-O3</code> to <code>CFLAGS</code>.</p>
+</li>
+<li>
+<p>What does the <code>-g</code> flag enable?
+Generates debugging information for use with a debugger.</p>
+</li>
+<li>
+<p>How can you create static libraries using <code>ar</code>?
+Use <code>ar rcs libname.a file1.o file2.o …</code>.</p>
+</li>
+<li>
+<p>How do you link static libraries in a Makefile?
+Add the library to the linker command: <code>gcc main.o -L. -lname -o prog</code>.</p>
+</li>
+<li>
+<p>What is the difference between static and dynamic linking?
+Static includes library code in the executable; dynamic links at runtime.</p>
+</li>
+<li>
+<p>How do you build shared libraries in C?
+Compile with <code>-fPIC</code> and link with <code>-shared</code>: <code>gcc -shared -o libname.so file.o</code>.</p>
+</li>
+<li>
+<p>What are the advantages of shared libraries?
+Smaller executables, memory efficiency, easier updates without recompiling.</p>
+</li>
+<li>
+<p>How do you specify library search paths (<code>-L</code> and <code>-l</code>)?
+<code>-L/path</code> sets search path, <code>-lname</code> links <code>libname.so</code> or <code>libname.a</code>.</p>
+</li>
+</ol>
+<hr>
+<h3 id="cmake--modern-build-systems"><strong>CMake &amp; Modern Build Systems</strong></h3>
+<ol start="921">
+<li>
+<p>What is CMake and how does it differ from Make?
+CMake is a cross-platform build system generator; unlike Make, it produces platform-specific build files instead of directly building.</p>
+</li>
+<li>
+<p>What is the <code>CMakeLists.txt</code> file?
+It is the script where you define project configuration, targets, and build rules for CMake.</p>
+</li>
+<li>
+<p>How do you define a project in CMake?
+Using <code>project(ProjectName VERSION x.y LANGUAGES C CXX)</code>.</p>
+</li>
+<li>
+<p>What is the <code>add_executable()</code> command used for?
+To define an executable target and its source files.</p>
+</li>
+<li>
+<p>How do you add include directories in CMake?
+Using <code>include_directories(path)</code> or <code>target_include_directories(target PRIVATE path)</code>.</p>
+</li>
+<li>
+<p>How do you link libraries in CMake?
+With <code>target_link_libraries(target library1 library2 …)</code>.</p>
+</li>
+<li>
+<p>What is the purpose of <code>target_link_libraries()</code>?
+To specify which libraries a target should link against.</p>
+</li>
+<li>
+<p>How do you define build types (Debug, Release) in CMake?
+Set <code>CMAKE_BUILD_TYPE</code> to <code>Debug</code>, <code>Release</code>, <code>RelWithDebInfo</code>, or <code>MinSizeRel</code>.</p>
+</li>
+<li>
+<p>What command generates build files from CMake scripts?
+<code>cmake &lt;source_dir&gt; -B &lt;build_dir&gt;</code>.</p>
+</li>
+<li>
+<p>How can you set compiler flags in CMake?
+Use <code>set(CMAKE_C_FLAGS &quot;-flag&quot;)</code> or target-specific <code>target_compile_options()</code>.</p>
+</li>
+<li>
+<p>What is an out-of-source build and why is it preferred?
+Building in a separate directory to keep source tree clean and easily rebuildable.</p>
+</li>
+<li>
+<p>How do you install built binaries using CMake?
+Use <code>install(TARGETS target DESTINATION path)</code>.</p>
+</li>
+<li>
+<p>How do you specify minimum CMake version requirements?
+<code>cmake_minimum_required(VERSION x.y)</code>.</p>
+</li>
+<li>
+<p>How do you integrate third-party libraries via <code>find_package()</code>?
+Use <code>find_package(LibraryName REQUIRED)</code> and then link it with <code>target_link_libraries()</code>.</p>
+</li>
+<li>
+<p>What is CPack and what does it do?
+A packaging system in CMake to create installers or archives of your project.</p>
+</li>
+<li>
+<p>How can you generate Visual Studio or Xcode projects via CMake?
+Specify a generator: <code>cmake -G &quot;Visual Studio 17 2022&quot;</code> or <code>cmake -G &quot;Xcode&quot;</code>.</p>
+</li>
+<li>
+<p>What is the role of <code>configure_file()</code> in CMake?
+To copy and optionally replace variables in a file at build time.</p>
+</li>
+<li>
+<p>How can you include tests in CMake builds?
+Enable testing with <code>enable_testing()</code> and define tests using <code>add_test()</code>.</p>
+</li>
+<li>
+<p>What is <code>CTest</code> used for?
+Running and managing tests defined in a CMake project.</p>
+</li>
+<li>
+<p>What is the advantage of using CMake for cross-platform builds?
+It abstracts platform differences, generating native build files for multiple systems.</p>
+</li>
+</ol>
+<hr>
+<h3 id="data-pipelines--modular-design"><strong>Data Pipelines &amp; Modular Design</strong></h3>
+<ol start="941">
+<li>
+<p>What is a data processing pipeline?
+A sequence of processing steps where data flows from one stage to the next.</p>
+</li>
+<li>
+<p>How can multiple programs be chained together using pipes in Unix?
+Use the <code>|</code> operator to connect the stdout of one program to the stdin of the next.</p>
+</li>
+<li>
+<p>How can you read from stdin and write to stdout in C?
+Use <code>scanf</code>, <code>fgets</code>, or <code>getchar</code> for input and <code>printf</code> or <code>fputs</code> for output.</p>
+</li>
+<li>
+<p>What is the purpose of <code>freopen()</code> in C?
+To redirect input/output streams to a file.</p>
+</li>
+<li>
+<p>How can you filter data line by line from stdin?
+Read each line, process it, and write to stdout or another stream.</p>
+</li>
+<li>
+<p>What is a modular program design?
+Breaking a program into independent, reusable components or modules.</p>
+</li>
+<li>
+<p>How do you separate computation and I/O logic in C?
+Write functions that handle computation separately from those handling input/output.</p>
+</li>
+<li>
+<p>What are the benefits of modular data pipelines?
+Easier maintenance, reusability, and the ability to replace or extend stages independently.</p>
+</li>
+<li>
+<p>How can you design a C program to act as a Unix-style filter?
+Read from stdin, process the data, and write results to stdout.</p>
+</li>
+<li>
+<p>What are examples of real-world Unix filters written in C?
+<code>grep</code>, <code>sed</code>, <code>awk</code>, and <code>sort</code>.</p>
+</li>
+<li>
+<p>How can you redirect output from one program into another?
+Using the <code>|</code> operator in the shell.</p>
+</li>
+<li>
+<p>What is the difference between <code>|</code> and <code>&gt;</code> in shell pipelines?
+<code>|</code> pipes output to another command; <code>&gt;</code> redirects output to a file.</p>
+</li>
+<li>
+<p>How can you detect EOF from stdin in a pipeline?
+Functions like <code>feof(stdin)</code> or checking if <code>fgets()</code>/<code>scanf()</code> returns NULL or EOF.</p>
+</li>
+<li>
+<p>How do you read input continuously until EOF?
+Use a loop like <code>while(fgets(line, sizeof(line), stdin) != NULL)</code>.</p>
+</li>
+<li>
+<p>How can you process large data streams efficiently?
+Process data incrementally, avoid loading everything into memory at once.</p>
+</li>
+<li>
+<p>What is stream buffering and how does it affect performance?
+Temporary storage of data before reading/writing; reduces I/O calls and improves speed.</p>
+</li>
+<li>
+<p>How can you implement buffering manually?
+Use a local array to collect data and flush it to output when full or at the end.</p>
+</li>
+<li>
+<p>What are the trade-offs of line buffering vs block buffering?
+Line buffering flushes on newline (more immediate), block buffering is faster but delayed.</p>
+</li>
+<li>
+<p>What is lazy evaluation in data pipelines?
+Processing data only when needed, not all at once.</p>
+</li>
+<li>
+<p>How can you create modular components for multi-stage data processing?
+Write separate functions or programs for each stage and connect them via pipes or function calls.</p>
+</li>
+</ol>
+<hr>
+<h3 id="performance-profiling--optimization"><strong>Performance Profiling &amp; Optimization</strong></h3>
+<ol start="961">
+<li>
+<p>What is program profiling?
+Analyzing a program to measure where time or resources are spent during execution.</p>
+</li>
+<li>
+<p>Why is profiling important in system development?
+To identify performance bottlenecks and optimize critical sections.</p>
+</li>
+<li>
+<p>What is <code>gprof</code> and how does it work?
+A profiling tool that records function call counts and execution time to generate performance reports.</p>
+</li>
+<li>
+<p>How do you compile a program for profiling with <code>gprof</code>?
+Use <code>-pg</code> flag with <code>gcc</code>: <code>gcc -pg -o prog prog.c</code>.</p>
+</li>
+<li>
+<p>What is a call graph?
+A diagram showing which functions call which, and how often.</p>
+</li>
+<li>
+<p>How can you interpret function call frequency in <code>gprof</code> output?
+Functions with high call counts or time percentages are likely performance hotspots.</p>
+</li>
+<li>
+<p>What is <code>valgrind</code> used for?
+Detecting memory leaks, memory errors, and profiling program performance.</p>
+</li>
+<li>
+<p>What is <code>cachegrind</code> and what does it measure?
+A Valgrind tool that simulates CPU cache and branch prediction to analyze cache usage.</p>
+</li>
+<li>
+<p>How can you detect memory leaks using <code>valgrind</code>?
+Run <code>valgrind --leak-check=full ./prog</code> and examine the report.</p>
+</li>
+<li>
+<p>What is instruction-level profiling?
+Measuring how individual CPU instructions execute and identifying inefficiencies.</p>
+</li>
+<li>
+<p>How can you identify CPU bottlenecks?
+Profile code to see which functions consume the most CPU time.</p>
+</li>
+<li>
+<p>What are compiler optimizations?
+Techniques compilers use to improve speed, reduce memory usage, or shrink code size.</p>
+</li>
+<li>
+<p>What does the <code>-O3</code> flag enable specifically?
+Aggressive optimizations including inlining, loop unrolling, and vectorization.</p>
+</li>
+<li>
+<p>What is loop unrolling and why is it beneficial?
+Expanding loop iterations to reduce loop overhead and improve instruction-level parallelism.</p>
+</li>
+<li>
+<p>How can you manually unroll a loop in C?
+Write multiple statements inside the loop body instead of relying on iteration.</p>
+</li>
+<li>
+<p>What is function inlining and how does it help performance?
+Replacing a function call with the function body to reduce call overhead.</p>
+</li>
+<li>
+<p>How do you use the <code>inline</code> keyword effectively?
+Mark small, frequently called functions as <code>inline</code> to suggest inlining to the compiler.</p>
+</li>
+<li>
+<p>What is SIMD (Single Instruction, Multiple Data)?
+A CPU technique that applies one instruction to multiple data points simultaneously.</p>
+</li>
+<li>
+<p>What are SSE and AVX instruction sets?
+CPU extensions for SIMD operations, improving parallel processing speed.</p>
+</li>
+<li>
+<p>How can you enable vectorization in GCC or Clang?
+Use <code>-O3</code> with <code>-ftree-vectorize</code> or rely on compiler auto-vectorization.</p>
+</li>
+</ol>
+<hr>
+<h3 id="cross-compilation--portability"><strong>Cross-Compilation &amp; Portability</strong></h3>
+<ol start="981">
+<li>
+<p>What is cross-compilation?
+Compiling code on one platform to run on a different target platform or architecture.</p>
+</li>
+<li>
+<p>What is a target platform?
+The system (OS, CPU architecture) where the compiled program will run.</p>
+</li>
+<li>
+<p>How do you specify a different target architecture during compilation?
+Use cross-compilers or flags like <code>-march=arch</code> and <code>--target=arch</code>.</p>
+</li>
+<li>
+<p>What is endianness and why is it important for portability?
+Byte order (big vs little endian); affects data interpretation across platforms.</p>
+</li>
+<li>
+<p>What are POSIX APIs and why are they important?
+Standardized OS interfaces for portability across Unix-like systems.</p>
+</li>
+<li>
+<p>How can you check if a feature is available at compile time?
+Use feature-test macros, <code>#ifdef</code>, or tools like <code>autoconf</code>.</p>
+</li>
+<li>
+<p>What is conditional compilation (<code>#ifdef</code>)?
+Compiling code selectively based on defined macros or conditions.</p>
+</li>
+<li>
+<p>How can you use macros to make portable code?
+Define platform-specific differences in macros and wrap code with <code>#ifdef</code>.</p>
+</li>
+<li>
+<p>What is the difference between POSIX and Windows API file handling?
+POSIX uses file descriptors and system calls like <code>open</code>, Windows uses HANDLEs and <code>CreateFile</code>.</p>
+</li>
+<li>
+<p>What is the role of <code>autoconf</code> and <code>automake</code> in portability?
+Generate configuration scripts and Makefiles that adapt to different platforms.</p>
+</li>
+<li>
+<p>How can you detect operating system type in C?
+Use predefined macros like <code>__linux__</code>, <code>_WIN32</code>, <code>__APPLE__</code>.</p>
+</li>
+<li>
+<p>How can you write code portable across Linux, macOS, and Windows?
+Use standard C, conditional compilation, and abstract platform-specific functionality.</p>
+</li>
+<li>
+<p>What are potential pitfalls of using system-specific headers?
+Code may break or fail to compile on other platforms.</p>
+</li>
+<li>
+<p>What is dynamic loading of libraries (<code>dlopen</code>, <code>dlsym</code>)?
+Loading shared libraries at runtime to access functions or symbols dynamically.</p>
+</li>
+<li>
+<p>How do you build and run C programs on embedded systems?
+Use a cross-compiler for the target, flash the binary, and run on the device.</p>
+</li>
+<li>
+<p>What are cross-toolchains and how are they configured?
+Sets of compiler, linker, and tools for a different target architecture, configured via environment variables or build scripts.</p>
+</li>
+<li>
+<p>How can you handle differences in integer sizes across architectures?
+Use fixed-width types like <code>int32_t</code> and <code>uint64_t</code> from <code>&lt;stdint.h&gt;</code>.</p>
+</li>
+<li>
+<p>What is the importance of unit testing in cross-platform development?
+Ensures code behaves correctly on all supported platforms.</p>
+</li>
+<li>
+<p>How can you use CI/CD tools (like Jenkins or GitHub Actions) for C builds?
+Automate compilation, testing, and deployment across multiple environments.</p>
+</li>
+<li>
+<p>What are best practices for maintaining large, portable, and optimized C codebases?
+Modular design, consistent style, unit tests, automated builds, careful use of platform-specific code, and thorough documentation.</p>
+</li>
+</ol>
+<hr>
+
+<script src="_enhance.js"></script>
+</body>
+</html>
