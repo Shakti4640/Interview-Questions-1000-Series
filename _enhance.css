@@ -356,3 +356,89 @@ body.enh-sql .enh-q strong { font-weight: 400; }
   #enh-answers { padding: 0 10px; font-size: 0; }
   #enh-answers::before { content: "\1F441"; font-size: 16px; } /* eye icon on small screens */
 }
+
+/* ---- Phone / tablet layout -------------------------------------------
+   Size and flow only: one column, readable text, nothing wider than the
+   screen except code boxes and tables, which scroll sideways inside their
+   own frame. Colors and the desktop look (>= 1024px) are untouched.
+   -------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  html, body { max-width: 100%; overflow-x: hidden; }
+  html.enh-ready body {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* content column fills the screen with a small side gutter */
+  #enh-panels {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 74px 12px 60px;
+  }
+  .enh-panel { overflow-wrap: anywhere; }
+  .enh-panel h1 { font-size: 1.5rem; line-height: 1.3; }
+  .enh-panel h2 { font-size: 1.25rem; line-height: 1.3; }
+  .enh-panel h3 { font-size: 1.1rem; line-height: 1.35; margin-top: 20px; }
+  .enh-panel ol,
+  .enh-panel ul { padding-left: 26px; }
+  .enh-panel ol > li { padding: 10px 12px; }
+  .enh-panel blockquote { margin: 8px 0; padding: 8px 12px; }
+
+  /* top bar: 44px tap targets, tighter gaps so the title keeps its room */
+  #enh-topbar { gap: 8px; padding: 0 10px; }
+  .enh-iconbtn { width: 44px; height: 44px; }
+  #enh-answers { height: 44px; }
+  #enh-title { font-size: 16px; min-width: 0; }
+
+  /* menu and answer toggles: comfortable to tap */
+  #enh-drawer { width: 300px; }
+  #enh-drawer-list li { padding: 12px 14px; font-size: 15px; }
+  .enh-toggle { padding: 8px 14px; font-size: 13px; min-height: 36px; }
+
+  /* code boxes keep exact spacing and scroll sideways inside the box */
+  html.enh-ready pre {
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre !important;
+    overflow-wrap: normal;
+    padding: 12px !important;
+  }
+  html.enh-ready pre code,
+  html.enh-ready pre code > div {
+    font-size: 13px;
+    line-height: 1.45;
+    white-space: pre;
+  }
+  html.enh-ready pre code > div { padding: 4px; }
+  html.enh-ready :not(pre) > code {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* wide things never push the page sideways */
+  .enh-panel table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .enh-panel img,
+  .enh-panel svg,
+  .mermaid,
+  .mermaid svg { max-width: 100%; height: auto; }
+}
+
+@media (max-width: 480px) {
+  #enh-panels { padding: 70px 10px 50px; }
+  .enh-panel h1 { font-size: 1.4rem; }
+  .enh-panel h2 { font-size: 1.2rem; }
+  .enh-panel ol,
+  .enh-panel ul { padding-left: 22px; }
+  .enh-panel ol > li { padding: 10px; }
+  #enh-topbar { gap: 6px; padding: 0 8px; }
+  #enh-title { font-size: 15px; }
+  html.enh-ready pre { padding: 10px !important; }
+}

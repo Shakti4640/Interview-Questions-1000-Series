@@ -113,6 +113,26 @@
   #drawer-list li:hover { background: var(--accent-soft); }
   #drawer-list li.active { background: var(--accent-soft); border-color: var(--accent); font-weight: 600; }
   #drawer-list li .num { display: inline-block; min-width: 22px; color: var(--accent); font-weight: 700; }
+
+  /* phone layout: one column of cards, bigger tap targets, smaller heading */
+  @media (max-width: 768px) {
+    html, body { max-width: 100%; overflow-x: hidden; }
+    main { padding: 122px 12px 50px; max-width: 100%; }
+    .grid { grid-template-columns: 1fr; gap: 12px; }
+    .panel h2 { font-size: 1.35rem; }
+    .lead { font-size: 16px; line-height: 1.5; }
+    .card { padding: 14px 16px; }
+    .card .desc { font-size: 14px; }
+    #topbar { gap: 8px; padding: 0 10px; }
+    .iconbtn { width: 44px; height: 44px; }
+    #title { min-width: 0; }
+    .tab { padding: 10px 14px; }
+    #drawer-list li { padding: 12px 14px; }
+  }
+  @media (max-width: 480px) {
+    main { padding: 118px 10px 40px; }
+    .panel h2 { font-size: 1.25rem; }
+  }
 </style>
 </head>
 <body>
